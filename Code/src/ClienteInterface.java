@@ -1,4 +1,4 @@
-public interface ClienteInterface {
+public interface ClienteInterface extends UtenteInterface{
 
     /** Collega Locker inserito, con il cliente */
     void setCheckpoint(String s); //forse boolean per la risposta
