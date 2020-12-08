@@ -10,7 +10,6 @@ public class Cliente implements ClienteInterface{
      */
     @Override
     public void setCheckpoint(String s) {
-
     }
 
     @Override
