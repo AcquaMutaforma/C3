@@ -4,7 +4,7 @@ import Locker.*;
 public interface ClienteInterface extends UtenteInterface{
 
     /** Collega Locker.Locker inserito, con il cliente */
-    void setCheckpoint(String s); //forse boolean per la risposta
+    void setCheckpoint(int idlocker); //forse boolean per la risposta
 
     /** metodo temporaneo, va nella GUI
      * Visualizza il locker che ha come checkpoint o nella lista Lockers*/

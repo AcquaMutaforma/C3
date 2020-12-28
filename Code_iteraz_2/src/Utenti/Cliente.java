@@ -3,15 +3,19 @@ import Locker.*;
 
 public class Cliente implements ClienteInterface{
 
-    LockerInterface lock;
-    BoxInterface box;
+    private int id;
+    private String nome;
+    private String email;
+    //TODO probabilmente conviene mettere id locker e id box, nel db dovrebbe essere piu semplice da leggere
+    private LockerInterface lock;
+    private BoxInterface box;
 
     /**
      * Collega Locker.Locker inserito, con il cliente
-     * @param s
+     * @param idlocker
      */
     @Override
-    public void setCheckpoint(String s) {
+    public void setCheckpoint(int idlocker) {
     }
 
     /**
@@ -34,12 +38,22 @@ public class Cliente implements ClienteInterface{
     }
 
     @Override
+    public String getEmail() {
+        return null;
+    }
+
+    @Override
     public boolean setId(int i) {
         return false;
     }
 
     @Override
     public boolean setNome(String n) {
+        return false;
+    }
+
+    @Override
+    public boolean setEmail(String s) {
         return false;
     }
 }

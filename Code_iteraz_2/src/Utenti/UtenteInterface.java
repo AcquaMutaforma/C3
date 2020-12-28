@@ -10,10 +10,16 @@ public interface UtenteInterface {
     //getters
     int getID();
     String getNome();
+    String getEmail();
+
 
     //setters
     boolean setId(int i);
     boolean setNome(String n);
+    boolean setEmail(String s);
+
+    //todo boolean setPassword(String pass);
+
 
     /*TODO: Fare un parser di stringa "lato client" in modo da poterlo stampare
             a video come una lista formattata.*/

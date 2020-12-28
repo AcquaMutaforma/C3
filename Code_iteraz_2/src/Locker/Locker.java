@@ -19,11 +19,6 @@ public class Locker implements LockerInterface{
         return null;
     }
 
-    @Override
-    public BoxInterface getBox(BoxInterface b) {
-        return null;
-    }
-
     /**
      * Chiede al box inserito di generare una chiave e la ritorna
      *
