@@ -1,4 +1,4 @@
-package Persistenza;
+package Utenti;
 
 /**
  * Definisce le operazioni delle classi che andranno a salvare o caricare dati degli utenti
