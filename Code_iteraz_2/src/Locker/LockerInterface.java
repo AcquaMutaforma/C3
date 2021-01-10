@@ -1,21 +1,29 @@
 package Locker;
 
+import java.util.List;
+import java.util.Map;
+
+/** Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
+ * quindi quando il cliente richiede lo stato del box, il locker lo recupera
+ * da solo senza il system in base a chi lo sta richiedendo */
 public interface LockerInterface {
-    /* Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
-    * quindi quando il cliente richiede lo stato del box, il locker lo recupera
-    * da solo senza il system in base a chi lo sta richiedendo*/
+
 
     /** Metodo assegnazione Box del locker ad un cliente */
-    void assegnaBox();
+    void assegnaBox(int idCliente);
 
-    /** getter */
-    BoxInterface getBox(int idbox);
-
-    /** Chiede al box inserito di generare una chiave e la ritorna*/
-    //TODO per piu box nello stesso locker ?
+    /** Chiede al Locker di trovare il box collegato al cliente e di generare una chiave */
     int GetChiave(int idCliente);
 
-    //TODO setter & getters
+    /* --- getters and setters --- */
+
+    BoxInterface getBoxById(int idbox);
+    BoxInterface getBoxByClient(int idCliente); //ho dovuto cambiare i nomi dato che sono 2 int e servono entrambi --ale
+
     int getId();
-    String getPosizione();
+    int getLong();
+    int getLati();
+    int getNumeroBox();
+    List<BoxInterface> getAllBoxes(); //todo: valutare se va bene la List o se vogliamo usare altro
+
 }
