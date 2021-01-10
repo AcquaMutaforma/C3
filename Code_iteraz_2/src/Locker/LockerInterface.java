@@ -1,7 +1,6 @@
 package Locker;
 
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
 /** Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
  * quindi quando il cliente richiede lo stato del box, il locker lo recupera
@@ -24,6 +23,6 @@ public interface LockerInterface {
     int getLong();
     int getLati();
     int getNumeroBox();
-    List<BoxInterface> getAllBoxes(); //todo: valutare se va bene la List o se vogliamo usare altro
+    ArrayList<BoxInterface> getAllBoxes(); //todo: valutare se va bene la List o se vogliamo usare altro
 
 }
