@@ -1,6 +1,8 @@
 package Locker;
 
 public class Locker implements LockerInterface{
+
+
     /**
      * Metodo assegnazione Box del locker ad un cliente
      */

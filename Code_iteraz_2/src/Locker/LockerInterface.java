@@ -1,7 +1,7 @@
 package Locker;
 
 public interface LockerInterface {
-    /* Locker.Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
+    /* Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
     * quindi quando il cliente richiede lo stato del box, il locker lo recupera
     * da solo senza il system in base a chi lo sta richiedendo*/
 
