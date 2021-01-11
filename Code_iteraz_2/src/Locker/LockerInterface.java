@@ -22,7 +22,13 @@ public interface LockerInterface {
     int getId();
     int getLong();
     int getLati();
-    int getNumeroBox();
-    ArrayList<BoxInterface> getAllBoxes(); //todo: valutare se va bene la List o se vogliamo usare altro
+    int getNumeroBox(); //numero dei box che appartengono al Locker
+    ArrayList<BoxInterface> getAllBoxes(); //todo: valutare se va bene la List o se vogliamo usare un array
+
+    /**
+     * recupera un box dalla lista dei box che abbia stato libero
+     * @return Box con stato = libero, altrimenti null.
+     */
+    BoxInterface getBoxDisponibile();
 
 }

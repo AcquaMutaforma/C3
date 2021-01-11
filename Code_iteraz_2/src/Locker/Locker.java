@@ -6,11 +6,22 @@ import java.util.HashMap;
 public class Locker implements LockerInterface{
 
     private int id;
-    private int Longitudine;
-    private int Latitudine;
+    private int longitudine;
+    private int latitudine;
     private int numeroBox;
-    private ArrayList<BoxInterface> boxDisponibili;
+    /** Lista dei box che sono contenuti nel Locker */
+    private ArrayList<BoxInterface> listaBox;
+    /** Mappa di  */
     private HashMap<Integer, BoxInterface> mappaRelazioni;
+
+    public Locker(int id, int longitudine, int latitudine, int numeroBox) {
+        this.id = id;
+        this.longitudine = longitudine;
+        this.latitudine = latitudine;
+        this.numeroBox = numeroBox;
+        this.listaBox = new ArrayList<>();
+        this.mappaRelazioni = new HashMap<>();
+    }
 
     /**
      * Metodo assegnazione Box del locker ad un cliente
@@ -64,6 +75,16 @@ public class Locker implements LockerInterface{
 
     @Override
     public ArrayList<BoxInterface> getAllBoxes() {
+        return null;
+    }
+
+    /**
+     * recupera un box dalla lista dei box che abbia stato libero
+     *
+     * @return Box con stato = libero, altrimenti null.
+     */
+    @Override
+    public BoxInterface getBoxDisponibile() {
         return null;
     }
 }
