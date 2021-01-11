@@ -7,12 +7,13 @@ import java.util.ArrayList;
  * da solo senza il system in base a chi lo sta richiedendo */
 public interface LockerInterface {
 
-
     /** Metodo assegnazione Box del locker ad un cliente */
-    void assegnaBox(int idCliente);
+    boolean assegnaBox(int idCliente);
 
     /** Chiede al Locker di trovare il box collegato al cliente e di generare una chiave */
-    int GetChiave(int idCliente);
+    int getChiave(int idCliente);
+
+    //TODO SUPERMEGAPROBLEMA: Chi crea i box per il locker? se stesso o il Gestore? comunque sia devono parlare con GestoreId per ricevere ID nuovi.
 
     /* --- getters and setters --- */
 

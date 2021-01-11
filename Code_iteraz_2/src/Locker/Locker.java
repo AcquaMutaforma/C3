@@ -2,6 +2,7 @@ package Locker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Locker implements LockerInterface{
 
@@ -24,58 +25,71 @@ public class Locker implements LockerInterface{
     }
 
     /**
-     * Metodo assegnazione Box del locker ad un cliente
-     *
-     * @param idCliente
+     * Metodo assegnazione Box del locker ad un cliente.
+     * @param idCliente .
+     * @return false = nessun box disponibile / true = box assegnato al cliente
      */
     @Override
-    public void assegnaBox(int idCliente) {
-
+    public boolean assegnaBox(int idCliente) {
+        BoxInterface b = getBoxDisponibile();
+        if(b == null)
+            return false;
+        else{
+            mappaRelazioni.put(idCliente,b);
+            return true;
+        }
     }
 
     /**
-     * Chiede al Locker di trovare il box collegato al cliente e di generare una chiave
-     *
-     * @param idCliente
+     * Chiede al Locker di trovare il box collegato al cliente e di generare una chiave.
+     * @param idCliente .
      */
     @Override
-    public int GetChiave(int idCliente) {
-        return 0;
+    public int getChiave(int idCliente) {
+        return getBoxByClient(idCliente).generaChiave();
+        //TODO controllare che abbia senso -ale
     }
 
     @Override
     public BoxInterface getBoxById(int idbox) {
+        Iterator<BoxInterface> iter = listaBox.iterator();
+        BoxInterface b;
+        while (iter.hasNext()){
+            b = iter.next();
+            if(b.getId() == idbox)
+                return b;
+        }
         return null;
     }
 
     @Override
     public BoxInterface getBoxByClient(int idCliente) {
-        return null;
+        return mappaRelazioni.get(idCliente);
     }
 
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     @Override
     public int getLong() {
-        return 0;
+        return this.longitudine;
     }
 
     @Override
     public int getLati() {
-        return 0;
+        return this.latitudine;
     }
 
     @Override
     public int getNumeroBox() {
-        return 0;
+        return this.numeroBox;
     }
 
     @Override
     public ArrayList<BoxInterface> getAllBoxes() {
-        return null;
+        return this.listaBox;
     }
 
     /**
@@ -85,6 +99,13 @@ public class Locker implements LockerInterface{
      */
     @Override
     public BoxInterface getBoxDisponibile() {
+        Iterator<BoxInterface> iter = listaBox.iterator();
+        BoxInterface b;
+        while (iter.hasNext()){
+            b = iter.next();
+            if(b.getStato() == StatoBox.Libero)
+                return b;
+        }
         return null;
     }
 }
