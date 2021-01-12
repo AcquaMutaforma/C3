@@ -26,4 +26,5 @@ public class GestoreId implements GestoreIdInterface{
         this.idLocker++;
         return this.idLocker;
     }
+
 }

@@ -22,7 +22,7 @@ public class Box implements BoxInterface{
      * Dopo aver aperto il box, la chiave si resetta. */
     @Override
     public int generaChiave() {
-        //TODO fix if needed -ale
+        //TODO fix is needed -ale
         if(this.key == 0) {
             this.key = 1000;
             return this.key;

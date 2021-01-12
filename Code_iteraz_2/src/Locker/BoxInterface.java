@@ -13,8 +13,6 @@ package Locker;
  */
 public interface BoxInterface {
 
-    //Ogni chiave generata puo' essere usata una sola volta
-
     /** Genera una chiave ad uso singolo, se la chiave = 0, allora ne creo una, altrimenti ritorno -1, per
      * innescare una sequenza di errore.
      * Teoricamente la chiave e' 0, finche' il corriere o il cliente non ne genera una per aprire il box.

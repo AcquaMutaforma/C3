@@ -9,6 +9,6 @@ public interface GestoreLocker {
     LockerInterface seedProtocol();
     LockerInterface getLocker();
     boolean removeLocker();
-    boolean setLocker();
-    boolean addLocker();
+    //probabilmente non serve a una mazza -ale | boolean setLocker();
+    boolean addLocker(int id);
 }
