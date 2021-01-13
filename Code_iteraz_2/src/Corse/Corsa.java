@@ -1,6 +1,12 @@
 package Corse;
 
-public class Corsa {
+public class Corsa implements CorsaInterface{
+    int idCorriere, idPacco, codiceLocker;
+    public Corsa(int idCorriere, int idPacco) {
+        setCorriere(idCorriere);
+        setPacco(idPacco);
+    }
+
     @Override
     public boolean setCorriere(int idCorriere) {
         this.idCorriere=idCorriere;
