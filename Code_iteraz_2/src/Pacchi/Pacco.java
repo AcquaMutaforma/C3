@@ -10,12 +10,14 @@ public class Pacco implements PaccoInterface {
 
     @Override
     public boolean setCliente(int idCliente) {
+        //TODO opzione false
         this.idCliente=idCliente;
         return true;
     }
 
     @Override
     public boolean setCommerciante(int idCommerciante) {
+        //TODO opzione false
         this.idCommerciante=idCommerciante;
         return true;
     }
