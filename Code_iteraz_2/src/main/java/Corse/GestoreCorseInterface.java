@@ -7,6 +7,7 @@ public interface GestoreCorseInterface {
     boolean addCorsa(int idCorriere, int idPacco);
     boolean removeCorsa(int codiceCorsa);
     CorsaInterface getCorsa(int codiceCorsa);
+    int getNewId ();
     boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse);
     //boolean setCorsa(int codiceCorsa, int idCorriere, int idPacco, int codiceLocker); //probabilmente non serve
     default Corsa creaCorsa(int idCorriere,int idPacco){
