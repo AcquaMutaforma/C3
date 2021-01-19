@@ -30,4 +30,11 @@ public class Corsa implements CorsaInterface{
         this.idPacco=idPacco;
         return true;
     }
+
+    @Override
+    public boolean setIdCorsa(int idCorsa) {
+        //TODO opzione false o diventa void?
+        this.idCorsa=idCorsa;
+        return true;
+    }
 }
