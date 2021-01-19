@@ -33,6 +33,7 @@ public class GestoreCorse implements GestoreCorseInterface {
     public Corsa getCorsa(int codiceCorsa) {
         //TODO
         //non so sinceramente come implementarlo. da dove prendo effettivamente la corsa? | Riccardo
+        //TODO getter corsa da Sistema o altra classe
         return null;
     }
 

@@ -34,6 +34,7 @@ public class GestorePacchi implements GestorePacchiInterface {
     public Pacco getPacco(int idPacco) {
         //TODO
         //come GestoreCorse.getCorsa | Riccardo
+        //TODO getter pacco da Sistema o altra classe
         return null;
     }
 
