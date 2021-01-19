@@ -1,10 +1,14 @@
 package Pacchi;
 public class Pacco implements PaccoInterface {
-    int idCommerciante, idCliente;
+    int idCommerciante, idCliente, idPacco;
 
     public Pacco(int idCommerciante, int idCliente) {
         setCliente(idCliente);
         setCommerciante(idCommerciante);
+    }
+
+    public void setIdPacco(int idPacco){
+        this.idPacco=idPacco;
     }
 
     @Override
