@@ -17,13 +17,13 @@ public class GestoreCorse implements GestoreCorseInterface {
 
     @Override
     public boolean removeCorsa(int codiceCorsa) {
-        //TODO correggere o ritorna sempre null
-        CorsaInterface c =getCorsa(codiceCorsa);
-        c=null;     /*non sono sicuro, ma in linea teorica dovrebbe eliminare il riferimento all'oggetto, quindi
-                    (presto o tardi) arriva il garbage collector e lo cestina. | Riccardo */
-        return c == null;
-        //ho lasciato questa dicitura anziché semplificare poiché non é
-        // finita l'implementazione sopra | Riccardo
+        //TODO correggere o non elimina pacchi dal "cloud".
+        Corsa c = getCorsa(codiceCorsa);
+        if (lCorse.contains(c)){
+            lCorse.remove(c);
+            return  !lCorse.contains(c); //che poi torna true, da eliminare il controllo!?
+        }
+        return false;
     }
 
     @Override

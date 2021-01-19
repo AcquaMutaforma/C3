@@ -16,12 +16,14 @@ public class GestorePacchi implements GestorePacchiInterface {
 
     @Override
     public boolean removePacco(int idPacco) {
-        //TODO correggere o ritorna sempre null
+        //TODO correggere o non elimina pacchi dal "cloud".
         Pacco p = getPacco(idPacco);
-        p = null;
-        return p==null;
-        //ho lasciato questa dicitura anziché semplificare poiché non é
-        // finita l'implementazione sopra | Riccardo
+        if (lPacchi.contains(p)) {
+            lPacchi.remove(p);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
