@@ -27,7 +27,7 @@ public class GestoreCorse implements GestoreCorseInterface {
     }
 
     @Override
-    public CorsaInterface getCorsa(int codiceCorsa) {
+    public Corsa getCorsa(int codiceCorsa) {
         //TODO
         //non so sinceramente come implementarlo. da dove prendo effettivamente la corsa? | Riccardo
         return null;
