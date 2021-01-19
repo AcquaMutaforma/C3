@@ -12,7 +12,10 @@ public class GestoreCorse implements GestoreCorseInterface {
 
     @Override
     public boolean addCorsa(int idCorriere, int idPacco) {
-        return creaCorsa(idCorriere,idPacco);
+        Corsa corsa =  creaCorsa(idCorriere, idPacco);
+        corsa.setIdCorsa(getNewId());
+        lCorse.add(corsa);
+        return true;
     }
 
     @Override

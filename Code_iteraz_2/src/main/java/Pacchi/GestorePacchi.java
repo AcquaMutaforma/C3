@@ -11,7 +11,11 @@ public class GestorePacchi implements GestorePacchiInterface {
 
     @Override
     public boolean addPacco(int idCommerciante, int idCliente) {
-        return creaPacco(idCommerciante,idCliente);
+        Pacco p = creaPacco(idCommerciante, idCliente);
+        p.setIdPacco(getNewId());
+        //TODO aggiungi il limite di pacchi all'arraylist.
+        lPacchi.add(p);
+        return true;
     }
 
     @Override
