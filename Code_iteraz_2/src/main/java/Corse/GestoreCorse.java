@@ -1,6 +1,12 @@
 package Corse;
 
+import Sism.Sistema;
+
+import java.util.ArrayList;
+
 public class GestoreCorse implements GestoreCorseInterface {
+    Sistema sistema = Sistema.getInstance();
+    ArrayList<Corsa> lCorse;
 
     //TODO aggiungere le variabili -ale
 
@@ -25,6 +31,16 @@ public class GestoreCorse implements GestoreCorseInterface {
         //TODO
         //non so sinceramente come implementarlo. da dove prendo effettivamente la corsa? | Riccardo
         return null;
+    }
+
+    @Override
+    public int getNewId() {
+        return sistema.generaNuovoId();
+    }
+
+    @Override
+    public boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse) {
+        return sistema.saveCorsa(listaCorse);
     }
 
     /* TODO: probabilmente non serve, ora lasciamolo qui -ale

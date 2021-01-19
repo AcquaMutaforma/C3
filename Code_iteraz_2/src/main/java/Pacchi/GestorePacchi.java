@@ -1,6 +1,13 @@
 package Pacchi;
 
+import Sism.Sistema;
+
+import java.util.ArrayList;
+
 public class GestorePacchi implements GestorePacchiInterface {
+    Sistema sistema = Sistema.getInstance();
+    ArrayList<Pacco> lPacchi;
+    //TODO Aggiungere le variabili.
 
     @Override
     public boolean addPacco(int idCommerciante, int idCliente) {
@@ -22,6 +29,16 @@ public class GestorePacchi implements GestorePacchiInterface {
         //TODO
         //come GestoreCorse.getCorsa | Riccardo
         return null;
+    }
+
+    @Override
+    public int getNewId() {
+        return sistema.generaNuovoId();
+    }
+
+    @Override
+    public boolean savePacco(ArrayList<? extends PaccoInterface> listaPacchi) {
+        return sistema.savePacco(listaPacchi);
     }
 /*  todo: probabilmente non serve, valutare! -ale
     @Override
