@@ -3,21 +3,19 @@ package Sism;//TODO cambiare nome al package... orrendo
                 // L'ho messo perché non mi faceva importare la classe in altro modo. | Riccardo
 import Corse.CorsaInterface;
 import Corse.GestoreCorseInterface;
-import Locker.GestoreLocker;
+import Locker.GestoreLockerInterface;
 import Pacchi.GestorePacchiInterface;
 import Pacchi.PaccoInterface;
-import Utenti.GestoreUtenti;
+import Utenti.GestoreUtentiInterface;
 
 import java.util.ArrayList;
 
 public class Sistema {
 
-    private GestoreUtenti gestoreUtenti;
+    private GestoreUtentiInterface gestoreUtentiInterface;
     private GestoreCorseInterface gestoreCorseInterface;
-    //Modifiche provenienti dal refactor, non so se
-    //debba rimanere cosí o cambiare (mi riferisco ai gestori di pacchi e corse) | Riccardo
     private GestorePacchiInterface gestorePacchiInterface;
-    private GestoreLocker gestoreLocker;
+    private GestoreLockerInterface gestoreLockerInterface;
     private static Sistema istanza;
 
     private Sistema(){

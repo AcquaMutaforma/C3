@@ -1,4 +1,4 @@
 package Utenti;
 
-public interface TecnicoInterface extends GestoreUtenti {
+public interface TecnicoInterface extends GestoreUtentiInterface {
 }

@@ -4,7 +4,7 @@ package Locker;
 /**
  * Definisce le operazioni delle classi che andranno a salvare o caricare dati dei Lockers
  */
-public interface GestoreLocker {
+public interface GestoreLockerInterface {
 
     LockerInterface seedProtocol();
     LockerInterface getLocker();
