@@ -1,3 +1,5 @@
+package Sism;
+
 /**
  * Classe che genera gli ID per ogni oggetto creato.
  */

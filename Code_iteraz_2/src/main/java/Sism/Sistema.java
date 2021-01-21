@@ -32,13 +32,13 @@ public class Sistema {
         return 0;
     }
 
+    /* TODO da fare successivamente
     public boolean savePacco(ArrayList<? extends PaccoInterface> listaPacchi) {
-        //TODO Implementare Saver per i pacchi
         return true;
     }
 
     public boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse) {
-        //TODO Implementare Saver per le corse
         return true;
     }
+     */
 }

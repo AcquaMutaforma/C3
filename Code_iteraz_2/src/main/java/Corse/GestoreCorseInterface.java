@@ -1,18 +1,22 @@
 package Corse;
 
-import java.util.ArrayList;
-
 public interface GestoreCorseInterface {
 
-    boolean addCorsa(int idCorriere, int idPacco);
+    /** Aggiunge una corsa nella lista di quelli da salvare */
+    boolean addCorsa(CorsaInterface c);
+
+    /**Rimuove localmente l'oggetto*/
     boolean removeCorsa(int codiceCorsa);
     CorsaInterface getCorsa(int codiceCorsa);
-    int getNewId ();
-    boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse);
-    //boolean setCorsa(int codiceCorsa, int idCorriere, int idPacco, int codiceLocker); //probabilmente non serve
-    default Corsa creaCorsa(int idCorriere,int idPacco){
-        //TODO c'é un legame con la nostra implementazione, da togliere in qualche modo
-        Corsa c = new Corsa(idCorriere,idPacco);
+
+    //boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse); TODO da fare successivamente.
+
+    /** Crea una nuova corsa  */
+    default CorsaInterface creaCorsa(int idCorsa, int idCorriere,int idPacco, int idLock){
+        CorsaInterface c = new Corsa(idCorsa, idCorriere, idPacco, idLock);
         return c;
     }
+
+    //ALE: scusa mi sono permesso di metterci mano, dato che avevamo AddCorsa e CreaCorsa che sembrano la stessa cosa
+    //quindi ho diviso i ruoli, ci ho scritto un commento per specificare meglio cosa fanno i metodi
 }

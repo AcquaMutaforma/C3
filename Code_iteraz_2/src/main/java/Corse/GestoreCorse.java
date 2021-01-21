@@ -3,58 +3,42 @@ package Corse;
 import Sism.Sistema;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GestoreCorse implements GestoreCorseInterface {
-    Sistema sistema = Sistema.getInstance();
-    ArrayList<Corsa> lCorse;
 
-    //TODO aggiungere le variabili -ale
+    private final Sistema sistema = Sistema.getInstance();
+    private ArrayList<CorsaInterface> listaCorse;
 
-    @Override
-    public boolean addCorsa(int idCorriere, int idPacco) {
-        Corsa corsa =  creaCorsa(idCorriere, idPacco);
-        corsa.setIdCorsa(getNewId());
-        lCorse.add(corsa);
-        return true;
+    public GestoreCorse() {
+        this.listaCorse = new ArrayList<>();
     }
 
     @Override
     public boolean removeCorsa(int codiceCorsa) {
-        //TODO correggere o non elimina pacchi dal "cloud".
-        Corsa c = getCorsa(codiceCorsa);
-        if (lCorse.contains(c)){
-            lCorse.remove(c);
-            return  !lCorse.contains(c); //che poi torna true, da eliminare il controllo!?
-        }
-        return false;
+        //TODO non deve eliminare dal cloud, li deve togliere solo dalla sua lista
+        return listaCorse.remove(getCorsa(codiceCorsa));
+    }
+
+    /**
+     * Aggiunge una corsa nella lista di quelli da salvare
+     * @param c corsa da aggiungere alla lista
+     */
+    @Override
+    public boolean addCorsa(CorsaInterface c) {
+        return this.listaCorse.add(c);
     }
 
     @Override
-    public Corsa getCorsa(int codiceCorsa) {
-        //TODO
-        //non so sinceramente come implementarlo. da dove prendo effettivamente la corsa? | Riccardo
-        //TODO getter corsa da Sistema o altra classe
+    public CorsaInterface getCorsa(int codiceCorsa) {
+        Iterator<CorsaInterface> iter = listaCorse.iterator();
+        CorsaInterface c = null;
+        while(iter.hasNext()){
+            c = iter.next();
+            if(c.getIdCorsa() == codiceCorsa)
+                return c;
+        }
         return null;
     }
 
-    @Override
-    public int getNewId() {
-        return sistema.generaNuovoId();
-    }
-
-    @Override
-    public boolean saveCorsa(ArrayList<? extends CorsaInterface> listaCorse) {
-        return sistema.saveCorsa(listaCorse);
-    }
-
-    /* TODO: probabilmente non serve, ora lasciamolo qui -ale
-    @Override
-    public boolean setCorsa(int codiceCorsa, int idCorriere, int idPacco, int codiceLocker) {
-        CorsaInterface c = getCorsa(codiceCorsa);
-        return c.setCorriere(idCorriere) &&
-                c.setPacco(idPacco) &&
-                c.setCodice(codiceLocker);
-    }
-
-     */
 }

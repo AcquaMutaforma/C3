@@ -1,7 +1,11 @@
 package Pacchi;
 
 public interface PaccoInterface {
-    boolean setCliente(int idCliente);
-    boolean setCommerciante(int idCommerciante);
-    void setIdPacco(int idPacco);
+
+    int getIdCommerciante();
+    int getIdCliente();
+    int getIdPacco();
+    void setIdCommerciante(int idCommerciante);
+    void setIdCliente(int idCliente);
+
 }

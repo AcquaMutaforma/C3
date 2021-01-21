@@ -1,27 +1,31 @@
 package Pacchi;
 public class Pacco implements PaccoInterface {
+
     int idCommerciante, idCliente, idPacco;
 
-    public Pacco(int idCommerciante, int idCliente) {
-        setCliente(idCliente);
-        setCommerciante(idCommerciante);
+    public Pacco(int idPacco, int idCommerciante, int idCliente) {
+        this.idPacco = idPacco;
+        setIdCliente(idCliente);
+        setIdCommerciante(idCommerciante);
     }
 
-    public void setIdPacco(int idPacco){
-        this.idPacco=idPacco;
+    public int getIdCommerciante() {
+        return idCommerciante;
     }
 
-    @Override
-    public boolean setCliente(int idCliente) {
-        //TODO opzione false o diventa void?
-        this.idCliente=idCliente;
-        return true;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    @Override
-    public boolean setCommerciante(int idCommerciante) {
-        //TODO opzione false o diventa void?
-        this.idCommerciante=idCommerciante;
-        return true;
+    public int getIdPacco() {
+        return idPacco;
+    }
+
+    public void setIdCommerciante(int idCommerciante) {
+        this.idCommerciante = idCommerciante;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 }

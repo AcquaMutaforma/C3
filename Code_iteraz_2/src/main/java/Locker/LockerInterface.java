@@ -13,7 +13,7 @@ public interface LockerInterface {
     /** Chiede al Locker di trovare il box collegato al cliente e di generare una chiave */
     int getChiave(int idCliente);
 
-    //TODO SUPERMEGAPROBLEMA: Chi crea i box per il locker? se stesso o il Gestore? comunque sia devono parlare con GestoreId per ricevere ID nuovi.
+    //TODO SUPERMEGAPROBLEMA: Chi crea i box per il locker? se stesso o il Gestore? comunque sia devono parlare con Sism.GestoreId per ricevere ID nuovi.
 
     /* --- getters and setters --- */
 

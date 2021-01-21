@@ -2,39 +2,45 @@ package Corse;
 
 public class Corsa implements CorsaInterface{
 
-    int idCorriere, idPacco, codiceLocker, idCorsa;
-    //TODO nel costruttore forse andrebbe aggiunto un Locker, altrimenti rimane senza destinazione
+    int idCorriere, idPacco, idLocker, idCorsa;
 
-    public Corsa(int idCorriere, int idPacco) {
-        setCorriere(idCorriere);//TODO e se questi setters fossero privati?
+    public Corsa(int idCorsa, int idCorriere, int idPacco, int idLock) {
+        this.idCorsa = idCorsa;
+        setLocker(idLocker);
+        setCorriere(idCorriere);
         setPacco(idPacco);
     }
 
+    public int getIdCorriere() {
+        return idCorriere;
+    }
+
+    public int getIdPacco() {
+        return idPacco;
+    }
+
+    public int getIdLocker() {
+        return idLocker;
+    }
+
+    public int getIdCorsa() {
+        return idCorsa;
+    }
+
     @Override
-    public boolean setCorriere(int idCorriere) {
-        //TODO opzione false o diventa void?
+    public void setCorriere(int idCorriere) {
         this.idCorriere=idCorriere;
-        return true;
     }
 
     @Override
-    public boolean setCodice(int codiceLocker) {
-        //TODO opzione false o diventa void?
-        this.codiceLocker=codiceLocker;
-        return true;
+    public void setLocker(int codiceLocker) {
+        this.idLocker = codiceLocker;
     }
 
+
     @Override
-    public boolean setPacco(int idPacco) {
-        //TODO opzione false o diventa void?
+    public void setPacco(int idPacco) {
         this.idPacco=idPacco;
-        return true;
     }
 
-    @Override
-    public boolean setIdCorsa(int idCorsa) {
-        //TODO opzione false o diventa void?
-        this.idCorsa=idCorsa;
-        return true;
-    }
 }
