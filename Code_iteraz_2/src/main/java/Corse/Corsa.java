@@ -14,15 +14,12 @@ public class Corsa implements CorsaInterface{
     public int getIdCorriere() {
         return idCorriere;
     }
-
     public int getIdPacco() {
         return idPacco;
     }
-
     public int getIdLocker() {
         return idLocker;
     }
-
     public int getIdCorsa() {
         return idCorsa;
     }
@@ -36,7 +33,6 @@ public class Corsa implements CorsaInterface{
     public void setLocker(int codiceLocker) {
         this.idLocker = codiceLocker;
     }
-
 
     @Override
     public void setPacco(int idPacco) {

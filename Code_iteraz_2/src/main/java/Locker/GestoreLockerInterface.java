@@ -6,9 +6,15 @@ package Locker;
  */
 public interface GestoreLockerInterface {
 
-    LockerInterface seedProtocol();
     LockerInterface getLocker();
-    boolean removeLocker();
-    //probabilmente non serve a una mazza -ale | boolean setLocker();
-    boolean addLocker(int id);
+
+    /**Da rimuovere*/
+    boolean addLocker(LockerInterface l);
+
+    default LockerInterface creaLocker(int id, int longitudine, int latitudine, int numeroBox){
+        LockerInterface l = new Locker( id,  longitudine,  latitudine,  numeroBox);
+        return l;
+    }
+
+    boolean salvaTutto();
 }
