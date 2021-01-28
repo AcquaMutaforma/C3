@@ -1,12 +1,12 @@
-package Sism;//TODO cambiare nome al package... orrendo
+package it.arrp.c3.Sism;//TODO cambiare nome al package... orrendo
                 //Lasciare il package o modificare gli import di conseguenza nelle varie classi.
                 // L'ho messo perché non mi faceva importare la classe in altro modo. | Riccardo
-import Corse.CorsaInterface;
-import Corse.GestoreCorseInterface;
-import Locker.GestoreLockerInterface;
-import Pacchi.GestorePacchiInterface;
-import Pacchi.PaccoInterface;
-import Utenti.GestoreUtentiInterface;
+import it.arrp.c3.Corse.CorsaInterface;
+import it.arrp.c3.Corse.GestoreCorseInterface;
+import it.arrp.c3.Locker.GestoreLockerInterface;
+import it.arrp.c3.Pacchi.GestorePacchiInterface;
+import it.arrp.c3.Pacchi.PaccoInterface;
+import it.arrp.c3.Utenti.GestoreUtentiInterface;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package Corse;
+package it.arrp.c3.Corse;
 
 public class Corsa implements CorsaInterface{
 

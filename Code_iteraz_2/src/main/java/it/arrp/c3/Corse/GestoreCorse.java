@@ -1,4 +1,4 @@
-package Corse;
+package it.arrp.c3.Corse;
 
 import Sism.Sistema;
 

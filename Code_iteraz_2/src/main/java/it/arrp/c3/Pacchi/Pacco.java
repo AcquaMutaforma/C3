@@ -1,4 +1,4 @@
-package Pacchi;
+package it.arrp.c3.Pacchi;
 public class Pacco implements PaccoInterface {
 
     int idCommerciante, idCliente, idPacco;

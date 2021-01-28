@@ -1,4 +1,4 @@
-package Locker;
+package it.arrp.c3.Locker;
 
 import java.util.ArrayList;
 import java.util.HashMap;

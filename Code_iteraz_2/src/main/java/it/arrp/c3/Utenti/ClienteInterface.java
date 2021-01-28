@@ -1,5 +1,5 @@
-package Utenti;
-import Locker.*;
+package it.arrp.c3.Utenti;
+import it.arrp.c3.Locker.*;
 
 public interface ClienteInterface extends UtenteInterface{
 

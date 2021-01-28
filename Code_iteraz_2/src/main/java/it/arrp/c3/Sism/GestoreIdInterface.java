@@ -1,4 +1,4 @@
-package Sism;
+package it.arrp.c3.Sism;
 
 public interface GestoreIdInterface {
 

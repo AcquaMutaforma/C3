@@ -1,4 +1,4 @@
-package View;
+package it.arrp.c3.View;
 
 public interface ViewInterface {//da cambiare il nome? sembra ridondante
     void printHelp();

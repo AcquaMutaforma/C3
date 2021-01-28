@@ -1,4 +1,4 @@
-package Locker;
+package it.arrp.c3.Locker;
 
 /**
  * Interfaccia dei box che compongo i Lockers.

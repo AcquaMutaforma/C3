@@ -1,4 +1,4 @@
-package Pacchi;
+package it.arrp.c3.Pacchi;
 
 public interface PaccoInterface {
 

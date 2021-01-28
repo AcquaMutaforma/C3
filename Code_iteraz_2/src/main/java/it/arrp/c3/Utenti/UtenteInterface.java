@@ -1,4 +1,4 @@
-package Utenti;
+package it.arrp.c3.Utenti;
 
 /**
  * Interfaccia che descrivi un utente generico

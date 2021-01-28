@@ -1,4 +1,4 @@
-package Sism;
+package it.arrp.c3.Sism;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

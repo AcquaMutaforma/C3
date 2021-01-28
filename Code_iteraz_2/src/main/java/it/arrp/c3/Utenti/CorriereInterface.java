@@ -1,4 +1,4 @@
-package Utenti;
+package it.arrp.c3.Utenti;
 
 public interface CorriereInterface extends UtenteInterface{
 

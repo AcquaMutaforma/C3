@@ -1,4 +1,4 @@
-package View;
+package it.arrp.c3.View;
 
 public interface ViewCorriere {
     void printProfilo();

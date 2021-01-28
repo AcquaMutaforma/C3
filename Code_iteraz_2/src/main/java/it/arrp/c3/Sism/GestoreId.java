@@ -1,4 +1,4 @@
-package Sism;
+package it.arrp.c3.Sism;
 
 /**
  * Classe che genera gli ID per ogni oggetto creato.

@@ -1,4 +1,4 @@
-package Locker;
+package it.arrp.c3.Locker;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

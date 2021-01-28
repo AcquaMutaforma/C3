@@ -1,4 +1,4 @@
-package Utenti;
+package it.arrp.c3.Utenti;
 
 /**
  * Definisce le operazioni delle classi che andranno a salvare o caricare dati degli utenti
