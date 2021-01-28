@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/ConnessioneDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/ConnessioneDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/Corsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/Corsa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/CorsaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/CorsaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorseInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorseInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/BoxInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/BoxInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/GestoreLockerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/GestoreLockerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Locker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Locker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/LockerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/LockerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/StatoBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/StatoBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/Pacco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/Pacco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/PaccoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/PaccoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreIdInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreIdInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/ClienteInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/ClienteInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/CommercianteINNterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/CommercianteINNterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/CorriereInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/CorriereInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/GestoreUtentiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/GestoreUtentiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/StatoCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/StatoCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/TecnicoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/TecnicoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/UtenteInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/UtenteInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCommerciante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCommerciante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewTecnico.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ncDlIJFIbS2Md5A6nYttleTd0U" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="" />
+      <created>1611680637508</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611680637508</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
