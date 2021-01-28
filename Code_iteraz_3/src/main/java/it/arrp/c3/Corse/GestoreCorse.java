@@ -1,6 +1,6 @@
 package it.arrp.c3.Corse;
 
-import Sism.Sistema;
+import it.arrp.c3.Sism.Sistema;
 
 import java.util.ArrayList;
 import java.util.Iterator;

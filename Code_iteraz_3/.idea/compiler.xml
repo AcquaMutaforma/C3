@@ -9,8 +9,8 @@
         <module name="c3" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="c3" target="11" />
+    <bytecodeTargetLevel target="8">
+      <module name="c3" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

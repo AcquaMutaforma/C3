@@ -1,4 +1,4 @@
-package it.arrp.c3;
+package it.arrp.c3.TestTemporaneiConnessioneDB;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
