@@ -1,6 +1,5 @@
 package it.arrp.c3.TestTemporaneiConnessioneDB;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +13,14 @@ public class Student {
     private String name;
     @Column(name = "email")
     private String email;
+
+    public Student() {
+    }
+
+    public Student(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
@@ -37,5 +44,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id= " + id +
+                ", name= '" + name + '\'' +
+                ", email= '" + email + '\'' +
+                '}';
     }
 }
