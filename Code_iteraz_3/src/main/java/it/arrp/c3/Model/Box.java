@@ -1,17 +1,22 @@
-package it.arrp.c3.Locker;
+package it.arrp.c3.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import it.arrp.c3.Locker.BoxInterface;
+import it.arrp.c3.Locker.StatoBox;
 
-@Entity
-public class Box implements BoxInterface{
+import java.util.UUID;
+
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+
+//@Entity
+public class Box implements BoxInterface {
 
     //TODO: Per ora il box cambia in automatico da Locked a Unlocked, crea qualcosa per simulare una chiusura etc! -ale
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
     private final int id;
 
     private int key;
@@ -39,7 +44,7 @@ public class Box implements BoxInterface{
     }
 
     @Override
-    public int getId() {
+    public UUID getId() {
         return this.id;
     }
 
