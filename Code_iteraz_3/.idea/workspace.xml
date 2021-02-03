@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/MainCommandLineRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/ConnessioneDB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/arrp/c3/C3ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/ConnessioneDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/it/arrp/c3/C3ApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c3.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c3.vpp" afterDir="false" />
-    </list>
+    <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
