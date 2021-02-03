@@ -1,6 +1,7 @@
 package it.arrp.c3.Locker;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /** Locker ha una lista di BOX che vengono collegati all'id Utenti.Cliente
  * quindi quando il cliente richiede lo stato del box, il locker lo recupera
@@ -8,17 +9,17 @@ import java.util.ArrayList;
 public interface LockerInterface {
 
     /** Metodo assegnazione Box del locker ad un cliente */
-    boolean assegnaBox(int idCliente);
+    boolean assegnaBox(UUID idCliente);
 
     /** Chiede al Locker di trovare il box collegato al cliente e di generare una chiave */
-    int getChiave(int idCliente);
+    int getChiave(UUID idCliente);
 
     /* --- getters and setters --- */
 
-    BoxInterface getBoxById(int idbox);
-    BoxInterface getBoxByClient(int idCliente); //ho dovuto cambiare i nomi dato che sono 2 int e servono entrambi --ale
+    BoxInterface getBoxById(UUID idbox);
+    BoxInterface getBoxByClient(UUID idCliente); //ho dovuto cambiare i nomi dato che sono 2 int e servono entrambi --ale
 
-    int getId();
+    UUID getId();
     int getLong();
     int getLati();
     int getNumeroBox(); //numero dei box che appartengono al Locker

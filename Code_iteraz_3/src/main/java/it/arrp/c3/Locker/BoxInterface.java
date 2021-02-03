@@ -1,5 +1,7 @@
 package it.arrp.c3.Locker;
 
+import java.util.UUID;
+
 /**
  * Interfaccia dei box che compongo i Lockers.
  * Il Box ha stato = libero.
@@ -19,7 +21,7 @@ public interface BoxInterface {
      * Dopo aver aperto il box, la chiave si resetta. */
     int generaChiave();
 
-    int getId();
+    UUID getId();
     StatoBox getStato();
     void setStato(StatoBox s);
     boolean isLocked();

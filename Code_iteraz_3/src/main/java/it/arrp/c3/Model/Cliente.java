@@ -1,11 +1,9 @@
-package it.arrp.c3.Utenti;
+package it.arrp.c3.Model;
 import it.arrp.c3.Locker.*;
+import it.arrp.c3.Utenti.ClienteInterface;
 
-public class Cliente implements ClienteInterface{
+public class Cliente extends UtenteRegistrato implements ClienteInterface {
 
-    private int id;
-    private String nome;
-    private String email;
     //TODO probabilmente conviene mettere id locker e id box, nel db dovrebbe essere piu semplice da leggere
     private LockerInterface lock;
     private BoxInterface box;

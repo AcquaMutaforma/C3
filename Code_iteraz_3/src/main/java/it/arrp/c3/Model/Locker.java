@@ -1,27 +1,32 @@
-package it.arrp.c3.Locker;
+package it.arrp.c3.Model;
+
+import it.arrp.c3.Locker.BoxInterface;
+import it.arrp.c3.Locker.LockerInterface;
+import it.arrp.c3.Locker.StatoBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.UUID;
 
-public class Locker implements LockerInterface{
+public class Locker implements LockerInterface {
 
-    private int id;
+    private UUID id;
     private int longitudine;
     private int latitudine;
     private int numeroBox;
     /** Lista dei box che sono contenuti nel Locker */
     private ArrayList<BoxInterface> listaBox;
     /** Mappa di  */
-    private HashMap<Integer, BoxInterface> mappaRelazioni;
+    private HashMap<UUID, BoxInterface> mappaRelazioni;
 
-    public Locker(int id, int longitudine, int latitudine, int numeroBox) {
+    public Locker(UUID id, int longitudine, int latitudine, int numeroBox) {
         this.id = id;
         this.longitudine = longitudine;
         this.latitudine = latitudine;
         this.numeroBox = numeroBox;
         this.listaBox = new ArrayList<>();
-        this.mappaRelazioni = new HashMap<>();
+        this.mappaRelazioni = new HashMap<UUID, BoxInterface>();
     }
 
     /**
@@ -30,7 +35,7 @@ public class Locker implements LockerInterface{
      * @return false = nessun box disponibile / true = box assegnato al cliente
      */
     @Override
-    public boolean assegnaBox(int idCliente) {
+    public boolean assegnaBox(UUID idCliente) {
         BoxInterface b = getBoxDisponibile();
         if(b == null)
             return false;
@@ -45,30 +50,30 @@ public class Locker implements LockerInterface{
      * @param idCliente .
      */
     @Override
-    public int getChiave(int idCliente) {
+    public int getChiave(UUID idCliente) {
         return getBoxByClient(idCliente).generaChiave();
         //TODO controllare che abbia senso -ale
     }
 
     @Override
-    public BoxInterface getBoxById(int idbox) {
+    public BoxInterface getBoxById(UUID idbox) {
         Iterator<BoxInterface> iter = listaBox.iterator();
         BoxInterface b;
         while (iter.hasNext()){
             b = iter.next();
-            if(b.getId() == idbox)
+            if(b.getId().equals(idbox))
                 return b;
         }
         return null;
     }
 
     @Override
-    public BoxInterface getBoxByClient(int idCliente) {
+    public BoxInterface getBoxByClient(UUID idCliente) {
         return mappaRelazioni.get(idCliente);
     }
 
     @Override
-    public int getId() {
+    public UUID getId() {
         return this.id;
     }
 
