@@ -2,6 +2,8 @@ package it.arrp.c3.Model;
 import it.arrp.c3.Locker.*;
 import it.arrp.c3.Utenti.ClienteInterface;
 
+import java.util.UUID;
+
 public class Cliente extends UtenteRegistrato implements ClienteInterface {
 
     //TODO probabilmente conviene mettere id locker e id box, nel db dovrebbe essere piu semplice da leggere
@@ -26,8 +28,8 @@ public class Cliente extends UtenteRegistrato implements ClienteInterface {
     }
 
     @Override
-    public int getID() {
-        return 0;
+    public UUID getID() {
+        return null;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class Cliente extends UtenteRegistrato implements ClienteInterface {
     }
 
     @Override
-    public boolean setId(int i) {
+    public boolean setId(UUID i) {
         return false;
     }
 

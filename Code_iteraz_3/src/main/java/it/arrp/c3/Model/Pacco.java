@@ -1,31 +1,36 @@
-package it.arrp.c3.Pacchi;
+package it.arrp.c3.Model;
+
+import it.arrp.c3.Pacchi.PaccoInterface;
+
+import java.util.UUID;
+
 public class Pacco implements PaccoInterface {
 
-    int idCommerciante, idCliente, idPacco;
+    UUID idCommerciante, idCliente, idPacco;
 
-    public Pacco(int idPacco, int idCommerciante, int idCliente) {
+    public Pacco(UUID idPacco, UUID idCommerciante, UUID idCliente) {
         this.idPacco = idPacco;
         setIdCliente(idCliente);
         setIdCommerciante(idCommerciante);
     }
 
-    public int getIdCommerciante() {
+    public UUID getIdCommerciante() {
         return idCommerciante;
     }
 
-    public int getIdCliente() {
+    public UUID getIdCliente() {
         return idCliente;
     }
 
-    public int getIdPacco() {
+    public UUID getIdPacco() {
         return idPacco;
     }
 
-    public void setIdCommerciante(int idCommerciante) {
+    public void setIdCommerciante(UUID idCommerciante) {
         this.idCommerciante = idCommerciante;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(UUID idCliente) {
         this.idCliente = idCliente;
     }
 }

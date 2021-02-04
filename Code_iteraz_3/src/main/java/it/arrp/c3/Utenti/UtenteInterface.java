@@ -1,5 +1,7 @@
 package it.arrp.c3.Utenti;
 
+import java.util.UUID;
+
 /**
  * Interfaccia che descrivi un utente generico
  */
@@ -8,13 +10,13 @@ public interface UtenteInterface {
     //TODO aggiungere i metodi per modifica profilo.
 
     //getters
-    int getID();
+    UUID getID();
     String getNome();
     String getEmail();
 
 
     //setters
-    boolean setId(int i);
+    boolean setId(UUID i);
     boolean setNome(String n);
     boolean setEmail(String s);
 

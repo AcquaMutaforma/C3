@@ -4,6 +4,7 @@ import it.arrp.c3.Sism.Sistema;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.UUID;
 
 public class GestorePacchi implements GestorePacchiInterface {
 
@@ -34,14 +35,14 @@ public class GestorePacchi implements GestorePacchiInterface {
         PaccoInterface p;
         while(iter.hasNext()){
             p = iter.next();
-            if(p.getIdPacco() == idPacco)
+            if(p.getIdPacco().equals(idPacco))
                 return p;
         }
         return null;
     }
 
     @Override
-    public PaccoInterface creaPacco(int idPacco, int idCommerciante, int idCliente) {
+    public PaccoInterface creaPacco(UUID idPacco, UUID idCommerciante, UUID idCliente) {
         return null;
     }
 

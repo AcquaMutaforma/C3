@@ -17,13 +17,13 @@ public class Box implements BoxInterface {
 
 //    @Id
 //    @GeneratedValue(strategy=GenerationType.AUTO)
-    private final int id;
+    private final UUID id;
 
     private int key;
     private boolean locked;
     private StatoBox stato;
 
-    public Box(int id) {
+    public Box(UUID id) {
         this.id = id;
         this.key = 0;
         this.locked = true;

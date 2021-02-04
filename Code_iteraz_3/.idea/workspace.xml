@@ -5,45 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/C3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/AccessoDati/DataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Commerciante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corriere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/AdminRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/BoxRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/ClienteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/CommercianteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/CorriereRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/CorsaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/LockerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/PaccoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/TecnicoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCommerciante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorriere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorsa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceLocker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServicePacco.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceTecnico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/c3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/c3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/Corsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corsa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/BoxInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/BoxInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/GestoreLockerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/GestoreLockerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/Locker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Locker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/LockerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Locker/LockerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/Pacco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Pacco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../c3.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c3.vpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/CorsaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/CorsaInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorseInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Corse/GestoreCorseInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corsa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Pacco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Pacco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/GestorePacchiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/PaccoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Pacchi/PaccoInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCommerciante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCommerciante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorsa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceLocker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServicePacco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServicePacco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/UtenteInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Utenti/UtenteInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +68,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -123,6 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611680637508</updated>
       <workItem from="1612374993333" duration="3694000" />
+      <workItem from="1612459315847" duration="5333000" />
     </task>
     <servers />
   </component>

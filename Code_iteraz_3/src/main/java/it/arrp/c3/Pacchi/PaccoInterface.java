@@ -1,11 +1,13 @@
 package it.arrp.c3.Pacchi;
 
+import java.util.UUID;
+
 public interface PaccoInterface {
 
-    int getIdCommerciante();
-    int getIdCliente();
-    int getIdPacco();
-    void setIdCommerciante(int idCommerciante);
-    void setIdCliente(int idCliente);
+    UUID getIdCommerciante();
+    UUID getIdCliente();
+    UUID getIdPacco();
+    void setIdCommerciante(UUID idCommerciante);
+    void setIdCliente(UUID idCliente);
 
 }

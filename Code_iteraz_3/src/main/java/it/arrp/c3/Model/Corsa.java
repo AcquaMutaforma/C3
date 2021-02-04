@@ -1,41 +1,47 @@
-package it.arrp.c3.Corse;
+package it.arrp.c3.Model;
 
-public class Corsa implements CorsaInterface{
+import it.arrp.c3.Corse.CorsaInterface;
 
-    int idCorriere, idPacco, idLocker, idCorsa;
+import java.util.UUID;
 
-    public Corsa(int idCorsa, int idCorriere, int idPacco, int idLock) {
+public class Corsa implements CorsaInterface {
+
+    UUID idCorriere, idPacco, idLocker, idCorsa;
+
+    public Corsa(UUID idCorsa, UUID idCorriere, UUID idPacco, UUID idLocker) {
+        //TODO refactoring del costruttore, prende troppe cose che non dovrebbe
+        // (guardare class diagram, metodi di creazione corse) --Ric
         this.idCorsa = idCorsa;
         setLocker(idLocker);
         setCorriere(idCorriere);
         setPacco(idPacco);
     }
 
-    public int getIdCorriere() {
+    public UUID getIdCorriere() {
         return idCorriere;
     }
-    public int getIdPacco() {
+    public UUID getIdPacco() {
         return idPacco;
     }
-    public int getIdLocker() {
+    public UUID getIdLocker() {
         return idLocker;
     }
-    public int getIdCorsa() {
+    public UUID getIdCorsa() {
         return idCorsa;
     }
 
     @Override
-    public void setCorriere(int idCorriere) {
+    public void setCorriere(UUID idCorriere) {
         this.idCorriere=idCorriere;
     }
 
     @Override
-    public void setLocker(int codiceLocker) {
+    public void setLocker(UUID codiceLocker) {
         this.idLocker = codiceLocker;
     }
 
     @Override
-    public void setPacco(int idPacco) {
+    public void setPacco(UUID idPacco) {
         this.idPacco=idPacco;
     }
 

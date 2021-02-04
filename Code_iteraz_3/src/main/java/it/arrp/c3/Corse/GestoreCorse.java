@@ -4,6 +4,7 @@ import it.arrp.c3.Sism.Sistema;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.UUID;
 
 public class GestoreCorse implements GestoreCorseInterface {
 
@@ -15,7 +16,7 @@ public class GestoreCorse implements GestoreCorseInterface {
     }
 
     @Override
-    public boolean removeCorsa(int codiceCorsa) {
+    public boolean removeCorsa(UUID codiceCorsa) {
         //TODO non deve eliminare dal cloud, li deve togliere solo dalla sua lista
         return listaCorse.remove(getCorsa(codiceCorsa));
     }
@@ -30,12 +31,12 @@ public class GestoreCorse implements GestoreCorseInterface {
     }
 
     @Override
-    public CorsaInterface getCorsa(int codiceCorsa) {
+    public CorsaInterface getCorsa(UUID codiceCorsa) {
         Iterator<CorsaInterface> iter = listaCorse.iterator();
-        CorsaInterface c = null;
+        CorsaInterface c;
         while(iter.hasNext()){
             c = iter.next();
-            if(c.getIdCorsa() == codiceCorsa)
+            if(c.getIdCorsa().equals(codiceCorsa))
                 return c;
         }
         return null;
