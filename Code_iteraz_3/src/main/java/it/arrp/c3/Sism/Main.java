@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan("it.arrp.c3")
-@EnableJpaRepositories("it.arrp.c3.TestTemporaneiConnessioneDB")
+//@EnableJpaRepositories("it.arrp.c3.TestTemporaneiConnessioneDB")
 public class Main {
 
     public static void main(String[] args) {
