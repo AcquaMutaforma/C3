@@ -6,58 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/GestoreIdInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/MainCommandLineRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Sism/MainCommandLineRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/StudentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/View.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewAdmin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCommerciante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewCorriere.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/View/ViewTecnico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Corse/Corsa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Corse/CorsaInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Corse/GestoreCorse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Corse/GestoreCorseInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/Box.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/BoxInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/GestoreLockerInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/Locker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/LockerInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Locker/StatoBox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Pacchi/GestorePacchi.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Pacchi/GestorePacchiInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Pacchi/Pacco.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Pacchi/PaccoInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/GestoreId.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/GestoreIdInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/MainCommandLineRunner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Sism/Sistema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/StudentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/TestTemporaneiConnessioneDB/StudentRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/AdminInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/Cliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/ClienteInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/CommercianteINNterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/CorriereInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/GestoreUtentiInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/StatoCorriere.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/TecnicoInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Utenti/UtenteInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/View.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewAdmin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewCliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewCommerciante.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewCorriere.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/View/ViewTecnico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../c3.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c3.vpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +23,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="c3/invalid/Spring" />
+    </ignored-facets>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
