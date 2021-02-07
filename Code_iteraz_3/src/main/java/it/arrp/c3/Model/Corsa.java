@@ -7,8 +7,6 @@ public class Corsa {
     UUID idCorriere, idPacco, idLocker, idCorsa;
 
     public Corsa(UUID idCorsa, UUID idCorriere, UUID idPacco, UUID idLocker) {
-        //TODO refactoring del costruttore, prende troppe cose che non dovrebbe
-        // (guardare class diagram, metodi di creazione corse) --Ric
         this.idCorsa = idCorsa;
         setLocker(idLocker);
         setCorriere(idCorriere);

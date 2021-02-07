@@ -23,4 +23,5 @@ public class Negozio extends UtenteRegistrato {
     public void setGenereNegozio(GenereNegozio genereNegozio) {
         this.genereNegozio = genereNegozio;
     }
+
 }

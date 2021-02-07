@@ -1,12 +1,14 @@
 package it.arrp.c3.Service;
 
+import it.arrp.c3.Model.Box;
+
 import java.util.UUID;
 
 public class ServiceBox {
 
-    public boolean assegnaBox(UUID uuidCliente){
+    public Box assegnaBox(UUID uuidCliente){
         //TODO da implementare --Ric
-        return true;
+        return null;
     }
     public boolean liberaBox(){
         //TODO da implementare (forse diventa void?) --Ric
