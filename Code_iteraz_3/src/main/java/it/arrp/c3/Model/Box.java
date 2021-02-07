@@ -1,7 +1,6 @@
 package it.arrp.c3.Model;
 
-import it.arrp.c3.Locker.BoxInterface;
-import it.arrp.c3.Locker.StatoBox;
+import it.arrp.c3.Model.Enum.StatoBox;
 
 import java.util.UUID;
 
@@ -11,7 +10,7 @@ import java.util.UUID;
 //import javax.persistence.Id;
 
 //@Entity
-public class Box implements BoxInterface {
+public class Box{
 
     //TODO: Per ora il box cambia in automatico da Locked a Unlocked, crea qualcosa per simulare una chiusura etc! -ale
 
@@ -34,7 +33,6 @@ public class Box implements BoxInterface {
      * innescare una sequenza di errore.
      * Teoricamente la chiave e' 0, finche' il corriere o il cliente non ne genera una per aprire il box.
      * Dopo aver aperto il box, la chiave si resetta. */
-    @Override
     public int generaChiave() {
         //TODO fix is needed -ale
         if(this.key == 0) {
@@ -43,17 +41,14 @@ public class Box implements BoxInterface {
         }else return -1;
     }
 
-    @Override
     public UUID getId() {
         return this.id;
     }
 
-    @Override
     public StatoBox getStato() {
         return this.stato;
     }
 
-    @Override
     public boolean isLocked() {
         return this.locked;
     }
@@ -62,7 +57,6 @@ public class Box implements BoxInterface {
      * @param key chiave
      * @return true = chiave corretta + unlocked / false = chiave errata :(
      */
-    @Override
     public boolean unlock(int key) {
         if(key == this.key){
             this.locked = false;
@@ -75,7 +69,6 @@ public class Box implements BoxInterface {
     /**
      * cambia stato, attesa --> occupato --> libero
      */
-    @Override
     public void avanzaStato() {
         if(this.stato == StatoBox.Libero){
             this.stato = StatoBox.Attesa;
@@ -84,17 +77,14 @@ public class Box implements BoxInterface {
         }else this.stato = StatoBox.Libero;
     }
 
-    @Override
     public void unlock() {
         this.locked = false;
     }
 
-    @Override
     public void lock() {
         this.locked = true;
     }
 
-    @Override
     public void setStato(StatoBox s) {
         this.stato = s;
     }

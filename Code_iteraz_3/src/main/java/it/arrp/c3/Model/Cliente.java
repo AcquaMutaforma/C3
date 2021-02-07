@@ -1,20 +1,17 @@
 package it.arrp.c3.Model;
-import it.arrp.c3.Locker.*;
-import it.arrp.c3.Utenti.ClienteInterface;
 
 import java.util.UUID;
 
-public class Cliente extends UtenteRegistrato implements ClienteInterface {
+public class Cliente extends UtenteRegistrato {
 
     //TODO probabilmente conviene mettere id locker e id box, nel db dovrebbe essere piu semplice da leggere
-    private LockerInterface lock;
-    private BoxInterface box;
+    private Locker lock;
+    private Box box;
 
     /**
      * Collega Locker.Locker inserito, con il cliente
      * @param idlocker
      */
-    @Override
     public void setCheckpoint(int idlocker) {
     }
 
@@ -22,8 +19,7 @@ public class Cliente extends UtenteRegistrato implements ClienteInterface {
      * metodo temporaneo, va nella GUI
      * Visualizza il locker che ha come checkpoint o nella lista Lockers
      */
-    @Override
-    public BoxInterface visualizzaBox() {
+    public Box visualizzaBox() {
         return null;
     }
 
@@ -43,7 +39,7 @@ public class Cliente extends UtenteRegistrato implements ClienteInterface {
     }
 
     @Override
-    public boolean setId(UUID i) {
+    public boolean setUuid(UUID i) {
         return false;
     }
 

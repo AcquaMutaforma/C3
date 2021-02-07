@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Corriere extends UtenteRegistrato {
     public String mezzoDiTrasporto;
-    public ArrayList<Commerciante> listaNegoziCollegati= new ArrayList<>();
+    public ArrayList<Negozio> listaNegoziCollegati= new ArrayList<>();
 
 
     public boolean rimuoviNegozio(UUID uuidNegozio) {

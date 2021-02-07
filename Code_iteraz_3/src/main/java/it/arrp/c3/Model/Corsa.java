@@ -1,10 +1,8 @@
 package it.arrp.c3.Model;
 
-import it.arrp.c3.Corse.CorsaInterface;
-
 import java.util.UUID;
 
-public class Corsa implements CorsaInterface {
+public class Corsa {
 
     UUID idCorriere, idPacco, idLocker, idCorsa;
 
@@ -30,17 +28,14 @@ public class Corsa implements CorsaInterface {
         return idCorsa;
     }
 
-    @Override
     public void setCorriere(UUID idCorriere) {
         this.idCorriere=idCorriere;
     }
 
-    @Override
     public void setLocker(UUID codiceLocker) {
         this.idLocker = codiceLocker;
     }
 
-    @Override
     public void setPacco(UUID idPacco) {
         this.idPacco=idPacco;
     }

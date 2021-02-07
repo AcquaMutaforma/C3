@@ -1,10 +1,8 @@
 package it.arrp.c3.Model;
 
-import it.arrp.c3.Pacchi.PaccoInterface;
-
 import java.util.UUID;
 
-public class Pacco implements PaccoInterface {
+public class Pacco {
 
     UUID idCommerciante, idCliente, idPacco;
 

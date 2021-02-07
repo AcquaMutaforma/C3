@@ -1,7 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Corsa;
-import it.arrp.c3.Utenti.StatoCorriere;
+import it.arrp.c3.Model.StatoCorriere;
 
 import java.util.List;
 import java.util.UUID;

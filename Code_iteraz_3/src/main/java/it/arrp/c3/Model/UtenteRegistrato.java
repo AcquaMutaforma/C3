@@ -1,37 +1,36 @@
 package it.arrp.c3.Model;
 
-import it.arrp.c3.Utenti.UtenteInterface;
-
+import java.util.List;
 import java.util.UUID;
 
-public class UtenteRegistrato implements UtenteInterface {
+public class UtenteRegistrato {
     public UUID uuid;
     public String nome;
     public String email;
     public String password;
     public String citta;
-
-    @Override
+    //public List<Notifica> notifiche;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setCitta(String citta) {
+        this.citta = citta;
+    }
     public UUID getID (){
         return this.uuid;
     }
-    @Override
     public String getNome(){
         return this.nome;
     }
-    @Override
     public String getEmail() {
         return this.email;
     }
-    @Override
-    public boolean setId(UUID i) {
+    public boolean setUuid(UUID i) {
         return false;
     }
-    @Override
     public boolean setNome(String n) {
         return false;
     }
-    @Override
     public boolean setEmail(String s) {
         return false;
     }
