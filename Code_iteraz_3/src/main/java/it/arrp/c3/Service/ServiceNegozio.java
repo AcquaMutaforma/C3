@@ -20,13 +20,15 @@ public class ServiceNegozio {
         //TODO da implementare --Ric
         return null;
     }
-    public void creaCorsa(UUID uuidCliente, UUID uuidCommerciante){
+    public boolean creaCorsa(UUID uuidCliente, UUID uuidCommerciante){
         UUID corriere =getCorriereDisponibile();
         if (corriere!=null){
             //da verificare se lasciarlo o meno, va a cozzare con il sequence diagram se si controlla quì il corriere. --Ric
             Box box =serviceCliente.getBoxCliente(uuidCliente);
-            serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante, corriere, box.getId());
+            if(serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante, corriere, box.getId())&&box!=null)
+                return true;
         }
-        //TODO da implementare --Ric
+        return false; //di conseguenza la consegna viene negata
+        //TODO da completare --Ric
     }
 }
