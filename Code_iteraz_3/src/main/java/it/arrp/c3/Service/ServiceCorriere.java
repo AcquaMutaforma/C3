@@ -7,6 +7,9 @@ import it.arrp.c3.Model.Enum.StatoCorriere;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Classe che si occupa di effettuare le operazioni riguardanti la classe Corriere.
+ */
 public class ServiceCorriere {
 
     public List<Corsa> getCorse(){

@@ -10,6 +10,12 @@ import java.util.UUID;
 //import javax.persistence.Id;
 
 //@Entity
+
+/**
+ * Questa classe ha la responsabilità di gestire un singolo Box facente parte di
+ * un Locker. Ne consegue che gestirà il proprio stato, la chiave di apertura
+ * e, per questa implementazione, anche la sua apertura/chiusura simulata.
+ */
 public class Box{
 
     //TODO: Per ora il box cambia in automatico da Locked a Unlocked, crea qualcosa per simulare una chiusura etc! -ale
@@ -70,11 +76,11 @@ public class Box{
      * cambia stato, attesa --> occupato --> libero
      */
     public void avanzaStato() {
-        if(this.stato == StatoBox.Libero){
-            this.stato = StatoBox.Attesa;
-        }else if(this.stato == StatoBox.Attesa){
-            this.stato = StatoBox.Occupato;
-        }else this.stato = StatoBox.Libero;
+        switch (stato){
+            case Libero: this.stato=StatoBox.Attesa;
+            case Attesa: this.stato = StatoBox.Occupato;
+            case Occupato: this.stato = StatoBox.Libero;
+        }
     }
 
     public void unlock() {

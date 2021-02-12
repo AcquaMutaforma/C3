@@ -2,6 +2,11 @@ package it.arrp.c3.Model;
 
 import java.util.UUID;
 
+/**
+ * Questa classe gestisce una Corsa, ossia la consegna di un pacco da un negozio verso
+ * un determinato locker. Ne consegue che gestisce principalmente codici identificativi
+ * per poter individuare le varie parti.
+ */
 public class Corsa {
 
     UUID idCorriere, idPacco, idLocker, idCorsa;

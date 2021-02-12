@@ -4,6 +4,9 @@ import it.arrp.c3.Model.Box;
 
 import java.util.UUID;
 
+/**
+ * Classe che si occupa di effettuare le operazioni riguardanti la classe Locker.
+ */
 public class ServiceLocker {
     ServiceBox serviceBox = new ServiceBox();
 

@@ -2,6 +2,11 @@ package it.arrp.c3.Model;
 
 import java.util.UUID;
 
+/**
+ * Classe che si occupa di gestire un Pacco da consegnare, andando ad ottenere i vari
+ * codici identificativi per individuare il pacco stesso, il mittente
+ * ed il destinatario ultimo.
+ */
 public class Pacco {
 
     UUID idCommerciante, idCliente, idPacco;

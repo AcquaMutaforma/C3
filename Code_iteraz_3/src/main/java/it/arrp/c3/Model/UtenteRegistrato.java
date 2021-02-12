@@ -3,6 +3,10 @@ package it.arrp.c3.Model;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Questa classe si occupa di gestire le operazioni basiche di un utente registrato
+ * andando a modificare (tramite getters e setters) ogni campo utile.
+ */
 public class UtenteRegistrato {
     public UUID uuid;
     public String nome;

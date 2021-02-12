@@ -5,6 +5,9 @@ import it.arrp.c3.Model.Pacco;
 
 import java.util.UUID;
 
+/**
+ * Classe che si occupa di effettuare le operazioni riguardanti la classe Corsa.
+ */
 public class ServiceCorsa {
     //TODO impostare le variabili in modo differente, forse con un autowiring?
     ServicePacco servicePacco= new ServicePacco();

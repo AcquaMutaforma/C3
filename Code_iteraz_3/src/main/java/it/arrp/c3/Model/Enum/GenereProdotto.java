@@ -1,11 +1,13 @@
 package it.arrp.c3.Model.Enum;
 
+/**
+ * Questa enumerazione gestisce la suddivisione dei prodotti in varie categorie
+ * per permettere una ricerca filtrata di prodotti in evidenza.
+ */
 public enum GenereProdotto {
     Vini,
     Birre,
     Alcolici,
     BibiteAnalcoliche,
     Cibi
-    //TODO da cambiare come inserire le enumerazioni? possiamo lasciare cosí ora,
-    // ma sarebbe bello poter fare in automatico --Ric
 }

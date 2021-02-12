@@ -1,10 +1,17 @@
 package it.arrp.c3.Model;
 
+import it.arrp.c3.Model.Enum.StatoBox;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
 
+/**
+ * Classe che gestisce un Locker, dunque la sua posizione geografica (per
+ * il momento non reale, ma solo concettualizzata), il numero di Box da cui é composta,
+ * una lista degli stessi ed altro ancora.
+ */
 public class Locker {
 
     private UUID id;
@@ -92,12 +99,19 @@ public class Locker {
         return this.listaBox;
     }
 
+    public void addBox(){
+        listaBox.add(new Box(UUID.randomUUID()));
+    }
+
+    public void addBox(UUID uuidBox){
+        listaBox.add(new Box(uuidBox));
+    }
+
     /**
      * recupera un box dalla lista dei box che abbia stato libero
      *
      * @return Box con stato = libero, altrimenti null.
      */
-
     public Box getBoxDisponibile() {
         Iterator<Box> iter = listaBox.iterator();
         Box b;

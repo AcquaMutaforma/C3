@@ -4,6 +4,9 @@ import it.arrp.c3.Model.Pacco;
 
 import java.util.UUID;
 
+/**
+ * Classe che si occupa di effettuare le operazioni riguardanti la classe Pacco.
+ */
 public class ServicePacco {
 
     public Pacco creaPacco(UUID uuidCliente, UUID uuidCommerciante){
