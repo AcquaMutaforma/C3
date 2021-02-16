@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/C3CLR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../c3.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/../c3.vpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

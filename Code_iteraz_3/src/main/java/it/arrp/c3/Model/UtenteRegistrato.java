@@ -1,6 +1,6 @@
 package it.arrp.c3.Model;
 
-import java.util.List;
+import javax.persistence.Id;
 import java.util.UUID;
 
 /**
@@ -8,12 +8,14 @@ import java.util.UUID;
  * andando a modificare (tramite getters e setters) ogni campo utile.
  */
 public class UtenteRegistrato {
+    @Id
     public UUID uuid;
     public String nome;
     public String email;
     public String password;
     public String citta;
     //public List<Notifica> notifiche;
+
     public void setPassword(String password) {
         this.password = password;
     }
