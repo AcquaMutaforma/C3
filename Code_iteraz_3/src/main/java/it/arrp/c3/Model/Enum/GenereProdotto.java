@@ -5,9 +5,14 @@ package it.arrp.c3.Model.Enum;
  * per permettere una ricerca filtrata di prodotti in evidenza.
  */
 public enum GenereProdotto {
-    Vini,
-    Birre,
-    Alcolici,
-    BibiteAnalcoliche,
-    Cibi
+    Alcolico,
+    Bibita,
+    Elettronica,
+    Cartoleria,
+    Alimentare,
+    Medicinale,
+    Giocattolo,
+    Vestiario,
+    Gioielleria,
+    Altro
 }

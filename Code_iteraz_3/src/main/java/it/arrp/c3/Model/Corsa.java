@@ -1,5 +1,9 @@
 package it.arrp.c3.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.UUID;
 
 /**
@@ -7,40 +11,56 @@ import java.util.UUID;
  * un determinato locker. Ne consegue che gestisce principalmente codici identificativi
  * per poter individuare le varie parti.
  */
+@Entity
 public class Corsa {
 
-    UUID idCorriere, idPacco, idLocker, idCorsa;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idCorsa;
+    private Long idPacco, idLocker, idCorriere;
 
-    public Corsa(UUID idCorsa, UUID idCorriere, UUID idPacco, UUID idLocker) {
+    public Corsa() {
+    }
+
+    public Corsa(Long idCorsa, Long idPacco, Long idLocker, Long idCorriere) {
         this.idCorsa = idCorsa;
-        setLocker(idLocker);
-        setCorriere(idCorriere);
-        setPacco(idPacco);
+        this.idPacco = idPacco;
+        this.idLocker = idLocker;
+        this.idCorriere = idCorriere;
     }
 
-    public UUID getIdCorriere() {
-        return idCorriere;
-    }
-    public UUID getIdPacco() {
-        return idPacco;
-    }
-    public UUID getIdLocker() {
-        return idLocker;
-    }
-    public UUID getIdCorsa() {
+    public Long getIdCorsa() {
         return idCorsa;
     }
-
-    public void setCorriere(UUID idCorriere) {
-        this.idCorriere=idCorriere;
+    public void setIdCorsa(Long idCorsa) {
+        this.idCorsa = idCorsa;
+    }
+    public Long getIdPacco() {
+        return idPacco;
+    }
+    public void setIdPacco(Long idPacco) {
+        this.idPacco = idPacco;
+    }
+    public Long getIdLocker() {
+        return idLocker;
+    }
+    public void setIdLocker(Long idLocker) {
+        this.idLocker = idLocker;
+    }
+    public Long getIdCorriere() {
+        return idCorriere;
+    }
+    public void setIdCorriere(Long idCorriere) {
+        this.idCorriere = idCorriere;
     }
 
-    public void setLocker(UUID codiceLocker) {
-        this.idLocker = codiceLocker;
+    @Override
+    public String toString() {
+        return "Corsa{" +
+                "idCorsa=" + idCorsa +
+                ", idPacco=" + idPacco +
+                ", idLocker=" + idLocker +
+                ", idCorriere=" + idCorriere +
+                '}';
     }
-
-    public void setPacco(UUID idPacco) {
-        this.idPacco=idPacco;
-    }
-
 }

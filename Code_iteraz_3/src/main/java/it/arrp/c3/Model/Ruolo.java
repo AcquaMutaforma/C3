@@ -1,11 +1,14 @@
 package it.arrp.c3.Model;
 
-import java.util.UUID;
-
 /**
- * Questa classe si occupa di gestire i vari ruoli che un Cliente puó avere.
+ * Questa classe si occupa di gestire i vari ruoli che un Cliente puo' avere.
  */
 public class Ruolo {
-    UUID uuidCliente;
-    String nomeCliente;//TODO penso debba avere un altro nome, e le variabili bastano? --Ric
+    Long idCLiente;
+    String nomeRuolo;
+
+    public Ruolo(Long idCliente, String nomeRuolo) {
+        this.idCLiente = idCliente;
+        this.nomeRuolo = nomeRuolo;
+    }
 }

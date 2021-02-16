@@ -2,6 +2,10 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.StatoBox;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,24 +16,27 @@ import java.util.UUID;
  * il momento non reale, ma solo concettualizzata), il numero di Box da cui é composta,
  * una lista degli stessi ed altro ancora.
  */
+@Entity
 public class Locker {
 
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private int longitudine;
     private int latitudine;
     private int numeroBox;
     /** Lista dei box che sono contenuti nel Locker */
     private ArrayList<Box> listaBox;
-    /** Mappa di  */
-    private HashMap<UUID, Box> mappaRelazioni;
 
-    public Locker(UUID id, int longitudine, int latitudine, int numeroBox) {
+    public Locker() {
+    }
+
+    public Locker(Long id, int longitudine, int latitudine, int numeroBox) {
         this.id = id;
         this.longitudine = longitudine;
         this.latitudine = latitudine;
         this.numeroBox = numeroBox;
         this.listaBox = new ArrayList<>();
-        this.mappaRelazioni = new HashMap<UUID, Box>();
     }
 
     /**
@@ -37,28 +44,12 @@ public class Locker {
      * @param idCliente .
      * @return false = nessun box disponibile / true = box assegnato al cliente
      */
-    public boolean assegnaBox(UUID idCliente) {
-        Box b = getBoxDisponibile();
-        if(b == null)
-            return false;
-        else{
-            mappaRelazioni.put(idCliente,b);
-            return true;
-        }
+    public boolean assegnaBox(Long idCliente) {
+        //TODO
+        return false;
     }
 
-    /**
-     * Chiede al Locker di trovare il box collegato al cliente e di generare una chiave.
-     * @param idCliente .
-     */
-
-    public int getChiave(UUID idCliente) {
-        return getBoxByClient(idCliente).generaChiave();
-        //TODO controllare che abbia senso -ale
-    }
-
-
-    public Box getBoxById(UUID idbox) {
+    public Box getBoxById(Long idbox) {
         Iterator<Box> iter = listaBox.iterator();
         Box b;
         while (iter.hasNext()){
@@ -69,42 +60,38 @@ public class Locker {
         return null;
     }
 
-
-    public Box getBoxByClient(UUID idCliente) {
-        return mappaRelazioni.get(idCliente);
+    public void setId(Long id) {
+        this.id = id;
     }
-
-
-    public UUID getId() {
+    public int getLongitudine() {
+        return longitudine;
+    }
+    public void setLongitudine(int longitudine) {
+        this.longitudine = longitudine;
+    }
+    public int getLatitudine() {
+        return latitudine;
+    }
+    public void setLatitudine(int latitudine) {
+        this.latitudine = latitudine;
+    }
+    public void setNumeroBox(int numeroBox) {
+        this.numeroBox = numeroBox;
+    }
+    public Long getId() {
         return this.id;
     }
-
-
-    public int getLong() {
-        return this.longitudine;
-    }
-
-
-    public int getLati() {
-        return this.latitudine;
-    }
-
-
     public int getNumeroBox() {
         return this.numeroBox;
     }
-
-
     public ArrayList<Box> getAllBoxes() {
         return this.listaBox;
     }
-
-    public void addBox(){
-        listaBox.add(new Box(UUID.randomUUID()));
+    public void addBox(Box b){
+        listaBox.add(b);
     }
-
-    public void addBox(UUID uuidBox){
-        listaBox.add(new Box(uuidBox));
+    public boolean removeBox(Box b){
+        return listaBox.remove(b);
     }
 
     /**
@@ -113,6 +100,7 @@ public class Locker {
      * @return Box con stato = libero, altrimenti null.
      */
     public Box getBoxDisponibile() {
+        //TODO da aggiornare, questo è vecchio come la morte
         Iterator<Box> iter = listaBox.iterator();
         Box b;
         while (iter.hasNext()){
@@ -123,6 +111,13 @@ public class Locker {
         return null;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Locker{" +
+                "id=" + id +
+                ", longitudine=" + longitudine +
+                ", latitudine=" + latitudine +
+                ", numeroBox=" + numeroBox +
+                '}';
+    }
 }

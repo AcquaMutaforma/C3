@@ -6,6 +6,14 @@ package it.arrp.c3.Model.Enum;
  */
 public enum GenereNegozio {
     Giocattoli,
-    Alimenti,
-    Elettronica
+    Alimentare,
+    Elettronica,
+    Farmacia,
+    Cartoleria,
+    Bar,
+    Pizzeria,
+    Gioelleria,
+    Arredo,
+    Vestiario,
+    Altro
 }

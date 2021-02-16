@@ -11,7 +11,7 @@ public class ServiceBox {
 
     public Box assegnaBox(UUID uuidCliente){
         //TODO da implementare --Ric
-        return new Box(UUID.randomUUID());
+        return new Box();
     }
     public boolean liberaBox(){
         //TODO da implementare (forse diventa void?) --Ric

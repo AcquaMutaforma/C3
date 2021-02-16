@@ -1,39 +1,57 @@
 package it.arrp.c3.Model;
 
-import java.util.UUID;
+import javax.persistence.Entity;
 
 /**
  * Classe che si occupa di gestire un Pacco da consegnare, andando ad ottenere i vari
  * codici identificativi per individuare il pacco stesso, il mittente
  * ed il destinatario ultimo.
  */
+@Entity
 public class Pacco {
 
-    UUID idCommerciante, idCliente, idPacco;
+    private Long idPacco;
+    private Long idCommerciante, idCliente;
 
-    public Pacco(UUID idPacco, UUID idCommerciante, UUID idCliente) {
+    public Pacco() {
+    }
+
+    public Pacco(Long idPacco, Long idCommerciante, Long idCliente) {
         this.idPacco = idPacco;
         setIdCliente(idCliente);
         setIdCommerciante(idCommerciante);
     }
 
-    public UUID getIdCommerciante() {
+    public Long getIdCommerciante() {
         return idCommerciante;
     }
 
-    public UUID getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public UUID getIdPacco() {
+    public Long getIdPacco() {
         return idPacco;
     }
 
-    public void setIdCommerciante(UUID idCommerciante) {
+    public void setIdCommerciante(Long idCommerciante) {
         this.idCommerciante = idCommerciante;
     }
 
-    public void setIdCliente(UUID idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public void setIdPacco(Long idPacco) {
+        this.idPacco = idPacco;
+    }
+
+    @Override
+    public String toString() {
+        return "Pacco{" +
+                "idPacco=" + idPacco +
+                ", idCommerciante=" + idCommerciante +
+                ", idCliente=" + idCliente +
+                '}';
     }
 }

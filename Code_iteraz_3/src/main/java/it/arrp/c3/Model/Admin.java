@@ -1,9 +1,37 @@
 package it.arrp.c3.Model;
 
+import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Questa classe rappresenta il ruolo di un utente
- * che puó essere l'amministratore di sistema. Costui potrà poi aggiungere dei Tecnici
+ * che puo' essere l'amministratore di sistema. Costui potra' poi aggiungere dei Tecnici
  * ed operare in vari campi della manutenzione.
  */
+@Entity
 public class Admin extends Ruolo{
+
+    private String cittaDiLavoro;
+    private List<Tecnico> listaTecnici;
+    private List<Messaggio> listaRichieste;
+
+    public Admin(Long idCliente, String nomeRuolo) {
+        super(idCliente, nomeRuolo);
+    }
+
+    public Admin(Long idCliente, String nomeRuolo, String cittaDiLavoro) {
+        super(idCliente, nomeRuolo);
+        this.cittaDiLavoro = cittaDiLavoro;
+        this.listaRichieste = new ArrayList<>();
+        this.listaTecnici = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "idCLiente=" + idCLiente +
+                ", nomeRuolo='" + nomeRuolo + '\'' +
+                '}';
+    }
 }
