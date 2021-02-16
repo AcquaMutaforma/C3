@@ -5,7 +5,7 @@ import it.arrp.c3.Model.Box;
 import java.util.UUID;
 
 /**
- * Classe che si occupa di effettuare le operazioni riguardanti la classe Negozio.
+ * Classe che si occupa di effettuare le operazioni riguardanti il Ruolo Negozio.
  */
 public class ServiceNegozio {
     ServiceCliente serviceCliente = new ServiceCliente();
