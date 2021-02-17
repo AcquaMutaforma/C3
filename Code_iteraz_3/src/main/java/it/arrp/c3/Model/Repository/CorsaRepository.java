@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CorsaRepository extends JpaRepository<Corsa, Long> {
-    Corsa findOneById(String id);
+    Corsa findOneById(Long id);
 }

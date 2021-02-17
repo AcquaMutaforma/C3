@@ -21,8 +21,7 @@ public class Prodotto {
     public Prodotto() {
     }
 
-    public Prodotto(Long idProdotto, String nome, String descrizione, GenereProdotto genereProdotto) {
-        this.idProdotto = idProdotto;
+    public Prodotto( String nome, String descrizione, GenereProdotto genereProdotto) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.genereProdotto = genereProdotto;

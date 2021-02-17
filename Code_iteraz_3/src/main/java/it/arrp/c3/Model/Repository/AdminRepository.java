@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
      */
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {
-    Admin findOneById(String id);
+    Admin findOneById(Long id);
 }

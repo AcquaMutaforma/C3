@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CorriereRepository extends JpaRepository<Corriere, Long> {
-    Corriere findOneById(String id);
+    Corriere findOneById(Long id);
 }

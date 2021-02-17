@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TecnicoRepository extends JpaRepository<Tecnico, Long> {
-    Tecnico findOneById(String id);
+    Tecnico findOneById(Long id);
 }

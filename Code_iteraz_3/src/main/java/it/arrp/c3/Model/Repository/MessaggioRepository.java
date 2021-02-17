@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MessaggioRepository extends JpaRepository<Messaggio, Long> {
-    Messaggio findOneById(String id);
+    Messaggio findOneById(Long id);
 }

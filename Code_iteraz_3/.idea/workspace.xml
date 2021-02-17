@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerCliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerCorriere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerTecnico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerNegozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerCommerciante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corriere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corsa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Enum/GenereNegozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Enum/GenereNegozio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Enum/GenereProdotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Enum/GenereProdotto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Locker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Locker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Messaggio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Messaggio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Negozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Negozio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Pacco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Pacco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Prodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Prodotto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/AdminRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/BoxRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/BoxRepository.java" afterDir="false" />
@@ -34,10 +18,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/PaccoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/PaccoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/ProdottoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/ProdottoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/TecnicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Repository/TecnicoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Ruolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Ruolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/UtenteRegistrato.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceProdotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceProdotto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

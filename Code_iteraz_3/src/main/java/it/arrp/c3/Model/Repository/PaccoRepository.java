@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PaccoRepository extends JpaRepository<Pacco, Long> {
-    Pacco findOneById(String id);
+    Pacco findOneById(Long id);
 }

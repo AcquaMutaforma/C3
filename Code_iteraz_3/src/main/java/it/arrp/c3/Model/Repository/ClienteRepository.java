@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-    Cliente findOneById(String id);
+    Cliente findOneById(Long id);
 }
