@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "uuid", columnDefinition = "BINARY(16)")
+    @Column(name = "id")
     private Long idCliente;
     @Column(name = "nome")
     private String nome;
@@ -27,20 +27,24 @@ public class Cliente {
     private Password password;
     @Column(name = "residenza")
     private String citta;
+
+    private Locker checkpoint;
     private List<Messaggio> notifiche;
     private List<String> listaRuoli;
+    private List<Box> boxAssegnati;
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, String email, Password password, String citta) {
-        setId(id);
+    public Cliente(String nome, String email, Password password, String citta) {
+        //TODO test se funziona senza setId();
         setNome(nome);
         setEmail(email);
         setPassword(password);
         this.citta = citta;
-        this.listaRuoli = new ArrayList<String>();
-        this.notifiche = new ArrayList<Messaggio>();
+        this.listaRuoli = new ArrayList<>();
+        this.notifiche = new ArrayList<>();
+        this.boxAssegnati = new ArrayList<>();
     }
 
     public void setPassword(Password password) {
@@ -74,7 +78,23 @@ public class Cliente {
     public String getCitta() {
         return this.citta;
     }
-
+    public List<Messaggio> getNotifiche() {
+        return notifiche;
+    }
+    public List<String> getListaRuoli() {
+        return listaRuoli;
+    }
+    public List<Box> getBoxAssegnati() {
+        return boxAssegnati;
+    }
+    public Locker getCheckpoint() {
+        return checkpoint;
+    }
+    public void setCheckpoint(Locker checkpoint) {
+        this.checkpoint = checkpoint;
+    }
+    //mancano i setter delle liste, ma non credo servano a molto -ale
+    
     @Override
     public String toString() {
         return "Cliente{" +
@@ -84,5 +104,9 @@ public class Cliente {
                 ", password=" + password +
                 ", citta='" + citta + '\'' +
                 '}';
+    }
+
+    public void addBox(Box boxAssegnato) {
+        this.boxAssegnati.add(boxAssegnato);
     }
 }

@@ -11,4 +11,20 @@ public class Ruolo {
         this.idCLiente = idCliente;
         this.nomeRuolo = nomeRuolo;
     }
+
+    public Long getIdCLiente() {
+        return idCLiente;
+    }
+
+    public void setIdCLiente(Long idCLiente) {
+        this.idCLiente = idCLiente;
+    }
+
+    public String getNomeRuolo() {
+        return nomeRuolo;
+    }
+
+    public void setNomeRuolo(String nomeRuolo) {
+        this.nomeRuolo = nomeRuolo;
+    }
 }

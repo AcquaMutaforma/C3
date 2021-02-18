@@ -27,11 +27,27 @@ public class Admin extends Ruolo{
         this.listaTecnici = new ArrayList<>();
     }
 
+    public String getCittaDiLavoro() {
+        return cittaDiLavoro;
+    }
+
+    public void setCittaDiLavoro(String cittaDiLavoro) {
+        this.cittaDiLavoro = cittaDiLavoro;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
                 "idCLiente=" + idCLiente +
                 ", nomeRuolo='" + nomeRuolo + '\'' +
                 '}';
+    }
+
+    public void addTicket(Messaggio m) {
+        this.listaRichieste.add(m);
+    }
+
+    public boolean rmRichiesta(Messaggio m){
+        return listaRichieste.remove(m);
     }
 }

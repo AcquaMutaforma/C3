@@ -20,8 +20,8 @@ public class Messaggio {
     public Messaggio() {
     }
 
-    public Messaggio(Long idMessaggio, Long uuidFrom, Long uuidTo, String messaggio) {
-        this.idMessaggio = idMessaggio;
+    public Messaggio(Long uuidFrom, Long uuidTo, String messaggio) {
+        // automatico this.idMessaggio = idMessaggio;
         this.uuidFrom = uuidFrom;
         this.uuidTo = uuidTo;
         this.messaggio = messaggio;
