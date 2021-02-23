@@ -5,11 +5,11 @@ package it.arrp.c3.Model;
  */
 public class Ruolo {
     Long idCLiente;
-    String nomeRuolo;
+    //String nomeRuolo;
 
-    public Ruolo(Long idCliente, String nomeRuolo) {
+    public Ruolo(Long idCliente /*, String nomeRuolo*/) {
         this.idCLiente = idCliente;
-        this.nomeRuolo = nomeRuolo;
+        //this.nomeRuolo = nomeRuolo;
     }
 
     public Long getIdCLiente() {
@@ -19,7 +19,7 @@ public class Ruolo {
     public void setIdCLiente(Long idCLiente) {
         this.idCLiente = idCLiente;
     }
-
+/*
     public String getNomeRuolo() {
         return nomeRuolo;
     }
@@ -27,4 +27,6 @@ public class Ruolo {
     public void setNomeRuolo(String nomeRuolo) {
         this.nomeRuolo = nomeRuolo;
     }
+
+ */
 }

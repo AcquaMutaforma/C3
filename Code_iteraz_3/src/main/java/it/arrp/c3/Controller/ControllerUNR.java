@@ -23,16 +23,15 @@ public class ControllerUNR {
     @Autowired
     ServiceCliente serviceCliente;
 
-    @GetMapping("/cerca")
+    @PostMapping("/cerca")
     public List<Negozio> getNegoziByCitta(@RequestParam String citta){
         return serviceNegozio.getNegozi(citta);
     }
 
-    @PostMapping("/cerca/{nome}")
-    public List<Negozio> getNegoziByName(@RequestParam String citta,@PathVariable String nome){
+    @GetMapping("/cerca/{citta}/{nome}")
+    public List<Negozio> getNegoziByName(@PathVariable String citta,@PathVariable String nome){
         return serviceNegozio.getNegozioByName(citta,nome);
     }
-
 
     @PostMapping("/cerca/genere")
     public List<Negozio> getNegoziByGenere(@RequestParam String citta, @RequestParam GenereNegozio genere){
@@ -40,7 +39,7 @@ public class ControllerUNR {
     }
 
     @PostMapping("/registrazione")
-    public boolean registrazione(@RequestParam String nome,@RequestParam String email,
+    public Cliente registrazione(@RequestParam String nome, @RequestParam String email,
                                  @RequestParam String pass, @RequestParam String citta){
         return serviceCliente.registrazione(nome, email, pass, citta);
     }

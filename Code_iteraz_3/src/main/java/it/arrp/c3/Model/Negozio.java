@@ -23,12 +23,12 @@ public class Negozio extends Ruolo {
     private List<Prodotto> listaProdottiInEvidenza;
     private ArrayList<Corriere> listaCorrieriAssunti;
 
-    public Negozio(Long idCliente, String nomeRuolo) {
-        super(idCliente, nomeRuolo);
+    public Negozio(Long idCliente/*, String nomeRuolo*/) {
+        super(idCliente/*, nomeRuolo*/);
     }
 
-    public Negozio(Long idCliente, String nomeRuolo, String cittaNegozio, GenereNegozio genereNegozio) {
-        super(idCliente, nomeRuolo);
+    public Negozio(Long idCliente/*, String nomeRuolo*/, String cittaNegozio, GenereNegozio genereNegozio) {
+        super(idCliente/*, nomeRuolo*/);
         this.cittaNegozio = cittaNegozio;
         this.genereNegozio = genereNegozio;
         this.listaCorrieriAssunti = new ArrayList<>();
@@ -73,7 +73,6 @@ public class Negozio extends Ruolo {
                 "cittaNegozio='" + cittaNegozio + '\'' +
                 ", genereNegozio=" + genereNegozio +
                 ", idCLiente=" + idCLiente +
-                ", nomeRuolo='" + nomeRuolo + '\'' +
                 '}';
     }
 }

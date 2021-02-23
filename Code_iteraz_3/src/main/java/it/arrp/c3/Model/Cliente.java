@@ -1,7 +1,5 @@
 package it.arrp.c3.Model;
 
-import sun.security.util.Password;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +22,7 @@ public class Cliente {
     @Column(name = "email")
     private String email;
     @Column(name = "password")
-    private Password password;
+    private String password;
     @Column(name = "residenza")
     private String citta;
 
@@ -36,7 +34,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String email, Password password, String citta) {
+    public Cliente(String nome, String email, String password, String citta) {
         //TODO test se funziona senza setId();
         setNome(nome);
         setEmail(email);
@@ -47,7 +45,7 @@ public class Cliente {
         this.boxAssegnati = new ArrayList<>();
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     public void setCitta(String citta) {
@@ -72,7 +70,7 @@ public class Cliente {
     public boolean setEmail(String s) {
         return false;
     }
-    public Password getPassword() {
+    public String getPassword() {
         return this.password;
     }
     public String getCitta() {
@@ -108,5 +106,13 @@ public class Cliente {
 
     public void addBox(Box boxAssegnato) {
         this.boxAssegnati.add(boxAssegnato);
+    }
+
+    public void aggiungiRuolo(String ruolo) {
+        this.listaRuoli.add(ruolo);
+    }
+
+    public void aggiungiNotifica(Messaggio m){
+        //TODO
     }
 }

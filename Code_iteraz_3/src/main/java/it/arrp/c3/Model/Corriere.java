@@ -2,6 +2,7 @@ package it.arrp.c3.Model;
 
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Questa classe rappresenta il ruolo di un utente, ossia il Corriere.
@@ -13,13 +14,14 @@ public class Corriere extends Ruolo {
 
     private String mezzoDiTrasporto;
     private ArrayList<Negozio> listaNegoziCollegati;
+    private ArrayList<Corsa> listaCorse;
 
-    public Corriere(Long idCliente, String nomeRuolo) {
-        super(idCliente, nomeRuolo);
+    public Corriere(Long idCliente/*, String nomeRuolo*/) {
+        super(idCliente/*, nomeRuolo*/);
     }
 
-    public Corriere(Long uuidCliente, String nomeRuolo, String mezzoDiTrasporto) {
-        super(uuidCliente, nomeRuolo);
+    public Corriere(Long uuidCliente/*, String nomeRuolo*/, String mezzoDiTrasporto) {
+        super(uuidCliente/*, nomeRuolo*/);
         this.mezzoDiTrasporto = mezzoDiTrasporto;
         this.listaNegoziCollegati = new ArrayList<>();
     }
@@ -48,7 +50,10 @@ public class Corriere extends Ruolo {
         return "Corriere{" +
                 "mezzoDiTrasporto='" + mezzoDiTrasporto + '\'' +
                 ", idCLiente=" + idCLiente +
-                ", nomeRuolo='" + nomeRuolo + '\'' +
                 '}';
+    }
+
+    public List<Corsa> getAllCorse() {
+        return this.listaCorse;
     }
 }

@@ -19,6 +19,8 @@ public class ServiceMessaggio {
     MessaggioRepository repoMessaggio;
     @Autowired
     AdminRepository repoAdmin;
+    @Autowired
+    ClienteRepository repoCliente;
 
     /**
      * Questo metodo crea un ticket dalle informazioni ricevute dal controller, un ticket va da un Cliente ad un Admin.
@@ -32,11 +34,18 @@ public class ServiceMessaggio {
             return false;
         Messaggio m = new Messaggio(uuidFrom, a.getIdCLiente(), messaggio);
         a.addTicket(m);
+        repoMessaggio.save(m);
         return true;
     }
 
-    public boolean sendRichiesta(Messaggio m){
-        return false; //TODO
+    public boolean sendRichiesta(Long from, Long to, String messaggio){
+        Messaggio m = new Messaggio(from, to , messaggio);
+        repoMessaggio.save(m);
+        Cliente a = repoCliente.findOneById(to);
+        if(a == null)
+            return false;
+        a.aggiungiNotifica(m);
+        return true;
     }
 
     public boolean rimuoviTicket(Messaggio m){

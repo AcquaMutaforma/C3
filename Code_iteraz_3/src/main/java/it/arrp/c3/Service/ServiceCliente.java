@@ -1,12 +1,8 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Box;
-import it.arrp.c3.Model.Cliente;
+import it.arrp.c3.Model.*;
 import it.arrp.c3.Model.Enum.GenereNegozio;
-import it.arrp.c3.Model.Locker;
-import it.arrp.c3.Model.Repository.BoxRepository;
-import it.arrp.c3.Model.Repository.ClienteRepository;
-import it.arrp.c3.Model.Repository.LockerRepository;
+import it.arrp.c3.Model.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +21,12 @@ public class ServiceCliente {
     @Autowired
     LockerRepository repoLocker;
     @Autowired
-    ServiceLocker serviceLocker;
+    CorriereRepository repoCorriere;
+    @Autowired
+    NegozioRepository repoNegozio;
+
+    @Autowired
+    ServiceMessaggio servMessaggio;
 
     public boolean setCheckpoint(Long idCliente, Long idLocker){
         Locker locker = repoLocker.findOneById(idLocker);
@@ -80,21 +81,25 @@ public class ServiceCliente {
         return null;
     }
 
-    public boolean registrazione(String nome, String email, String pass, String citta) {
-        //TODO
-        return false;
+    public Cliente registrazione(String nome, String email, String pass, String citta) {
+        Cliente c = new Cliente(nome,email,pass,citta);
+        repoCliente.save(c);
+        return c;
     }
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
-        //TODO
+        Cliente c = repoCliente.findOneById(idCliente);
+        repoCorriere.save(new Corriere(idCliente,mdt));
+        c.aggiungiRuolo("Corriere");
     }
 
     public void aggiungiRuoloNegozio(Long idCliente, String cittaNegozio, GenereNegozio genere) {
-        //TODO
+        Cliente c = repoCliente.findOneById(idCliente);
+        repoNegozio.save(new Negozio(idCliente, cittaNegozio, genere));
+        c.aggiungiRuolo("Negozio");
     }
 
     public boolean creaTicket(Long idCliente, String testo) {
-        //TODO
-        return false;
+        return servMessaggio.creaTicket(idCliente,testo);
     }
 }
