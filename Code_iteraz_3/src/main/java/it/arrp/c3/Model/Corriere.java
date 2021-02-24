@@ -1,5 +1,7 @@
 package it.arrp.c3.Model;
 
+import it.arrp.c3.Model.Enum.StatoCorriere;
+
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +14,19 @@ import java.util.List;
 @Entity
 public class Corriere extends Ruolo {
 
+    private StatoCorriere stato;
     private String mezzoDiTrasporto;
     private ArrayList<Negozio> listaNegoziCollegati;
     private ArrayList<Corsa> listaCorse;
 
-    public Corriere(Long idCliente/*, String nomeRuolo*/) {
-        super(idCliente/*, nomeRuolo*/);
+    public Corriere(Long idCliente) {
+        super(idCliente);
     }
 
-    public Corriere(Long uuidCliente/*, String nomeRuolo*/, String mezzoDiTrasporto) {
-        super(uuidCliente/*, nomeRuolo*/);
+    public Corriere(Long uuidCliente, String mezzoDiTrasporto) {
+        super(uuidCliente);
+        this.stato = StatoCorriere.NonAttivo;
+        this.listaCorse = new ArrayList<>();
         this.mezzoDiTrasporto = mezzoDiTrasporto;
         this.listaNegoziCollegati = new ArrayList<>();
     }
@@ -48,12 +53,29 @@ public class Corriere extends Ruolo {
     @Override
     public String toString() {
         return "Corriere{" +
-                "mezzoDiTrasporto='" + mezzoDiTrasporto + '\'' +
+                "stato=" + stato +
+                ", mezzoDiTrasporto='" + mezzoDiTrasporto + '\'' +
                 ", idCLiente=" + idCLiente +
                 '}';
     }
 
     public List<Corsa> getAllCorse() {
         return this.listaCorse;
+    }
+
+    public Corsa getCorsa(Long idCorsa){
+        for(Corsa c : this.listaCorse){
+            if(c.getIdCorsa().equals(idCorsa))
+                return c;
+        }
+        return null;
+    }
+
+    public void setStato(StatoCorriere statoCorriere) {
+        this.stato = statoCorriere;
+    }
+
+    public void rimuoviCorsa(Long idCorsa) {
+        this.listaCorse.remove(getCorsa(idCorsa));
     }
 }

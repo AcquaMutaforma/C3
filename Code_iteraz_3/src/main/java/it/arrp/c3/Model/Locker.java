@@ -7,9 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.UUID;
 
 /**
  * Classe che gestisce un Locker, dunque la sua posizione geografica (per
@@ -54,7 +52,7 @@ public class Locker {
         Box b;
         while (iter.hasNext()){
             b = iter.next();
-            if(b.getId().equals(idbox))
+            if(b.getIdBox().equals(idbox))
                 return b;
         }
         return null;

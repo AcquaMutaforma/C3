@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.UUID;
 
 /**
  * Questa classe gestisce una Corsa, ossia la consegna di un pacco da un negozio verso
@@ -17,7 +16,7 @@ public class Corsa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCorsa;
-    private Long idPacco, idLocker, idCorriere;
+    private Long idPacco, idBox, idCorriere; //TODO aggiungere idNegozio
 
     public Corsa() {
     }
@@ -25,7 +24,7 @@ public class Corsa {
     public Corsa(Long idCorsa, Long idPacco, Long idLocker, Long idCorriere) {
         this.idCorsa = idCorsa;
         this.idPacco = idPacco;
-        this.idLocker = idLocker;
+        this.idBox = idLocker;
         this.idCorriere = idCorriere;
     }
 
@@ -41,11 +40,11 @@ public class Corsa {
     public void setIdPacco(Long idPacco) {
         this.idPacco = idPacco;
     }
-    public Long getIdLocker() {
-        return idLocker;
+    public Long getIdBox() {
+        return idBox;
     }
-    public void setIdLocker(Long idLocker) {
-        this.idLocker = idLocker;
+    public void setIdBox(Long idBox) {
+        this.idBox = idBox;
     }
     public Long getIdCorriere() {
         return idCorriere;
@@ -59,7 +58,7 @@ public class Corsa {
         return "Corsa{" +
                 "idCorsa=" + idCorsa +
                 ", idPacco=" + idPacco +
-                ", idLocker=" + idLocker +
+                ", idBox=" + idBox +
                 ", idCorriere=" + idCorriere +
                 '}';
     }

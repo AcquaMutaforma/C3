@@ -1,12 +1,12 @@
 package it.arrp.c3.Controller;
 
+import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Corsa;
+import it.arrp.c3.Model.Enum.StatoCorriere;
 import it.arrp.c3.Service.ServiceCorriere;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,9 +31,19 @@ public class ControllerCorriere {
         return serviceCorriere.getAllCorse(idCorriere);
     }
 
+    @PostMapping("/corriere/{idCorriere}/stato")
+    public Corriere setStato(@PathVariable Long idCorriere, @RequestParam StatoCorriere stato){
+        return serviceCorriere.cambiaStato(idCorriere, stato);
+    }
 
-    //cambia stato
-    //rifiuta corsa
-    //apri box
-    //getCorsa
+    @PostMapping("/corriere/{idCorriere}/corsa/{idCorsa}/unlock")
+    public Box unlockBox(@PathVariable Long idCorriere, @RequestParam Long idCorsa){
+        return serviceCorriere.unlock(idCorriere, idCorsa);
+    }
+
+    @PostMapping("/corriere/{idCorriere}/corsa/{idCorsa}/rifiuta")
+    public List<Corsa> rifiutaCorsa(@PathVariable Long idCorriere, @PathVariable Long idCorsa){
+        return serviceCorriere.rifiutaCorsa(idCorriere, idCorsa);
+    }
+
 }

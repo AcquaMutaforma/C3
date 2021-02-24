@@ -72,7 +72,7 @@ public class ServiceCliente {
         if(c.getBoxAssegnati().contains(b)){
             for (Box box : c.getBoxAssegnati()) {
                 b = box;
-                if (b.getId().equals(idBox)) {
+                if (b.getIdBox().equals(idBox)) {
                     b.unlock();
                     return b;
                 }

@@ -14,7 +14,7 @@ public class ControllerCommerciante {
     @Autowired
     ServiceNegozio serviceNegozio;
 
-    public void  creaCorsa(UUID uuidCliente, UUID uuidNegozio){
+    public void  creaCorsa(Long uuidCliente, Long uuidNegozio){
         //TODO da finire
         serviceNegozio.creaCorsa(uuidCliente,uuidNegozio);
     }

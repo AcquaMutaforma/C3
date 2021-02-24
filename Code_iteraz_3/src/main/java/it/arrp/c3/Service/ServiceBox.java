@@ -1,15 +1,24 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Repository.BoxRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Box.
  */
+@Service
 public class ServiceBox {
 
-    public Box assegnaBox(UUID uuidCliente){
+    @Autowired
+    BoxRepository repoBox;
+    @Autowired
+    ServiceCorsa serviceCorsa;
+
+    public Box assegnaBox(Long uuidCliente){
         //TODO da implementare --Ric
         return new Box();
     }
@@ -20,12 +29,18 @@ public class ServiceBox {
     public void generaChiave(){
         //TODO da implementare (da aggiungere un getChiave a questo punto?) --Ric
     }
-    public boolean unlock(int chiave){
-        //TODO da implementare --Ric
-        return true;
+    public boolean unlock(Long idBox) {
+        Box b = repoBox.findOneById(idBox);
+        if (b != null){
+            b.unlock();
+            return true;
+        }else return false;
     }
-    public boolean lock(){
-        //TODO da implementare --Ric
+    public boolean lock(Long idBox){
+        Box b = repoBox.findOneById(idBox);
+        if(b == null)
+            return false;
+        b.avanzaStato();
         return true;
     }
     public boolean turnOffBox(UUID uuidBox){
@@ -35,5 +50,9 @@ public class ServiceBox {
     public boolean turnOnBox(UUID uuidBox){
         //TODO da implementare --Ric
         return true;
+    }
+
+    public Box getBox(Long idBox) {
+        return repoBox.findOneById(idBox);
     }
 }

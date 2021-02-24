@@ -18,7 +18,7 @@ public class Box{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Long idBox;
     private Long idCliente;
     private Locker locker;
     private boolean chiuso;
@@ -28,7 +28,7 @@ public class Box{
     }
 
     public Box(Long id, Locker l) {
-        this.id = id;
+        this.idBox = id;
         this.idCliente = null;
         this.chiuso = true;
         this.stato = StatoBox.Libero;
@@ -36,8 +36,8 @@ public class Box{
     }
 
 
-    public Long getId() {
-        return this.id;
+    public Long getIdBox() {
+        return this.idBox;
     }
 
     public StatoBox getStato() {
@@ -71,8 +71,8 @@ public class Box{
         this.stato = s;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdBox(Long idBox) {
+        this.idBox = idBox;
     }
 
     public Long getIdCliente() {
@@ -100,18 +100,18 @@ public class Box{
         if (this == o) return true;
         if (!(o instanceof Box)) return false;
         Box box = (Box) o;
-        return getId().equals(box.getId());
+        return getIdBox().equals(box.getIdBox());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getIdBox());
     }
 
     @Override
     public String toString() {
         return "Box{" +
-                "id=" + id +
+                "idBox=" + idBox +
                 ", cliente=" + idCliente +
                 ", locker=" + locker +
                 ", chiuso=" + chiuso +
