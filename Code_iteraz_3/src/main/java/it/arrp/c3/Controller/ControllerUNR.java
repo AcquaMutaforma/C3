@@ -23,6 +23,10 @@ public class ControllerUNR {
     @Autowired
     ServiceCliente serviceCliente;
 
+    //TODO forse sarebbe da fare dei metodi privati(?) in cui non c'e' la citta' e la ricava per mezze vie
+        //ma potrebbe essere inutile come prima implementazione, ti direi di vedere + in la --Ric
+    //TODO forse sono troppi rimpalli come la penso io, ma magari il controller dovrebbe chiedere al suo service invece del ServiceNegozio... --Ric
+
     @PostMapping("/cerca")
     public List<Negozio> getNegoziByCitta(@RequestParam String citta){
         return serviceNegozio.getNegozi(citta);
