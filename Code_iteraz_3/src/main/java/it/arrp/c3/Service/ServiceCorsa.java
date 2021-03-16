@@ -58,4 +58,6 @@ public class ServiceCorsa {
         //TODO
     }
 
+    //TODO manca un metodo "svuota cache" per eliminare le corse rifiutate mai effettuate
+
 }

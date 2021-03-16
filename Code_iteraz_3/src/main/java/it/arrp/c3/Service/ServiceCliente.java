@@ -62,6 +62,7 @@ public class ServiceCliente {
      * @param idBox .
      * @return NULL se il cliente o box non esiste, o il box non è presente nella sua lista.
      */
+    //TODO ale sei sicuro che va qui ? --ale
     public Box apriBox(Long idCliente, Long idBox){
         Cliente c = getCliente(idCliente);
         if(c == null)
@@ -99,7 +100,7 @@ public class ServiceCliente {
         c.aggiungiRuolo("Negozio");
     }
 
-    public boolean creaTicket(Long idCliente, String testo) {
+    public boolean creaTicket(Long idCliente, String testo){
         return servMessaggio.creaTicket(idCliente,testo);
     }
 }
