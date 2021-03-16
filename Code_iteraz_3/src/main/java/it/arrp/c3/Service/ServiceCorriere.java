@@ -64,6 +64,12 @@ public class ServiceCorriere {
         return repoCorriere.findOneById(uuidCorriere);
     }
 
+    /**
+     * Sblocca il Box per inserire il pacco da consegnare e attraverso questo "innesca" il completamento
+     * della corsa assegnata.
+     * @param idCorriere identifica il corriere che deve aprire il box.
+     * @param idCorsa identifica la corsa per vedere le info e completarla.
+     */
     public Box unlock(Long idCorriere, Long idCorsa) {
         //TODO non mi piace come lo ho fatto, riguardare --aley
         if(getCorsa(idCorriere,idCorsa) != null){
