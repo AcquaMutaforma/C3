@@ -16,12 +16,12 @@ public class Admin extends Ruolo{
     private List<Tecnico> listaTecnici;
     private List<Messaggio> listaRichieste;
 
-    public Admin(Long idCliente, String nomeRuolo) {
-        super(idCliente, nomeRuolo);
+    public Admin(Long idCliente/*, String nomeRuolo*/) {
+        super(idCliente/*, nomeRuolo*/);
     }
 
-    public Admin(Long idCliente, String nomeRuolo, String cittaDiLavoro) {
-        super(idCliente, nomeRuolo);
+    public Admin(Long idCliente/*, String nomeRuolo*/, String cittaDiLavoro) {
+        super(idCliente/*, nomeRuolo*/);
         this.cittaDiLavoro = cittaDiLavoro;
         this.listaRichieste = new ArrayList<>();
         this.listaTecnici = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Admin extends Ruolo{
     public String toString() {
         return "Admin{" +
                 "idCLiente=" + idCLiente +
-                ", nomeRuolo='" + nomeRuolo + '\'' +
+                /*", nomeRuolo='" + nomeRuolo + */'\'' +
                 '}';
     }
 

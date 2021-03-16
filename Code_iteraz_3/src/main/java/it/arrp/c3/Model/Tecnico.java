@@ -16,11 +16,11 @@ public class Tecnico extends Ruolo{
     private List<Messaggio> listaRichieste;
 
     public Tecnico(Long idCliente, String nomeRuolo) {
-        super(idCliente, nomeRuolo);
+        super(idCliente/*, nomeRuolo*/);
     }
 
     public Tecnico(Long idCliente, String nomeRuolo, Admin admin) {
-        super(idCliente, nomeRuolo);
+        super(idCliente/*, nomeRuolo*/);
         this.admin = admin;
         this.listaRichieste = new ArrayList<>();
     }
@@ -40,7 +40,7 @@ public class Tecnico extends Ruolo{
     public String toString() {
         return "Tecnico{" +
                 "idCLiente=" + idCLiente +
-                ", nomeRuolo='" + nomeRuolo + '\'' +
+                /*", nomeRuolo='" + nomeRuolo + */'\'' +
                 ", admin=" + this.admin.idCLiente +
                 '}';
     }
