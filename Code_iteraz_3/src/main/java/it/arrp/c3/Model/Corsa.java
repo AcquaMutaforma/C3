@@ -16,7 +16,7 @@ public class Corsa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCorsa;
-    private Long idPacco, idBox, idCorriere; //TODO aggiungere idNegozio
+    private Long idPacco, idBox, idCorriere; //TODO aggiungere idNegozio, no sta nel pacco
 
     public Corsa() {
     }

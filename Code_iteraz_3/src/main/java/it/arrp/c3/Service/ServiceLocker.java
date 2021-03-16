@@ -10,23 +10,23 @@ import java.util.UUID;
 public class ServiceLocker {
     ServiceBox serviceBox = new ServiceBox();
 
-    public boolean disattivaBox(UUID uuidBox){
+    public boolean disattivaBox(Long uuidBox){
         //TODO da implementare --Ric
         return true;
     }
-    public boolean attivaBox(UUID uuidBox){
+    public boolean attivaBox(Long uuidBox){
         //TODO da implementare? l'ho inserito perché mi sembrava giusto ci fosse, poi vediamo --Ric
         return true;
     }
-    public Box assegnaBox(UUID uuidCliente){
+    public Box assegnaBox(Long uuidCliente){
         //TODO da implementare --Ric
         return serviceBox.assegnaBox(uuidCliente);
     }
-    public boolean turnOffLocker(UUID uuidLocker){
+    public boolean turnOffLocker(Long uuidLocker){
         //TODO da implementare --Ric
         return true;
     }
-    public boolean turnOnLocker(UUID uuidLocker){
+    public boolean turnOnLocker(Long uuidLocker){
         //TODO da implementare --Ric
         return true;
     }

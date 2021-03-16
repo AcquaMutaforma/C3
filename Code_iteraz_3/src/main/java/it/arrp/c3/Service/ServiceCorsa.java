@@ -23,6 +23,7 @@ public class ServiceCorsa {
     @Autowired
     CorsaRepository repoCorsa;
 
+    /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
     public Corsa creaCorsa(Long uuidCliente, Long uuidCommerciante){

@@ -27,18 +27,33 @@ public class ControllerUNR {
         //ma potrebbe essere inutile come prima implementazione, ti direi di vedere + in la --Ric
     //TODO forse sono troppi rimpalli come la penso io, ma magari il controller dovrebbe chiedere al suo service invece del ServiceNegozio... --Ric
 
-    @PostMapping("/cerca")
-    public List<Negozio> getNegoziByCitta(@RequestParam String citta){
+    /**
+     * Cerca tutti i negozi di una citta
+     * @param citta dove effettuare la ricerca. GET dato che il POST sembra eccessivo per una richiesta cosi basica
+     */
+    @GetMapping("/cerca/{citta}")
+    public List<Negozio> getNegoziByCitta(@PathVariable String citta){
         return serviceNegozio.getNegozi(citta);
     }
 
+    /**
+     * Cerca all'interno di una citta i negozi con un certo nome
+     * @param citta dove viene effettuata la ricerca. GET dato che un utente puo inserirla manualmente ci pensa la
+     *              parte grafica ad "iniziare" la ricerca
+     * @param nome del negozio. GET dato che una richiesta POST sarebbe superflua
+     */
     @GetMapping("/cerca/{citta}/{nome}")
     public List<Negozio> getNegoziByName(@PathVariable String citta,@PathVariable String nome){
         return serviceNegozio.getNegozioByName(citta,nome);
     }
 
-    @PostMapping("/cerca/genere")
-    public List<Negozio> getNegoziByGenere(@RequestParam String citta, @RequestParam GenereNegozio genere){
+    /**
+     * Cerca all'interno di una citta i negozi di un determinato genere
+     * @param citta dove effettuare la ricerca.
+     * @param genere preso con POST dato che è un enum, ci pensa la parte grafica a mandarcelo
+     */
+    @PostMapping("/cerca/{citta}/genere")
+    public List<Negozio> getNegoziByGenere(@PathVariable String citta, @RequestParam GenereNegozio genere){
         return serviceNegozio.getNegozioByGenere(citta,genere);
     }
 

@@ -26,7 +26,7 @@ public class ControllerCorriere {
         return serviceCorriere.getCorsa(idCorriere, idCorsa);
     }
 
-    @GetMapping("/corriere/{idCorriere}/Corse")
+    @GetMapping("/corriere/{idCorriere}/corse")
     public List<Corsa> getAllCorse(@PathVariable Long idCorriere){
         return serviceCorriere.getAllCorse(idCorriere);
     }
