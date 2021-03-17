@@ -50,7 +50,7 @@ public class ServiceCorsa {
 
     /** Metodo per segnare come completa una corsa che prima era stata completata
      * quindi elimino lo spazio utilizzato */
-    public void corsaRifiutataCompletata(Long idCliente){
+    public void corsaRifiutataCompletata(Long idCliente){//TODO cambiare nome al metodo, è molto confusionario --Ric
         this.corseRifiutate.remove(idCliente);
     }
 
