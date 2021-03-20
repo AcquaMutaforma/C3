@@ -14,7 +14,12 @@ public class ControllerCommerciante {
 
     public void  creaCorsa(Long uuidCliente, Long uuidNegozio){
         //TODO da finire
-        serviceNegozio.creaCorsa(uuidCliente,uuidNegozio);
+        if (serviceNegozio.creaCorsa(uuidCliente,uuidNegozio)){
+            //stampa qualcosa, è andato tutto bene
+        }
+        else{
+            //c'è stato un errore
+        }
     }
 
     //TODO

@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Corsa;
+import it.arrp.c3.Model.Pacco;
 import it.arrp.c3.Model.Repository.CorsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,13 @@ public class ServiceCorsa {
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
     public Corsa creaCorsa(Long uuidCliente, Long uuidCommerciante){
+        //TODO Dovrebbe prendere anche il box in cui andare? idk --Ric
         //TODO da implementare --Ric
         //assegnaCorsa();
-        return null;
+        Pacco pacco =servicePacco.creaPacco(uuidCliente,uuidCommerciante);
+        //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
+        Corsa corsa = new Corsa((long)Math.random()*100, pacco.getIdPacco(),(long)Math.random()*100,(long)Math.random()*100 );
+        return corsa;
     }
 
     public void rifiutaCorsa(Long idCorriere, Long idCorsa) {

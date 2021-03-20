@@ -22,10 +22,10 @@ public class Corsa {
     }
 
     public Corsa(Long idCorsa, Long idPacco, Long idLocker, Long idCorriere) {
-        this.idCorsa = idCorsa;
-        this.idPacco = idPacco;
-        this.idBox = idLocker;
-        this.idCorriere = idCorriere;
+        setIdCorsa(idCorsa); //TODO Lo prende in input o lo genera? --Ric
+        setIdPacco(idPacco);
+        setIdBox(idLocker); //TODO Locker o Box? --Ric
+        setIdCorriere(idCorriere);
     }
 
     public Long getIdCorsa() {

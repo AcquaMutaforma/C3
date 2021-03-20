@@ -49,6 +49,8 @@ public class ServiceCliente {
     }
 
     public List<Box> getBoxCliente(Long uuidCliente) {
+        //TODO qui restituisce una lista perchè vogliamo inserire i pacchi anche
+        // nei box dove in teoria ci sono già oggetti comprati in precedenza? --Ric
         return repoCliente.getOne(uuidCliente).getBoxAssegnati();
     }
 

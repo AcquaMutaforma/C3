@@ -36,7 +36,12 @@ public class ServiceNegozio {
         //TODO da completare --Ric
         Long corriere = getCorriereDisponibile();
         if (corriere!=null){
-            return true;
+            List<Box> box = serviceCliente.getBoxCliente(uuidCliente);
+            if (box!=null){
+                serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante);
+                return true;
+            }
+            return false;
         }
         return false; //di conseguenza la consegna viene negata
     }
