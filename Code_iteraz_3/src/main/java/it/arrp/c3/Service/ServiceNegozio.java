@@ -1,11 +1,13 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Negozio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,22 +30,31 @@ public class ServiceNegozio {
         //TODO da implementare --Ric
         return true;
     }
-    public Long getCorriereDisponibile(){
+    public Long getCorriereDisponibile(Long idCommerciante){
+        Negozio negozio =getNegozioById(idCommerciante);
+        ArrayList<Corriere> corriereArrayList;
+        if (negozio!=null)
+            corriereArrayList= negozio.getListaCorrieriAssunti();
         //TODO da implementare --Ric
         return null;
     }
     public boolean creaCorsa(Long uuidCliente, Long uuidCommerciante){
         //TODO da completare --Ric
-        Long corriere = getCorriereDisponibile();
+        Long corriere = getCorriereDisponibile(uuidCommerciante);
         if (corriere!=null){
             List<Box> box = serviceCliente.getBoxCliente(uuidCliente);
             if (box!=null){
-                serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante);
+                serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante, corriere);
                 return true;
             }
             return false;
         }
         return false; //di conseguenza la consegna viene negata
+    }
+
+    private Negozio getNegozioById(Long idNegozio){
+        //TODO
+        return null;
     }
 
     public List<Negozio> getNegozi(String citta) {

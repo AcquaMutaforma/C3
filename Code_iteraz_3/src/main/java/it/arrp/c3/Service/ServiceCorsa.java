@@ -1,5 +1,6 @@
 package it.arrp.c3.Service;
 
+import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Corsa;
 import it.arrp.c3.Model.Pacco;
 import it.arrp.c3.Model.Repository.CorsaRepository;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class ServiceCorsa {
 
     @Autowired
+    ServiceCliente serviceCliente;
+    @Autowired
     ServicePacco servicePacco;
     @Autowired
     ServiceCorriere serviceCorriere;
@@ -27,13 +30,15 @@ public class ServiceCorsa {
     /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
-    public Corsa creaCorsa(Long uuidCliente, Long uuidCommerciante){
+    public Corsa creaCorsa(Long uuidCliente, Long uuidCommerciante, Long idCorriere){
         //TODO Dovrebbe prendere anche il box in cui andare? idk --Ric
         //TODO da implementare --Ric
-        //assegnaCorsa();
+
         Pacco pacco =servicePacco.creaPacco(uuidCliente,uuidCommerciante);
+        List<Box> idLocker = serviceCliente.getBoxCliente(uuidCliente);
+        //assegnaCorsa();
         //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
-        Corsa corsa = new Corsa((long)Math.random()*100, pacco.getIdPacco(),(long)Math.random()*100,(long)Math.random()*100 );
+        Corsa corsa = new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
         return corsa;
     }
 

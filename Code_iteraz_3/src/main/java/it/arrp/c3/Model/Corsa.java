@@ -21,7 +21,7 @@ public class Corsa {
     public Corsa() {
     }
 
-    public Corsa(Long idCorsa, Long idPacco, Long idLocker, Long idCorriere) {
+    public Corsa(/*Long idCorsa,*/ Long idPacco, Long idLocker, Long idCorriere) {
         setIdCorsa(idCorsa); //TODO Lo prende in input o lo genera? --Ric
         setIdPacco(idPacco);
         setIdBox(idLocker); //TODO Locker o Box? --Ric
