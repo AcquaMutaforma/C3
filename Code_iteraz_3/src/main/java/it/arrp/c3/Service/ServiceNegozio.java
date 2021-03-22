@@ -4,12 +4,12 @@ import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Negozio;
+import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti il Ruolo Negozio.
@@ -18,18 +18,38 @@ import java.util.UUID;
 public class ServiceNegozio {
 
     @Autowired
+    NegozioRepository repoNegozio;
+    @Autowired
+    ServiceNegozio serviceNegozio;
+    @Autowired
+    ServiceCorriere serviceCorriere;
+    @Autowired
     ServiceCliente serviceCliente;
     @Autowired
     ServiceCorsa serviceCorsa;
 
-    public boolean addCorriere(UUID uuidCorriere){
-        //TODO da implementare --Ric
-        return true;
+    public boolean addCorriere(Long idNegozio, Long idCorriere){
+        Negozio neg = getNegozioById(idNegozio);
+        if(neg == null)
+            return false;
+        Corriere corr = serviceCorriere.getCorriere(idCorriere);
+        if(corr == null)
+            return false;
+        return serviceNegozio.addCorriere(idNegozio, idCorriere);
     }
-    public boolean removeCorriere(UUID uuidCorriere){
-        //TODO da implementare --Ric
-        return true;
+
+    //TODO tra add e remove il primo pezzo è uguale, se succede un'altra volta forse
+    // è il caso di creare un metodo apposta per la verifica e il get -A
+    public boolean removeCorriere(Long idNegozio, Long idCorriere){
+        Negozio neg = repoNegozio.findOneById(idNegozio);
+        if(neg == null)
+            return false;
+        Corriere corr = serviceCorriere.getCorriere(idCorriere);
+        if(corr == null)
+            return false;
+        return serviceNegozio.removeCorriere(idNegozio, idCorriere);
     }
+
     public Long getCorriereDisponibile(Long idCommerciante){
         Negozio negozio =getNegozioById(idCommerciante);
         ArrayList<Corriere> corriereArrayList;
@@ -53,22 +73,32 @@ public class ServiceNegozio {
     }
 
     private Negozio getNegozioById(Long idNegozio){
-        //TODO
-        return null;
+        return this.repoNegozio.findOneById(idNegozio);
     }
 
     public List<Negozio> getNegozi(String citta) {
-        //TODO
-        return null;
+        List<Negozio> lista = this.repoNegozio.findAll();
+        lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
+        return lista;
+        //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {
-        //TODO
-        return null;
+        List<Negozio> lista = getNegozi(citta);
+        lista.removeIf(x -> !(x.getNomeNegozio().equals(nome)));
+        return lista;
+        //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
     }
 
     public List<Negozio> getNegozioByGenere(String citta, GenereNegozio genere) {
         //TODO
         return null;
+    }
+
+    public List<Corriere> getCorrieri(Long idCommerciante) {
+        Negozio n = getNegozioById(idCommerciante);
+        if(n == null)
+            return null;
+        return n.getListaCorrieriAssunti();
     }
 }

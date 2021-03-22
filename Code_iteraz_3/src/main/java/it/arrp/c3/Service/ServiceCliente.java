@@ -96,9 +96,9 @@ public class ServiceCliente {
         c.aggiungiRuolo("Corriere");
     }
 
-    public void aggiungiRuoloNegozio(Long idCliente, String cittaNegozio, GenereNegozio genere) {
+    public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);
-        repoNegozio.save(new Negozio(idCliente, cittaNegozio, genere));
+        repoNegozio.save(new Negozio(idCliente, nomeNegozio, cittaNegozio, genere));
         c.aggiungiRuolo("Negozio");
     }
 

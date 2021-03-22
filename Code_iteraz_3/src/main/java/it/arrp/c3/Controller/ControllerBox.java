@@ -27,6 +27,6 @@ public class ControllerBox {
         return serviceBox.getBox(idBox);
     }
 
-    //@DeleteMapping("/box/{idBox}") extra
+    //@DeleteMapping("/box/{idBox}") era un test
 
 }

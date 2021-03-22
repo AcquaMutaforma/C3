@@ -18,17 +18,19 @@ public class Negozio extends Ruolo {
 
     //TODO rimuovere Locazione geografica dagli schemi, non abbiamo tempo
 
+    private String nomeNegozio;
     private String cittaNegozio;
     private GenereNegozio genereNegozio;
     private List<Prodotto> listaProdottiInEvidenza;
     private ArrayList<Corriere> listaCorrieriAssunti;
 
-    public Negozio(Long idCliente/*, String nomeRuolo*/) {
-        super(idCliente/*, nomeRuolo*/);
+    public Negozio(Long idCliente) {
+        super(idCliente);
     }
 
-    public Negozio(Long idCliente/*, String nomeRuolo*/, String cittaNegozio, GenereNegozio genereNegozio) {
-        super(idCliente/*, nomeRuolo*/);
+    public Negozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genereNegozio) {
+        super(idCliente);
+        this.nomeNegozio = nomeNegozio;
         this.cittaNegozio = cittaNegozio;
         this.genereNegozio = genereNegozio;
         this.listaCorrieriAssunti = new ArrayList<>();
@@ -43,7 +45,7 @@ public class Negozio extends Ruolo {
         this.listaCorrieriAssunti = listaCorrieriAssunti;
     }
 
-    public void assumiCorriere(Corriere corriere){
+    public void addCorriere(Corriere corriere){
         listaCorrieriAssunti.add(corriere);
     }
 
@@ -67,10 +69,19 @@ public class Negozio extends Ruolo {
         return listaProdottiInEvidenza;
     }
 
+    public String getNomeNegozio() {
+        return nomeNegozio;
+    }
+
+    public void setNomeNegozio(String nomeNegozio) {
+        this.nomeNegozio = nomeNegozio;
+    }
+
     @Override
     public String toString() {
         return "Negozio{" +
-                "cittaNegozio='" + cittaNegozio + '\'' +
+                "nomeNegozio='" + nomeNegozio + '\'' +
+                ", cittaNegozio='" + cittaNegozio + '\'' +
                 ", genereNegozio=" + genereNegozio +
                 ", idCLiente=" + idCLiente +
                 '}';

@@ -45,9 +45,11 @@ public class ControllerCliente{
     }
 
     @PostMapping("cliente/{idCliente}/regNegozio")
-    public void registraComeNegozio(@PathVariable Long idCliente, @RequestParam String cittaNegozio,
+    public void registraComeNegozio(@PathVariable Long idCliente, @RequestParam String nomeNegozio,
+                                    @RequestParam String cittaNegozio,
                                     @RequestParam GenereNegozio genere){
-        servClie.aggiungiRuoloNegozio(idCliente, cittaNegozio, genere);
+        servClie.aggiungiRuoloNegozio(idCliente,nomeNegozio, cittaNegozio, genere);
     }
 
+    //TODO extra: la modifica dei dati come l'autenticazione è qualcosa di moooolto superfluo quindi lo saltiamo credo
 }

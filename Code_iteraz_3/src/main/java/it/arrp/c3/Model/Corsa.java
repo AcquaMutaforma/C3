@@ -16,15 +16,15 @@ public class Corsa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCorsa;
-    private Long idPacco, idBox, idCorriere; //TODO aggiungere idNegozio, no sta nel pacco
+    private Long idPacco, idBox, idCorriere; //Nota: l'IDnegozio lo peschi dal pacco di cui hai l'id
 
     public Corsa() {
     }
 
-    public Corsa(/*Long idCorsa,*/ Long idPacco, Long idLocker, Long idCorriere) {
-        setIdCorsa(idCorsa); //TODO Lo prende in input o lo genera? --Ric
+    public Corsa( Long idPacco, Long idBox, Long idCorriere) {
+        //setIdCorsa(idCorsa); //TODO Lo prende in input o lo genera? --Ric //Ci pensa lui --ale
         setIdPacco(idPacco);
-        setIdBox(idLocker); //TODO Locker o Box? --Ric
+        setIdBox(idBox);
         setIdCorriere(idCorriere);
     }
 

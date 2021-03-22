@@ -46,4 +46,6 @@ public class ControllerCorriere {
         return serviceCorriere.rifiutaCorsa(idCorriere, idCorsa);
     }
 
+    //TODO extra: cancellazione ruolo
+
 }
