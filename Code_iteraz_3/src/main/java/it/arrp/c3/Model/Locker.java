@@ -29,8 +29,7 @@ public class Locker {
     public Locker() {
     }
 
-    public Locker(Long id, int longitudine, int latitudine, int numeroBox) {
-        this.id = id;
+    public Locker(int longitudine, int latitudine, int numeroBox) {
         this.longitudine = longitudine;
         this.latitudine = latitudine;
         this.numeroBox = numeroBox;
