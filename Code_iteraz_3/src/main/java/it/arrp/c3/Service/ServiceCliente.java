@@ -58,6 +58,11 @@ public class ServiceCliente {
         return repoCliente.findOneById(id);
     }
 
+    public List<String> getListaRuoli(Long idCliente){
+        Cliente cliente = getCliente(idCliente);
+        return cliente.getListaRuoli();
+    }
+
     /**
      * Apre il box che appartiene al cliente dato.
      * @param idCliente .

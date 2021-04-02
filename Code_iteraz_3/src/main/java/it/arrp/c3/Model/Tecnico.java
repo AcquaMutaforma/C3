@@ -19,7 +19,7 @@ public class Tecnico extends Ruolo{
         super(idCliente/*, nomeRuolo*/);
     }
 
-    public Tecnico(Long idCliente, String nomeRuolo, Admin admin) {
+    public Tecnico(Long idCliente, /*String nomeRuolo,*/ Admin admin) {
         super(idCliente/*, nomeRuolo*/);
         this.admin = admin;
         this.listaRichieste = new ArrayList<>();
