@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Admin;
+import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,10 +34,13 @@ public class ServiceAdmin {
     public Admin getAdmin(Long idAdmin){return repoAdmin.findOneById(idAdmin);}
 
     public boolean creaTecnico(Long idCliente, Long idAdmin){
-        List<String> listaRuoli = serviceCliente.getListaRuoli(idCliente);
-        if(listaRuoli.contains("Tecnico"))
+        Admin a = repoAdmin.findOneById(idAdmin);
+        Cliente c = serviceCliente.getCliente(idCliente);
+        if(a == null || c == null)
+            return false;
+        if(c.getListaRuoli().contains("Tecnico"))
             return true; //ritorna true perché anche se già presente, quel cliente é un tecnico... o no?
-        return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin));
+        return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin)); //todo metodo da controllare in serviceTecnico
     }
 
 }

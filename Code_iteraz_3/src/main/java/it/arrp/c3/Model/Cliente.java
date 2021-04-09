@@ -113,6 +113,7 @@ public class Cliente {
     }
 
     public void aggiungiNotifica(Messaggio m){
-        //TODO
+        if(m!=null)
+            this.notifiche.add(m);
     }
 }

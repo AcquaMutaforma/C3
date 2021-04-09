@@ -16,6 +16,10 @@ public class ServiceCliente {
 
     @Autowired
     ClienteRepository repoCliente;
+
+    //TODO troppi repo.. ho toppato, vanno modificati i metodi per farli parlare con i service invece che
+    // i repository >-<  --A
+
     @Autowired
     BoxRepository repoBox;
     @Autowired
@@ -24,12 +28,11 @@ public class ServiceCliente {
     CorriereRepository repoCorriere;
     @Autowired
     NegozioRepository repoNegozio;
-
     @Autowired
     ServiceMessaggio servMessaggio;
 
     public boolean setCheckpoint(Long idCliente, Long idLocker){
-        Locker locker = repoLocker.findOneById(idLocker);
+        Locker locker = repoLocker.findOneById(idLocker); //todo il service deve farlo, non il repo >.< -A
         if(locker == null)
             return false;
         Cliente cliente = repoCliente.findOneById(idCliente);
@@ -74,7 +77,7 @@ public class ServiceCliente {
         Cliente c = getCliente(idCliente);
         if(c == null)
             return null;
-        Box b = repoBox.findOneById(idBox);
+        Box b = repoBox.findOneById(idBox); //todo il service deve farlo, non il repo >.< -A
         if(b == null)
             return null;
         if(c.getBoxAssegnati().contains(b)){
@@ -97,13 +100,13 @@ public class ServiceCliente {
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
         Cliente c = repoCliente.findOneById(idCliente);
-        repoCorriere.save(new Corriere(idCliente,mdt));
+        repoCorriere.save(new Corriere(idCliente,mdt)); //todo il service deve farlo, non il repo >.< -A
         c.aggiungiRuolo("Corriere");
     }
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);
-        repoNegozio.save(new Negozio(idCliente, nomeNegozio, cittaNegozio, genere));
+        repoNegozio.save(new Negozio(idCliente, nomeNegozio, cittaNegozio, genere)); //todo il service deve farlo, non il repo >.< -A
         c.aggiungiRuolo("Negozio");
     }
 

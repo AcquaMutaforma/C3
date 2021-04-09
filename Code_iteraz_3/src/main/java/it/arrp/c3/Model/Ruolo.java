@@ -5,12 +5,11 @@ package it.arrp.c3.Model;
  */
 public class Ruolo {
     //TODO Da valutare se mettere tutte le aggiunte di vari ruoli ad un cliente quì anziché averle sparse. --Ric
+    //il cliente ha una variabile lista di ruoli che possiede --a
     Long idCLiente;
-    //String nomeRuolo;
 
-    public Ruolo(Long idCliente /*, String nomeRuolo*/) {
+    public Ruolo(Long idCliente) {
         this.idCLiente = idCliente;
-        //this.nomeRuolo = nomeRuolo;
     }
 
     public Long getIdCLiente() {
@@ -20,14 +19,5 @@ public class Ruolo {
     public void setIdCLiente(Long idCLiente) {
         this.idCLiente = idCLiente;
     }
-/*
-    public String getNomeRuolo() {
-        return nomeRuolo;
-    }
 
-    public void setNomeRuolo(String nomeRuolo) {
-        this.nomeRuolo = nomeRuolo;
-    }
-
- */
 }
