@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Enum/Accensione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Ruolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Ruolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Locker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Locker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorsa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCorsa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceLocker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceNegozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceNegozio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceTecnico.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -67,7 +71,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
