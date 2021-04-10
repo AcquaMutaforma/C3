@@ -104,6 +104,11 @@ public class ServiceCliente {
         c.aggiungiRuolo("Corriere");
     }
 
+    public void aggiungiRuoloTecnico(Long idCliente){
+        Cliente cliente = repoCliente.findOneById(idCliente);
+        cliente.aggiungiRuolo("Tecnico");
+    }
+
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);
         repoNegozio.save(new Negozio(idCliente, nomeNegozio, cittaNegozio, genere)); //todo il service deve farlo, non il repo >.< -A

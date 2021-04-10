@@ -1,5 +1,6 @@
 package it.arrp.c3.Model;
 
+import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.StatoBox;
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Box{
     private Locker locker;
     private boolean chiuso;
     private StatoBox stato;
+    private Accensione statoAccensioneBox =Accensione.Acceso;
 
     public Box() {
     }
@@ -33,6 +35,13 @@ public class Box{
         this.chiuso = true;
         this.stato = StatoBox.Libero;
         this.locker = l;
+    }
+
+    public void turnOnBox(){
+        this.statoAccensioneBox= Accensione.Acceso;
+    }
+    public void turnOffBox(){
+        this.statoAccensioneBox= Accensione.Spento;
     }
 
 

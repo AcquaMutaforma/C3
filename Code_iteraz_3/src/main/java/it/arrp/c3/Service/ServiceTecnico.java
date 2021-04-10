@@ -7,8 +7,6 @@ import it.arrp.c3.Model.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Tecnico.
  */
@@ -19,19 +17,16 @@ public class ServiceTecnico {
     @Autowired
     TecnicoRepository repoTecnico;
 
-    public String getChiaveTecnico(UUID uuidTecnico){
-        //TODO da implementare --Ric
+    public String getChiaveTecnico(Long idTecnico){
+        //TODO probabilmente da eliminare, se non ricordo male doveva servire a prendere una chiave per aprire
+        // i box, che poi abbiamo essenzialmente sostituito con il codice identificativo --Ric
         return null;
     }
 
     public boolean creaTecnico(Long idCliente, Admin admin) {
-        Cliente c = serviceCliente.getCliente(idCliente);
+        serviceCliente.aggiungiRuoloTecnico(idCliente);
         repoTecnico.save(new Tecnico(idCliente,admin));
-        c.aggiungiRuolo("Tecnico");
-        //TODO da cambiare, non penso vada bene che il serviceTecnico modifichi cose
-        // di un cliente anche se é lui stesso. --Ric
-
-        //TODO da implementare un controllo per verificare che sia andato tutto in porto. --Ric
+        //TODO da controllare, mi sembra vada bene ora. --Ric
         return true;
     }
 }

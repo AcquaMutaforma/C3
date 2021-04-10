@@ -29,25 +29,22 @@ public class ServiceNegozio {
     ServiceCorsa serviceCorsa;
 
     public boolean addCorriere(Long idNegozio, Long idCorriere){
-        Negozio neg = getNegozioById(idNegozio);
-        if(neg == null)
-            return false;
-        Corriere corr = serviceCorriere.getCorriere(idCorriere);
-        if(corr == null)
+        if (controllaInput(idNegozio,idCorriere))
             return false;
         return serviceNegozio.addCorriere(idNegozio, idCorriere);
     }
 
-    //TODO tra add e remove il primo pezzo è uguale, se succede un'altra volta forse
-    // è il caso di creare un metodo apposta per la verifica e il get -A
+    //TODO Modificato, ora chiamano una piccola funzione che controlla l'input (nome orrendo) --Ric
     public boolean removeCorriere(Long idNegozio, Long idCorriere){
-        Negozio neg = repoNegozio.findOneById(idNegozio);
-        if(neg == null)
-            return false;
-        Corriere corr = serviceCorriere.getCorriere(idCorriere);
-        if(corr == null)
+        if (controllaInput(idNegozio,idCorriere))
             return false;
         return serviceNegozio.removeCorriere(idNegozio, idCorriere);
+    }
+
+    private boolean controllaInput(Long idNegozio, Long idCorriere) {
+        Negozio neg = repoNegozio.findOneById(idNegozio);
+        Corriere corr = serviceCorriere.getCorriere(idCorriere);
+        return neg == null && corr == null;
     }
 
     public Long getCorriereDisponibile(Long idCommerciante){
@@ -55,16 +52,16 @@ public class ServiceNegozio {
         ArrayList<Corriere> corriereArrayList;
         if (negozio!=null)
             corriereArrayList= negozio.getListaCorrieriAssunti();
-        //TODO da implementare --Ric
+        //TODO da implementare la scelta del corriere disponibile all'interno della lista
+        // (quindi controllo dello stato etc etc)--Ric
         return null;
     }
-    public boolean creaCorsa(Long uuidCliente, Long uuidCommerciante){
-        //TODO da completare --Ric
-        Long corriere = getCorriereDisponibile(uuidCommerciante);
-        if (corriere!=null){
-            List<Box> box = serviceCliente.getBoxCliente(uuidCliente);
+    public boolean creaCorsa(Long idCliente, Long idCommerciante){
+        Long idCorriere = getCorriereDisponibile(idCommerciante);
+        if (idCorriere!=null){
+            List<Box> box = serviceCliente.getBoxCliente(idCliente);
             if (box!=null){
-                serviceCorsa.creaCorsa(uuidCliente,uuidCommerciante, corriere);
+                serviceCorsa.creaCorsa(idCliente,idCommerciante, idCorriere);
                 return true;
             }
             return false;
@@ -81,6 +78,8 @@ public class ServiceNegozio {
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
         //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
+        //TODO sicuramente sí, ma al momento potremmo lasciare
+        // cosí perché andiamo ad usare db locali, in un secondo momento si vedrà. --Ric
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {

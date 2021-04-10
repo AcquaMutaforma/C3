@@ -36,24 +36,22 @@ public class ServiceLocker {
         return null;
     }
 
-    public boolean disattivaBox(Long uuidBox){
+    public boolean disattivaBox(Long idBox){
+        return  serviceBox.turnOffBox(idBox);
+    }
+    public boolean attivaBox(Long idBox){
+        return serviceBox.turnOnBox(idBox);
+    }
+    public Box assegnaBox(Long idCliente){
         //TODO da implementare --Ric
+        return serviceBox.assegnaBox(idCliente);
+    }
+    public boolean turnOffLocker(Long idLocker){
+        repoLocker.findOneById(idLocker).turnOffLocker();
         return true;
     }
-    public boolean attivaBox(Long uuidBox){
-        //TODO da implementare? l'ho inserito perché mi sembrava giusto ci fosse, poi vediamo --Ric
-        return true;
-    }
-    public Box assegnaBox(Long uuidCliente){
-        //TODO da implementare --Ric
-        return serviceBox.assegnaBox(uuidCliente);
-    }
-    public boolean turnOffLocker(Long uuidLocker){
-        //TODO da implementare --Ric
-        return true;
-    }
-    public boolean turnOnLocker(Long uuidLocker){
-        //TODO da implementare --Ric
+    public boolean turnOnLocker(Long idLocker){
+        repoLocker.findOneById(idLocker).turnOnLocker();
         return true;
     }
 }

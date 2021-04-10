@@ -1,5 +1,6 @@
 package it.arrp.c3.Model;
 
+import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.StatoBox;
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Locker {
     private int longitudine;
     private int latitudine;
     private int numeroBox;
+    private Accensione statoAccensioneLocker = Accensione.Acceso;
     /** Lista dei box che sono contenuti nel Locker */
     private ArrayList<Box> listaBox;
 
@@ -34,6 +36,13 @@ public class Locker {
         this.latitudine = latitudine;
         this.numeroBox = numeroBox;
         this.listaBox = new ArrayList<>();
+    }
+
+    public void turnOnLocker(){
+        this.statoAccensioneLocker= Accensione.Acceso;
+    }
+    public void turnOffLocker(){
+        this.statoAccensioneLocker= Accensione.Spento;
     }
 
     /**

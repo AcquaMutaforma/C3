@@ -38,8 +38,7 @@ public class ServiceCorsa {
         List<Box> idLocker = serviceCliente.getBoxCliente(uuidCliente);
         //assegnaCorsa();
         //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
-        Corsa corsa = new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
-        return corsa;
+        return new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
     }
 
     public void rifiutaCorsa(Long idCorriere, Long idCorsa) {

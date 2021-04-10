@@ -5,8 +5,6 @@ import it.arrp.c3.Model.Repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Box.
  */
@@ -43,12 +41,12 @@ public class ServiceBox {
         b.avanzaStato();
         return true;
     }
-    public boolean turnOffBox(UUID uuidBox){
-        //TODO da implementare --Ric
+    public boolean turnOffBox(Long idBox){
+        repoBox.findOneById(idBox).turnOffBox();
         return true;
     }
-    public boolean turnOnBox(UUID uuidBox){
-        //TODO da implementare --Ric
+    public boolean turnOnBox(Long idBox){
+        repoBox.findOneById(idBox).turnOnBox();
         return true;
     }
 
