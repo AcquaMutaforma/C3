@@ -17,22 +17,21 @@ public class ServiceCliente {
     @Autowired
     ClienteRepository repoCliente;
 
-    //TODO troppi repo.. ho toppato, vanno modificati i metodi per farli parlare con i service invece che
-    // i repository >-<  --A
+    //TODO Ho demandato tutto ai relativi service, dw --Ric
 
     @Autowired
-    BoxRepository repoBox;
+    ServiceBox serviceBox;
     @Autowired
-    LockerRepository repoLocker;
+    ServiceLocker serviceLocker;
     @Autowired
-    CorriereRepository repoCorriere;
+    ServiceCorriere serviceCorriere;
     @Autowired
-    NegozioRepository repoNegozio;
+    ServiceNegozio serviceNegozio;
     @Autowired
     ServiceMessaggio servMessaggio;
 
     public boolean setCheckpoint(Long idCliente, Long idLocker){
-        Locker locker = repoLocker.findOneById(idLocker); //todo il service deve farlo, non il repo >.< -A
+        Locker locker = serviceLocker.getLockerById(idLocker);
         if(locker == null)
             return false;
         Cliente cliente = repoCliente.findOneById(idCliente);
@@ -77,7 +76,7 @@ public class ServiceCliente {
         Cliente c = getCliente(idCliente);
         if(c == null)
             return null;
-        Box b = repoBox.findOneById(idBox); //todo il service deve farlo, non il repo >.< -A
+        Box b = serviceBox.getBox(idBox);
         if(b == null)
             return null;
         if(c.getBoxAssegnati().contains(b)){
@@ -100,7 +99,7 @@ public class ServiceCliente {
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
         Cliente c = repoCliente.findOneById(idCliente);
-        repoCorriere.save(new Corriere(idCliente,mdt)); //todo il service deve farlo, non il repo >.< -A
+        serviceCorriere.salvaRuoloCorriere(idCliente,mdt);
         c.aggiungiRuolo("Corriere");
     }
 
@@ -111,7 +110,7 @@ public class ServiceCliente {
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);
-        repoNegozio.save(new Negozio(idCliente, nomeNegozio, cittaNegozio, genere)); //todo il service deve farlo, non il repo >.< -A
+        serviceNegozio.salvaRuoloNegozio(idCliente, nomeNegozio, cittaNegozio, genere);
         c.aggiungiRuolo("Negozio");
     }
 

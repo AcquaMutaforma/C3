@@ -34,6 +34,8 @@ public class ServiceNegozio {
         return serviceNegozio.addCorriere(idNegozio, idCorriere);
     }
 
+
+
     //TODO Modificato, ora chiamano una piccola funzione che controlla l'input (nome orrendo) --Ric
     public boolean removeCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
@@ -99,5 +101,9 @@ public class ServiceNegozio {
         if(n == null)
             return null;
         return n.getListaCorrieriAssunti();
+    }
+
+    public void salvaRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
+        repoNegozio.save(new Negozio(idCliente,nomeNegozio,cittaNegozio,genere));
     }
 }

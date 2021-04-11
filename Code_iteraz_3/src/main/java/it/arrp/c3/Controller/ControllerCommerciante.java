@@ -16,9 +16,9 @@ public class ControllerCommerciante {
     ServiceNegozio serviceNegozio;
 
     @PostMapping("/commerciante/creaCorsa")
-    public void creaCorsa(@RequestParam Long uuidCliente, @RequestParam Long uuidNegozio){
-        //TODO da finire
-        if (serviceNegozio.creaCorsa(uuidCliente,uuidNegozio)){
+    public void creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
+        //TODO da finire? potremmo anche togliere l'if e lasciare tutto con la chiamata a creaCorsa... --Ric
+        if (serviceNegozio.creaCorsa(idCliente,idNegozio)){
             //stampa qualcosa, è andato tutto bene
         }
         else{

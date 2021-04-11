@@ -27,6 +27,14 @@ public class ServiceBox {
     public void generaChiave(){
         //TODO da implementare (da aggiungere un getChiave a questo punto?) --Ric
     }
+
+    public  boolean unlock(Box box){
+        if (box!=null){
+            box.unlock();
+            return true;}
+        return false;
+    }
+
     public boolean unlock(Long idBox) {
         Box b = repoBox.findOneById(idBox);
         if (b != null){

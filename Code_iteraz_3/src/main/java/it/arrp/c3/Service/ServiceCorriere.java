@@ -21,10 +21,6 @@ public class ServiceCorriere {
     @Autowired
     CorriereRepository repoCorriere;
     @Autowired
-    CorsaRepository repoCorsa;
-    @Autowired
-    BoxRepository repoBox;
-    @Autowired
     ServiceCorsa serviceCorsa;
     @Autowired
     ServiceBox serviceBox;
@@ -57,7 +53,8 @@ public class ServiceCorriere {
 
     public void assegnaCorsa(Corsa corsa, Long idCorriere) {
         Corriere corriere=getCorriere(idCorriere);
-        //TODO da implementare --Ric
+        corriere.addNuovaCorsa(corsa);
+        //TODO da verificare... può andare bene cosí? --Ric
     }
 
     public Corriere getCorriere(Long uuidCorriere){
@@ -74,13 +71,17 @@ public class ServiceCorriere {
         //TODO non mi piace come lo ho fatto, riguardare --aley
         if(getCorsa(idCorriere,idCorsa) != null){
             //sblocco il box
-            Corsa c = repoCorsa.findOneById(idCorsa);
-            Box b = repoBox.findOneById(c.getIdBox());
-            serviceBox.unlock(b.getIdBox());
+            Corsa c = serviceCorsa.getCorsaById(idCorsa);
+            Box box = serviceBox.getBox(c.getIdBox());
+            serviceBox.unlock(box);
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);
-            return b;
+            return box;
         }
         return null;
+    }
+
+    public void salvaRuoloCorriere(Long idCliente, String mdt) {
+        repoCorriere.save(new Corriere(idCliente,mdt));
     }
 }

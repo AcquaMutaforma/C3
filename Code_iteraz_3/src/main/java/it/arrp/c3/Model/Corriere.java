@@ -36,6 +36,12 @@ public class Corriere extends Ruolo {
         return true;
     }
 
+    public void addNuovaCorsa(Corsa corsa){
+        if (corsa!=null)
+            listaCorse.add(corsa);
+        //TODO da aggiungere la modalitá di notifica --Ric
+    }
+
     public void addNegozio(Long idNegozio){
         //TODO
     }

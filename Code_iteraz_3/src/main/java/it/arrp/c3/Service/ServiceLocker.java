@@ -36,6 +36,10 @@ public class ServiceLocker {
         return null;
     }
 
+    public Locker getLockerById(Long idLocker){
+        return repoLocker.findOneById(idLocker);
+    }
+
     public boolean disattivaBox(Long idBox){
         return  serviceBox.turnOffBox(idBox);
     }

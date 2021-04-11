@@ -30,15 +30,16 @@ public class ServiceCorsa {
     /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
-    public Corsa creaCorsa(Long uuidCliente, Long uuidCommerciante, Long idCorriere){
+    public Corsa creaCorsa(Long idCliente, Long idCommerciante, Long idCorriere){
         //TODO Dovrebbe prendere anche il box in cui andare? idk --Ric
         //TODO da implementare --Ric
 
-        Pacco pacco =servicePacco.creaPacco(uuidCliente,uuidCommerciante);
-        List<Box> idLocker = serviceCliente.getBoxCliente(uuidCliente);
-        //assegnaCorsa();
+        Pacco pacco =servicePacco.creaPacco(idCliente,idCommerciante);
+        List<Box> idLocker = serviceCliente.getBoxCliente(idCliente);
+        Corsa corsa = new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
+        assegnaCorsa(corsa,idCorriere);
         //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
-        return new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
+        return corsa;
     }
 
     public void rifiutaCorsa(Long idCorriere, Long idCorsa) {
@@ -52,9 +53,13 @@ public class ServiceCorsa {
         assegnaCorsa(repoCorsa.findOneById(idCorsa));
     }
 
-    public void assegnaCorsa(Corsa c){
+    public void assegnaCorsa(Corsa corsa){
+        //TODO da implementare per assegnare la corsa dopo essere stata rifiutata da qualcuno --Ric
+    }
+
+    public void assegnaCorsa(Corsa corsa, Long idCorriere){
         //TODO se c è presente nella lista delle corse rifiutate allora cerco un
-        //serviceCorriere.assegnaCorsa();
+        serviceCorriere.assegnaCorsa(corsa, idCorriere);
     }
 
     /** Metodo per segnare come completa una corsa che prima era stata completata
@@ -64,7 +69,13 @@ public class ServiceCorsa {
     }
 
     public void corsaCompletata(Long idCorsa){
+//        if (corseRifiutate.containsValue(idCorsa))
+//            corsaRifiutataCompletata(0L); //TODO implementare un controllo simile, forse c'é un piccolo problema con la mappa però --Ric
         //TODO
+    }
+
+    public Corsa getCorsaById(Long idCorsa) {
+        return repoCorsa.findOneById(idCorsa);
     }
 
     //TODO manca un metodo "svuota cache" per eliminare le corse rifiutate mai effettuate
