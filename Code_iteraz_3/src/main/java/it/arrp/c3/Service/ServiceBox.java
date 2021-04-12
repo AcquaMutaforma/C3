@@ -20,19 +20,9 @@ public class ServiceBox {
         //TODO da implementare --Ric
         return new Box();
     }
-    public boolean liberaBox(){
+    public boolean liberaBox(Long idBox){
         //TODO da implementare (forse diventa void?) --Ric
         return true;
-    }
-    public void generaChiave(){
-        //TODO da implementare (da aggiungere un getChiave a questo punto?) --Ric
-    }
-
-    public  boolean unlock(Box box){
-        if (box!=null){
-            box.unlock();
-            return true;}
-        return false;
     }
 
     public boolean unlock(Long idBox) {

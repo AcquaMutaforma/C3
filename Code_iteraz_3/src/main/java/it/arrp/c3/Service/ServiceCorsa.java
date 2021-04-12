@@ -42,6 +42,10 @@ public class ServiceCorsa {
         return corsa;
     }
 
+    /*
+    Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
+    rifiutata, cosi' da non assegnarla di nuovo a lui.
+     */
     public void rifiutaCorsa(Long idCorriere, Long idCorsa) {
         if(this.corseRifiutate.get(idCorriere) == null){
             List<Long> l = new ArrayList<>();
@@ -50,10 +54,10 @@ public class ServiceCorsa {
         }else{
             this.corseRifiutate.get(idCorriere).add(idCorsa);
         }
-        assegnaCorsa(repoCorsa.findOneById(idCorsa));
+        riassegnaCorsaRifiutata(repoCorsa.findOneById(idCorsa));
     }
 
-    public void assegnaCorsa(Corsa corsa){
+    public void riassegnaCorsaRifiutata(Corsa corsa){
         //TODO da implementare per assegnare la corsa dopo essere stata rifiutata da qualcuno --Ric
     }
 
@@ -62,7 +66,7 @@ public class ServiceCorsa {
         serviceCorriere.assegnaCorsa(corsa, idCorriere);
     }
 
-    /** Metodo per segnare come completa una corsa che prima era stata completata
+    /** Metodo per segnare come completa una corsa che prima era stata rifiutata
      * quindi elimino lo spazio utilizzato */
     public void corsaRifiutataCompletata(Long idCliente){//TODO cambiare nome al metodo, è molto confusionario --Ric
         this.corseRifiutate.remove(idCliente);

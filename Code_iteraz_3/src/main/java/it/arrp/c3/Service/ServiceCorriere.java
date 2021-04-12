@@ -10,6 +10,7 @@ import it.arrp.c3.Model.Repository.CorsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,16 +73,24 @@ public class ServiceCorriere {
         if(getCorsa(idCorriere,idCorsa) != null){
             //sblocco il box
             Corsa c = serviceCorsa.getCorsaById(idCorsa);
-            Box box = serviceBox.getBox(c.getIdBox());
-            serviceBox.unlock(box);
+            serviceBox.unlock(c.getIdBox());
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);
-            return box;
+            return serviceBox.getBox(c.getIdBox());
         }
         return null;
     }
 
     public void salvaRuoloCorriere(Long idCliente, String mdt) {
         repoCorriere.save(new Corriere(idCliente,mdt));
+    }
+
+    //TODO da valutare, dato che tecnicamente la responsabilita' sarebbe la sua probabilmente dovrebbe stare qui -A
+    public Long getCorriereDisponibile(ArrayList<Corriere> listaCorrieriAssunti){
+        for(Corriere c : listaCorrieriAssunti){
+            if(c.getStato() == StatoCorriere.Attivo)
+                return c.getIdCLiente();
+        }
+        return null;
     }
 }

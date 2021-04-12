@@ -15,15 +15,17 @@ public class ControllerCommerciante {
     @Autowired
     ServiceNegozio serviceNegozio;
 
+    /**
+     * creaCorsa 2.0 - Il commerciante inserisce i dati e tramite questo controller li manda al service di
+     * competenza, se il service completa l'operazione allora OK. Altrimenti ritorna al controller e poi alla view
+     * il motivo di fallimento dell'operazione. Poi sarà compito del commerciante adeguarsi al problema riscontrato.
+     * Esempio 1: il commerciante inserisce male uno dei 2 id, il service ritornera' "ID non trovato" o simili
+     * Esempio 2: il cliente non ha un checkpoint o in esso non ci sono box disponibili, il service ritornera' qualcosa
+     * come "Checkpoint cliente non valido, utilizzare assegna Locker".
+     */
     @PostMapping("/commerciante/creaCorsa")
-    public void creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
-        //TODO da finire? potremmo anche togliere l'if e lasciare tutto con la chiamata a creaCorsa... --Ric
-        if (serviceNegozio.creaCorsa(idCliente,idNegozio)){
-            //stampa qualcosa, è andato tutto bene
-        }
-        else{
-            //c'è stato un errore
-        }
+    public boolean creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
+        return serviceNegozio.creaCorsa(idCliente, idNegozio);
     }
 
     @GetMapping("/commerciante/{idCommerciante}/corrieri")

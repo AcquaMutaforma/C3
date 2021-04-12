@@ -80,6 +80,7 @@ public class Corriere extends Ruolo {
     public void setStato(StatoCorriere statoCorriere) {
         this.stato = statoCorriere;
     }
+    public StatoCorriere getStato() {return stato;   }
 
     public void rimuoviCorsa(Long idCorsa) {
         this.listaCorse.remove(getCorsa(idCorsa));

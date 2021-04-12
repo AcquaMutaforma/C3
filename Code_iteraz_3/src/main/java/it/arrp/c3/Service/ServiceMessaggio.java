@@ -51,4 +51,6 @@ public class ServiceMessaggio {
     public boolean rimuoviTicket(Messaggio m){
         return false; //TODO
     }
+
+    //TODO getMessaggio etc
 }

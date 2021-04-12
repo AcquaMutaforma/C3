@@ -23,6 +23,7 @@ public class Negozio extends Ruolo {
     private GenereNegozio genereNegozio;
     private List<Prodotto> listaProdottiInEvidenza;
     private ArrayList<Corriere> listaCorrieriAssunti;
+    //TODO probabilmente le liste non dovrebbero avere il tipo, ma Long per inserire gli ID, to think --A
 
     public Negozio(Long idCliente) {
         super(idCliente);
