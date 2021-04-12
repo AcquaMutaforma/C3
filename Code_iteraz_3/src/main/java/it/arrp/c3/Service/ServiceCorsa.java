@@ -36,9 +36,9 @@ public class ServiceCorsa {
 
         Pacco pacco =servicePacco.creaPacco(idCliente,idCommerciante);
         List<Box> idLocker = serviceCliente.getBoxCliente(idCliente);
-        Corsa corsa = new Corsa(/*(long)Math.random()*100, */pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
-        assegnaCorsa(corsa,idCorriere);
         //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
+        Corsa corsa = new Corsa(pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
+        assegnaCorsa(corsa,idCorriere);
         return corsa;
     }
 
@@ -61,7 +61,7 @@ public class ServiceCorsa {
         //TODO da implementare per assegnare la corsa dopo essere stata rifiutata da qualcuno --Ric
     }
 
-    public void assegnaCorsa(Corsa corsa, Long idCorriere){
+    public void assegnaCorsa(Corsa corsa, Long idCorriere){ //TODO da valutare se lasciare l'oggetto intero Corsa o metterci solo l'id in modo da non "caricare troppo peso" --Ric
         //TODO se c è presente nella lista delle corse rifiutate allora cerco un
         serviceCorriere.assegnaCorsa(corsa, idCorriere);
     }

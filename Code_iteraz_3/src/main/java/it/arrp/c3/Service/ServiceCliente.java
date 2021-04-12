@@ -51,8 +51,9 @@ public class ServiceCliente {
     }
 
     public List<Box> getBoxCliente(Long uuidCliente) {
-        //TODO qui restituisce una lista perchè vogliamo inserire i pacchi anche
-        // nei box dove in teoria ci sono già oggetti comprati in precedenza? --Ric
+        //TODO non ricordo bene, me lo avevi anche detto il perché
+        // avevamo fatto cosí, ma siamo sicuri? potremmo andare a controllare il checkpoint per poi, nel caso,
+        // assegnare un box in quella lista... (o riportare un errore) --Ric
         return repoCliente.getOne(uuidCliente).getBoxAssegnati();
     }
 

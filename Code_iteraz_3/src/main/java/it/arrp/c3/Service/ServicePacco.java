@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicePacco {
 
-    public Pacco creaPacco(long uuidCliente, long uuidCommerciante){
+    public Pacco creaPacco(long idCliente, long idCommerciante){
         //TODO Da controllare la chiamata al costruttore Pacco --Ric
-        return new Pacco(/*(long)(Math.random()*100),*/uuidCommerciante,uuidCliente);
+        return new Pacco(idCommerciante,idCliente);
     }
 }

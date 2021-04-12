@@ -85,7 +85,7 @@ public class ServiceCorriere {
         repoCorriere.save(new Corriere(idCliente,mdt));
     }
 
-    //TODO da valutare, dato che tecnicamente la responsabilita' sarebbe la sua probabilmente dovrebbe stare qui -A
+    //TODO da valutare, dato che tecnicamente la responsabilita' sarebbe la sua probabilmente dovrebbe stare qui -A Concordo, anche se non mi piace molto passare tutto l'arraylist --Ric
     public Long getCorriereDisponibile(ArrayList<Corriere> listaCorrieriAssunti){
         for(Corriere c : listaCorrieriAssunti){
             if(c.getStato() == StatoCorriere.Attivo)

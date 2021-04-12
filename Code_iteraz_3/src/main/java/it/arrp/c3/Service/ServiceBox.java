@@ -13,8 +13,6 @@ public class ServiceBox {
 
     @Autowired
     BoxRepository repoBox;
-    @Autowired
-    ServiceCorsa serviceCorsa;
 
     public Box assegnaBox(Long uuidCliente){
         //TODO da implementare --Ric
