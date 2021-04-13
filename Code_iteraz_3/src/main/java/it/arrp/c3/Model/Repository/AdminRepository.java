@@ -14,6 +14,7 @@ import java.util.Random;
 public interface AdminRepository extends JpaRepository<Admin, Long> {
     Admin findOneById(Long id);
 
+    //TODO vedere se è fattibile e se funziona
     //Metodo per prendere un Admin dalla lista completa
     default Admin getRandomAdmin(){
         List<Admin> lista = findAll();

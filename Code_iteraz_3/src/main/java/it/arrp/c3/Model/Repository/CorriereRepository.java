@@ -8,5 +8,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CorriereRepository extends JpaRepository<Corriere, Long> {
+
     Corriere findOneById(Long id);
+
+    //TODO vedere se è fattibile e se funziona
+    default Corriere fineOneByNegozio(Long idNegozio){
+        //Todo
+
+        return null;
+    }
 }

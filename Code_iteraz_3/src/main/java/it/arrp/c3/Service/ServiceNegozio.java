@@ -1,6 +1,5 @@
 package it.arrp.c3.Service;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
@@ -9,11 +8,12 @@ import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti il Ruolo Negozio.
+ * Quando ci riferiamo al cliente viene chiamato IDCommerciante, mentre quando ci riferiamo
+ * al negozio come oggetto fisico usiamo IDNegozio.
  */
 @Service
 public class ServiceNegozio {
@@ -58,11 +58,13 @@ public class ServiceNegozio {
         //TODO da implementare la scelta del corriere disponibile all'interno della lista
         // (quindi controllo dello stato etc etc)--Ric
     }
-    public Boolean creaCorsa(Long idCliente, Long idCommerciante){
-        /*
+
+    /**
+     * todo descrivere bene gli int di ritorno
+     */
+    public int creaCorsa(Long idCliente, Long idCommerciante){
         if(controllaInput(idCliente, idCommerciante))
-            return "Errore: ID non valido"; //1; //errore id non valido
-         */
+            return 1; //errore id non valido
         Long idCorriere = getCorriereDisponibile(idCommerciante);
         if (idCorriere!=null){
             List<Box> box = serviceCliente.getBoxCliente(idCliente);

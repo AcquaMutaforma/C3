@@ -24,7 +24,7 @@ public class ControllerCommerciante {
      * come "Checkpoint cliente non valido, utilizzare assegna Locker".
      */
     @PostMapping("/commerciante/creaCorsa")
-    public boolean creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
+    public int creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
         return serviceNegozio.creaCorsa(idCliente, idNegozio);
     }
 
