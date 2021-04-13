@@ -22,7 +22,7 @@ public class Box{
     private Long idBox;
     private Long idCliente;
     private Locker locker;
-    private boolean chiuso;
+    private boolean chiuso; //TODO potrebb essere un enum, da valutare --ale
     private StatoBox stato;
     private Accensione statoAccensioneBox =Accensione.Acceso;
 
