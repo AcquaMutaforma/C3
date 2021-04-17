@@ -17,8 +17,6 @@ public class ServiceCliente {
     @Autowired
     ClienteRepository repoCliente;
 
-    //TODO Ho demandato tutto ai relativi service, dw --Ric
-
     @Autowired
     ServiceBox serviceBox;
     @Autowired

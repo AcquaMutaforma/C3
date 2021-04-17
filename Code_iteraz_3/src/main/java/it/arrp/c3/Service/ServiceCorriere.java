@@ -88,6 +88,8 @@ public class ServiceCorriere {
     //TODO da valutare, dato che tecnicamente la responsabilita' sarebbe la sua probabilmente dovrebbe stare qui -A Concordo, anche se non mi piace molto passare tutto l'arraylist --Ric
     public Long getCorriereDisponibile(ArrayList<Corriere> listaCorrieriAssunti){
         for(Corriere c : listaCorrieriAssunti){
+            //TODO potremmo fare questo ciclo for nel service negozio e la verifica del caso potrebbe essere
+            // gestita quí ritornando un boolean... che ne dici? --Ric
             if(c.getStato() == StatoCorriere.Attivo)
                 return c.getIdCLiente();
         }

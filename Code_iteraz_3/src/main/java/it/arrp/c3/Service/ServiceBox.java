@@ -14,7 +14,7 @@ public class ServiceBox {
     @Autowired
     BoxRepository repoBox;
 
-    public Box assegnaBox(Long uuidCliente){
+    public Box assegnaBox(Long idCliente){
         //TODO da implementare --Ric
         return new Box();
     }

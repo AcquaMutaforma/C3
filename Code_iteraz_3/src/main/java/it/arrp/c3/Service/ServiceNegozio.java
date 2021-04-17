@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Negozio;
@@ -35,9 +36,6 @@ public class ServiceNegozio {
         return serviceNegozio.addCorriere(idNegozio, idCorriere);
     }
 
-
-
-    //TODO Modificato, ora chiamano una piccola funzione che controlla l'input (nome orrendo) --Ric
     public boolean removeCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
             return false;
@@ -47,7 +45,7 @@ public class ServiceNegozio {
     private boolean controllaInput(Long idNegozio, Long idCorriere) {
         Negozio neg = repoNegozio.findOneById(idNegozio);
         Corriere corr = serviceCorriere.getCorriere(idCorriere);
-        return neg == null && corr == null;
+        return neg == null || corr == null;
     }
 
     public Long getCorriereDisponibile(Long idCommerciante){
@@ -60,21 +58,31 @@ public class ServiceNegozio {
     }
 
     /**
-     * todo descrivere bene gli int di ritorno
+     * Questo metodo chiede di generare una corsa al relativo service.
+     *
+     * Returns 1 se non ci sono stati problemi, 0 se il cliente non ha box assegnati, -1 se non vi é
+     * nessun corriere disponibile e -2 se uno dei codici identificativi é errato.
+     * todo descrivere bene gli int di ritorno          Fatto nella documentazione, credo -R
      */
     public int creaCorsa(Long idCliente, Long idCommerciante){
-        if(controllaInput(idCliente, idCommerciante))
-            return 1; //errore id non valido
+        if(controllaInputCorsa(idCliente, idCommerciante))
+            return -2; //errore id non valido
         Long idCorriere = getCorriereDisponibile(idCommerciante);
         if (idCorriere!=null){
             List<Box> box = serviceCliente.getBoxCliente(idCliente);
             if (box!=null){
                 serviceCorsa.creaCorsa(idCliente,idCommerciante, idCorriere);
-                return true;
+                return 1;
             }
-            return false;
+            return 0;
         }
-        return false; //di conseguenza la consegna viene negata
+        return -1; //di conseguenza la consegna viene negata
+    }
+
+    private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {
+        Cliente cliente = serviceCliente.getCliente(idCliente);
+        Negozio commerciante = repoNegozio.findOneById(idCommerciante);
+        return cliente == null || commerciante == null;
     }
 
     private Negozio getNegozioById(Long idNegozio){

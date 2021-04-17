@@ -36,7 +36,7 @@ public class ServiceCorsa {
 
         Pacco pacco =servicePacco.creaPacco(idCliente,idCommerciante);
         List<Box> idLocker = serviceCliente.getBoxCliente(idCliente);
-        //TODO Da implementare la chiamata sottostante, l'ho fatta a tirar via per poter andare un pelo avanti --Ric
+        //TODO Da implementare la chiamata sottostante --Ric
         Corsa corsa = new Corsa(pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
         assegnaCorsa(corsa,idCorriere);
         return corsa;
