@@ -4,9 +4,7 @@ import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Corsa;
 import it.arrp.c3.Model.Enum.StatoCorriere;
-import it.arrp.c3.Model.Repository.BoxRepository;
 import it.arrp.c3.Model.Repository.CorriereRepository;
-import it.arrp.c3.Model.Repository.CorsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +70,7 @@ public class ServiceCorriere {
         //TODO non mi piace come lo ho fatto, riguardare --aley
         if(getCorsa(idCorriere,idCorsa) != null){
             //sblocco il box
-            Corsa c = serviceCorsa.getCorsaById(idCorsa);
+            Corsa c = serviceCorsa.getCorsa(idCorsa);
             serviceBox.unlock(c.getIdBox());
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);

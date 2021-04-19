@@ -48,11 +48,15 @@ public class ServiceCliente {
         }
     }
 
+    public void rimuoviBox(Long idCliente, Box idBoxAssegnato){
+        //TODO metodo che rimuove il box e locker dalla lista del cliente dopo aver ritirato il pacco -A
+    }
+
     public List<Box> getBoxCliente(Long uuidCliente) {
         //TODO non ricordo bene, me lo avevi anche detto il perché
         // avevamo fatto cosí, ma siamo sicuri? potremmo andare a controllare il checkpoint per poi, nel caso,
         // assegnare un box in quella lista... (o riportare un errore) --Ric
-        return repoCliente.getOne(uuidCliente).getBoxAssegnati();
+        return repoCliente.findOneById(uuidCliente).getBoxAssegnati();
     }
 
     public Cliente getCliente(Long id) {
@@ -106,6 +110,8 @@ public class ServiceCliente {
         Cliente cliente = repoCliente.findOneById(idCliente);
         cliente.aggiungiRuolo("Tecnico");
     }
+
+    //TODO aggiungiAdmin come viene fatto? to check -A
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);

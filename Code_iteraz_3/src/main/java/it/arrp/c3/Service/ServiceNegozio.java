@@ -55,28 +55,42 @@ public class ServiceNegozio {
         return serviceCorriere.getCorriereDisponibile(negozio.getListaCorrieriAssunti());
         //TODO da implementare la scelta del corriere disponibile all'interno della lista
         // (quindi controllo dello stato etc etc)--Ric
+
+        //todo lo avevo fatto cosi' ma ho trovato la necessita di fare getListaCorrieriDisponibili
+        // quindi sara' da correggere questo -A
+    }
+
+    public List<Long> getListaCorrieriDisponibili(Long idNegozio){
+        //TODO
+        return null;
     }
 
     /**
      * Questo metodo chiede di generare una corsa al relativo service.
+     * Returns 1 se non ci sono stati problemi
+     * Returns 0 se il cliente non ha box assegnati
+     * Returns -1 se non vi e' nessun corriere disponibile
+     * Returns -2 se uno dei codici identificativi é errato
      *
-     * Returns 1 se non ci sono stati problemi, 0 se il cliente non ha box assegnati, -1 se non vi é
-     * nessun corriere disponibile e -2 se uno dei codici identificativi é errato.
-     * todo descrivere bene gli int di ritorno          Fatto nella documentazione, credo -R
+     * Nota: Gli input e oggetti utilizzati vengono controllati qui e in caso positivo service corsa si
+     * occupa di avviare il tutto, senza ricontrollare i dati.
+     *
+     * TODO nel VPP il serviceCliente controlla il checkpoint e in caso positivo ritorna un box assegnato
      */
-    public int creaCorsa(Long idCliente, Long idCommerciante){
-        if(controllaInputCorsa(idCliente, idCommerciante))
+    public int creaCorsa(Long idCliente, Long idNegozio){
+        if(controllaInputCorsa(idCliente, idNegozio))
             return -2; //errore id non valido
-        Long idCorriere = getCorriereDisponibile(idCommerciante);
+        Long idCorriere = getCorriereDisponibile(idNegozio);
         if (idCorriere!=null){
             List<Box> box = serviceCliente.getBoxCliente(idCliente);
             if (box!=null){
-                serviceCorsa.creaCorsa(idCliente,idCommerciante, idCorriere);
+                //serviceCorsa.creaCorsa(idNegozio,);
                 return 1;
             }
             return 0;
         }
         return -1; //di conseguenza la consegna viene negata
+        //TODO assegnare il box subito
     }
 
     private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {
@@ -120,4 +134,7 @@ public class ServiceNegozio {
     public void salvaRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         repoNegozio.save(new Negozio(idCliente,nomeNegozio,cittaNegozio,genere));
     }
+
+    public Negozio getNegozio(Long id){ return repoNegozio.findOneById(id); }
+
 }

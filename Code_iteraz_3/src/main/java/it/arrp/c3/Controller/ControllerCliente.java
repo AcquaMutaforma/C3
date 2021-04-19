@@ -29,11 +29,17 @@ public class ControllerCliente{
         return servClie.getCliente(idCliente);
     }
 
+    /*Forse non e' bellissimo il tipo di ritorno, ma con questo la view che non abbiamo potrebbe
+    * avere meno problemi a visualizzare il tutto, e non deve richiedere i box un'altra volta */
     @GetMapping("/cliente/{idCliente}/boxes")
     public List<Box> getLockerAssegnati(@PathVariable Long idCliente){
         return servClie.getBoxCliente(idCliente);
     }
 
+    /*
+    Non e' bellissimo che ritorni il box, ma fa comodo per "visualizzare" l'apertura o meno del box.
+    todo: si potrebbe cambiare tipo di ritorno una volta che funziona
+     */
     @GetMapping("/cliente/{idCliente}/boxes/open/{idBox}")
     public Box apriBoxAssegnato(@PathVariable Long idCliente, @PathVariable Long idBox){
         return servClie.apriBox(idCliente, idBox);
@@ -52,4 +58,5 @@ public class ControllerCliente{
     }
 
     //TODO extra: la modifica dei dati come l'autenticazione è qualcosa di moooolto superfluo quindi lo saltiamo credo
+    //TODO extra: manca un metodo per vedere i ruoli di un cliente
 }

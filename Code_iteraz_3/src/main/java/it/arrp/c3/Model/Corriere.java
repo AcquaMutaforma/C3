@@ -18,6 +18,7 @@ public class Corriere extends Ruolo {
     private String mezzoDiTrasporto;
     private ArrayList<Negozio> listaNegoziCollegati;
     private ArrayList<Corsa> listaCorse;
+    //TODO extra: forse potrebbe essere comodo inserire una lista di corse completate o un contatore, e' superfluo -A
 
     public Corriere(Long idCliente) {
         super(idCliente);
@@ -31,9 +32,8 @@ public class Corriere extends Ruolo {
         this.listaNegoziCollegati = new ArrayList<>();
     }
 
-    public boolean rimuoviNegozio(Long idNegozio) {
-        //TODO da implementare.
-        return true;
+    public boolean rimuoviNegozio(Long idCorriere, Negozio negozio) {
+        return this.listaNegoziCollegati.remove(negozio);
     }
 
     public void addNuovaCorsa(Corsa corsa){

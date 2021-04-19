@@ -1,6 +1,8 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Pacco;
+import it.arrp.c3.Model.Repository.PaccoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,8 +11,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicePacco {
 
+    @Autowired
+    PaccoRepository paccoRepo;
+
     public Pacco creaPacco(long idCliente, long idCommerciante){
         //TODO Da controllare la chiamata al costruttore Pacco --Ric
         return new Pacco(idCommerciante,idCliente);
+    }
+
+    public Pacco getPacco(Long id){
+        return paccoRepo.findOneById(id);
     }
 }

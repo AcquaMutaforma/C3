@@ -1,7 +1,8 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Corsa;
+import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Pacco;
 import it.arrp.c3.Model.Repository.CorsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,70 +18,87 @@ import java.util.Map;
  */
 @Service
 public class ServiceCorsa {
-
     @Autowired
-    ServiceCliente serviceCliente;
+    CorsaRepository repoCorsa;
+
     @Autowired
     ServicePacco servicePacco;
     @Autowired
     ServiceCorriere serviceCorriere;
     @Autowired
-    CorsaRepository repoCorsa;
+    ServiceNegozio serviceNegozio;
 
     /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
-    public Corsa creaCorsa(Long idCliente, Long idCommerciante, Long idCorriere){
-        //TODO Dovrebbe prendere anche il box in cui andare? idk --Ric
-        //TODO da implementare --Ric
-
-        Pacco pacco =servicePacco.creaPacco(idCliente,idCommerciante);
-        List<Box> idLocker = serviceCliente.getBoxCliente(idCliente);
-        //TODO Da implementare la chiamata sottostante --Ric
-        Corsa corsa = new Corsa(pacco.getIdPacco(),idLocker.get(0).getLocker().getId(),idCorriere);
+    /**
+     * Metodo che si occupa di inizializzare una corsa.
+     * Nota: gli input vengono gia' controllati dal service negozio, quindi non li controlliamo di nuovo,
+     * il box viene assegnato al cliente da serviceNegozio.
+     */
+    public void creaCorsa(Long idNegozio, Long idCorriere, Long idCliente, Long idBox){
+        Pacco pacco = servicePacco.creaPacco(idCliente,idNegozio);
+        Corsa corsa = new Corsa(pacco.getIdPacco(), idBox, idCorriere);
         assegnaCorsa(corsa,idCorriere);
-        return corsa;
     }
 
-    /*
-    Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
-    rifiutata, cosi' da non assegnarla di nuovo a lui.
+    /** Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
+     * rifiutata, cosi' da non assegnarla di nuovo a lui.
      */
     public void rifiutaCorsa(Long idCorriere, Long idCorsa) {
-        if(this.corseRifiutate.get(idCorriere) == null){
-            List<Long> l = new ArrayList<>();
-            l.add(idCorriere);
-            this.corseRifiutate.put(idCorsa, l);
-        }else{
-            this.corseRifiutate.get(idCorriere).add(idCorsa);
+        Corsa c = getCorsa(idCorsa);
+        List<Long> listaCorrieri;
+        if(this.corseRifiutate.containsKey(idCorsa)) {
+            listaCorrieri = this.corseRifiutate.get(idCorsa);
+            listaCorrieri.add(c.getIdCorriere());
+            this.corseRifiutate.replace(idCorsa, listaCorrieri);
+        }else {
+            listaCorrieri = new ArrayList<>();
+            listaCorrieri.add(c.getIdCorriere());
+            this.corseRifiutate.put(idCorsa,listaCorrieri);
         }
-        riassegnaCorsaRifiutata(repoCorsa.findOneById(idCorsa));
+        riassegnaCorsaRifiutata(c);
     }
 
     public void riassegnaCorsaRifiutata(Corsa corsa){
-        //TODO da implementare per assegnare la corsa dopo essere stata rifiutata da qualcuno --Ric
+        Pacco p = servicePacco.getPacco(corsa.getIdPacco());
+        Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());
+        List<Long> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio.getIdCLiente());
+        List<Long> listaCorrieriNo = this.corseRifiutate.get(corsa.getIdCorsa());
+        for( Long corr : listaCorrieriNo){
+            listaDisponibili.remove(corr);
+        }
+        if(!listaDisponibili.isEmpty()){
+            Long nuovoCorriere = listaDisponibili.get(0);
+            corsa.setIdCorriere(nuovoCorriere);
+            assegnaCorsa(corsa, nuovoCorriere);
+        }else{
+            //todo mo so tanti cazzi: notifica per Negoziante e Cliente(credo) poi unlock del box che era stato prenotato
+        }
+
     }
 
-    public void assegnaCorsa(Corsa corsa, Long idCorriere){ //TODO da valutare se lasciare l'oggetto intero Corsa o metterci solo l'id in modo da non "caricare troppo peso" --Ric
-        //TODO se c è presente nella lista delle corse rifiutate allora cerco un
+    public void assegnaCorsa(Corsa corsa, Long idCorriere){
+        //TODO da valutare se lasciare l'oggetto intero Corsa o metterci solo l'id in modo da non "caricare troppo peso" --Ric
         serviceCorriere.assegnaCorsa(corsa, idCorriere);
     }
 
     /** Metodo per segnare come completa una corsa che prima era stata rifiutata
-     * quindi elimino lo spazio utilizzato */
-    public void corsaRifiutataCompletata(Long idCliente){//TODO cambiare nome al metodo, è molto confusionario --Ric
+     * quindi elimino lo spazio utilizzato.
+     * Corsa Rifiutata e' stata Completata
+     * todo: non ho idee per il nome, come la metti e' ambiguo -A
+     */
+    public void corsaRCompletata(Long idCliente){
         this.corseRifiutate.remove(idCliente);
     }
 
     public void corsaCompletata(Long idCorsa){
-//        if (corseRifiutate.containsValue(idCorsa))
-//            corsaRifiutataCompletata(0L); //TODO implementare un controllo simile, forse c'é un piccolo problema con la mappa però --Ric
+        if(corseRifiutate.containsValue(idCorsa))
+            corsaRCompletata(idCorsa);
         //TODO
     }
 
-    public Corsa getCorsaById(Long idCorsa) {
-        return repoCorsa.findOneById(idCorsa);
-    }
+    public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }
 
     //TODO manca un metodo "svuota cache" per eliminare le corse rifiutate mai effettuate
 
