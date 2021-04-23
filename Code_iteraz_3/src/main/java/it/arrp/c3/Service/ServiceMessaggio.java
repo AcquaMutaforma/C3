@@ -52,5 +52,10 @@ public class ServiceMessaggio {
         return false; //TODO
     }
 
+    public void nuovaNotifica(Long idCLiente, String s){
+        //TODO creazione e invio della notifica -A
+    }
+
+
     //TODO getMessaggio etc
 }

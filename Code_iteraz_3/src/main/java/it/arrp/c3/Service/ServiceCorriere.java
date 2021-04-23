@@ -32,6 +32,7 @@ public class ServiceCorriere {
         return repoCorriere.findOneById(idCorriere).getCorsa(idCorsa);
     }
 
+    //forse il return dovrebbe essere void, ma fa comodo per verificare subito l'effetto dell'operazione
     public List<Corsa> rifiutaCorsa(Long idCorriere, Long idCorsa){
         Corriere corr = repoCorriere.findOneById(idCorriere);
         if(corr == null)
@@ -39,7 +40,7 @@ public class ServiceCorriere {
         if(corr.getCorsa(idCorsa) == null) {
             return null;
         }else {
-            serviceCorsa.rifiutaCorsa(idCorriere, idCorsa); //TODO controllare che faccia le cose giuste
+            serviceCorsa.rifiutaCorsa(idCorriere, idCorsa);
             corr.rimuoviCorsa(idCorsa);
         }
         return corr.getAllCorse();
@@ -50,8 +51,9 @@ public class ServiceCorriere {
         return c;
     }
 
+    //input controllato da service Negozio
     public void assegnaCorsa(Corsa corsa, Long idCorriere) {
-        Corriere corriere=getCorriere(idCorriere);
+        Corriere corriere = getCorriere(idCorriere);
         corriere.addNuovaCorsa(corsa);
         //TODO da verificare... può andare bene cosí? --Ric
     }
@@ -74,9 +76,14 @@ public class ServiceCorriere {
             serviceBox.unlock(c.getIdBox());
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);
+            completaCorsa(getCorriere(idCorriere),idCorsa);
             return serviceBox.getBox(c.getIdBox());
         }
         return null;
+    }
+
+    private void completaCorsa(Corriere corriere, Long idCorsa) {
+        //TODO
     }
 
     public void salvaRuoloCorriere(Long idCliente, String mdt) {

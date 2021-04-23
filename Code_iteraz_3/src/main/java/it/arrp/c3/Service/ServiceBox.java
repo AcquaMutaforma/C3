@@ -18,9 +18,8 @@ public class ServiceBox {
         //TODO da implementare --Ric
         return new Box();
     }
-    public boolean liberaBox(Long idBox){
-        //TODO da implementare (forse diventa void?) --Ric
-        return true;
+    public void liberaBox(Long idBox){
+        //TODO da implementare --Ric
     }
 
     public boolean unlock(Long idBox) {

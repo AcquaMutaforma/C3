@@ -100,23 +100,6 @@ public class Locker {
         return listaBox.remove(b);
     }
 
-    /**
-     * recupera un box dalla lista dei box che abbia stato libero
-     *
-     * @return Box con stato = libero, altrimenti null.
-     */
-    public Box getBoxDisponibile() {
-        //TODO da aggiornare, questo è vecchio come la morte
-        Iterator<Box> iter = listaBox.iterator();
-        Box b;
-        while (iter.hasNext()){
-            b = iter.next();
-            if(b.getStato() == StatoBox.Libero)
-                return b;
-        }
-        return null;
-    }
-
     @Override
     public String toString() {
         return "Locker{" +

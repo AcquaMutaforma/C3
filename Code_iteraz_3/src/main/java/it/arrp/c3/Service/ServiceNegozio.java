@@ -29,6 +29,8 @@ public class ServiceNegozio {
     ServiceCliente serviceCliente;
     @Autowired
     ServiceCorsa serviceCorsa;
+    @Autowired
+    ServiceLocker serviceLocker;
 
     public boolean addCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
@@ -82,15 +84,12 @@ public class ServiceNegozio {
             return -2; //errore id non valido
         Long idCorriere = getCorriereDisponibile(idNegozio);
         if (idCorriere!=null){
-            List<Box> box = serviceCliente.getBoxCliente(idCliente);
-            if (box!=null){
-                //serviceCorsa.creaCorsa(idNegozio,);
+            Long idBox = serviceLocker.assegnaBox(idCliente);
+            if(idBox != null){
+                serviceCorsa.creaCorsa(idNegozio, idCorriere, idCliente, idBox);
                 return 1;
-            }
-            return 0;
-        }
-        return -1; //di conseguenza la consegna viene negata
-        //TODO assegnare il box subito
+            }else return 0;
+        }else return -1; //di conseguenza la consegna viene negata
     }
 
     private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {

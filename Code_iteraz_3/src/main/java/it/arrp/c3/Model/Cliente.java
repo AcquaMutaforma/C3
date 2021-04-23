@@ -117,4 +117,8 @@ public class Cliente {
         if(m!=null)
             this.notifiche.add(m);
     }
+
+    public void removeBox(Long idBox) {
+        this.boxAssegnati.removeIf(x -> x.getIdBox().equals(idBox));
+    }
 }

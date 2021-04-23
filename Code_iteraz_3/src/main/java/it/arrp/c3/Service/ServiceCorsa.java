@@ -1,6 +1,5 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Corsa;
 import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Pacco;
@@ -27,6 +26,12 @@ public class ServiceCorsa {
     ServiceCorriere serviceCorriere;
     @Autowired
     ServiceNegozio serviceNegozio;
+    @Autowired
+    ServiceMessaggio serviceMessaggio;
+    @Autowired
+    ServiceBox serviceBox;
+    @Autowired
+    ServiceCliente serviceCliente;
 
     /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
@@ -73,7 +78,16 @@ public class ServiceCorsa {
             corsa.setIdCorriere(nuovoCorriere);
             assegnaCorsa(corsa, nuovoCorriere);
         }else{
-            //todo mo so tanti cazzi: notifica per Negoziante e Cliente(credo) poi unlock del box che era stato prenotato
+            //todo: da valutare se puo' andare bene o meno il testo delle notifiche -A
+            this.corseRifiutate.remove(corsa.getIdCorsa());
+            String errore = "Impossibile eseguire corsa, i corrieri disponibili sono esauriti.";
+            serviceMessaggio.nuovaNotifica(negozio.getIdCLiente(), errore+"\nIDCorsa : "+corsa.getIdCorsa()+
+                    "\tIDCliente : "+p.getIdCliente());
+            serviceMessaggio.nuovaNotifica(p.getIdCliente(), "Impossibile eseguire la corsa, ritirare i prodotti" +
+                    "al negozio.");
+            Long idBox = corsa.getIdBox();
+            serviceCliente.getCliente(p.getIdCliente()).removeBox(idBox);
+            serviceBox.liberaBox(idBox);
         }
 
     }
@@ -92,10 +106,16 @@ public class ServiceCorsa {
         this.corseRifiutate.remove(idCliente);
     }
 
+    //TODO check gli schemi se manca qualcosa -A
     public void corsaCompletata(Long idCorsa){
-        if(corseRifiutate.containsValue(idCorsa))
+        if(corseRifiutate.containsKey(idCorsa))
             corsaRCompletata(idCorsa);
-        //TODO
+        Corsa corsa = getCorsa(idCorsa);
+        Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
+        //per il corriere ci pensa serviceCorriere
+        serviceBox.liberaBox(corsa.getIdBox());
+        //TODO modificare la notifica che ho scritto *facepalm* -A
+        serviceMessaggio.nuovaNotifica(pacco.getIdCliente(), "Corsa completata!");
     }
 
     public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }

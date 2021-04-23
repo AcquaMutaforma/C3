@@ -18,6 +18,9 @@ public class Corsa {
     private Long idCorsa;
     private Long idPacco, idBox, idCorriere; //Nota: l'IDnegozio lo peschi dal pacco di cui hai l'id
 
+    //TODO da valutare se inserire lo "stato" della corsa, come completata, fallita e onGoing(da cambiare anche i nomi)
+    // -A
+
     public Corsa() {
     }
 

@@ -85,4 +85,5 @@ public class Corriere extends Ruolo {
     public void rimuoviCorsa(Long idCorsa) {
         this.listaCorse.remove(getCorsa(idCorsa));
     }
+
 }
