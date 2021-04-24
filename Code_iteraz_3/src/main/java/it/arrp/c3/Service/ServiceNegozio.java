@@ -1,6 +1,5 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;

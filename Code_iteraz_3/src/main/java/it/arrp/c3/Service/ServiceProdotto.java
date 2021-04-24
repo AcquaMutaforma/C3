@@ -5,9 +5,6 @@ import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Model.Repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Prodotto.
@@ -18,13 +15,15 @@ public class ServiceProdotto {
     @Autowired
     ProdottoRepository repoProdotto;
 
-    @PostMapping("/prodotto/{idProdotto}")
-    public Prodotto getProdotto(@RequestParam Long id){
+    public Prodotto getProdotto( Long id){
         return repoProdotto.findOneById(id);
     }
 
-    @PostMapping("/prodotto")
-    public Prodotto creaProdotto(@RequestParam String nome, String descrizione, GenereProdotto genere){
-        return new Prodotto(nome,descrizione,genere);
+    public Prodotto creaProdotto(String nome, String descrizione, GenereProdotto genere){
+        Prodotto p = new Prodotto(nome,descrizione,genere);
+        repoProdotto.save(p); //Todo check
+        return p;
     }
+
+    //TODO add prodotto, delete prodotto ... non fa molto altro, non ci sono interazioni con altri oggetti (per ora)
 }

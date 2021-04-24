@@ -30,7 +30,8 @@ public class Cliente {
     private List<Messaggio> notifiche;
     private List<String> listaRuoli;
     private List<Box> boxAssegnati;
-    //TODO forse e' un errore avere la lista con un tipo di oggetto invece che di Long -A
+
+    //TODO bisogna creare dei controlli per dei limiti altrimenti le notifiche arrivano a infinito come i box o i ruoli
 
     public Cliente() {
     }

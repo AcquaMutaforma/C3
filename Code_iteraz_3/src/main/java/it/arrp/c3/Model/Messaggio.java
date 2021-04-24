@@ -14,16 +14,16 @@ public class Messaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idMessaggio;
-    private Long uuidFrom, uuidTo;
+    private Long idMittente, idDestinatario;
     private String messaggio;
 
     public Messaggio() {
     }
 
-    public Messaggio(Long uuidFrom, Long uuidTo, String messaggio) {
+    public Messaggio(Long idMittente, Long idDestinatario, String messaggio) {
         // automatico this.idMessaggio = idMessaggio;
-        this.uuidFrom = uuidFrom;
-        this.uuidTo = uuidTo;
+        this.idMittente = idMittente;
+        this.idDestinatario = idDestinatario;
         this.messaggio = messaggio;
     }
 
@@ -35,20 +35,20 @@ public class Messaggio {
         this.idMessaggio = idMessaggio;
     }
 
-    public Long getUuidFrom() {
-        return uuidFrom;
+    public Long getIdMittente() {
+        return idMittente;
     }
 
-    public void setUuidFrom(Long uuidFrom) {
-        this.uuidFrom = uuidFrom;
+    public void setIdMittente(Long idMittente) {
+        this.idMittente = idMittente;
     }
 
-    public Long getUuidTo() {
-        return uuidTo;
+    public Long getIdDestinatario() {
+        return idDestinatario;
     }
 
-    public void setUuidTo(Long uuidTo) {
-        this.uuidTo = uuidTo;
+    public void setIdDestinatario(Long idDestinatario) {
+        this.idDestinatario = idDestinatario;
     }
 
     public String getMessaggio() {
@@ -63,8 +63,8 @@ public class Messaggio {
     public String toString() {
         return "Messaggio{" +
                 "idMessaggio=" + idMessaggio +
-                ", uuidFrom=" + uuidFrom +
-                ", uuidTo=" + uuidTo +
+                ", uuidFrom=" + idMittente +
+                ", uuidTo=" + idDestinatario +
                 ", messaggio='" + messaggio + '\'' +
                 '}';
     }

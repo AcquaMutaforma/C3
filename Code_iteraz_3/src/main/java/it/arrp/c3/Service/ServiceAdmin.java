@@ -6,8 +6,6 @@ import it.arrp.c3.Model.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Admin.
  */
@@ -32,6 +30,9 @@ public class ServiceAdmin {
     }
 
     public Admin getAdmin(Long idAdmin){return repoAdmin.findOneById(idAdmin);}
+
+    //TODO nella fase test check se funziona quel metodo nella repositoryAdmin -A
+    public Admin getRandomAdmin(){ return repoAdmin.getRandomAdmin(); }
 
     public boolean creaTecnico(Long idCliente, Long idAdmin){
         Admin a = repoAdmin.findOneById(idAdmin);

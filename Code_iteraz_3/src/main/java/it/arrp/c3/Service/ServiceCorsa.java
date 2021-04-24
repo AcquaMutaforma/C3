@@ -19,7 +19,6 @@ import java.util.Map;
 public class ServiceCorsa {
     @Autowired
     CorsaRepository repoCorsa;
-
     @Autowired
     ServicePacco servicePacco;
     @Autowired
@@ -78,13 +77,8 @@ public class ServiceCorsa {
             corsa.setIdCorriere(nuovoCorriere);
             assegnaCorsa(corsa, nuovoCorriere);
         }else{
-            //todo: da valutare se puo' andare bene o meno il testo delle notifiche -A
             this.corseRifiutate.remove(corsa.getIdCorsa());
-            String errore = "Impossibile eseguire corsa, i corrieri disponibili sono esauriti.";
-            serviceMessaggio.nuovaNotifica(negozio.getIdCLiente(), errore+"\nIDCorsa : "+corsa.getIdCorsa()+
-                    "\tIDCliente : "+p.getIdCliente());
-            serviceMessaggio.nuovaNotifica(p.getIdCliente(), "Impossibile eseguire la corsa, ritirare i prodotti" +
-                    "al negozio.");
+            serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdCommerciante());
             Long idBox = corsa.getIdBox();
             serviceCliente.getCliente(p.getIdCliente()).removeBox(idBox);
             serviceBox.liberaBox(idBox);
@@ -107,15 +101,14 @@ public class ServiceCorsa {
     }
 
     //TODO check gli schemi se manca qualcosa -A
+    //nota: per il corriere ci pensa serviceCorriere quando sblocca il box nel locker
     public void corsaCompletata(Long idCorsa){
         if(corseRifiutate.containsKey(idCorsa))
             corsaRCompletata(idCorsa);
         Corsa corsa = getCorsa(idCorsa);
         Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
-        //per il corriere ci pensa serviceCorriere
         serviceBox.liberaBox(corsa.getIdBox());
-        //TODO modificare la notifica che ho scritto *facepalm* -A
-        serviceMessaggio.nuovaNotifica(pacco.getIdCliente(), "Corsa completata!");
+        serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());
     }
 
     public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }

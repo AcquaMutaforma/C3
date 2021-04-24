@@ -3,8 +3,6 @@ package it.arrp.c3.Service;
 import it.arrp.c3.Model.Admin;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Messaggio;
-import it.arrp.c3.Model.Repository.AdminRepository;
-import it.arrp.c3.Model.Repository.ClienteRepository;
 import it.arrp.c3.Model.Repository.MessaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,42 +16,64 @@ public class ServiceMessaggio {
     @Autowired
     MessaggioRepository repoMessaggio;
     @Autowired
-    AdminRepository repoAdmin;
+    ServiceAdmin serviceAdmin;
     @Autowired
-    ClienteRepository repoCliente;
+    ServiceCliente serviceCliente;
+
+    /**
+     * Questo metodo invia il messaggio creato dagli altri metodi.
+     */
+    private void sendMessaggio(Messaggio m){
+        Cliente destinatario = serviceCliente.getCliente(m.getIdDestinatario());
+        destinatario.aggiungiNotifica(m);
+        repoMessaggio.save(m); //TODO check
+    }
 
     /**
      * Questo metodo crea un ticket dalle informazioni ricevute dal controller, un ticket va da un Cliente ad un Admin.
-     * @param uuidFrom idCliente
+     * @param idMittente idCliente
      * @param messaggio testo Ticket
      * @return esito invio ticket, il controller deve creare un messaggio di esito
      */
-    public boolean creaTicket(Long uuidFrom, String messaggio){
-        Admin a = repoAdmin.getRandomAdmin();
+    public boolean creaTicket(Long idMittente, String messaggio){
+        Admin a = serviceAdmin.getRandomAdmin();
         if(a == null)
             return false;
-        Messaggio m = new Messaggio(uuidFrom, a.getIdCLiente(), messaggio);
-        a.addTicket(m);
-        repoMessaggio.save(m);
+        sendMessaggio(new Messaggio(idMittente, a.getIdCLiente(), messaggio));
         return true;
     }
 
-    public boolean sendRichiesta(Long from, Long to, String messaggio){
-        Messaggio m = new Messaggio(from, to , messaggio);
-        repoMessaggio.save(m);
-        Cliente a = repoCliente.findOneById(to);
+    public boolean sendRichiesta(Long mittente, Long destinatario, String messaggio){
+        Messaggio m = new Messaggio(mittente, destinatario , messaggio);
+        Cliente a = serviceCliente.getCliente(destinatario);
         if(a == null)
             return false;
-        a.aggiungiNotifica(m);
+        sendMessaggio(m);
         return true;
     }
+
+    //nota: gli input vengono controllati gia da serviceNegozio.
+    // Questo viene chiamato da serviceCorsa
+    public void notificaCorsaFallita(Long idCorsa, Long idCliente, Long idNegozio){
+        String testoNotifica = "Corsa "+ idCorsa +" non eseguita.";
+        sendMessaggio(new Messaggio(null, idCliente, testoNotifica+"\nSi ritiri il pacco al Negozio"));
+        sendMessaggio(new Messaggio(null, idNegozio, testoNotifica));
+    }
+
+    public void notificaCorsaCompletata(Long idCorsa, Long idCliente){
+        String testoNotifica = "Corsa "+ idCorsa +" completata.";
+        sendMessaggio(new Messaggio(null, idCliente, testoNotifica));
+    }
+
 
     public boolean rimuoviTicket(Messaggio m){
-        return false; //TODO
+        return false;
+        //TODO probabilmente se si deve cancellare il ticket si cancella direttamente dalla lista delle
+        // notifiche, quindi questo al massimo puo' cancellare i ticket dal DB
     }
 
     public void nuovaNotifica(Long idCLiente, String s){
-        //TODO creazione e invio della notifica -A
+        //TODO cancellare e cambiare il metodo con sendMessaggio
     }
 
 
