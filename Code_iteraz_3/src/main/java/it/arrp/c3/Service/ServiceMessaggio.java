@@ -7,11 +7,14 @@ import it.arrp.c3.Model.Repository.MessaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Messaggio.
  */
 @Service
 public class ServiceMessaggio {
+    private final String CORSACOMPLETATA="É stata completata la Corsa con codice identificativo ";
+    private final String CORSANONESEGUITA = "Non é stato possibile portare a termine la corsa con codice identificativo ";
 
     @Autowired
     MessaggioRepository repoMessaggio;
@@ -55,13 +58,13 @@ public class ServiceMessaggio {
     //nota: gli input vengono controllati gia da serviceNegozio.
     // Questo viene chiamato da serviceCorsa
     public void notificaCorsaFallita(Long idCorsa, Long idCliente, Long idNegozio){
-        String testoNotifica = "Corsa "+ idCorsa +" non eseguita.";
+        String testoNotifica = CORSANONESEGUITA + idCorsa ;
         sendMessaggio(new Messaggio(null, idCliente, testoNotifica+"\nSi ritiri il pacco al Negozio"));
         sendMessaggio(new Messaggio(null, idNegozio, testoNotifica));
     }
 
     public void notificaCorsaCompletata(Long idCorsa, Long idCliente){
-        String testoNotifica = "Corsa "+ idCorsa +" completata.";
+        String testoNotifica = CORSACOMPLETATA + idCorsa ;
         sendMessaggio(new Messaggio(null, idCliente, testoNotifica));
     }
 

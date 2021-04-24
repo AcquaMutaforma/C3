@@ -77,6 +77,7 @@ public class ServiceNegozio {
      * occupa di avviare il tutto, senza ricontrollare i dati.
      *
      * TODO nel VPP il serviceCliente controlla il checkpoint e in caso positivo ritorna un box assegnato
+     * TODO quindi bisogna modificare il VPP!? --Ric
      */
     public int creaCorsa(Long idCliente, Long idNegozio){
         if(controllaInputCorsa(idCliente, idNegozio))
@@ -106,8 +107,9 @@ public class ServiceNegozio {
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
         //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
-        //TODO sicuramente sí, ma al momento potremmo lasciare
-        // cosí perché andiamo ad usare db locali, in un secondo momento si vedrà. --Ric
+        //TODO Ripensandoci sarebbe piuttosto semplice con una richiesta SQL:
+        // select * from Negozi where citta = "variabile"
+        // anche se non so metterci le variabili, quindi sarebbe da vedere giusto quello--Ric
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {

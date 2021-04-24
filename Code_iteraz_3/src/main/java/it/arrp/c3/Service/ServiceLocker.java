@@ -38,7 +38,7 @@ public class ServiceLocker {
     }
 
     private Locker getLockerByCoords(int latitudine, int longitudine){ //TODO da implementare --Ric
-//TODO restituire il locker con lati. e long. passati come argomento (null se non esiste) cercando nel repo. --Ric
+//TODO restituire il locker con lati. e long. passati come argomento (null se non esiste) cercando nel repo.(query sql?) --Ric
         return null;
     }
 

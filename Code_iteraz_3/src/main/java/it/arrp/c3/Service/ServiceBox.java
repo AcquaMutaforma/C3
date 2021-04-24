@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Enum.StatoBox;
 import it.arrp.c3.Model.Repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,19 @@ public class ServiceBox {
     BoxRepository repoBox;
 
     public Box assegnaBox(Long idBox, Long idCliente){
-        //TODO da implementare --Ric
-        return new Box();
+        Box box =getBox(idBox);
+        if (box==null)
+            return null;
+        box.avanzaStato();
+        //TODO da verificare che sia corretto --Ric
+        return box;
     }
     public void liberaBox(Long idBox){
-        //TODO da implementare --Ric
+        Box box =getBox(idBox);
+        if (box!=null)
+            box.setStato(StatoBox.Libero);
+
+        //TODO da verificare --Ric
     }
 
     public boolean unlock(Long idBox) {

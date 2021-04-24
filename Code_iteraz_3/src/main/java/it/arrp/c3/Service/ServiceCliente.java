@@ -2,7 +2,7 @@ package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.*;
 import it.arrp.c3.Model.Enum.GenereNegozio;
-import it.arrp.c3.Model.Repository.*;
+import it.arrp.c3.Model.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
