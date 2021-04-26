@@ -1,7 +1,6 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Admin;
-import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Repository.TecnicoRepository;
 import it.arrp.c3.Model.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +23,6 @@ public class ServiceTecnico {
         //TODO da controllare, mi sembra vada bene ora. --Ric
         return true;
     }
+
+    //TODO da inserire tutti i comandi che puo' eseguire il tecnico
 }

@@ -64,6 +64,12 @@ public class ServiceCorsa {
         riassegnaCorsaRifiutata(c);
     }
 
+    /**
+     * Questo metodo prova ad assegnare nuovamente una corsa che e' stata rifiutata da un corriere.
+     * Inserisce la corsa nella lista delle corse fallite insieme all'id del corriere e tenta di assegnare un
+     * corriere per eseguie la corsa, se ci riesce la riassegna, altrimenti cancella la corsa e la annulla
+     * notificando il cliente e il negoziante.
+     */
     public void riassegnaCorsaRifiutata(Corsa corsa){
         Pacco p = servicePacco.getPacco(corsa.getIdPacco());
         Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());
@@ -89,6 +95,7 @@ public class ServiceCorsa {
     public void assegnaCorsa(Corsa corsa, Long idCorriere){
         //TODO da valutare se lasciare l'oggetto intero Corsa o metterci solo l'id in modo da non "caricare troppo peso" --Ric
         serviceCorriere.assegnaCorsa(corsa, idCorriere);
+        serviceMessaggio.notificaCorsaAssegnata(idCorriere);
     }
 
     /** Metodo per segnare come completa una corsa che prima era stata rifiutata
@@ -112,7 +119,5 @@ public class ServiceCorsa {
     }
 
     public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }
-
-    //TODO manca un metodo "svuota cache" per eliminare le corse rifiutate mai effettuate
 
 }

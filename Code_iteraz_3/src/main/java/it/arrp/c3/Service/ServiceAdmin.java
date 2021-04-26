@@ -24,6 +24,7 @@ public class ServiceAdmin {
         //TODO da implementare --Ric
         return true;
     }
+
     public boolean creaLocker(int latitudine, int longitudine, int dimensioniLocker){
         serviceLocker.generaLocker(latitudine,longitudine,dimensioniLocker);
         return true;

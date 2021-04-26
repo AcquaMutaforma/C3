@@ -23,6 +23,8 @@ public class ServiceCorriere {
     ServiceCorsa serviceCorsa;
     @Autowired
     ServiceBox serviceBox;
+    @Autowired
+    ServiceMessaggio serviceMessaggio;
 
     public List<Corsa> getAllCorse(Long idCorriere){ //Rinominato per essere piu' specifico
         return repoCorriere.findOneById(idCorriere).getAllCorse();
@@ -41,7 +43,7 @@ public class ServiceCorriere {
             return null;
         }else {
             serviceCorsa.rifiutaCorsa(idCorriere, idCorsa);
-            corr.rimuoviCorsa(idCorsa);
+            corr.rimuoviCorsa(getCorsa(idCorriere, idCorsa));
         }
         return corr.getAllCorse();
     }
@@ -51,11 +53,10 @@ public class ServiceCorriere {
         return c;
     }
 
-    //input controllato da service Negozio
+    //input controllato da service Negozio. La notifica la manda serviceCorsa una volta verificato il tutto.
     public void assegnaCorsa(Corsa corsa, Long idCorriere) {
         Corriere corriere = getCorriere(idCorriere);
         corriere.addNuovaCorsa(corsa);
-        //TODO da verificare... può andare bene cosí? --Ric
     }
 
     public Corriere getCorriere(Long uuidCorriere){
@@ -69,21 +70,25 @@ public class ServiceCorriere {
      * @param idCorsa identifica la corsa per vedere le info e completarla.
      */
     public Box unlock(Long idCorriere, Long idCorsa) {
-        //TODO non mi piace come lo ho fatto, riguardare --aley
         if(getCorsa(idCorriere,idCorsa) != null){
             //sblocco il box
             Corsa c = serviceCorsa.getCorsa(idCorsa);
             serviceBox.unlock(c.getIdBox());
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);
-            completaCorsa(getCorriere(idCorriere),idCorsa);
+            completaCorsa(idCorriere,c);
             return serviceBox.getBox(c.getIdBox());
         }
         return null;
     }
 
-    private void completaCorsa(Corriere corriere, Long idCorsa) {
-        //TODO
+    /**
+     * Per completare una corsa, notifica il serviceCorsa e intanto elimina le risorse che non sono piu' utili.
+     */
+    private void completaCorsa(Long idCorriere, Corsa corsa) {
+        serviceCorsa.corsaCompletata(corsa.getIdCorsa());
+        Corriere c = getCorriere(idCorriere);
+        c.rimuoviCorsa(corsa);
     }
 
     public void salvaRuoloCorriere(Long idCliente, String mdt) {

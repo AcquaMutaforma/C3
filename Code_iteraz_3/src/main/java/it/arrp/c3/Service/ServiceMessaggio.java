@@ -68,6 +68,10 @@ public class ServiceMessaggio {
         sendMessaggio(new Messaggio(null, idCliente, testoNotifica));
     }
 
+    public void notificaCorsaAssegnata(Long idCorriere) {
+        String testoNotifica = "Ti e' stata assegnata una nuova corsa!";
+        sendMessaggio(new Messaggio(null, idCorriere, testoNotifica));
+    }
 
     public boolean rimuoviTicket(Messaggio m){
         return false;
@@ -75,8 +79,8 @@ public class ServiceMessaggio {
         // notifiche, quindi questo al massimo puo' cancellare i ticket dal DB
     }
 
-    public void nuovaNotifica(Long idCLiente, String s){
-        //TODO cancellare e cambiare il metodo con sendMessaggio
+    public Messaggio getMessaggio(Long idMessaggio){
+        return repoMessaggio.findOneById(idMessaggio);
     }
 
 

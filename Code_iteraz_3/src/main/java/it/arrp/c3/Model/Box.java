@@ -1,6 +1,7 @@
 package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.Accensione;
+import it.arrp.c3.Model.Enum.Chiusura;
 import it.arrp.c3.Model.Enum.StatoBox;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Box{
     private Long idBox;
     private Long idCliente;
     private Locker locker;
-    private boolean chiuso; //TODO potrebb essere un enum, da valutare --ale
+    private Chiusura chiusura;
     private StatoBox stato;
     private Accensione statoAccensioneBox =Accensione.Acceso;
 
@@ -32,7 +33,7 @@ public class Box{
     public Box(Long id, Locker l) {
         this.idBox = id;
         this.idCliente = null;
-        this.chiuso = true;
+        this.chiusura = Chiusura.Chiuso;
         this.stato = StatoBox.Libero;
         this.locker = l;
     }
@@ -53,8 +54,8 @@ public class Box{
         return this.stato;
     }
 
-    public boolean isChiuso() {
-        return this.chiuso;
+    public Chiusura isChiuso() {
+        return this.chiusura;
     }
 
     /**
@@ -69,11 +70,11 @@ public class Box{
     }
 
     public void unlock() {
-        this.chiuso = false;
+        this.chiusura = Chiusura.Aperto;
     }
 
     public void lock() {
-        this.chiuso = true;
+        this.chiusura = Chiusura.Chiuso;
     }
 
     public void setStato(StatoBox s) {
@@ -100,8 +101,8 @@ public class Box{
         this.locker = locker;
     }
 
-    public void setChiuso(boolean chiuso) {
-        this.chiuso = chiuso;
+    public void setChiusura(Chiusura a) {
+        this.chiusura = a;
     }
 
     @Override
@@ -123,7 +124,7 @@ public class Box{
                 "idBox=" + idBox +
                 ", cliente=" + idCliente +
                 ", locker=" + locker +
-                ", chiuso=" + chiuso +
+                ", chiuso=" + chiusura +
                 ", stato=" + stato +
                 '}';
     }

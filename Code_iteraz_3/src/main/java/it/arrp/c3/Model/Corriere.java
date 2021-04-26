@@ -36,14 +36,10 @@ public class Corriere extends Ruolo {
         return this.listaNegoziCollegati.remove(negozio);
     }
 
-    public void addNuovaCorsa(Corsa corsa){
-        if (corsa!=null)
-            listaCorse.add(corsa);
-        //TODO da aggiungere la modalitá di notifica --Ric
-    }
+    public void addNuovaCorsa(Corsa corsa){ listaCorse.add(corsa);   }
 
-    public void addNegozio(Long idNegozio){
-        //TODO
+    public void addNegozio(Negozio neg){
+        this.listaNegoziCollegati.add(neg);
     }
 
     public String getMezzoDiTrasporto() {
@@ -82,8 +78,8 @@ public class Corriere extends Ruolo {
     }
     public StatoCorriere getStato() {return stato;   }
 
-    public void rimuoviCorsa(Long idCorsa) {
-        this.listaCorse.remove(getCorsa(idCorsa));
+    public void rimuoviCorsa(Corsa corsa) {
+        this.listaCorse.remove(corsa);
     }
 
 }
