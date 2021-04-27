@@ -25,7 +25,7 @@ public class Box{
     private Locker locker;
     private Chiusura chiusura;
     private StatoBox stato;
-    private Accensione statoAccensioneBox =Accensione.Acceso;
+    private Accensione statoAccensioneBox;
 
     public Box() {
     }
@@ -36,6 +36,7 @@ public class Box{
         this.chiusura = Chiusura.Chiuso;
         this.stato = StatoBox.Libero;
         this.locker = l;
+        this.statoAccensioneBox = Accensione.Acceso;
     }
 
     public void turnOnBox(){
@@ -103,6 +104,14 @@ public class Box{
 
     public void setChiusura(Chiusura a) {
         this.chiusura = a;
+    }
+
+    public Chiusura getChiusura() {
+        return chiusura;
+    }
+
+    public Accensione getStatoAccensioneBox() {
+        return statoAccensioneBox;
     }
 
     @Override

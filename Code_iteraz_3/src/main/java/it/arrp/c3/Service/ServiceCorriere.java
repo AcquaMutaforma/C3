@@ -8,7 +8,6 @@ import it.arrp.c3.Model.Repository.CorriereRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,8 +22,6 @@ public class ServiceCorriere {
     ServiceCorsa serviceCorsa;
     @Autowired
     ServiceBox serviceBox;
-    @Autowired
-    ServiceMessaggio serviceMessaggio;
 
     public List<Corsa> getAllCorse(Long idCorriere){ //Rinominato per essere piu' specifico
         return repoCorriere.findOneById(idCorriere).getAllCorse();
@@ -95,12 +92,4 @@ public class ServiceCorriere {
         repoCorriere.save(new Corriere(idCliente,mdt));
     }
 
-    //TODO da valutare, dato che tecnicamente la responsabilita' sarebbe la sua probabilmente dovrebbe stare qui -A Concordo, anche se non mi piace molto passare tutto l'arraylist --Ric
-    public Long getCorriereDisponibile(ArrayList<Corriere> listaCorrieriAssunti){
-        for(Corriere c : listaCorrieriAssunti){
-            if(c.getStato() == StatoCorriere.Attivo)
-                return c.getIdCLiente();
-        }
-        return null;
-    }
 }

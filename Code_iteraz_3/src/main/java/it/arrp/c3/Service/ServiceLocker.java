@@ -2,6 +2,7 @@ package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Cliente;
+import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.StatoBox;
 import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.LockerRepository;
@@ -24,7 +25,7 @@ public class ServiceLocker {
     @Autowired
     ServiceCliente serviceCliente;
 
-    public  boolean generaLocker(int latitudine, int longitudine, int dimensioniLocker){
+    public boolean generaLocker(int latitudine, int longitudine, int dimensioniLocker){
         //TODO penso sia completo il metodo, verificaDati incluso... da controllare --Ric
         if (!verificaDati(latitudine,longitudine, dimensioniLocker)) return false;
         /*se dimensioniLocker è minore o uguale a 0 oppure esiste un locker
@@ -34,6 +35,7 @@ public class ServiceLocker {
     }
 
     private boolean verificaDati(int latitudine, int longitudine, int dimensioniLocker) {
+        //TODO in realta' le coordinate possono essere anche negative -A
         return dimensioniLocker > 0 && getLockerByCoords(latitudine, longitudine) == null;
     }
 
@@ -46,27 +48,29 @@ public class ServiceLocker {
         return repoLocker.findOneById(idLocker);
     }
 
-    public boolean disattivaBox(Long idBox){
-        return  serviceBox.turnOffBox(idBox);
+    public void disattivaBox(Long idBox){
+        serviceBox.turnOffBox(idBox);
     }
-    public boolean attivaBox(Long idBox){
-        return serviceBox.turnOnBox(idBox);
+    public void attivaBox(Long idBox){
+        serviceBox.turnOnBox(idBox);
     }
 
     public Long assegnaBox(Long idCliente){
         Cliente cliente = serviceCliente.getCliente(idCliente);
-        Locker locker = cliente.getCheckpoint(); //todo forse dovrebbe restituire un id, ma io che ne so -A
-        if(locker == null) //nessun checkpoint
+        Locker locker = cliente.getCheckpoint();
+        if(locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento) //nessun checkpoint o locker OFF
             return null;
         Box box = getBoxDisponibile(locker.getId());
         if(box == null) //box non disponibili nel locker
             return null;
         return serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox();
     }
+
     public boolean turnOffLocker(Long idLocker){
         repoLocker.findOneById(idLocker).turnOffLocker();
         return true;
     }
+
     public boolean turnOnLocker(Long idLocker){
         repoLocker.findOneById(idLocker).turnOnLocker();
         return true;
@@ -74,10 +78,10 @@ public class ServiceLocker {
 
     public Box getBoxDisponibile(Long idLocker){
         Locker locker = getLockerById(idLocker);
-        if(locker == null)
+        if(locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento)
             return null;
         for(Box b : locker.getAllBoxes()){
-            if(b.getStato() == StatoBox.Libero)
+            if(b.getStato() == StatoBox.Libero && b.getStatoAccensioneBox() == Accensione.Acceso)
                 return b;
         }
          return null;

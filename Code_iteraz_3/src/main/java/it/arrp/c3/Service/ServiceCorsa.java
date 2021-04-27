@@ -1,5 +1,6 @@
 package it.arrp.c3.Service;
 
+import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Corsa;
 import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Pacco;
@@ -73,17 +74,15 @@ public class ServiceCorsa {
     public void riassegnaCorsaRifiutata(Corsa corsa){
         Pacco p = servicePacco.getPacco(corsa.getIdPacco());
         Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());
-        List<Long> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio.getIdCLiente());
-        List<Long> listaCorrieriNo = this.corseRifiutate.get(corsa.getIdCorsa());
-        for( Long corr : listaCorrieriNo){
-            listaDisponibili.remove(corr);
-        }
+        List<Corriere> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio);
+        //dalla lista rimuovo il corriere X se e' all'interno della lista dei corrieri che hanno rifiutato la corsa
+        listaDisponibili.removeIf(x -> corseRifiutate.get(corsa.getIdCorsa()).contains(x.getIdCLiente()));
         if(!listaDisponibili.isEmpty()){
-            Long nuovoCorriere = listaDisponibili.get(0);
+            Long nuovoCorriere = listaDisponibili.get(0).getIdCLiente();
             corsa.setIdCorriere(nuovoCorriere);
             assegnaCorsa(corsa, nuovoCorriere);
         }else{
-            this.corseRifiutate.remove(corsa.getIdCorsa());
+            corseRifiutate.remove(corsa.getIdCorsa());
             serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdCommerciante());
             Long idBox = corsa.getIdBox();
             serviceCliente.getCliente(p.getIdCliente()).removeBox(idBox);
@@ -92,8 +91,8 @@ public class ServiceCorsa {
 
     }
 
+    //nota: Diamo l'oggetto corsa dato che il corriere ha un arrayList<Corsa> in cui vengono inserite le corse da fare
     public void assegnaCorsa(Corsa corsa, Long idCorriere){
-        //TODO da valutare se lasciare l'oggetto intero Corsa o metterci solo l'id in modo da non "caricare troppo peso" --Ric
         serviceCorriere.assegnaCorsa(corsa, idCorriere);
         serviceMessaggio.notificaCorsaAssegnata(idCorriere);
     }
@@ -114,8 +113,9 @@ public class ServiceCorsa {
             corsaRCompletata(idCorsa);
         Corsa corsa = getCorsa(idCorsa);
         Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
-        serviceBox.liberaBox(corsa.getIdBox());
-        serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());
+        serviceCliente.rimuoviBox(pacco.getIdCliente(), corsa.getIdBox());  //rimuove il box dalla lista del cliente
+        serviceBox.liberaBox(corsa.getIdBox());                             //rimuove id cliente dal box
+        serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());//invia la notifica per il completamento
     }
 
     public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }

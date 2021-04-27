@@ -17,17 +17,19 @@ public class ServiceBox {
 
     public Box assegnaBox(Long idBox, Long idCliente){
         Box box =getBox(idBox);
-        if (box==null)
+        if (box==null )
             return null;
+        box.setIdCliente(idCliente);
         box.avanzaStato();
         //TODO da verificare che sia corretto --Ric
         return box;
     }
     public void liberaBox(Long idBox){
         Box box =getBox(idBox);
-        if (box!=null)
-            box.setStato(StatoBox.Libero);
-
+        if (box==null)
+            return;
+        box.setIdCliente(null);
+        box.setStato(StatoBox.Libero);
         //TODO da verificare --Ric
     }
 

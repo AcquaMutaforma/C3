@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.*;
+import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ public class ServiceCliente {
 
     @Autowired
     ClienteRepository repoCliente;
-
     @Autowired
     ServiceBox serviceBox;
     @Autowired
@@ -30,7 +30,7 @@ public class ServiceCliente {
 
     public boolean setCheckpoint(Long idCliente, Long idLocker){
         Locker locker = serviceLocker.getLockerById(idLocker);
-        if(locker == null)
+        if(locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento)
             return false;
         Cliente cliente = repoCliente.findOneById(idCliente);
         cliente.setCheckpoint(locker);
@@ -48,8 +48,12 @@ public class ServiceCliente {
         }
     }
 
-    public void rimuoviBox(Long idCliente, Box idBoxAssegnato){
-        //TODO metodo che rimuove il box e locker dalla lista del cliente dopo aver ritirato il pacco -A
+    public void rimuoviBox(Long idCliente, Long idBoxAssegnato){
+        getCliente(idCliente).removeBox(idBoxAssegnato);
+    }
+
+    public void rimuoviCheckpoint(Long idCliente){
+        getCliente(idCliente).setCheckpoint(null);
     }
 
     public List<Box> getBoxCliente(Long uuidCliente) {

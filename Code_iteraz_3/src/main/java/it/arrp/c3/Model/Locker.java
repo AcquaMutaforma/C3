@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,7 +25,7 @@ public class Locker {
     private int longitudine;
     private int latitudine;
     private int numeroBox;
-    private Accensione statoAccensioneLocker = Accensione.Acceso;
+    private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */
     private ArrayList<Box> listaBox;
 
@@ -35,6 +36,7 @@ public class Locker {
         this.longitudine = longitudine;
         this.latitudine = latitudine;
         this.numeroBox = numeroBox;
+        this.statoAccensioneLocker = Accensione.Acceso;
         this.listaBox = new ArrayList<>();
     }
 
@@ -43,27 +45,6 @@ public class Locker {
     }
     public void turnOffLocker(){
         this.statoAccensioneLocker= Accensione.Spento;
-    }
-
-    /**
-     * Metodo assegnazione Box del locker ad un cliente.
-     * @param idCliente .
-     * @return false = nessun box disponibile / true = box assegnato al cliente
-     */
-    public boolean assegnaBox(Long idCliente) {
-        //TODO
-        return false;
-    }
-
-    public Box getBoxById(Long idbox) {
-        Iterator<Box> iter = listaBox.iterator();
-        Box b;
-        while (iter.hasNext()){
-            b = iter.next();
-            if(b.getIdBox().equals(idbox))
-                return b;
-        }
-        return null;
     }
 
     public void setId(Long id) {
@@ -98,6 +79,9 @@ public class Locker {
     }
     public boolean removeBox(Box b){
         return listaBox.remove(b);
+    }
+    public Accensione getStatoAccensioneLocker() {
+        return statoAccensioneLocker;
     }
 
     @Override

@@ -3,11 +3,13 @@ package it.arrp.c3.Service;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
+import it.arrp.c3.Model.Enum.StatoCorriere;
 import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,17 +55,13 @@ public class ServiceNegozio {
         Negozio negozio = getNegozioById(idCommerciante);
         if (negozio == null)
             return null;
-        return serviceCorriere.getCorriereDisponibile(negozio.getListaCorrieriAssunti());
-        //TODO da implementare la scelta del corriere disponibile all'interno della lista
-        // (quindi controllo dello stato etc etc)--Ric
-
-        //todo lo avevo fatto cosi' ma ho trovato la necessita di fare getListaCorrieriDisponibili
-        // quindi sara' da correggere questo -A
+        return getListaCorrieriDisponibili(negozio).get(0).getIdCLiente();
     }
 
-    public List<Long> getListaCorrieriDisponibili(Long idNegozio){
-        //TODO
-        return null;
+    public List<Corriere> getListaCorrieriDisponibili(Negozio negozio){
+        ArrayList<Corriere> lista = negozio.getListaCorrieriAssunti();
+        lista.removeIf(x-> !(x.getStato() == StatoCorriere.Attivo));
+        return lista;
     }
 
     /**
@@ -78,6 +76,8 @@ public class ServiceNegozio {
      *
      * TODO nel VPP il serviceCliente controlla il checkpoint e in caso positivo ritorna un box assegnato
      * TODO quindi bisogna modificare il VPP!? --Ric
+     *  si, ci pensa serviceLocker a controllare il suo checkpoint e procedere con l'assegnamento, quindi
+     *  va aggiornato il VPP
      */
     public int creaCorsa(Long idCliente, Long idNegozio){
         if(controllaInputCorsa(idCliente, idNegozio))
@@ -106,22 +106,22 @@ public class ServiceNegozio {
         List<Negozio> lista = this.repoNegozio.findAll();
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
-        //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
         //TODO Ripensandoci sarebbe piuttosto semplice con una richiesta SQL:
         // select * from Negozi where citta = "variabile"
-        // anche se non so metterci le variabili, quindi sarebbe da vedere giusto quello--Ric
+        // non credo si possa fare manualmente, forse conviene lasciarlo cosi' per non complicarsi troppo,
+        // potremmo vederlo successivamente
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {
         List<Negozio> lista = getNegozi(citta);
         lista.removeIf(x -> !(x.getNomeNegozio().equals(nome)));
         return lista;
-        //TODO forse potrebbe esistere una qualche richiesta SQL che ci permette di non fare questa roba, to check -A
     }
 
     public List<Negozio> getNegozioByGenere(String citta, GenereNegozio genere) {
-        //TODO
-        return null;
+        List<Negozio> lista = getNegozi(citta);
+        lista.removeIf(x -> !(x.getGenereNegozio() == genere));
+        return lista;
     }
 
     public List<Corriere> getCorrieri(Long idCommerciante) {
