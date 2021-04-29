@@ -15,11 +15,12 @@ public class ServicePacco {
     PaccoRepository paccoRepo;
 
     public Pacco creaPacco(long idCliente, long idCommerciante){
-        //TODO Da controllare la chiamata al costruttore Pacco --Ric
         return new Pacco(idCommerciante,idCliente);
     }
 
     public Pacco getPacco(Long id){
         return paccoRepo.findOneById(id);
     }
+
+    //TODO facciamo un CRUD anche quí come in serviceProdotto? o magari senza la modifica? o lasciamo cosí? --Ric
 }

@@ -25,6 +25,18 @@ public class ServiceProdotto {
         return p;
     }
 
+    public Prodotto modificaProdotto(String nome, String descrizione, GenereProdotto genere, Long idProdotto){
+        Prodotto ritorna = repoProdotto.getOne(idProdotto);
+        ritorna.setGenereProdotto(genere);
+        ritorna.setDescrizione(descrizione);
+        ritorna.setNome(nome);
+        return ritorna;
+    }
+
+    public void eliminaProdotto(Long idProdotto){ //TODO void? boolean? da valutare --Ric
+        repoProdotto.delete(repoProdotto.getOne(idProdotto));
+    }
+
     //TODO add prodotto, delete prodotto ... non fa molto altro, non ci sono interazioni con altri oggetti (per ora)
     //TODO non c'é bisogno di interazioni con altri oggetti, ma si possono aggiungere altre operazioni andando a creare essenzialmente un CRUD (Creation, Read, Update, Delete). --Ric
 }

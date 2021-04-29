@@ -74,7 +74,8 @@ public class ServiceMessaggio {
     }
 
     public boolean rimuoviTicket(Messaggio m){
-        return false;
+        repoMessaggio.delete(m);
+        return true;
         //TODO probabilmente se si deve cancellare il ticket si cancella direttamente dalla lista delle
         // notifiche, quindi questo al massimo puo' cancellare i ticket dal DB
     }

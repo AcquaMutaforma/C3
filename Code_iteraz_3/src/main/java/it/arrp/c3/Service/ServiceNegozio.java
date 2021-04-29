@@ -106,10 +106,8 @@ public class ServiceNegozio {
         List<Negozio> lista = this.repoNegozio.findAll();
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
-        //TODO Ripensandoci sarebbe piuttosto semplice con una richiesta SQL:
-        // select * from Negozi where citta = "variabile"
-        // non credo si possa fare manualmente, forse conviene lasciarlo cosi' per non complicarsi troppo,
-        // potremmo vederlo successivamente
+        //TODO lasciamo tutto cosí e tanti saluti... ho cercato un po' e non ho trovato molto... possiamo provare a
+        // chiedere in giro, ma facciamo prima cosí, almeno per ora. --Ric
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {
