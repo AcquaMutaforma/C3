@@ -1,6 +1,8 @@
 package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Corriere;
+import it.arrp.c3.Model.Enum.GenereProdotto;
+import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Service.ServiceNegozio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -61,10 +63,27 @@ public class ControllerCommerciante {
     accetta come input anche un idBox.
      */
     @PostMapping("/commerciante/{idComm}/assegnaBox")
-    public boolean assegnaLocker(){
-        //TODO
-        return false;
+    public int assegnaLocker(@PathVariable Long idComm, @RequestParam Long idCliente){
+        return serviceNegozio.assegnaLocker(idComm, idCliente);
     }
 
-    //TODO: agg/rm/get prodotto in evidenza
+    @GetMapping("/commerciante/{idCommerciante}/prodotti")
+    public List<Prodotto> getProdotti(@PathVariable Long idCommerciante){
+        return serviceNegozio.getProdottiInEvidenza(idCommerciante);
+    }
+
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/add")
+    public boolean aggiungiProdotto(@PathVariable Long idCommerciante, @RequestParam String name,
+                                    @RequestParam String descrizione, @RequestParam GenereProdotto genere){
+        return serviceNegozio.aggiungiProdotto(idCommerciante, name, descrizione, genere);
+    }
+
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
+    public boolean rimuoviProdotto(@PathVariable Long idCommerciante, @RequestParam Long idProdotto){
+        return serviceNegozio.rimuoviProdotto(idCommerciante, idProdotto);
+    }
+
+    //TODO abbiamo solo metodi per creare prodotti, forse andrebbero fatti 2 metodi, uno crea e uno aggiunge, quindi
+    // forse potrebbe esserci una specie di ControllerProdotti per visualizzare tutti quelli che esistono, e aggiungere
+    // quelli gia fatti, senza doverli sempre riscrivere, per ora mi fermo qui, poi lo vediamo insieme come farlo. -A
 }

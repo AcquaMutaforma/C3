@@ -30,8 +30,7 @@ public class Box{
     public Box() {
     }
 
-    public Box(Long id, Locker l) {
-        this.idBox = id;
+    public Box(Locker l) {
         this.idCliente = null;
         this.chiusura = Chiusura.Chiuso;
         this.stato = StatoBox.Libero;

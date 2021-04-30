@@ -14,13 +14,16 @@ public class Tecnico extends Ruolo{
 
     private Admin admin;
     private List<Messaggio> listaRichieste;
+    //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
+    // ne parliamo poi decidiamo -A
+    Locker lockerAttivo; //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric
 
-    public Tecnico(Long idCliente, String nomeRuolo) {
-        super(idCliente/*, nomeRuolo*/);
+    public Tecnico(Long idCliente) {
+        super(idCliente);
     }
 
-    public Tecnico(Long idCliente, /*String nomeRuolo,*/ Admin admin) {
-        super(idCliente/*, nomeRuolo*/);
+    public Tecnico(Long idCliente, Admin admin) {
+        super(idCliente);
         this.admin = admin;
         this.listaRichieste = new ArrayList<>();
     }
@@ -32,15 +35,19 @@ public class Tecnico extends Ruolo{
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-
-    //TODO add / remove richiesta
-
+    public void addRichiesta(Messaggio m){ this.listaRichieste.add(m); }
+    public boolean rimuoviRichiesta(Messaggio m){ return this.listaRichieste.remove(m); }
+    public Locker getLockerAttivo() {
+        return lockerAttivo;
+    }
+    public void setLockerAttivo(Locker lockerAttivo) {
+        this.lockerAttivo = lockerAttivo;
+    }
 
     @Override
     public String toString() {
         return "Tecnico{" +
                 "idCLiente=" + idCLiente +
-                /*", nomeRuolo='" + nomeRuolo + */'\'' +
                 ", admin=" + this.admin.idCLiente +
                 '}';
     }

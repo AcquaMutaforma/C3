@@ -21,7 +21,7 @@ public class ServiceProdotto {
 
     public Prodotto creaProdotto(String nome, String descrizione, GenereProdotto genere){
         Prodotto p = new Prodotto(nome,descrizione,genere);
-        repoProdotto.save(p); //Todo check
+        repoProdotto.save(p);
         return p;
     }
 

@@ -3,8 +3,10 @@ package it.arrp.c3.Service;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereNegozio;
+import it.arrp.c3.Model.Enum.GenereProdotto;
 import it.arrp.c3.Model.Enum.StatoCorriere;
 import it.arrp.c3.Model.Negozio;
+import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,8 @@ public class ServiceNegozio {
     ServiceCorsa serviceCorsa;
     @Autowired
     ServiceLocker serviceLocker;
+    @Autowired
+    ServiceProdotto serviceProdotto;
 
     public boolean addCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
@@ -59,7 +63,7 @@ public class ServiceNegozio {
     }
 
     public List<Corriere> getListaCorrieriDisponibili(Negozio negozio){
-        ArrayList<Corriere> lista = negozio.getListaCorrieriAssunti();
+        List<Corriere> lista = negozio.getListaCorrieriAssunti();
         lista.removeIf(x-> !(x.getStato() == StatoCorriere.Attivo));
         return lista;
     }
@@ -90,6 +94,19 @@ public class ServiceNegozio {
                 return 1;
             }else return 0;
         }else return -1; //di conseguenza la consegna viene negata
+    }
+
+    /**
+     * Questo metodo assegna un locker al cliente in cui mandare il pacco e inizializza la corsa.
+     * Il cliente potrebbe non avere un checkpoint quindi prendere il locker piu vicino a quello inserito non si puo
+     * fare, una alternativa e' valutare tutti i locker della citta' in base alla distanza dal negozio, inserendo
+     * la variabile con le coordinate per il negozio.
+     * Una seconda opzione potrebbe essere: far inserire l'id del locker al commerciante, che puo' vedere dal suo
+     * controller la lista di questi, magari inserendo una variabile nome nel locker tipo "piazza dante".
+     */
+    public int assegnaLocker(Long idCliente, Long idNegozio){
+        //TODO
+        return 0;
     }
 
     private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {
@@ -135,4 +152,40 @@ public class ServiceNegozio {
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneById(id); }
 
+    public boolean aggiungiProdotto(Long idNegozio, String nome, String descrizione, GenereProdotto genere){
+        Negozio negozio = getNegozio(idNegozio);
+        if(negozio == null)
+            return false;
+        Prodotto p = serviceProdotto.creaProdotto(nome, descrizione, genere);
+        if(p == null)
+            return false;
+        else return negozio.aggiungiProdotto(p);
+    }
+
+    public boolean rimuoviProdotto(Long idNegozio, Long idProdotto){
+        Negozio negozio = getNegozio(idNegozio);
+        if(negozio == null)
+            return false;
+        Prodotto prodotto = serviceProdotto.getProdotto(idProdotto);
+        if(prodotto == null)
+            return false;
+        return negozio.rimuoviProdotto(prodotto);
+    }
+
+    public Prodotto getProdotto(Long idNegozio, Long idProdotto){
+        Negozio negozio = getNegozio(idNegozio);
+        if(negozio == null)
+            return null;
+        Prodotto prodotto = serviceProdotto.getProdotto(idProdotto);
+        if(prodotto == null)
+            return null;
+        return negozio.getListaProdottiInEvidenza().contains(prodotto)? prodotto: null;
+    }
+
+    public List<Prodotto> getProdottiInEvidenza(Long idCommerciante) {
+        Negozio n = getNegozio(idCommerciante);
+        if(n == null)
+            return null;
+        return n.getListaProdottiInEvidenza();
+    }
 }

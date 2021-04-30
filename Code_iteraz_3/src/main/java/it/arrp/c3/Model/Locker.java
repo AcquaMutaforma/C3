@@ -22,8 +22,7 @@ public class Locker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int longitudine;
-    private int latitudine;
+    private Point locazione;
     private int numeroBox;
     private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */
@@ -33,8 +32,7 @@ public class Locker {
     }
 
     public Locker(int longitudine, int latitudine, int numeroBox) {
-        this.longitudine = longitudine;
-        this.latitudine = latitudine;
+        this.locazione = new Point(longitudine, latitudine);
         this.numeroBox = numeroBox;
         this.statoAccensioneLocker = Accensione.Acceso;
         this.listaBox = new ArrayList<>();
@@ -50,18 +48,15 @@ public class Locker {
     public void setId(Long id) {
         this.id = id;
     }
-    public int getLongitudine() {
-        return longitudine;
+
+    public Point getLocazione() { return this.locazione;}
+
+    public void setLocazione(int x, int y) { this.locazione = new Point(x,y); }
+
+    public void setStatoAccensioneLocker(Accensione statoAccensioneLocker) {
+        this.statoAccensioneLocker = statoAccensioneLocker;
     }
-    public void setLongitudine(int longitudine) {
-        this.longitudine = longitudine;
-    }
-    public int getLatitudine() {
-        return latitudine;
-    }
-    public void setLatitudine(int latitudine) {
-        this.latitudine = latitudine;
-    }
+
     public void setNumeroBox(int numeroBox) {
         this.numeroBox = numeroBox;
     }
@@ -88,8 +83,8 @@ public class Locker {
     public String toString() {
         return "Locker{" +
                 "id=" + id +
-                ", longitudine=" + longitudine +
-                ", latitudine=" + latitudine +
+                ", longitudine=" + this.locazione.x +
+                ", latitudine=" + this.locazione.y +
                 ", numeroBox=" + numeroBox +
                 '}';
     }

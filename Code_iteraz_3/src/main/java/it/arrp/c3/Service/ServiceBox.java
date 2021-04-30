@@ -2,6 +2,7 @@ package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Enum.StatoBox;
+import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,15 +49,27 @@ public class ServiceBox {
         return true;
     }
     public boolean turnOffBox(Long idBox){
-        repoBox.findOneById(idBox).turnOffBox();
+        Box box = repoBox.findOneById(idBox);
+        if(box == null)
+            return false;
+        box.turnOffBox();
         return true;
     }
     public boolean turnOnBox(Long idBox){
-        repoBox.findOneById(idBox).turnOnBox();
+        Box box = repoBox.findOneById(idBox);
+        if(box == null)
+            return false;
+        box.turnOnBox();
         return true;
     }
 
     public Box getBox(Long idBox) {
         return repoBox.findOneById(idBox);
+    }
+
+    public Box creaBox(Locker l) {
+        Box box = new Box(l);
+        repoBox.save(box);
+        return box;
     }
 }

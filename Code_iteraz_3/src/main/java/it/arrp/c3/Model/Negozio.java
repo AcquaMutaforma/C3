@@ -1,6 +1,7 @@
 package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.GenereNegozio;
+import it.arrp.c3.Model.Enum.GenereProdotto;
 
 import javax.persistence.Entity;
 import java.util.ArrayList;
@@ -16,14 +17,11 @@ import java.util.UUID;
 @Entity
 public class Negozio extends Ruolo {
 
-    //TODO rimuovere Locazione geografica dagli schemi, non abbiamo tempo
-
     private String nomeNegozio;
     private String cittaNegozio;
     private GenereNegozio genereNegozio;
     private List<Prodotto> listaProdottiInEvidenza;
-    private ArrayList<Corriere> listaCorrieriAssunti;
-    //TODO probabilmente le liste non dovrebbero avere il tipo, ma Long per inserire gli ID, to think --A
+    private List<Corriere> listaCorrieriAssunti;
 
     public Negozio(Long idCliente) {
         super(idCliente);
@@ -38,7 +36,19 @@ public class Negozio extends Ruolo {
         this.listaProdottiInEvidenza = new ArrayList<>();
     }
 
-    public ArrayList<Corriere> getListaCorrieriAssunti() {
+    //non puo essere null, lo controlla service negozio
+    public boolean aggiungiProdotto(Prodotto p){
+        //Todo da mettere un numero massimo di prodotti in evidenza
+        this.listaProdottiInEvidenza.add(p);
+        return true;
+    }
+
+    //non puo essere null, lo controlla service negozio
+    public boolean rimuoviProdotto(Prodotto p){
+        return this.listaProdottiInEvidenza.remove(p);
+    }
+
+    public List<Corriere> getListaCorrieriAssunti() {
         return listaCorrieriAssunti;
     }
 
@@ -87,4 +97,5 @@ public class Negozio extends Ruolo {
                 ", idCLiente=" + idCLiente +
                 '}';
     }
+
 }

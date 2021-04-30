@@ -23,12 +23,13 @@ public class ServiceTecnico {
     ServiceBox serviceBox;
     @Autowired
     TecnicoRepository repoTecnico;
-    Locker lockerAttivo; //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric
+
 
     public boolean creaTecnico(Long idCliente, Admin admin) {
+        if(idCliente == null || admin == null)
+            return false;
         serviceCliente.aggiungiRuoloTecnico(idCliente);
         repoTecnico.save(new Tecnico(idCliente,admin));
-        //TODO da controllare, mi sembra vada bene ora. --Ric
         return true;
     }
 

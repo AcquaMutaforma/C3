@@ -9,7 +9,9 @@ import it.arrp.c3.Model.Repository.LockerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Locker.
@@ -25,22 +27,26 @@ public class ServiceLocker {
     @Autowired
     ServiceCliente serviceCliente;
 
-    public boolean generaLocker(int latitudine, int longitudine, int dimensioniLocker){
-        //TODO penso sia completo il metodo, verificaDati incluso... da controllare --Ric
+    public boolean generaLocker(int longitudine, int latitudine, int dimensioniLocker){
         if (!verificaDati(latitudine,longitudine, dimensioniLocker)) return false;
         /*se dimensioniLocker è minore o uguale a 0 oppure esiste un locker
         con le stesse coordinate, esce. altrimenti continua.*/
-        new Locker(longitudine,latitudine,dimensioniLocker);
+        Locker l = new Locker(longitudine,latitudine,dimensioniLocker);
+        popolaLocker(l);
+        repoLocker.save(l);
         return true;
     }
 
-    private boolean verificaDati(int latitudine, int longitudine, int dimensioniLocker) {
-        //TODO in realta' le coordinate possono essere anche negative -A
-        return dimensioniLocker > 0 && getLockerByCoords(latitudine, longitudine) == null;
+    private boolean verificaDati(int longitudine, int latitudine, int dimensioniLocker) {
+        return dimensioniLocker > 0 && getLockerByCoords(longitudine, latitudine) == null;
     }
 
-    private Locker getLockerByCoords(int latitudine, int longitudine){ //TODO da implementare --Ric
-//TODO restituire il locker con lati. e long. passati come argomento (null se non esiste) cercando nel repo.(query sql?) --Ric
+    private Locker getLockerByCoords(int longitudine, int latitudine){
+        Point point = new Point(longitudine, latitudine);
+        for(Locker l : repoLocker.findAll()){
+            if(l.getLocazione() == point)
+                return l;
+        }
         return null;
     }
 
@@ -48,12 +54,14 @@ public class ServiceLocker {
         return repoLocker.findOneById(idLocker);
     }
 
+    /* todo sembrano molto inutili, da controllare -A
     public void disattivaBox(Long idBox){
         serviceBox.turnOffBox(idBox);
     }
     public void attivaBox(Long idBox){
         serviceBox.turnOnBox(idBox);
     }
+     */
 
     public Long assegnaBox(Long idCliente){
         Cliente cliente = serviceCliente.getCliente(idCliente);
@@ -66,14 +74,18 @@ public class ServiceLocker {
         return serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox();
     }
 
-    public boolean turnOffLocker(Long idLocker){
-        repoLocker.findOneById(idLocker).turnOffLocker();
-        return true;
+    public void turnOffLocker(Long idLocker){
+        Locker locker = getLockerById(idLocker);
+        if(locker == null)
+            return;
+        locker.turnOffLocker();
     }
 
-    public boolean turnOnLocker(Long idLocker){
-        repoLocker.findOneById(idLocker).turnOnLocker();
-        return true;
+    public void turnOnLocker(Long idLocker){
+        Locker locker = getLockerById(idLocker);
+        if(locker == null)
+            return;
+        locker.turnOnLocker();
     }
 
     public Box getBoxDisponibile(Long idLocker){
@@ -85,5 +97,17 @@ public class ServiceLocker {
                 return b;
         }
          return null;
+    }
+
+    /**
+     * Questo metodo serve per inserire i box all'interno di un nuovo locker.
+     */
+    public void popolaLocker(Locker locker){
+        int dim = locker.getNumeroBox();
+        Box box;
+        for(int i = 0; i < dim; i++){
+            box = serviceBox.creaBox(locker);
+            locker.addBox(box);
+        }
     }
 }
