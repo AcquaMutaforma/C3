@@ -40,9 +40,12 @@ public class Box{
 
     public void turnOnBox(){
         this.statoAccensioneBox= Accensione.Acceso;
+        this.setStato(StatoBox.Libero);
     }
     public void turnOffBox(){
         this.statoAccensioneBox= Accensione.Spento;
+        this.setStato(StatoBox.Occupato);
+        this.setIdCliente(null);
     }
 
 
@@ -70,11 +73,11 @@ public class Box{
     }
 
     public void unlock() {
-        this.chiusura = Chiusura.Aperto;
+        avanzaStato();
     }
 
     public void lock() {
-        this.chiusura = Chiusura.Chiuso;
+        avanzaStato();
     }
 
     public void setStato(StatoBox s) {

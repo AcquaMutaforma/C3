@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServiceMessaggio {
-    private final String CORSACOMPLETATA="É stata completata la Corsa con codice identificativo ";
-    private final String CORSANONESEGUITA = "Non é stato possibile portare a termine la corsa con codice identificativo ";
+    private static final String CORSACOMPLETATA="É stata completata la Corsa con codice identificativo ";
+    private static final String CORSANONESEGUITA = "Non é stato possibile portare a termine la corsa con codice identificativo ";
+    private static final Long SYSTEM = 0L; //todo: check che il primo utente non sia tutti 0 come questo.
 
     @Autowired
     MessaggioRepository repoMessaggio;
@@ -47,10 +48,10 @@ public class ServiceMessaggio {
     }
 
     public boolean sendRichiesta(Long mittente, Long destinatario, String messaggio){
-        Messaggio m = new Messaggio(mittente, destinatario , messaggio);
-        Cliente a = serviceCliente.getCliente(destinatario);
-        if(a == null)
+        Cliente dest = serviceCliente.getCliente(destinatario);
+        if(dest == null)
             return false;
+        Messaggio m = new Messaggio(mittente, destinatario , messaggio);
         sendMessaggio(m);
         return true;
     }
@@ -59,18 +60,18 @@ public class ServiceMessaggio {
     // Questo viene chiamato da serviceCorsa
     public void notificaCorsaFallita(Long idCorsa, Long idCliente, Long idNegozio){
         String testoNotifica = CORSANONESEGUITA + idCorsa ;
-        sendMessaggio(new Messaggio(null, idCliente, testoNotifica+"\nSi ritiri il pacco al Negozio"));
-        sendMessaggio(new Messaggio(null, idNegozio, testoNotifica));
+        sendMessaggio(new Messaggio(SYSTEM, idCliente, testoNotifica+"\nSi ritiri il pacco al Negozio"));
+        sendMessaggio(new Messaggio(SYSTEM, idNegozio, testoNotifica));
     }
 
     public void notificaCorsaCompletata(Long idCorsa, Long idCliente){
         String testoNotifica = CORSACOMPLETATA + idCorsa ;
-        sendMessaggio(new Messaggio(null, idCliente, testoNotifica));
+        sendMessaggio(new Messaggio(SYSTEM, idCliente, testoNotifica));
     }
 
     public void notificaCorsaAssegnata(Long idCorriere) {
         String testoNotifica = "Ti e' stata assegnata una nuova corsa!";
-        sendMessaggio(new Messaggio(null, idCorriere, testoNotifica));
+        sendMessaggio(new Messaggio(SYSTEM, idCorriere, testoNotifica));
     }
 
     public boolean rimuoviTicket(Messaggio m){
@@ -84,6 +85,4 @@ public class ServiceMessaggio {
         return repoMessaggio.findOneById(idMessaggio);
     }
 
-
-    //TODO getMessaggio etc
 }

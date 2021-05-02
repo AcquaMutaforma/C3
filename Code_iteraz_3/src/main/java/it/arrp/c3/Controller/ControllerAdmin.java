@@ -2,6 +2,7 @@ package it.arrp.c3.Controller;
 
 import it.arrp.c3.Service.ServiceAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,18 +13,21 @@ public class ControllerAdmin {
     @Autowired
     ServiceAdmin serviceAdmin;
 
-    public void creaLocker(int latitudine, int longitudine, int dimensioniLocker) {
-        serviceAdmin.creaLocker(latitudine,longitudine,dimensioniLocker);
-        //TODO l'input di latitudine e longitudine e dimensioni al momento non vengono controllati, nella nostra
-        // implementazione si potrebbe pensare di implementare solo l'ultima controllando che non esistano Locker con
-        // le medesime coordinate. --Ric
+    @PostMapping("/admin/{idAdmin}/locker/new")
+    public boolean creaLocker(@PathVariable Long idAdmin, @RequestParam int longitudine,
+                              @RequestParam int latitudine,@RequestParam int dimensioniLocker) {
+        return serviceAdmin.creaLocker(idAdmin, longitudine,latitudine,dimensioniLocker);
     }
 
-    @PostMapping("/admin/creaTecnico")
-    public void creaTecnico(@RequestParam Long idCliente, @RequestParam Long idAdmin){
-        serviceAdmin.creaTecnico(idCliente, idAdmin);
+    @PostMapping("/admin/{idAdmin}/creaTecnico")
+    public boolean creaTecnico(@PathVariable Long idAdmin, @RequestParam Long idCliente){
+        return serviceAdmin.creaTecnico(idCliente, idAdmin);
     }
 
+    @PostMapping("/admin/{idAdmin}/creaAdmin")
+    public boolean creaAdmin(@RequestParam Long idCliente, @RequestParam Long idAdmin, @RequestParam String citta){
+        return serviceAdmin.creaAdmin(idCliente, idAdmin, citta);
+    }
 
-        //TODO
+        //TODO aggiungi un tecnico
 }

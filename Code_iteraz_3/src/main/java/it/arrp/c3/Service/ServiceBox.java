@@ -1,6 +1,8 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Enum.Accensione;
+import it.arrp.c3.Model.Enum.Chiusura;
 import it.arrp.c3.Model.Enum.StatoBox;
 import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.BoxRepository;
@@ -20,9 +22,10 @@ public class ServiceBox {
         Box box =getBox(idBox);
         if (box==null )
             return null;
+        if(box.getStatoAccensioneBox() == Accensione.Spento || box.getStato() != StatoBox.Libero)
+            return null;
         box.setIdCliente(idCliente);
         box.avanzaStato();
-        //TODO da verificare che sia corretto --Ric
         return box;
     }
     public void liberaBox(Long idBox){
@@ -31,22 +34,21 @@ public class ServiceBox {
             return;
         box.setIdCliente(null);
         box.setStato(StatoBox.Libero);
-        //TODO da verificare --Ric
     }
 
-    public boolean unlock(Long idBox) {
+    public Box unlock(Long idBox) {
         Box b = repoBox.findOneById(idBox);
         if (b != null){
             b.unlock();
-            return true;
-        }else return false;
+            return b;
+        }else return null;
     }
-    public boolean lock(Long idBox){
+    public Box lock(Long idBox){
         Box b = repoBox.findOneById(idBox);
         if(b == null)
-            return false;
+            return null;
         b.avanzaStato();
-        return true;
+        return b;
     }
     public boolean turnOffBox(Long idBox){
         Box box = repoBox.findOneById(idBox);

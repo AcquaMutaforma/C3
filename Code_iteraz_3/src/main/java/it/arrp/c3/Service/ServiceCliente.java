@@ -126,4 +126,8 @@ public class ServiceCliente {
     public boolean creaTicket(Long idCliente, String testo){
         return servMessaggio.creaTicket(idCliente,testo);
     }
+
+    public void aggiungiRuoloAdmin(Long idCliente) {
+        //TODO
+    }
 }

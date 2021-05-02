@@ -14,6 +14,7 @@ public class Tecnico extends Ruolo{
 
     private Admin admin;
     private List<Messaggio> listaRichieste;
+    private String cittaDiLavoro; //Todo: da aggiungere, ci eravamo dimenticati.
     //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
     // ne parliamo poi decidiamo -A
     Locker lockerAttivo; //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric

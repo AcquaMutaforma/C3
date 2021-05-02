@@ -17,16 +17,14 @@ public class ControllerBox {
     ServiceBox serviceBox;
 
     @GetMapping("/box/{idBox}/chiudi")
-    public void chiudiBox(@PathVariable Long idBox){ serviceBox.lock(idBox); }
+    public Box chiudiBox(@PathVariable Long idBox){ return serviceBox.lock(idBox); }
 
     @GetMapping("/box/{idBox}/apri")
-    public void apriBox(@PathVariable Long idBox){ serviceBox.unlock(idBox); }
+    public Box apriBox(@PathVariable Long idBox){ return serviceBox.unlock(idBox); }
 
     @GetMapping("/box/{idBox}")
     public Box getBox(@PathVariable Long idBox){
         return serviceBox.getBox(idBox);
     }
-
-    //@DeleteMapping("/box/{idBox}") era un test
 
 }

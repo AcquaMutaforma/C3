@@ -12,7 +12,9 @@ import java.util.List;
  */
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+    Cliente findOneById(Long id);
 
+    /* todo: serve questo sotto ? da controllare -A
     default Cliente findOneById(Long id){
         List<Cliente> lc = findAll();
         Iterator<Cliente> iter = lc.iterator();
@@ -24,4 +26,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
         }
         return null;
     }
+    */
+
 }
