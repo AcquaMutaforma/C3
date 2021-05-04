@@ -102,7 +102,7 @@ public class ServiceLocker {
     /**
      * Questo metodo serve per inserire i box all'interno di un nuovo locker.
      */
-    public void popolaLocker(Locker locker){
+    private void popolaLocker(Locker locker){
         int dim = locker.getNumeroBox();
         Box box;
         for(int i = 0; i < dim; i++){

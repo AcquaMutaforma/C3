@@ -73,7 +73,7 @@ public class ServiceCorsa {
      */
     public void riassegnaCorsaRifiutata(Corsa corsa){
         Pacco p = servicePacco.getPacco(corsa.getIdPacco());
-        Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());
+        Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());//todo penso non sia il caso di prenderlo in questo modo... --Ric
         List<Corriere> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio);
         //dalla lista rimuovo il corriere X se e' all'interno della lista dei corrieri che hanno rifiutato la corsa
         listaDisponibili.removeIf(x -> corseRifiutate.get(corsa.getIdCorsa()).contains(x.getIdCLiente()));

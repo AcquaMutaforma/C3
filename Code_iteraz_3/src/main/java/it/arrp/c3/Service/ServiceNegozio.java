@@ -11,7 +11,6 @@ import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -117,20 +116,20 @@ public class ServiceNegozio {
         return this.repoNegozio.findOneById(idNegozio);
     }
 
-    public List<Negozio> getNegozi(String citta) {
+    public List<Negozio> getNegoziByCitta(String citta) {
         List<Negozio> lista = this.repoNegozio.findAll();
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {
-        List<Negozio> lista = getNegozi(citta);
+        List<Negozio> lista = getNegoziByCitta(citta);
         lista.removeIf(x -> !(x.getNomeNegozio().equals(nome)));
         return lista;
     }
 
     public List<Negozio> getNegozioByGenere(String citta, GenereNegozio genere) {
-        List<Negozio> lista = getNegozi(citta);
+        List<Negozio> lista = getNegoziByCitta(citta);
         lista.removeIf(x -> !(x.getGenereNegozio() == genere));
         return lista;
     }

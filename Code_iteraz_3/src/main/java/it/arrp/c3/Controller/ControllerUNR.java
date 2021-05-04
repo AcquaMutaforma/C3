@@ -33,7 +33,7 @@ public class ControllerUNR {
      */
     @GetMapping("/cerca/{citta}")
     public List<Negozio> getNegoziByCitta(@PathVariable String citta){
-        return serviceNegozio.getNegozi(citta);
+        return serviceNegozio.getNegoziByCitta(citta);
     }
 
     /**

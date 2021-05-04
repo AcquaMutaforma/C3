@@ -24,6 +24,8 @@ public class ServiceProdotto {
         repoProdotto.save(p);
         return p;
     }
+    //TODO da verificare l'accoppiamento tra prodotto e negozio... come funziona? non vedo nulla riguardo il negozio  --Ric
+    //public boolean aggiungiProdotto ()
 
     public Prodotto modificaProdotto(String nome, String descrizione, GenereProdotto genere, Long idProdotto){
         Prodotto ritorna = repoProdotto.getOne(idProdotto);
