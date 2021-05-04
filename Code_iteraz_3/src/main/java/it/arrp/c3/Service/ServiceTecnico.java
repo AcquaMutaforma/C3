@@ -33,11 +33,9 @@ public class ServiceTecnico {
         return true;
     }
 
-    public boolean creaRichiesta(String testoRichiesta, Long idTecnico){
-        Long idAdmin= repoTecnico.getOne(idTecnico).getAdmin().getIdCLiente();
-        serviceMessaggio.sendRichiesta(idTecnico,idAdmin,testoRichiesta);
-        return true;
-        //TODO da modificare il valore di ritorno in base al fatto che vada in porto o meno la consegna(?) --Ric
+    public boolean creaRichiesta( Long idTecnico, String testoRichiesta){
+        return serviceMessaggio.sendRichiesta(idTecnico,repoTecnico.findOneById(idTecnico).
+                getAdmin().getIdCLiente(),testoRichiesta);
     }
 
     public void turnOnLocker(Long idLocker){

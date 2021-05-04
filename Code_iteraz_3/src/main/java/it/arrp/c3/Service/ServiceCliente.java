@@ -56,10 +56,8 @@ public class ServiceCliente {
         getCliente(idCliente).setCheckpoint(null);
     }
 
+    //metodo per prendere tutti i box che sono assegnati ad un cliente
     public List<Box> getBoxCliente(Long uuidCliente) {
-        //TODO non ricordo bene, me lo avevi anche detto il perché
-        // avevamo fatto cosí, ma siamo sicuri? potremmo andare a controllare il checkpoint per poi, nel caso,
-        // assegnare un box in quella lista... (o riportare un errore) --Ric
         return repoCliente.findOneById(uuidCliente).getBoxAssegnati();
     }
 
@@ -78,7 +76,7 @@ public class ServiceCliente {
      * @param idBox .
      * @return NULL se il cliente o box non esiste, o il box non è presente nella sua lista.
      */
-    //TODO ale sei sicuro che va qui ? --ale
+    //TODO aley n00b.    Da fixare, i service devono effettuare queste operazioni -A
     public Box apriBox(Long idCliente, Long idBox){
         Cliente c = getCliente(idCliente);
         if(c == null)
@@ -114,8 +112,6 @@ public class ServiceCliente {
         Cliente cliente = repoCliente.findOneById(idCliente);
         cliente.aggiungiRuolo("Tecnico");
     }
-
-    //TODO aggiungiAdmin come viene fatto? to check -A
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);

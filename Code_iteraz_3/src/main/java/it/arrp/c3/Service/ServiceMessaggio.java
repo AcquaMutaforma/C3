@@ -30,7 +30,7 @@ public class ServiceMessaggio {
     private void sendMessaggio(Messaggio m){
         Cliente destinatario = serviceCliente.getCliente(m.getIdDestinatario());
         destinatario.aggiungiNotifica(m);
-        repoMessaggio.save(m); //TODO check
+        repoMessaggio.save(m);
     }
 
     /**
@@ -74,12 +74,14 @@ public class ServiceMessaggio {
         sendMessaggio(new Messaggio(SYSTEM, idCorriere, testoNotifica));
     }
 
+    /*
     public boolean rimuoviTicket(Messaggio m){
         repoMessaggio.delete(m);
         return true;
         //TODO probabilmente se si deve cancellare il ticket si cancella direttamente dalla lista delle
-        // notifiche, quindi questo al massimo puo' cancellare i ticket dal DB
+           notifiche, quindi questo al massimo puo' cancellare i ticket dal DB, praticamente e' inutile.
     }
+     */
 
     public Messaggio getMessaggio(Long idMessaggio){
         return repoMessaggio.findOneById(idMessaggio);

@@ -37,6 +37,5 @@ public class ServiceProdotto {
         repoProdotto.delete(repoProdotto.getOne(idProdotto));
     }
 
-    //TODO add prodotto, delete prodotto ... non fa molto altro, non ci sono interazioni con altri oggetti (per ora)
-    //TODO non c'é bisogno di interazioni con altri oggetti, ma si possono aggiungere altre operazioni andando a creare essenzialmente un CRUD (Creation, Read, Update, Delete). --Ric
+    //todo si possono aggiungere altre operazioni andando a creare essenzialmente un CRUD (Creation, Read, Update, Delete). --Ric
 }

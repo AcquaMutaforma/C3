@@ -22,9 +22,7 @@ public class Pacco {
     public Pacco() {
     }
 
-    public Pacco(/*Long idPacco, */Long idCommerciante, Long idCliente) {
-        /*this.idPacco = idPacco;*/
-        //TODO controllare che vada bene generare il codice pacco dalle annotazioni sopra alla dichiarazione di idPacco. --Ric
+    public Pacco(Long idCommerciante, Long idCliente) {
         setIdCliente(idCliente);
         setIdCommerciante(idCommerciante);
     }

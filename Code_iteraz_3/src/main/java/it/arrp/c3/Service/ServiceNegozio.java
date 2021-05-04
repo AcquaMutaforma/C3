@@ -78,10 +78,8 @@ public class ServiceNegozio {
      * Nota: Gli input e oggetti utilizzati vengono controllati qui e in caso positivo service corsa si
      * occupa di avviare il tutto, senza ricontrollare i dati.
      *
-     * TODO nel VPP il serviceCliente controlla il checkpoint e in caso positivo ritorna un box assegnato
-     * TODO quindi bisogna modificare il VPP!? --Ric
-     *  si, ci pensa serviceLocker a controllare il suo checkpoint e procedere con l'assegnamento, quindi
-     *  va aggiornato il VPP
+     * TODO Aggioranre il VPP, con creaCorsa del serviceNegozio, il checkpoint del cliente viene gestito
+     *  da ServiceLocker e non da serviceCliente, è lui che prova ad assegnare un box.
      */
     public int creaCorsa(Long idCliente, Long idNegozio){
         if(controllaInputCorsa(idCliente, idNegozio))
@@ -123,8 +121,6 @@ public class ServiceNegozio {
         List<Negozio> lista = this.repoNegozio.findAll();
         lista.removeIf(n -> !(n.getCittaNegozio().equals(citta)));
         return lista;
-        //TODO lasciamo tutto cosí e tanti saluti... ho cercato un po' e non ho trovato molto... possiamo provare a
-        // chiedere in giro, ma facciamo prima cosí, almeno per ora. --Ric
     }
 
     public List<Negozio> getNegozioByName(String citta, String nome) {

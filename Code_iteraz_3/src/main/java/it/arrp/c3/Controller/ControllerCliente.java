@@ -32,7 +32,7 @@ public class ControllerCliente{
     /*Forse non e' bellissimo il tipo di ritorno, ma con questo la view che non abbiamo potrebbe
     * avere meno problemi a visualizzare il tutto, e non deve richiedere i box un'altra volta */
     @GetMapping("/cliente/{idCliente}/boxes")
-    public List<Box> getLockerAssegnati(@PathVariable Long idCliente){
+    public List<Box> getBoxAssegnati(@PathVariable Long idCliente){
         return servClie.getBoxCliente(idCliente);
     }
 
@@ -45,12 +45,12 @@ public class ControllerCliente{
         return servClie.apriBox(idCliente, idBox);
     }
 
-    @PostMapping("cliente/{idCliente}/regCorriere")
+    @PostMapping("/cliente/{idCliente}/regCorriere")
     public void registraComeCorriere(@PathVariable Long idCliente, @RequestParam String mdt){
         servClie.aggiungiRuoloCorriere(idCliente, mdt);
     }
 
-    @PostMapping("cliente/{idCliente}/regNegozio")
+    @PostMapping("/cliente/{idCliente}/regNegozio")
     public void registraComeNegozio(@PathVariable Long idCliente, @RequestParam String nomeNegozio,
                                     @RequestParam String cittaNegozio,
                                     @RequestParam GenereNegozio genere){

@@ -85,7 +85,7 @@ public class ServiceCorsa {
             corseRifiutate.remove(corsa.getIdCorsa());
             serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdCommerciante());
             Long idBox = corsa.getIdBox();
-            serviceCliente.getCliente(p.getIdCliente()).removeBox(idBox);
+            serviceCliente.rimuoviBox(p.getIdCliente(),idBox);
             serviceBox.liberaBox(idBox);
         }
 
