@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Admin;
+import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.TecnicoRepository;
 import it.arrp.c3.Model.Tecnico;
@@ -33,23 +34,91 @@ public class ServiceTecnico {
         return true;
     }
 
+    public Tecnico getTecnico(Long idTecnico){
+        return repoTecnico.findOneById(idTecnico);
+    }
+
     public boolean creaRichiesta( Long idTecnico, String testoRichiesta){
         return serviceMessaggio.sendRichiesta(idTecnico,repoTecnico.findOneById(idTecnico).
                 getAdmin().getIdCLiente(),testoRichiesta);
     }
 
-    public void turnOnLocker(Long idLocker){
-        serviceLocker.turnOnLocker(idLocker);
-    }
-    public void turnOffLocker(Long idLocker){
-        serviceLocker.turnOffLocker(idLocker);
-    }
-    public void turnOnBox(Long idBox){
-        serviceBox.turnOnBox(idBox);
-    }
-    public void turnOffBox(Long idBox){
-        serviceBox.turnOffBox(idBox);
+    /**
+     * Questo metodo controlla che il tecnico lavori nella stessa citta dove risiede il locker.
+     * Cosi' facendo un tecnico non potra' effettuare operazioni "globali".
+     */
+    private boolean controlloInputLocker(Long idTecnico, Long idLocker){
+        Tecnico tec = getTecnico(idTecnico);
+        Locker locker = serviceLocker.getLockerById(idLocker);
+        if(tec == null || locker == null)
+            return false;
+        return tec.getCittaDiLavoro().equals(locker.getCitta());
     }
 
-    //TODO da inserire tutti i comandi che puo' eseguire il tecnico
+    //Nota: Il tipo di ritorno e' locker cosi' dal controller possiamo vedere subito il cambiamento
+    // senza dover fare anche il getLockerAttivo
+    public Locker impostaLockerAttivo(Long idTecnico, Long idLocker){
+        if(!controlloInputLocker(idTecnico, idLocker))
+            return null;
+        Tecnico tec = getTecnico(idTecnico);
+        tec.setLockerAttivo(serviceLocker.getLockerById(idLocker));
+        return tec.getLockerAttivo();
+    }
+
+    public boolean rimuoviLockerAttivo(Long idTecnico){
+        Tecnico tec = getTecnico(idTecnico);
+        if(tec != null) {
+            tec.setLockerAttivo(null);
+            return true;
+        }else
+            return false;
+    }
+
+    /**
+     * Questo metodo controlla che il tecnico sia collegato al locker; viene utilizzato prima di eseguire i comandi
+     * cosi' siamo sicuri che non esegua comandi su oggetti che non gli appartengono dato che per collegare un locker
+     * avvengono delle verifiche.
+     */
+    private boolean controllaLockerCollegato(Long idTecnico, Long idLocker){
+        if(!controlloInputLocker(idTecnico, idLocker))
+            return false;
+        return getTecnico(idTecnico).getLockerAttivo().equals(serviceLocker.getLockerById(idLocker));
+    }
+
+    public void turnOnLocker(Long idTecnico, Long idLocker){
+        if(controllaLockerCollegato(idTecnico, idLocker))
+            serviceLocker.turnOnLocker(idLocker);
+    }
+
+    public void turnOffLocker(Long idTecnico, Long idLocker){
+        if(controllaLockerCollegato(idTecnico, idLocker))
+            serviceLocker.turnOffLocker(idLocker);
+    }
+
+    /*
+    NOTA: I metodi che gestiscono i box fanno un sacco di giri in piu', per comodita' e per completare in tempo
+    il progetto credo rimarranno cosi' dato che sono corretti, ma potrebbero essere ottimizzati in un secondo momento.
+     */
+
+    public void turnOnBox(Long idTecnico, Long idBox){
+        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+            serviceBox.turnOnBox(idBox);
+    }
+
+    public void turnOffBox(Long idTecnico, Long idBox){
+        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+            serviceBox.turnOffBox(idBox);
+    }
+
+    public void unlockBox(Long idTecnico, Long idBox){
+        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+            serviceBox.unlock(idBox);
+    }
+
+    public void lockBox(Long idTecnico, Long idBox){
+        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+            serviceBox.lock(idBox);
+    }
+
+
 }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * Classe che gestisce un Locker, dunque la sua posizione geografica (per
@@ -80,6 +81,19 @@ public class Locker {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Locker)) return false;
+        Locker locker = (Locker) o;
+        return getId().equals(locker.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
     public String toString() {
         return "Locker{" +
                 "id=" + id +
@@ -87,5 +101,10 @@ public class Locker {
                 ", latitudine=" + this.locazione.y +
                 ", numeroBox=" + numeroBox +
                 '}';
+    }
+
+    public String getCitta() {
+        //TODO
+        return null;
     }
 }

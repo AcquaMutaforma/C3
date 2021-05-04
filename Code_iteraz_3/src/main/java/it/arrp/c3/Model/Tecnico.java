@@ -41,6 +41,15 @@ public class Tecnico extends Ruolo{
     public Locker getLockerAttivo() {
         return lockerAttivo;
     }
+
+    public String getCittaDiLavoro() {
+        return cittaDiLavoro;
+    }
+
+    public void setCittaDiLavoro(String cittaDiLavoro) {
+        this.cittaDiLavoro = cittaDiLavoro;
+    }
+
     public void setLockerAttivo(Locker lockerAttivo) {
         this.lockerAttivo = lockerAttivo;
     }
