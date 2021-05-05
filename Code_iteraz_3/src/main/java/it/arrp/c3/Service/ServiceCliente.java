@@ -3,6 +3,7 @@ package it.arrp.c3.Service;
 import it.arrp.c3.Model.*;
 import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.GenereNegozio;
+import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +66,7 @@ public class ServiceCliente {
         return repoCliente.findOneById(id);
     }
 
-    public List<String> getListaRuoli(Long idCliente){
+    public List<TipoRuolo> getListaRuoli(Long idCliente){
         Cliente cliente = getCliente(idCliente);
         return cliente.getListaRuoli();
     }
@@ -105,18 +106,18 @@ public class ServiceCliente {
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
         Cliente c = repoCliente.findOneById(idCliente);
         serviceCorriere.salvaRuoloCorriere(idCliente,mdt);
-        c.aggiungiRuolo("Corriere");
+        c.aggiungiRuolo(TipoRuolo.Corriere);
     }
 
     public void aggiungiRuoloTecnico(Long idCliente){
         Cliente cliente = repoCliente.findOneById(idCliente);
-        cliente.aggiungiRuolo("Tecnico");
+        cliente.aggiungiRuolo(TipoRuolo.Tecnico);
     }
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneById(idCliente);
         serviceNegozio.salvaRuoloNegozio(idCliente, nomeNegozio, cittaNegozio, genere);
-        c.aggiungiRuolo("Negozio");
+        c.aggiungiRuolo(TipoRuolo.Negozio);
     }
 
     public boolean creaTicket(Long idCliente, String testo){

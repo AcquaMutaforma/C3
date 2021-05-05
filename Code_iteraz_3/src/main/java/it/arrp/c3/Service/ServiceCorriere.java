@@ -67,14 +67,14 @@ public class ServiceCorriere {
      * @param idCorsa identifica la corsa per vedere le info e completarla.
      */
     public Box unlock(Long idCorriere, Long idCorsa) {
-        if(getCorsa(idCorriere,idCorsa) != null){
+        Corsa corsa = getCorsa(idCorriere,idCorsa);
+        if(corsa != null){
             //sblocco il box
-            Corsa c = serviceCorsa.getCorsa(idCorsa);
-            serviceBox.unlock(c.getIdBox());
+            serviceBox.unlock(corsa.getIdBox());
             //completo la corsa
             serviceCorsa.corsaCompletata(idCorsa);
-            completaCorsa(idCorriere,c);
-            return serviceBox.getBox(c.getIdBox());
+            completaCorsa(idCorriere,corsa);
+            return serviceBox.getBox(corsa.getIdBox());
         }
         return null;
     }
@@ -84,8 +84,8 @@ public class ServiceCorriere {
      */
     private void completaCorsa(Long idCorriere, Corsa corsa) {
         serviceCorsa.corsaCompletata(corsa.getIdCorsa());
-        Corriere c = getCorriere(idCorriere);
-        c.rimuoviCorsa(corsa);
+        Corriere corriere = getCorriere(idCorriere);
+        corriere.rimuoviCorsa(corsa);
     }
 
     public void salvaRuoloCorriere(Long idCliente, String mdt) {

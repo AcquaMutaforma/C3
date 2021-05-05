@@ -1,5 +1,7 @@
 package it.arrp.c3.Model;
 
+import it.arrp.c3.Model.Enum.TipoRuolo;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ public class Cliente {
 
     private Locker checkpoint;
     private List<Messaggio> notifiche;
-    private List<String> listaRuoli;
+    private List<TipoRuolo> listaRuoli;
     private List<Box> boxAssegnati;
 
     //TODO bisogna creare dei controlli per dei limiti altrimenti le notifiche arrivano a infinito come i box o i ruoli
@@ -81,7 +83,7 @@ public class Cliente {
     public List<Messaggio> getNotifiche() {
         return notifiche;
     }
-    public List<String> getListaRuoli() {
+    public List<TipoRuolo> getListaRuoli() {
         return listaRuoli;
     }
     public List<Box> getBoxAssegnati() {
@@ -110,7 +112,7 @@ public class Cliente {
         this.boxAssegnati.add(boxAssegnato);
     }
 
-    public void aggiungiRuolo(String ruolo) {
+    public void aggiungiRuolo(TipoRuolo ruolo) {
         this.listaRuoli.add(ruolo);
     }
 

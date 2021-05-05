@@ -113,7 +113,7 @@ public class ServiceCorsa {
             corsaRCompletata(idCorsa);
         Corsa corsa = getCorsa(idCorsa);
         Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
-        serviceCliente.rimuoviBox(pacco.getIdCliente(), corsa.getIdBox());  //rimuove il box dalla lista del cliente
+        serviceCliente.rimuoviBox(pacco.getIdCliente(), corsa.getIdBox());  //rimuove il box dalla lista del cliente //TODO spostare queste cose per quando il cliente va a prendere il pacco --Ric
         serviceBox.liberaBox(corsa.getIdBox());                             //rimuove id cliente dal box
         serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());//invia la notifica per il completamento
     }
