@@ -16,6 +16,26 @@ import java.util.UUID;
 @Table(name = "cliente")
 public class Cliente {
     @Id
+    /*
+    * @SequenceGenerator(
+    *       name="sequenza_clienti",
+    *       sequenceName="sequenza_clienti",
+    *       initialValue = 0,
+    *       allocationSize=1 //incremento ad ogni generazione
+    * )
+    *@GeneratedValue(
+    *       strategy = SEQUENCE,
+    *       generator = "sequenza_clienti")
+    *@Column(
+    *       name = "codice_identificativo_cliente", //tradotto: il nome della colonna puó essere custom
+    *       updatable=false,
+    *       nullable=false, //giusto per averlo quí, il valore generato non sarebbe mai nullo, quindi np here
+    *       columnDefinition = "LONG", //definisce il tipo di valore nella colonna, a mó di SQL, quindi non sono certo di quel valore, ma si imposta cosí.
+    *       //sul video che ho visto, la columnDefinition non la scrive su id e viene automatico "bigint".
+    *       unique=true, //il valore é unico in tutta la tabella... stessa cosa di nullable penso (intuile quí ma utile altrove)
+    *
+    *       )
+     * */
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long idCliente;
