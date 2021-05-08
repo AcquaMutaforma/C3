@@ -1,5 +1,6 @@
 package it.arrp.c3.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,11 @@ import java.util.List;
 @Entity
 public class Admin extends Ruolo{
 
+    @Column(name="luogoLavorativo")
     private String cittaDiLavoro;
+    @Column(name="listaDipendenti")
     private List<Tecnico> listaTecnici;
+    @Column(name="listaRichieste")
     private List<Messaggio> listaRichieste;
 
     public Admin(Long idCliente) {

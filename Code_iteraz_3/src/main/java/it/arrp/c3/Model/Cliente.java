@@ -32,7 +32,7 @@ public class Cliente {
     *       nullable=false, //giusto per averlo quí, il valore generato non sarebbe mai nullo, quindi np here
     *       columnDefinition = "LONG", //definisce il tipo di valore nella colonna, a mó di SQL, quindi non sono certo di quel valore, ma si imposta cosí.
     *       //sul video che ho visto, la columnDefinition non la scrive su id e viene automatico "bigint".
-    *       unique=true, //il valore é unico in tutta la tabella... stessa cosa di nullable penso (intuile quí ma utile altrove)
+    *       unique=true, //il valore é unico in tutta la tabella... stessa cosa di nullable penso (inutile quí ma utile altrove)
     *
     *       )
      * */

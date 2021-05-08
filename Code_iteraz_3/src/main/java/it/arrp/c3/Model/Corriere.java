@@ -2,6 +2,7 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.StatoCorriere;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.List;
 public class Corriere extends Ruolo {
 
     private StatoCorriere stato;
+    @Column(name="mezzoDiTrasporto")
     private String mezzoDiTrasporto;
+    @Column(name="listaDatoriLavoro")
     private ArrayList<Negozio> listaNegoziCollegati;
     private ArrayList<Corsa> listaCorse;
     //TODO extra: forse potrebbe essere comodo inserire una lista di corse completate o un contatore, e' superfluo -A

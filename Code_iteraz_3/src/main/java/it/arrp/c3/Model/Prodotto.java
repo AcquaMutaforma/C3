@@ -2,6 +2,7 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.GenereProdotto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +16,11 @@ public class Prodotto {
     @Id
     @GeneratedValue
     private Long idProdotto;
-    private String nome,descrizione;
+    @Column(name="nomeProdotto")
+    private String nome;
+    @Column(name="descrizioneProdotto")
+    private String descrizione;
+    @Column(name="genereProdotto")
     private GenereProdotto genereProdotto;
 
     public Prodotto() {

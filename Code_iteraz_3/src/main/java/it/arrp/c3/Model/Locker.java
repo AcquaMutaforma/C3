@@ -3,10 +3,7 @@ package it.arrp.c3.Model;
 import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.StatoBox;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +20,9 @@ public class Locker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name="ubicazione")
     private Point locazione;
+    @Column(name="numeroBox")
     private int numeroBox;
     private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */

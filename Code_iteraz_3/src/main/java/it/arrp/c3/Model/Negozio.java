@@ -3,6 +3,7 @@ package it.arrp.c3.Model;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Enum.GenereProdotto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,11 @@ import java.util.UUID;
 @Entity
 public class Negozio extends Ruolo {
 
+    @Column(name="nomeNegozio")
     private String nomeNegozio;
+    @Column(name="cittaNegozio")
     private String cittaNegozio;
+    @Column(name="genereNegozio")
     private GenereNegozio genereNegozio;
     private List<Prodotto> listaProdottiInEvidenza;
     private List<Corriere> listaCorrieriAssunti;

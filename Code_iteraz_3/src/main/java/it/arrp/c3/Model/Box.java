@@ -4,10 +4,7 @@ import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.Chiusura;
 import it.arrp.c3.Model.Enum.StatoBox;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -22,6 +19,7 @@ public class Box{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long idBox;
     private Long idCliente;
+    @Column(name="lockerDiAppartenenza")
     private Locker locker;
     private Chiusura chiusura;
     private StatoBox stato;

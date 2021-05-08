@@ -1,5 +1,6 @@
 package it.arrp.c3.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,11 @@ import java.util.List;
 @Entity
 public class Tecnico extends Ruolo{
 
+    @Column(name="superiore")
     private Admin admin;
+    @Column(name="richieste")
     private List<Messaggio> listaRichieste;
+    @Column(name="luogoDiLavoro")
     private String cittaDiLavoro; //Todo: da aggiungere, ci eravamo dimenticati.
     //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
     // ne parliamo poi decidiamo -A
