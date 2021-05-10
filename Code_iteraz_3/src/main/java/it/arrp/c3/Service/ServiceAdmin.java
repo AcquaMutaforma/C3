@@ -3,10 +3,10 @@ package it.arrp.c3.Service;
 import it.arrp.c3.Model.Admin;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Repository.AdminRepository;
+import it.arrp.c3.Model.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -72,4 +72,22 @@ public class ServiceAdmin {
         repoAdmin.save(new Admin(idCliente,citta));
         return true;
     }
+
+    //nota: il tecnico non dovrebbe avere l'autorita' per cambiare admin da solo, quindi ci pensa
+    // l'admin con questo metodo, cambia per entrambi dato che non avrebbe senso che non siano " collegati"
+    public List<Tecnico> aggiungiTecnico(Long idAdmin, Long idTecnico){
+        Admin admin = getAdmin(idAdmin);
+        Tecnico tec = serviceTecnico.getTecnico(idTecnico);
+        if(admin == null || tec == null)
+            return null;
+        else {
+            admin.addTecnico(tec);
+            tec.setAdmin(admin);
+            //todo: da valutare setCitta, se un tecnico cambia admin e' possibile che cambi anche citta -A
+            tec.setCittaDiLavoro(admin.getCittaDiLavoro());
+            return admin.getListaTecnici();
+        }
+    }
+
+
 }

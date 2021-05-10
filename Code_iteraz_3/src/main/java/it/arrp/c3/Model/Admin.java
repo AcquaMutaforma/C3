@@ -42,8 +42,8 @@ public class Admin extends Ruolo{
     @Override
     public String toString() {
         return "Admin{" +
-                "idCLiente=" + idCLiente +
-                /*", nomeRuolo='" + nomeRuolo + */'\'' +
+                "cittaDiLavoro='" + cittaDiLavoro + '\'' +
+                ", idCLiente=" + idCLiente +
                 '}';
     }
 
@@ -54,4 +54,8 @@ public class Admin extends Ruolo{
     public boolean rmRichiesta(Messaggio m){
         return listaRichieste.remove(m);
     }
+
+    public List<Tecnico> getListaTecnici(){ return this.listaTecnici; }
+    public void addTecnico(Tecnico tec){ this.listaTecnici.add(tec); }
+    public boolean removeTecnico(Tecnico tec){ return this.listaTecnici.remove(tec);}
 }

@@ -27,5 +27,9 @@ public class ControllerTecnico {
         return serviceTecnico.rimuoviLockerAttivo(idTecnico);
     }
 
+    @PostMapping("/tecnico/{idTecnico}/locker/off")
+    public Locker turnOffLocker(@PathVariable Long idTecnico, @RequestParam Long idLocker){
+        return serviceTecnico.turnOffLocker(idTecnico, idLocker);
+    }
 
 }

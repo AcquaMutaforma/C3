@@ -23,6 +23,8 @@ public class ServiceTecnico {
     @Autowired
     ServiceBox serviceBox;
     @Autowired
+    ServiceAdmin serviceAdmin;
+    @Autowired
     TecnicoRepository repoTecnico;
 
 
@@ -90,9 +92,10 @@ public class ServiceTecnico {
             serviceLocker.turnOnLocker(idLocker);
     }
 
-    public void turnOffLocker(Long idTecnico, Long idLocker){
+    public Locker turnOffLocker(Long idTecnico, Long idLocker){
         if(controllaLockerCollegato(idTecnico, idLocker))
             serviceLocker.turnOffLocker(idLocker);
+        return serviceLocker.getLockerById(idLocker);
     }
 
     /*
@@ -119,6 +122,5 @@ public class ServiceTecnico {
         if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
             serviceBox.lock(idBox);
     }
-
 
 }
