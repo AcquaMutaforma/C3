@@ -26,7 +26,7 @@ public class ControllerCorriere {
         return serviceCorriere.getCorsa(idCorriere, idCorsa);
     }
 
-    @GetMapping("/corriere/{idCorriere}/corse")
+    @GetMapping("/corriere/{idCorriere}/corsa")
     public List<Corsa> getAllCorse(@PathVariable Long idCorriere){
         return serviceCorriere.getAllCorse(idCorriere);
     }
@@ -36,15 +36,13 @@ public class ControllerCorriere {
         return serviceCorriere.cambiaStato(idCorriere, stato);
     }
 
-    @PostMapping("/corriere/{idCorriere}/corsa/{idCorsa}/unlock")
+    @PostMapping("/corriere/{idCorriere}/corsa/unlock")
     public Box unlockBox(@PathVariable Long idCorriere, @RequestParam Long idCorsa){
         return serviceCorriere.unlock(idCorriere, idCorsa);
-        //TODO sicuro che il tipo di ritorno sia box? si ok, almeno vedi direttamente l'oggetto ma forse non
-        // va fatto cosi'
     }
 
-    @PostMapping("/corriere/{idCorriere}/corsa/{idCorsa}/rifiuta")
-    public List<Corsa> rifiutaCorsa(@PathVariable Long idCorriere, @PathVariable Long idCorsa){
+    @PostMapping("/corriere/{idCorriere}/corsa/rifiuta")
+    public List<Corsa> rifiutaCorsa(@PathVariable Long idCorriere, @RequestParam Long idCorsa){
         return serviceCorriere.rifiutaCorsa(idCorriere, idCorsa);
     }
 

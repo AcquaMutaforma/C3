@@ -17,8 +17,6 @@ public class Admin extends Ruolo{
     private String cittaDiLavoro;
     @Column(name="listaDipendenti")
     private List<Tecnico> listaTecnici;
-    @Column(name="listaRichieste")
-    private List<Messaggio> listaRichieste;
 
     public Admin(Long idCliente) {
         super(idCliente);
@@ -27,7 +25,6 @@ public class Admin extends Ruolo{
     public Admin(Long idCliente, String cittaDiLavoro) {
         super(idCliente);
         this.cittaDiLavoro = cittaDiLavoro;
-        this.listaRichieste = new ArrayList<>();
         this.listaTecnici = new ArrayList<>();
     }
 
@@ -45,14 +42,6 @@ public class Admin extends Ruolo{
                 "cittaDiLavoro='" + cittaDiLavoro + '\'' +
                 ", idCLiente=" + idCLiente +
                 '}';
-    }
-
-    public void addTicket(Messaggio m) {
-        this.listaRichieste.add(m);
-    }
-
-    public boolean rmRichiesta(Messaggio m){
-        return listaRichieste.remove(m);
     }
 
     public List<Tecnico> getListaTecnici(){ return this.listaTecnici; }

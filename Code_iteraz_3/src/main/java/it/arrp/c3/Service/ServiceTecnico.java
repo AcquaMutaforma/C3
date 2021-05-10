@@ -87,9 +87,10 @@ public class ServiceTecnico {
         return getTecnico(idTecnico).getLockerAttivo().equals(serviceLocker.getLockerById(idLocker));
     }
 
-    public void turnOnLocker(Long idTecnico, Long idLocker){
+    public Locker turnOnLocker(Long idTecnico, Long idLocker){
         if(controllaLockerCollegato(idTecnico, idLocker))
             serviceLocker.turnOnLocker(idLocker);
+        return serviceLocker.getLockerById(idLocker);
     }
 
     public Locker turnOffLocker(Long idTecnico, Long idLocker){
@@ -103,24 +104,40 @@ public class ServiceTecnico {
     il progetto credo rimarranno cosi' dato che sono corretti, ma potrebbero essere ottimizzati in un secondo momento.
      */
 
-    public void turnOnBox(Long idTecnico, Long idBox){
-        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+    public Box turnOnBox(Long idTecnico, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
             serviceBox.turnOnBox(idBox);
+        return box;
     }
 
-    public void turnOffBox(Long idTecnico, Long idBox){
-        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+    public Box turnOffBox(Long idTecnico, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
             serviceBox.turnOffBox(idBox);
+        return box;
     }
 
-    public void unlockBox(Long idTecnico, Long idBox){
-        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+    public Box unlockBox(Long idTecnico, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
             serviceBox.unlock(idBox);
+        return box;
     }
 
-    public void lockBox(Long idTecnico, Long idBox){
-        if(controllaLockerCollegato(idTecnico, serviceBox.getBox(idBox).getLocker().getId()))
+    public Box lockBox(Long idTecnico, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
             serviceBox.lock(idBox);
+        return box;
     }
 
 }

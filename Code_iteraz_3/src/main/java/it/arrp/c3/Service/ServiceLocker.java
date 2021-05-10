@@ -66,12 +66,16 @@ public class ServiceLocker {
     public Long assegnaBox(Long idCliente){
         Cliente cliente = serviceCliente.getCliente(idCliente);
         Locker locker = cliente.getCheckpoint();
-        if(locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento) //nessun checkpoint o locker OFF
+        if( locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento) //nessun checkpoint o locker OFF
             return null;
         Box box = getBoxDisponibile(locker.getId());
         if(box == null) //box non disponibili nel locker
             return null;
-        return serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox();
+        if(serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox() != null){
+            serviceCliente.assegnamentoBox(idCliente, box);
+            return box.getIdBox();
+        }
+        return null;
     }
 
     public void turnOffLocker(Long idLocker){

@@ -1,12 +1,9 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Cliente;
-import it.arrp.c3.Model.Corriere;
+import it.arrp.c3.Model.*;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Enum.GenereProdotto;
 import it.arrp.c3.Model.Enum.StatoCorriere;
-import it.arrp.c3.Model.Negozio;
-import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Model.Repository.NegozioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,7 +52,7 @@ public class ServiceNegozio {
     }
 
     public Long getCorriereDisponibile(Long idCommerciante){
-        Negozio negozio = getNegozioById(idCommerciante);
+        Negozio negozio = getNegozio(idCommerciante);
         if (negozio == null)
             return null;
         return getListaCorrieriDisponibili(negozio).get(0).getIdCLiente();
@@ -82,15 +79,15 @@ public class ServiceNegozio {
      */
     public int creaCorsa(Long idCliente, Long idNegozio){
         if(controllaInputCorsa(idCliente, idNegozio))
-            return -2; //errore id non valido
+            return -2;
         Long idCorriere = getCorriereDisponibile(idNegozio);
-        if (idCorriere!=null){
+        if(idCorriere!=null){
             Long idBox = serviceLocker.assegnaBox(idCliente);
             if(idBox != null){
                 serviceCorsa.creaCorsa(idNegozio, idCorriere, idCliente, idBox);
                 return 1;
             }else return 0;
-        }else return -1; //di conseguenza la consegna viene negata
+        }else return -1;
     }
 
     /**
@@ -101,19 +98,22 @@ public class ServiceNegozio {
      * Una seconda opzione potrebbe essere: far inserire l'id del locker al commerciante, che puo' vedere dal suo
      * controller la lista di questi, magari inserendo una variabile nome nel locker tipo "piazza dante".
      */
-    public int assegnaLocker(Long idCliente, Long idNegozio){
-        //TODO
-        return 0;
+    public int assegnaLocker(Long idCliente, Long idNegozio, Long idLocker){
+        Cliente cliente = serviceCliente.getCliente(idCliente);
+        Negozio negozio = getNegozio(idNegozio);
+        Locker locker = serviceLocker.getLockerById(idLocker);
+        if(cliente == null || negozio == null || locker == null)
+            return -2;  //codici inseriti errati
+        if(serviceLocker.getBoxDisponibile(idLocker) == null)
+            return -3; //box non disponibili
+        serviceCliente.setCheckpoint(idCliente, idLocker);
+        return creaCorsa(idCliente, idNegozio);
     }
 
     private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {
         Cliente cliente = serviceCliente.getCliente(idCliente);
         Negozio commerciante = repoNegozio.findOneById(idCommerciante);
         return cliente == null || commerciante == null;
-    }
-
-    private Negozio getNegozioById(Long idNegozio){
-        return this.repoNegozio.findOneById(idNegozio);
     }
 
     public List<Negozio> getNegoziByCitta(String citta) {
@@ -135,7 +135,7 @@ public class ServiceNegozio {
     }
 
     public List<Corriere> getCorrieri(Long idCommerciante) {
-        Negozio n = getNegozioById(idCommerciante);
+        Negozio n = getNegozio(idCommerciante);
         if(n == null)
             return null;
         return n.getListaCorrieriAssunti();
@@ -182,5 +182,9 @@ public class ServiceNegozio {
         if(n == null)
             return null;
         return n.getListaProdottiInEvidenza();
+    }
+
+    public List<Prodotto> getTuttiProdotti(){
+        return serviceProdotto.getProdottoAll();
     }
 }

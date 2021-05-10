@@ -15,8 +15,7 @@ public class Tecnico extends Ruolo{
 
     @Column(name="superiore")
     private Admin admin;
-    @Column(name="richieste")
-    private List<Messaggio> listaRichieste;
+
     @Column(name="luogoDiLavoro")
     private String cittaDiLavoro; //Todo: da aggiungere, ci eravamo dimenticati.
     //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
@@ -30,7 +29,6 @@ public class Tecnico extends Ruolo{
     public Tecnico(Long idCliente, Admin admin) {
         super(idCliente);
         this.admin = admin;
-        this.listaRichieste = new ArrayList<>();
     }
 
     public Admin getAdmin() {
@@ -40,8 +38,6 @@ public class Tecnico extends Ruolo{
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-    public void addRichiesta(Messaggio m){ this.listaRichieste.add(m); }
-    public boolean rimuoviRichiesta(Messaggio m){ return this.listaRichieste.remove(m); }
     public Locker getLockerAttivo() {
         return lockerAttivo;
     }

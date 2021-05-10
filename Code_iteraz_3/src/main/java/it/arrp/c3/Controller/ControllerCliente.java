@@ -14,12 +14,14 @@ public class ControllerCliente{
     @Autowired
     ServiceCliente servClie;
 
-    @PostMapping("/cliente/{idCliente}/checkpoint")
+    @PostMapping("/cliente/{idCliente}/checkpoint/add")
     public boolean setCheckpoint(@PathVariable Long idCliente, @RequestParam Long idLocker){
         return servClie.setCheckpoint(idCliente, idLocker);
     }
 
-    @PostMapping("/cliente/{idCliente}/creaTicket")
+    //TODO removeCheckpoint
+
+    @PostMapping("/cliente/{idCliente}/ticket")
     public boolean creaTicket(@PathVariable Long idCliente, @RequestParam String testo){
         return servClie.creaTicket(idCliente,testo);
     }
@@ -31,7 +33,7 @@ public class ControllerCliente{
 
     /*Forse non e' bellissimo il tipo di ritorno, ma con questo la view che non abbiamo potrebbe
     * avere meno problemi a visualizzare il tutto, e non deve richiedere i box un'altra volta */
-    @GetMapping("/cliente/{idCliente}/boxes")
+    @GetMapping("/cliente/{idCliente}/box")
     public List<Box> getBoxAssegnati(@PathVariable Long idCliente){
         return servClie.getBoxCliente(idCliente);
     }
@@ -40,8 +42,8 @@ public class ControllerCliente{
     Non e' bellissimo che ritorni il box, ma fa comodo per "visualizzare" l'apertura o meno del box.
     todo: si potrebbe cambiare tipo di ritorno una volta che funziona
      */
-    @GetMapping("/cliente/{idCliente}/boxes/open/{idBox}")
-    public Box apriBoxAssegnato(@PathVariable Long idCliente, @PathVariable Long idBox){
+    @PostMapping("/cliente/{idCliente}/box/open")
+    public Box apriBoxAssegnato(@PathVariable Long idCliente, @RequestParam Long idBox){
         return servClie.apriBox(idCliente, idBox);
     }
 

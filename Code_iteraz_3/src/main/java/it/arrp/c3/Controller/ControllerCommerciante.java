@@ -25,8 +25,8 @@ public class ControllerCommerciante {
      * Esempio 2: il cliente non ha un checkpoint o in esso non ci sono box disponibili, il service ritornera' qualcosa
      * come "Checkpoint cliente non valido, utilizzare assegna Locker".
      */
-    @PostMapping("/commerciante/creaCorsa")
-    public int creaCorsa(@RequestParam Long idCliente, @RequestParam Long idNegozio){
+    @PostMapping("/commerciante/{idNegozio}/creaCorsa")
+    public int creaCorsa(@RequestParam Long idCliente, @PathVariable Long idNegozio){
         return serviceNegozio.creaCorsa(idCliente, idNegozio);
     }
 
@@ -62,9 +62,15 @@ public class ControllerCommerciante {
     crea corsa direttamente con il service, per fare questo va creato un altro metodo creaCorsa in serviceNegozio che
     accetta come input anche un idBox.
      */
-    @PostMapping("/commerciante/{idComm}/assegnaBox")
-    public int assegnaLocker(@PathVariable Long idComm, @RequestParam Long idCliente){
-        return serviceNegozio.assegnaLocker(idComm, idCliente);
+    @PostMapping("/commerciante/{idComm}/assegnaLocker")
+    public int assegnaLocker(@PathVariable Long idComm, @RequestParam Long idCliente, @RequestParam Long idLocker){
+        //TODO comando "visualizzaLockers" per poi sceglierlo e usare questo metodo
+        return serviceNegozio.assegnaLocker(idComm, idCliente, idLocker);
+    }
+
+    @GetMapping("/commerciante/tuttiProdotti")
+    public List<Prodotto> getTuttiProdotti(){
+        return serviceNegozio.getTuttiProdotti();
     }
 
     @GetMapping("/commerciante/{idCommerciante}/prodotti")

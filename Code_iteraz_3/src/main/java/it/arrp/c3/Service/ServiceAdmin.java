@@ -1,9 +1,8 @@
 package it.arrp.c3.Service;
 
-import it.arrp.c3.Model.Admin;
-import it.arrp.c3.Model.Cliente;
+import it.arrp.c3.Model.*;
+import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Repository.AdminRepository;
-import it.arrp.c3.Model.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ import java.util.Random;
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Admin.
  */
 @Service
-public class ServiceAdmin {
+public class ServiceAdmin{
     @Autowired
     ServiceLocker serviceLocker;
     @Autowired
@@ -23,6 +22,8 @@ public class ServiceAdmin {
     ServiceTecnico serviceTecnico;
     @Autowired
     ServiceMessaggio serviceMessaggio;
+    @Autowired
+    ServiceBox serviceBox;
     @Autowired
     AdminRepository repoAdmin;
 
@@ -56,9 +57,9 @@ public class ServiceAdmin {
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains("Tecnico"))
+        if(c.getListaRuoli().contains(TipoRuolo.Tecnico))
             return true;
-        return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin)); //todo metodo da controllare in serviceTecnico
+        return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin));
     }
 
     public boolean creaAdmin(Long idCliente, Long idAdmin, String citta) {
@@ -66,7 +67,7 @@ public class ServiceAdmin {
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains("Admin"))
+        if(c.getListaRuoli().contains(TipoRuolo.Admin))
             return true;
         serviceCliente.aggiungiRuoloAdmin(idCliente);
         repoAdmin.save(new Admin(idCliente,citta));
@@ -75,6 +76,7 @@ public class ServiceAdmin {
 
     //nota: il tecnico non dovrebbe avere l'autorita' per cambiare admin da solo, quindi ci pensa
     // l'admin con questo metodo, cambia per entrambi dato che non avrebbe senso che non siano " collegati"
+    // idem per la citta di lavoro.
     public List<Tecnico> aggiungiTecnico(Long idAdmin, Long idTecnico){
         Admin admin = getAdmin(idAdmin);
         Tecnico tec = serviceTecnico.getTecnico(idTecnico);
@@ -83,11 +85,71 @@ public class ServiceAdmin {
         else {
             admin.addTecnico(tec);
             tec.setAdmin(admin);
-            //todo: da valutare setCitta, se un tecnico cambia admin e' possibile che cambi anche citta -A
             tec.setCittaDiLavoro(admin.getCittaDiLavoro());
             return admin.getListaTecnici();
         }
     }
 
+    private boolean controllaCitta(Long idAdmin, Long idLocker){
+        Admin admin = getAdmin(idAdmin);
+        Locker locker = serviceLocker.getLockerById(idLocker);
+        return admin != null && locker != null && admin.getCittaDiLavoro().equals(locker.getCitta());
+    }
+
+    public Locker turnOnLocker(Long idAdmin, Long idLocker){
+        if(controllaCitta(idAdmin, idLocker))
+            serviceLocker.turnOnLocker(idLocker);
+        return serviceLocker.getLockerById(idLocker);
+    }
+
+    public Locker turnOffLocker(Long idAdmin, Long idLocker){
+        if(controllaCitta(idAdmin, idLocker))
+            serviceLocker.turnOffLocker(idLocker);
+        return serviceLocker.getLockerById(idLocker);
+    }
+
+    /*
+    NOTA: I metodi che gestiscono i box fanno un sacco di giri in piu', per comodita' e per completare in tempo
+    il progetto credo rimarranno cosi' dato che sono corretti, ma potrebbero essere ottimizzati in un secondo momento.
+
+    Il check del box == null è necessario altrimenti se facciamo box.getLocker con box == null diventa null.getLocker
+    e da NullPointerException
+     */
+
+    public Box turnOnBox(Long idAdmin, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaCitta(idAdmin, box.getLocker().getId()))
+            serviceBox.turnOnBox(idBox);
+        return box;
+    }
+
+    public Box turnOffBox(Long idAdmin, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaCitta(idAdmin, box.getLocker().getId()))
+            serviceBox.turnOffBox(idBox);
+        return box;
+    }
+
+    public Box unlockBox(Long idAdmin, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaCitta(idAdmin, box.getLocker().getId()))
+            serviceBox.unlock(idBox);
+        return box;
+    }
+
+    public Box lockBox(Long idAdmin, Long idBox){
+        Box box = serviceBox.getBox(idBox);
+        if(box == null)
+            return null;
+        if(controllaCitta(idAdmin, box.getLocker().getId()))
+            serviceBox.lock(idBox);
+        return box;
+    }
 
 }

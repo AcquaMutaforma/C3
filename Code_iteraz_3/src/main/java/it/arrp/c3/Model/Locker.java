@@ -24,6 +24,9 @@ public class Locker {
     private Point locazione;
     @Column(name="numeroBox")
     private int numeroBox;
+    @Column(name="citta")
+    private String citta;
+
     private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */
     private ArrayList<Box> listaBox;
@@ -31,9 +34,10 @@ public class Locker {
     public Locker() {
     }
 
-    public Locker(int longitudine, int latitudine, int numeroBox) {
+    public Locker(int longitudine, int latitudine, int numeroBox, String citta) {
         this.locazione = new Point(longitudine, latitudine);
         this.numeroBox = numeroBox;
+        this.citta = citta;
         this.statoAccensioneLocker = Accensione.Acceso;
         this.listaBox = new ArrayList<>();
     }
@@ -103,7 +107,6 @@ public class Locker {
     }
 
     public String getCitta() {
-        //TODO
-        return null;
+        return this.citta;
     }
 }

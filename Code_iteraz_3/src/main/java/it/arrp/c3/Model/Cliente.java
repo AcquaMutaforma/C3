@@ -53,6 +53,9 @@ public class Cliente {
     private List<TipoRuolo> listaRuoli;
     private List<Box> boxAssegnati;
 
+    public static final int max_box = 10;
+    public static final int max_notifiche = 20;
+
     //TODO bisogna creare dei controlli per dei limiti altrimenti le notifiche arrivano a infinito come i box o i ruoli
 
     public Cliente() {
@@ -115,7 +118,6 @@ public class Cliente {
     public void setCheckpoint(Locker checkpoint) {
         this.checkpoint = checkpoint;
     }
-    //mancano i setter delle liste, ma non credo servano a molto -ale
     
     @Override
     public String toString() {
@@ -129,15 +131,17 @@ public class Cliente {
     }
 
     public void addBox(Box boxAssegnato) {
-        this.boxAssegnati.add(boxAssegnato);
+        if(!this.boxAssegnati.contains(boxAssegnato) && this.boxAssegnati.size() <= max_box)
+            this.boxAssegnati.add(boxAssegnato);
     }
 
     public void aggiungiRuolo(TipoRuolo ruolo) {
-        this.listaRuoli.add(ruolo);
+        if(!this.listaRuoli.contains(ruolo))
+            this.listaRuoli.add(ruolo);
     }
 
     public void aggiungiNotifica(Messaggio m){
-        if(m!=null)
+        if(m!=null && notifiche.size() <= max_notifiche)
             this.notifiche.add(m);
     }
 

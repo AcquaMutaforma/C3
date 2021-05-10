@@ -73,28 +73,17 @@ public class ServiceCliente {
 
     /**
      * Apre il box che appartiene al cliente dato.
-     * @param idCliente .
-     * @param idBox .
      * @return NULL se il cliente o box non esiste, o il box non è presente nella sua lista.
      */
-    //TODO aley n00b.    Da fixare, i service devono effettuare queste operazioni -A
     public Box apriBox(Long idCliente, Long idBox){
         Cliente c = getCliente(idCliente);
         if(c == null)
             return null;
         Box b = serviceBox.getBox(idBox);
-        if(b == null)
+        if(b == null || !c.getBoxAssegnati().contains(b) || !b.getIdCliente().equals(idCliente))
             return null;
-        if(c.getBoxAssegnati().contains(b)){
-            for (Box box : c.getBoxAssegnati()) {
-                b = box;
-                if (b.getIdBox().equals(idBox)) {
-                    b.unlock();
-                    return b;
-                }
-            }
-        }
-        return null;
+        serviceBox.unlock(idBox);
+        return b;
     }
 
     public Cliente registrazione(String nome, String email, String pass, String citta) {

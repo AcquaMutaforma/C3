@@ -1,5 +1,6 @@
 package it.arrp.c3.Controller;
 
+import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Tecnico;
 import it.arrp.c3.Service.ServiceTecnico;
@@ -30,6 +31,31 @@ public class ControllerTecnico {
     @PostMapping("/tecnico/{idTecnico}/locker/off")
     public Locker turnOffLocker(@PathVariable Long idTecnico, @RequestParam Long idLocker){
         return serviceTecnico.turnOffLocker(idTecnico, idLocker);
+    }
+
+    @PostMapping("/tecnico/{idTecnico}/locker/on")
+    public Locker turnOnLocker(@PathVariable Long idTecnico, @RequestParam Long idLocker){
+        return serviceTecnico.turnOnLocker(idTecnico, idLocker);
+    }
+
+    @PostMapping("/tecnico/{idTecnico}/box/apri")
+    public Box unlockBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceTecnico.unlockBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/tecnico/{idTecnico}/box/chiudi")
+    public Box lockBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceTecnico.lockBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/tecnico/{idTecnico}/box/spegni")
+    public Box turnOffBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceTecnico.turnOffBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/tecnico/{idTecnico}/box/accendi")
+    public Box turnOnBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceTecnico.turnOnBox(idTecnico, idBox);
     }
 
 }

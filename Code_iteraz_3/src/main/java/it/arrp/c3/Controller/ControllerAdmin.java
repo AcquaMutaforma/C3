@@ -1,6 +1,8 @@
 package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Admin;
+import it.arrp.c3.Model.Box;
+import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Tecnico;
 import it.arrp.c3.Service.ServiceAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,35 @@ public class ControllerAdmin {
     @PostMapping("/admin/{idAdmin}/tecnico/add")
     public List<Tecnico> aggiungiTecnico(@PathVariable Long idAdmin, @RequestParam Long idTecnico){
         return serviceAdmin.aggiungiTecnico(idAdmin, idTecnico);
+    }
+
+    @PostMapping("/admin/{idAdmin}/locker/off")
+    public Locker turnOffLocker(@PathVariable Long idTecnico, @RequestParam Long idLocker){
+        return serviceAdmin.turnOffLocker(idTecnico, idLocker);
+    }
+
+    @PostMapping("/admin/{idAdmin}/locker/on")
+    public Locker turnOnLocker(@PathVariable Long idTecnico, @RequestParam Long idLocker){
+        return serviceAdmin.turnOnLocker(idTecnico, idLocker);
+    }
+
+    @PostMapping("/admin/{idAdmin}/box/apri")
+    public Box unlockBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceAdmin.unlockBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/admin/{idAdmin}/box/chiudi")
+    public Box lockBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceAdmin.lockBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/admin/{idAdmin}/box/spegni")
+    public Box turnOffBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceAdmin.turnOffBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/admin/{idAdmin}/box/accendi")
+    public Box turnOnBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
+        return serviceAdmin.turnOnBox(idTecnico, idBox);
     }
 }

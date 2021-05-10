@@ -6,6 +6,8 @@ import it.arrp.c3.Model.Repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Prodotto.
  */
@@ -24,6 +26,11 @@ public class ServiceProdotto {
         repoProdotto.save(p);
         return p;
     }
+
+    public List<Prodotto> getProdottoAll(){
+        return repoProdotto.findAll();
+    }
+
     //TODO da verificare l'accoppiamento tra prodotto e negozio... come funziona? non vedo nulla riguardo il negozio  --Ric
     //public boolean aggiungiProdotto ()
 

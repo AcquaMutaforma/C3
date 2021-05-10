@@ -27,6 +27,8 @@ public class Negozio extends Ruolo {
     private List<Prodotto> listaProdottiInEvidenza;
     private List<Corriere> listaCorrieriAssunti;
 
+    private static final int max_prodotti = 10;
+
     public Negozio(Long idCliente) {
         super(idCliente);
     }
@@ -42,7 +44,7 @@ public class Negozio extends Ruolo {
 
     //non puo essere null, lo controlla service negozio
     public boolean aggiungiProdotto(Prodotto p){
-        //Todo da mettere un numero massimo di prodotti in evidenza
+        if(this.listaProdottiInEvidenza.size() <= max_prodotti && !this.listaProdottiInEvidenza.contains(p))
         this.listaProdottiInEvidenza.add(p);
         return true;
     }
