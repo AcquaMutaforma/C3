@@ -92,6 +92,10 @@ public class ServiceCliente {
         return c;
     }
 
+    public void rimuoviRuolo(Long idCliente, TipoRuolo tipoRuolo){
+        repoCliente.getOne(idCliente).rimuoviRuolo(tipoRuolo);
+    }
+
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
         Cliente c = repoCliente.findOneById(idCliente);
         serviceCorriere.salvaRuoloCorriere(idCliente,mdt);
@@ -114,6 +118,10 @@ public class ServiceCliente {
     }
 
     public void aggiungiRuoloAdmin(Long idCliente) {
-        //TODO
+        //TODO Come mai non é stato implementato? c'era qualcosa di particolare e non me lo ricordo? come funzionava? --Ric
+    }
+
+    public List<Messaggio> getNotifiche(Long idCliente){
+        return getCliente(idCliente).getNotifiche();
     }
 }

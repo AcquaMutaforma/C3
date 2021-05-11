@@ -100,9 +100,9 @@ public class ServiceCorsa {
     /** Metodo per segnare come completa una corsa che prima era stata rifiutata
      * quindi elimino lo spazio utilizzato.
      * Corsa Rifiutata e' stata Completata
-     * todo: non ho idee per il nome, come la metti e' ambiguo -A
+     * todo: non ho idee per il nome, come la metti e' ambiguo -A   spero ti piaccia il nuovo nome 😂 --Ric
      */
-    public void corsaRCompletata(Long idCliente){
+    public void corsaRedivivaCompletata(Long idCliente){
         this.corseRifiutate.remove(idCliente);
     }
 
@@ -110,7 +110,7 @@ public class ServiceCorsa {
     //nota: per il corriere ci pensa serviceCorriere quando sblocca il box nel locker
     public void corsaCompletata(Long idCorsa){
         if(corseRifiutate.containsKey(idCorsa))
-            corsaRCompletata(idCorsa);
+            corsaRedivivaCompletata(idCorsa);
         Corsa corsa = getCorsa(idCorsa);
         Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
         serviceCliente.rimuoviBox(pacco.getIdCliente(), corsa.getIdBox());  //rimuove il box dalla lista del cliente //TODO spostare queste cose per quando il cliente va a prendere il pacco --Ric

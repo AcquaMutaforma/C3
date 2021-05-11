@@ -66,7 +66,7 @@ public class Cliente {
         setNome(nome);
         setEmail(email);
         setPassword(password);
-        this.citta = citta;
+        setCitta(citta);
         this.listaRuoli = new ArrayList<>();
         this.notifiche = new ArrayList<>();
         this.boxAssegnati = new ArrayList<>();
@@ -78,24 +78,24 @@ public class Cliente {
     public void setCitta(String citta) {
         this.citta = citta;
     }
+    public void setNome(String n) {
+        this.nome=n;
+    }
+    public void setEmail(String s) {
+        this.email=s;
+    }
+    public void setId(Long id){ this.idCliente = id;}
+    public void setCheckpoint(Locker checkpoint) {
+        this.checkpoint = checkpoint;
+    }
     public Long getID (){
         return this.idCliente;
     }
-    public void setId(Long id){ this.idCliente = id;}
     public String getNome(){
         return this.nome;
     }
     public String getEmail() {
         return this.email;
-    }
-    public boolean setUuid(UUID i) {
-        return false;
-    }
-    public boolean setNome(String n) {
-        return false;
-    }
-    public boolean setEmail(String s) {
-        return false;
     }
     public String getPassword() {
         return this.password;
@@ -115,10 +115,7 @@ public class Cliente {
     public Locker getCheckpoint() {
         return checkpoint;
     }
-    public void setCheckpoint(Locker checkpoint) {
-        this.checkpoint = checkpoint;
-    }
-    
+
     @Override
     public String toString() {
         return "Cliente{" +
@@ -138,6 +135,10 @@ public class Cliente {
     public void aggiungiRuolo(TipoRuolo ruolo) {
         if(!this.listaRuoli.contains(ruolo))
             this.listaRuoli.add(ruolo);
+    }
+
+    public void rimuoviRuolo(TipoRuolo tipoRuolo){
+        this.listaRuoli.remove(tipoRuolo);
     }
 
     public void aggiungiNotifica(Messaggio m){

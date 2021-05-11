@@ -75,8 +75,6 @@ public class ServiceNegozio {
      * Nota: Gli input e oggetti utilizzati vengono controllati qui e in caso positivo service corsa si
      * occupa di avviare il tutto, senza ricontrollare i dati.
      *
-     * TODO Aggioranre il VPP, con creaCorsa del serviceNegozio, il checkpoint del cliente viene gestito
-     *  da ServiceLocker e non da serviceCliente, è lui che prova ad assegnare un box.
      */
     public int creaCorsa(Long idCliente, Long idNegozio){
         if(controllaInputCorsa(idCliente, idNegozio))

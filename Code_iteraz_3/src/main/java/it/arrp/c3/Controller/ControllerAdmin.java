@@ -23,8 +23,8 @@ public class ControllerAdmin {
 
     @PostMapping("/admin/{idAdmin}/locker/new")
     public boolean creaLocker(@PathVariable Long idAdmin, @RequestParam int longitudine,
-                              @RequestParam int latitudine,@RequestParam int dimensioniLocker) {
-        return serviceAdmin.creaLocker(idAdmin, longitudine,latitudine,dimensioniLocker);
+                              @RequestParam int latitudine,@RequestParam int dimensioniLocker, @RequestParam String citta) {
+        return serviceAdmin.creaLocker(idAdmin, longitudine,latitudine,dimensioniLocker, citta );
     }
 
     @PostMapping("/admin/{idAdmin}/tecnico/new")

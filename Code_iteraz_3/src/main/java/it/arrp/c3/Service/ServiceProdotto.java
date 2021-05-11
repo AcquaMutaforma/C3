@@ -32,6 +32,7 @@ public class ServiceProdotto {
     }
 
     //TODO da verificare l'accoppiamento tra prodotto e negozio... come funziona? non vedo nulla riguardo il negozio  --Ric
+    //TODO viene aggiunto il prodotto alla lista prodotti del negozio? la funzione commentata sotto non servirebbe nel caso... --Ric
     //public boolean aggiungiProdotto ()
 
     public Prodotto modificaProdotto(String nome, String descrizione, GenereProdotto genere, Long idProdotto){
