@@ -34,8 +34,9 @@ public class ServiceAdmin{
     }
 
     public boolean creaLocker(Long idAdmin, int latitudine, int longitudine, int dimensioniLocker){
-        if(getAdmin(idAdmin) != null)
-            return serviceLocker.generaLocker(latitudine, longitudine, dimensioniLocker);
+        Admin admin = getAdmin(idAdmin);
+        if(admin != null)
+            return serviceLocker.generaLocker(latitudine, longitudine, dimensioniLocker, admin.getCittaDiLavoro());
         return false;
     }
 

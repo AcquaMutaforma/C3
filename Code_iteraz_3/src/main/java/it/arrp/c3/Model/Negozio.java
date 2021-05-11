@@ -44,9 +44,11 @@ public class Negozio extends Ruolo {
 
     //non puo essere null, lo controlla service negozio
     public boolean aggiungiProdotto(Prodotto p){
-        if(this.listaProdottiInEvidenza.size() <= max_prodotti && !this.listaProdottiInEvidenza.contains(p))
-        this.listaProdottiInEvidenza.add(p);
-        return true;
+        if(this.listaProdottiInEvidenza.size() <= max_prodotti && !this.listaProdottiInEvidenza.contains(p)) {
+            this.listaProdottiInEvidenza.add(p);
+            return true;
+        }
+        return false;
     }
 
     //non puo essere null, lo controlla service negozio
@@ -64,6 +66,10 @@ public class Negozio extends Ruolo {
 
     public void addCorriere(Corriere corriere){
         listaCorrieriAssunti.add(corriere);
+    }
+
+    public boolean rimuoviCorriere(Corriere corriere){
+        return this.listaCorrieriAssunti.remove(corriere);
     }
 
     public GenereNegozio getGenereNegozio() {

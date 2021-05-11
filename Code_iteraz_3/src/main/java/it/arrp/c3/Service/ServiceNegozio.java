@@ -36,13 +36,14 @@ public class ServiceNegozio {
     public boolean addCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
             return false;
-        return serviceNegozio.addCorriere(idNegozio, idCorriere);
+        getNegozio(idNegozio).addCorriere(serviceCorriere.getCorriere(idCorriere));
+        return true;
     }
 
     public boolean removeCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
             return false;
-        return serviceNegozio.removeCorriere(idNegozio, idCorriere);
+        return getNegozio(idNegozio).rimuoviCorriere(serviceCorriere.getCorriere(idCorriere));
     }
 
     private boolean controllaInput(Long idNegozio, Long idCorriere) {
@@ -147,7 +148,7 @@ public class ServiceNegozio {
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneById(id); }
 
-    public boolean aggiungiProdotto(Long idNegozio, String nome, String descrizione, GenereProdotto genere){
+    public boolean creaProdotto(Long idNegozio, String nome, String descrizione, GenereProdotto genere){
         Negozio negozio = getNegozio(idNegozio);
         if(negozio == null)
             return false;
@@ -186,5 +187,13 @@ public class ServiceNegozio {
 
     public List<Prodotto> getTuttiProdotti(){
         return serviceProdotto.getProdottoAll();
+    }
+
+    public boolean aggiungiProdotto(Long idCommerciante, Long idProdotto) {
+        Negozio negozio = getNegozio(idCommerciante);
+        Prodotto prodotto = serviceProdotto.getProdotto(idProdotto);
+        if(negozio == null || prodotto == null)
+            return false;
+        else return negozio.aggiungiProdotto(prodotto);
     }
 }

@@ -23,8 +23,6 @@ public class ControllerUNR {
     @Autowired
     ServiceCliente serviceCliente;
 
-    //TODO Cerca prodotto e genere prodotto
-
     /**
      * Cerca tutti i negozi di una citta
      * @param citta dove effettuare la ricerca. GET dato che il POST sembra eccessivo per una richiesta cosi basica

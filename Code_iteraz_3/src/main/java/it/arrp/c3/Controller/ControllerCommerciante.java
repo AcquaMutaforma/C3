@@ -78,15 +78,20 @@ public class ControllerCommerciante {
         return serviceNegozio.getProdottiInEvidenza(idCommerciante);
     }
 
-    @PostMapping("/commerciante/{idCommerciante}/prodotti/add")
-    public boolean aggiungiProdotto(@PathVariable Long idCommerciante, @RequestParam String name,
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/new")
+    public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam String name,
                                     @RequestParam String descrizione, @RequestParam GenereProdotto genere){
-        return serviceNegozio.aggiungiProdotto(idCommerciante, name, descrizione, genere);
+        return serviceNegozio.creaProdotto(idCommerciante, name, descrizione, genere);
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
     public boolean rimuoviProdotto(@PathVariable Long idCommerciante, @RequestParam Long idProdotto){
         return serviceNegozio.rimuoviProdotto(idCommerciante, idProdotto);
+    }
+
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
+    public boolean aggiungiProdotto(@PathVariable Long idCommerciante, @RequestParam Long idProdotto){
+        return serviceNegozio.aggiungiProdotto(idCommerciante, idProdotto);
     }
 
     //TODO abbiamo solo metodi per creare prodotti, forse andrebbero fatti 2 metodi, uno crea e uno aggiunge, quindi

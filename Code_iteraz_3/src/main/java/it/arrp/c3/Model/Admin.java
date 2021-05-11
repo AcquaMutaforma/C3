@@ -1,7 +1,6 @@
 package it.arrp.c3.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +9,14 @@ import java.util.List;
  * che puo' essere l'amministratore di sistema. Costui potra' poi aggiungere dei Tecnici
  * ed operare in vari campi della manutenzione.
  */
-@Entity
+@Entity(name = "User")
+@Table(name = "users")
+@DiscriminatorValue("1")
 public class Admin extends Ruolo{
 
     @Column(name="luogoLavorativo")
     private String cittaDiLavoro;
-    @Column(name="listaDipendenti")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Tecnico> listaTecnici;
 
     public Admin(Long idCliente) {
