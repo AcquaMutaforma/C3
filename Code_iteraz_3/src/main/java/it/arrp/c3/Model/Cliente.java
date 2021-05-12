@@ -5,7 +5,6 @@ import it.arrp.c3.Model.Enum.TipoRuolo;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Questa classe rappresenta un Cliente, ovvero un utente registrato, il quale
@@ -15,7 +14,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "cliente")
 public class Cliente {
-    @Id
+
     /*
     * @SequenceGenerator(
     *       name="sequenza_clienti",
@@ -36,8 +35,9 @@ public class Cliente {
     *
     *       )
      * */
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "idCliente")
     private Long idCliente;
     @Column(name = "nome")
     private String nome;
@@ -48,21 +48,23 @@ public class Cliente {
     @Column(name = "residenza")
     private String citta;
 
+    @OneToOne(fetch = FetchType.LAZY)
     private Locker checkpoint;
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Messaggio> notifiche;
-    private List<TipoRuolo> listaRuoli;
+    @Enumerated(EnumType.ORDINAL)
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<TipoRuoloWrapper> listaRuoli;
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Box> boxAssegnati;
 
     public static final int max_box = 10;
     public static final int max_notifiche = 20;
 
-    //TODO bisogna creare dei controlli per dei limiti altrimenti le notifiche arrivano a infinito come i box o i ruoli
-
     public Cliente() {
     }
 
     public Cliente(String nome, String email, String password, String citta) {
-        //TODO test se funziona senza setId();
         setNome(nome);
         setEmail(email);
         setPassword(password);
@@ -70,6 +72,7 @@ public class Cliente {
         this.listaRuoli = new ArrayList<>();
         this.notifiche = new ArrayList<>();
         this.boxAssegnati = new ArrayList<>();
+        this.listaRuoli = new ArrayList<>();
     }
 
     public void setPassword(String password) {
@@ -106,7 +109,7 @@ public class Cliente {
     public List<Messaggio> getNotifiche() {
         return notifiche;
     }
-    public List<TipoRuolo> getListaRuoli() {
+    public List<TipoRuoloWrapper> getListaRuoli() {
         return listaRuoli;
     }
     public List<Box> getBoxAssegnati() {
@@ -132,7 +135,7 @@ public class Cliente {
             this.boxAssegnati.add(boxAssegnato);
     }
 
-    public void aggiungiRuolo(TipoRuolo ruolo) {
+    public void aggiungiRuolo(TipoRuoloWrapper ruolo) {
         if(!this.listaRuoli.contains(ruolo))
             this.listaRuoli.add(ruolo);
     }

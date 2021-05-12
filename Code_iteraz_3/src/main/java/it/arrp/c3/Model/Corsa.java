@@ -1,9 +1,6 @@
 package it.arrp.c3.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Questa classe gestisce una Corsa, ossia la consegna di un pacco da un negozio verso
@@ -14,9 +11,15 @@ import javax.persistence.Id;
 public class Corsa {
 
     @Id
+    @Column(name="idCorsa")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCorsa;
-    private Long idPacco, idBox, idCorriere; //Nota: l'IDnegozio lo peschi dal pacco di cui hai l'id
+    @Column(name = "idPacco")
+    private Long idPacco;
+    @Column(name = "idBox")
+    private Long idBox;
+    @Column(name = "idCorriere")
+    private Long idCorriere;    //Nota: l'IDnegozio lo peschi dal pacco di cui hai l'id
 
     //TODO da valutare se inserire lo "stato" della corsa, come completata, fallita e onGoing(da cambiare anche i nomi)
     // -A

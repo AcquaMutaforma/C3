@@ -5,6 +5,7 @@ import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Messaggio;
+import it.arrp.c3.Model.TipoRuoloWrapper;
 import it.arrp.c3.Service.ServiceCliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -84,7 +85,7 @@ public class ControllerCliente{
     }
 
     @GetMapping("/cliente/{idCliente}/listaRuoli")
-    public List<TipoRuolo> getRuoliCliente(@PathVariable Long idCliente){
+    public List<TipoRuoloWrapper> getRuoliCliente(@PathVariable Long idCliente){
         return serviceCliente.getListaRuoli(idCliente);
     }
 

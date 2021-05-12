@@ -47,7 +47,7 @@ public class ServiceNegozio {
     }
 
     private boolean controllaInput(Long idNegozio, Long idCorriere) {
-        Negozio neg = repoNegozio.findOneById(idNegozio);
+        Negozio neg = repoNegozio.findOneByIdCliente(idNegozio);
         Corriere corr = serviceCorriere.getCorriere(idCorriere);
         return neg == null || corr == null;
     }
@@ -56,7 +56,7 @@ public class ServiceNegozio {
         Negozio negozio = getNegozio(idCommerciante);
         if (negozio == null)
             return null;
-        return getListaCorrieriDisponibili(negozio).get(0).getIdCLiente();
+        return getListaCorrieriDisponibili(negozio).get(0).getIdCliente();
     }
 
     public List<Corriere> getListaCorrieriDisponibili(Negozio negozio){
@@ -111,7 +111,7 @@ public class ServiceNegozio {
 
     private boolean controllaInputCorsa(Long idCliente, Long idCommerciante) {
         Cliente cliente = serviceCliente.getCliente(idCliente);
-        Negozio commerciante = repoNegozio.findOneById(idCommerciante);
+        Negozio commerciante = repoNegozio.findOneByIdCliente(idCommerciante);
         return cliente == null || commerciante == null;
     }
 
@@ -144,7 +144,7 @@ public class ServiceNegozio {
         repoNegozio.save(new Negozio(idCliente,nomeNegozio,cittaNegozio,genere));
     }
 
-    public Negozio getNegozio(Long id){ return repoNegozio.findOneById(id); }
+    public Negozio getNegozio(Long id){ return repoNegozio.findOneByIdCliente(id); }
 
     public boolean creaProdotto(Long idNegozio, String nome, String descrizione, GenereProdotto genere){
         Negozio negozio = getNegozio(idNegozio);

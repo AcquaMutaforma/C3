@@ -1,12 +1,11 @@
 package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.Accensione;
-import it.arrp.c3.Model.Enum.StatoBox;
 
 import javax.persistence.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,11 +14,13 @@ import java.util.Objects;
  * una lista degli stessi ed altro ancora.
  */
 @Entity
+@Table(name = "locker")
 public class Locker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "idLocker")
+    private Long idLocker;
     @Column(name="ubicazione")
     private Point locazione;
     @Column(name="numeroBox")
@@ -29,7 +30,8 @@ public class Locker {
 
     private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */
-    private ArrayList<Box> listaBox;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Box> listaBox =  new ArrayList<Box>();
 
     public Locker() {
     }
@@ -39,7 +41,7 @@ public class Locker {
         this.numeroBox = numeroBox;
         this.citta = citta;
         this.statoAccensioneLocker = Accensione.Acceso;
-        this.listaBox = new ArrayList<>();
+
     }
 
     public void turnOnLocker(){
@@ -49,8 +51,8 @@ public class Locker {
         this.statoAccensioneLocker= Accensione.Spento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdLocker(Long idLocker) {
+        this.idLocker = idLocker;
     }
 
     public Point getLocazione() { return this.locazione;}
@@ -64,13 +66,13 @@ public class Locker {
     public void setNumeroBox(int numeroBox) {
         this.numeroBox = numeroBox;
     }
-    public Long getId() {
-        return this.id;
+    public Long getIdLocker() {
+        return this.idLocker;
     }
     public int getNumeroBox() {
         return this.numeroBox;
     }
-    public ArrayList<Box> getAllBoxes() {
+    public List<Box> getAllBoxes() {
         return this.listaBox;
     }
     public void addBox(Box b){
@@ -88,18 +90,18 @@ public class Locker {
         if (this == o) return true;
         if (!(o instanceof Locker)) return false;
         Locker locker = (Locker) o;
-        return getId().equals(locker.getId());
+        return getIdLocker().equals(locker.getIdLocker());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getIdLocker());
     }
 
     @Override
     public String toString() {
         return "Locker{" +
-                "id=" + id +
+                "id=" + idLocker +
                 ", longitudine=" + this.locazione.x +
                 ", latitudine=" + this.locazione.y +
                 ", numeroBox=" + numeroBox +

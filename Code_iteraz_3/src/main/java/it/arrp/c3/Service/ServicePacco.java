@@ -19,7 +19,7 @@ public class ServicePacco {
     }
 
     public Pacco getPacco(Long id){
-        return paccoRepo.findOneById(id);
+        return paccoRepo.findOneByIdPacco(id);
     }
 
     //TODO facciamo un CRUD anche quí come in serviceProdotto? o magari senza la modifica? o lasciamo cosí? --Ric

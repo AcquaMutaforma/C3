@@ -1,20 +1,23 @@
 package it.arrp.c3.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Classe che si occupa di gestire un messaggio da parte di un utente (come un Tecnico)
  * verso una seconda persona (ad esempio un Admin).
  */
 @Entity
+@Table(name = "messaggio")
 public class Messaggio {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idMessaggio")
     private Long idMessaggio;
-    private Long idMittente, idDestinatario;
+    @Column(name = "idMittente")
+    private Long idMittente;
+    @Column(name = "idDestinatario")
+    private Long idDestinatario;
+    @Column(name = "messaggio")
     private String messaggio;
 
     public Messaggio() {

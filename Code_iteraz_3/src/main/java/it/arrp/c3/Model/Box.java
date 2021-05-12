@@ -13,16 +13,22 @@ import java.util.Objects;
  * e, per questa implementazione, anche la sua apertura/chiusura simulata.
  */
 @Entity
+@Table(name = "box")
 public class Box{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "idBox")
     private Long idBox;
+    @Column(name = "clienteAssegnato")
     private Long idCliente;
-    @Column(name="lockerDiAppartenenza")
+    @OneToOne(fetch = FetchType.LAZY)
     private Locker locker;
+    @Enumerated(EnumType.STRING)
     private Chiusura chiusura;
+    @Enumerated(EnumType.STRING)
     private StatoBox stato;
+    @Enumerated(EnumType.STRING)
     private Accensione statoAccensioneBox;
 
     public Box() {

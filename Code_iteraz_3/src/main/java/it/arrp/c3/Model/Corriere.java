@@ -2,8 +2,7 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.StatoCorriere;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,23 +11,27 @@ import java.util.List;
  * Con questo ruolo si possono effettuare consegne ai vari locker per conto
  * dei vari negozi per cui si é registrati.
  */
-@Entity
+@Entity(name = "Corriere")
+@Table(name = "corriere")
+@DiscriminatorValue("1")
 public class Corriere extends Ruolo {
 
+    @Enumerated(EnumType.STRING)
     private StatoCorriere stato;
     @Column(name="mezzoDiTrasporto")
     private String mezzoDiTrasporto;
-    @Column(name="listaDatoriLavoro")
-    private ArrayList<Negozio> listaNegoziCollegati;
-    private ArrayList<Corsa> listaCorse;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Negozio> listaNegoziCollegati;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Corsa> listaCorse;
     //TODO extra: forse potrebbe essere comodo inserire una lista di corse completate o un contatore, e' superfluo -A
 
     public Corriere(Long idCliente) {
         super(idCliente);
     }
 
-    public Corriere(Long uuidCliente, String mezzoDiTrasporto) {
-        super(uuidCliente);
+    public Corriere(Long idCliente, String mezzoDiTrasporto) {
+        super(idCliente);
         this.stato = StatoCorriere.NonAttivo;
         this.listaCorse = new ArrayList<>();
         this.mezzoDiTrasporto = mezzoDiTrasporto;
@@ -51,7 +54,7 @@ public class Corriere extends Ruolo {
     public void setMezzoDiTrasporto(String mezzoDiTrasporto) {
         this.mezzoDiTrasporto = mezzoDiTrasporto;
     }
-    public ArrayList<Negozio> getListaNegoziCollegati() {
+    public List<Negozio> getListaNegoziCollegati() {
         return listaNegoziCollegati;
     }
 
@@ -60,7 +63,7 @@ public class Corriere extends Ruolo {
         return "Corriere{" +
                 "stato=" + stato +
                 ", mezzoDiTrasporto='" + mezzoDiTrasporto + '\'' +
-                ", idCLiente=" + idCLiente +
+                ", idCLiente=" + idCliente +
                 '}';
     }
 

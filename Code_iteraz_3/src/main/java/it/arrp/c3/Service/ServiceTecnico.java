@@ -37,12 +37,12 @@ public class ServiceTecnico {
     }
 
     public Tecnico getTecnico(Long idTecnico){
-        return repoTecnico.findOneById(idTecnico);
+        return repoTecnico.findOneByIdCliente(idTecnico);
     }
 
     public boolean creaRichiesta( Long idTecnico, String testoRichiesta){
-        return serviceMessaggio.sendRichiesta(idTecnico,repoTecnico.findOneById(idTecnico).
-                getAdmin().getIdCLiente(),testoRichiesta);
+        return serviceMessaggio.sendRichiesta(idTecnico,repoTecnico.findOneByIdCliente(idTecnico).
+                getAdmin().getIdCliente(),testoRichiesta);
     }
 
     /**
@@ -108,7 +108,7 @@ public class ServiceTecnico {
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getIdLocker()))
             serviceBox.turnOnBox(idBox);
         return box;
     }
@@ -117,7 +117,7 @@ public class ServiceTecnico {
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getIdLocker()))
             serviceBox.turnOffBox(idBox);
         return box;
     }
@@ -126,7 +126,7 @@ public class ServiceTecnico {
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getIdLocker()))
             serviceBox.unlock(idBox);
         return box;
     }
@@ -135,7 +135,7 @@ public class ServiceTecnico {
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaLockerCollegato(idTecnico, box.getLocker().getId()))
+        if(controllaLockerCollegato(idTecnico, box.getLocker().getIdLocker()))
             serviceBox.lock(idBox);
         return box;
     }

@@ -18,7 +18,7 @@ public class ServiceProdotto {
     ProdottoRepository repoProdotto;
 
     public Prodotto getProdotto( Long id){
-        return repoProdotto.findOneById(id);
+        return repoProdotto.findOneByIdProdotto(id);
     }
 
     public Prodotto creaProdotto(String nome, String descrizione, GenereProdotto genere){
@@ -31,10 +31,6 @@ public class ServiceProdotto {
         return repoProdotto.findAll();
     }
 
-    //TODO da verificare l'accoppiamento tra prodotto e negozio... come funziona? non vedo nulla riguardo il negozio  --Ric
-    //TODO viene aggiunto il prodotto alla lista prodotti del negozio? la funzione commentata sotto non servirebbe nel caso... --Ric
-    //public boolean aggiungiProdotto ()
-
     public Prodotto modificaProdotto(String nome, String descrizione, GenereProdotto genere, Long idProdotto){
         Prodotto ritorna = repoProdotto.getOne(idProdotto);
         ritorna.setGenereProdotto(genere);
@@ -46,6 +42,4 @@ public class ServiceProdotto {
     public void eliminaProdotto(Long idProdotto){ //TODO void? boolean? da valutare --Ric
         repoProdotto.delete(repoProdotto.getOne(idProdotto));
     }
-
-    //todo si possono aggiungere altre operazioni andando a creare essenzialmente un CRUD (Creation, Read, Update, Delete). --Ric
 }

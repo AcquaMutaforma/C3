@@ -24,16 +24,16 @@ public class ServiceCorriere {
     ServiceBox serviceBox;
 
     public List<Corsa> getAllCorse(Long idCorriere){ //Rinominato per essere piu' specifico
-        return repoCorriere.findOneById(idCorriere).getAllCorse();
+        return repoCorriere.findOneByIdCliente(idCorriere).getAllCorse();
     }
 
     public Corsa getCorsa(Long idCorriere, Long idCorsa){
-        return repoCorriere.findOneById(idCorriere).getCorsa(idCorsa);
+        return repoCorriere.findOneByIdCliente(idCorriere).getCorsa(idCorsa);
     }
 
     //forse il return dovrebbe essere void, ma fa comodo per verificare subito l'effetto dell'operazione
     public List<Corsa> rifiutaCorsa(Long idCorriere, Long idCorsa){
-        Corriere corr = repoCorriere.findOneById(idCorriere);
+        Corriere corr = repoCorriere.findOneByIdCliente(idCorriere);
         if(corr == null)
             return null;
         if(corr.getCorsa(idCorsa) == null) {
@@ -45,7 +45,7 @@ public class ServiceCorriere {
         return corr.getAllCorse();
     }
     public Corriere cambiaStato(Long idCorriere, StatoCorriere statoCorriere){
-        Corriere c = repoCorriere.findOneById(idCorriere);
+        Corriere c = repoCorriere.findOneByIdCliente(idCorriere);
         c.setStato(statoCorriere);
         return c;
     }
@@ -57,7 +57,7 @@ public class ServiceCorriere {
     }
 
     public Corriere getCorriere(Long uuidCorriere){
-        return repoCorriere.findOneById(uuidCorriere);
+        return repoCorriere.findOneByIdCliente(uuidCorriere);
     }
 
     /**

@@ -9,8 +9,8 @@ import java.util.List;
  * che puo' essere l'amministratore di sistema. Costui potra' poi aggiungere dei Tecnici
  * ed operare in vari campi della manutenzione.
  */
-@Entity(name = "User")
-@Table(name = "users")
+@Entity(name = "Admin")
+@Table(name = "admin")
 @DiscriminatorValue("1")
 public class Admin extends Ruolo{
 
@@ -41,7 +41,7 @@ public class Admin extends Ruolo{
     public String toString() {
         return "Admin{" +
                 "cittaDiLavoro='" + cittaDiLavoro + '\'' +
-                ", idCLiente=" + idCLiente +
+                ", idCLiente=" + idCliente +
                 '}';
     }
 

@@ -1,7 +1,6 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.*;
-import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +39,7 @@ public class ServiceAdmin{
         return false;
     }
 
-    public Admin getAdmin(Long idAdmin){return repoAdmin.findOneById(idAdmin);}
+    public Admin getAdmin(Long idAdmin){return repoAdmin.findOneByIdCliente(idAdmin);}
 
     public Admin getRandomAdmin(){
         //return repoAdmin.getRandomAdmin();
@@ -54,21 +53,21 @@ public class ServiceAdmin{
      * Nota: Ritorna true anche se il cliente e' gia' un tecnico.
      */
     public boolean creaTecnico(Long idCliente, Long idAdmin){
-        Admin a = repoAdmin.findOneById(idAdmin);
+        Admin a = repoAdmin.findOneByIdCliente(idAdmin);
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains(TipoRuolo.Tecnico))
+        if(c.getListaRuoli().contains("TECNICO"))
             return true;
         return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin));
     }
 
     public boolean creaAdmin(Long idCliente, Long idAdmin, String citta) {
-        Admin a = repoAdmin.findOneById(idAdmin);
+        Admin a = repoAdmin.findOneByIdCliente(idAdmin);
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains(TipoRuolo.Admin))
+        if(c.getListaRuoli().contains("ADMIN"))
             return true;
         serviceCliente.aggiungiRuoloAdmin(idCliente);
         repoAdmin.save(new Admin(idCliente,citta));
@@ -121,7 +120,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getId()))
+        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
             serviceBox.turnOnBox(idBox);
         return box;
     }
@@ -130,7 +129,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getId()))
+        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
             serviceBox.turnOffBox(idBox);
         return box;
     }
@@ -139,7 +138,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getId()))
+        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
             serviceBox.unlock(idBox);
         return box;
     }
@@ -148,7 +147,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getId()))
+        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
             serviceBox.lock(idBox);
         return box;
     }

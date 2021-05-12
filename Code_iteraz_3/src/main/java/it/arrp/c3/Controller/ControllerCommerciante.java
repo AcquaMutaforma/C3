@@ -89,7 +89,7 @@ public class ControllerCommerciante {
         return serviceNegozio.rimuoviProdotto(idCommerciante, idProdotto);
     }
 
-    @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/aggiungi")
     public boolean aggiungiProdotto(@PathVariable Long idCommerciante, @RequestParam Long idProdotto){
         return serviceNegozio.aggiungiProdotto(idCommerciante, idProdotto);
     }

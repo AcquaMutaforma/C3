@@ -1,13 +1,10 @@
 package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.GenereNegozio;
-import it.arrp.c3.Model.Enum.GenereProdotto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Questa classe rappresenta il ruolo di un utente, ovvero un Negozio.
@@ -15,7 +12,9 @@ import java.util.UUID;
  * derivano, come creare delle corse, assumere un corriere e pubblicizzare un
  * prodotto che si ha in negozio.
  */
-@Entity
+@Entity(name = "Negozio")
+@Table(name = "negozi")
+@DiscriminatorValue("1")
 public class Negozio extends Ruolo {
 
     @Column(name="nomeNegozio")
@@ -24,7 +23,9 @@ public class Negozio extends Ruolo {
     private String cittaNegozio;
     @Column(name="genereNegozio")
     private GenereNegozio genereNegozio;
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Prodotto> listaProdottiInEvidenza;
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Corriere> listaCorrieriAssunti;
 
     private static final int max_prodotti = 10;
@@ -106,7 +107,7 @@ public class Negozio extends Ruolo {
                 "nomeNegozio='" + nomeNegozio + '\'' +
                 ", cittaNegozio='" + cittaNegozio + '\'' +
                 ", genereNegozio=" + genereNegozio +
-                ", idCLiente=" + idCLiente +
+                ", idCLiente=" + idCliente +
                 '}';
     }
 

@@ -10,20 +10,20 @@ import javax.persistence.*;
 @Table(name = "abstract_user")
 public abstract class Ruolo {
     @Id
-    @Column(name="id")
+    @Column(name="idCliente")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long idCLiente;
+    Long idCliente;
 
     public Ruolo(Long idCliente) {
-        this.idCLiente = idCliente;
+        this.idCliente = idCliente;
     }
 
-    public Long getIdCLiente() {
-        return idCLiente;
+    public Long getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdCLiente(Long idCLiente) {
-        this.idCLiente = idCLiente;
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
 }

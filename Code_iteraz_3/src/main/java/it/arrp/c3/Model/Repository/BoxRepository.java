@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface BoxRepository extends JpaRepository<Box, Long> {
-    Box findOneById(Long id);
+    Box findOneByIdBox(Long id);
 }

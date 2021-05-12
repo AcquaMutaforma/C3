@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Locker.
@@ -51,7 +49,7 @@ public class ServiceLocker {
     }
 
     public Locker getLockerById(Long idLocker){
-        return repoLocker.findOneById(idLocker);
+        return repoLocker.findOneByIdLocker(idLocker);
     }
 
     /* todo sembrano molto inutili, da controllare -A
@@ -68,7 +66,7 @@ public class ServiceLocker {
         Locker locker = cliente.getCheckpoint();
         if( locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento) //nessun checkpoint o locker OFF
             return null;
-        Box box = getBoxDisponibile(locker.getId());
+        Box box = getBoxDisponibile(locker.getIdLocker());
         if(box == null) //box non disponibili nel locker
             return null;
         if(serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox() != null){

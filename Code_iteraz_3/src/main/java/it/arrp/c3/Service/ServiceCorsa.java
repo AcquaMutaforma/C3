@@ -76,9 +76,9 @@ public class ServiceCorsa {
         Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());//todo penso non sia il caso di prenderlo in questo modo... --Ric
         List<Corriere> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio);
         //dalla lista rimuovo il corriere X se e' all'interno della lista dei corrieri che hanno rifiutato la corsa
-        listaDisponibili.removeIf(x -> corseRifiutate.get(corsa.getIdCorsa()).contains(x.getIdCLiente()));
+        listaDisponibili.removeIf(x -> corseRifiutate.get(corsa.getIdCorsa()).contains(x.getIdCliente()));
         if(!listaDisponibili.isEmpty()){
-            Long nuovoCorriere = listaDisponibili.get(0).getIdCLiente();
+            Long nuovoCorriere = listaDisponibili.get(0).getIdCliente();
             corsa.setIdCorriere(nuovoCorriere);
             assegnaCorsa(corsa, nuovoCorriere);
         }else{
@@ -118,6 +118,6 @@ public class ServiceCorsa {
         serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());//invia la notifica per il completamento
     }
 
-    public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneById(idCorsa); }
+    public Corsa getCorsa(Long idCorsa){ return repoCorsa.findOneByIdCorsa(idCorsa); }
 
 }

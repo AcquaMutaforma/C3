@@ -33,7 +33,7 @@ public class ServiceCliente {
         Locker locker = serviceLocker.getLockerById(idLocker);
         if(locker == null || locker.getStatoAccensioneLocker() == Accensione.Spento)
             return false;
-        Cliente cliente = repoCliente.findOneById(idCliente);
+        Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
         cliente.setCheckpoint(locker);
         return true;
     }
@@ -43,7 +43,7 @@ public class ServiceCliente {
      * @param boxAssegnato Box da inserire.
      */
     public void assegnamentoBox(Long idCliente, Box boxAssegnato){
-        Cliente c = repoCliente.findOneById(idCliente);
+        Cliente c = repoCliente.findOneByIdCliente(idCliente);
         if(!(c == null)){
             c.addBox(boxAssegnato);
         }
@@ -59,14 +59,14 @@ public class ServiceCliente {
 
     //metodo per prendere tutti i box che sono assegnati ad un cliente
     public List<Box> getBoxCliente(Long uuidCliente) {
-        return repoCliente.findOneById(uuidCliente).getBoxAssegnati();
+        return repoCliente.findOneByIdCliente(uuidCliente).getBoxAssegnati();
     }
 
     public Cliente getCliente(Long id) {
-        return repoCliente.findOneById(id);
+        return repoCliente.findOneByIdCliente(id);
     }
 
-    public List<TipoRuolo> getListaRuoli(Long idCliente){
+    public List<TipoRuoloWrapper> getListaRuoli(Long idCliente){
         Cliente cliente = getCliente(idCliente);
         return cliente.getListaRuoli();
     }
@@ -97,20 +97,20 @@ public class ServiceCliente {
     }
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
-        Cliente c = repoCliente.findOneById(idCliente);
+        Cliente c = repoCliente.findOneByIdCliente(idCliente);
         serviceCorriere.salvaRuoloCorriere(idCliente,mdt);
-        c.aggiungiRuolo(TipoRuolo.Corriere);
+        c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Corriere));
     }
 
     public void aggiungiRuoloTecnico(Long idCliente){
-        Cliente cliente = repoCliente.findOneById(idCliente);
-        cliente.aggiungiRuolo(TipoRuolo.Tecnico);
+        Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
+        cliente.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
     }
 
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
-        Cliente c = repoCliente.findOneById(idCliente);
+        Cliente c = repoCliente.findOneByIdCliente(idCliente);
         serviceNegozio.salvaRuoloNegozio(idCliente, nomeNegozio, cittaNegozio, genere);
-        c.aggiungiRuolo(TipoRuolo.Negozio);
+        c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
     }
 
     public boolean creaTicket(Long idCliente, String testo){
@@ -118,7 +118,8 @@ public class ServiceCliente {
     }
 
     public void aggiungiRuoloAdmin(Long idCliente) {
-        //TODO Come mai non é stato implementato? c'era qualcosa di particolare e non me lo ricordo? come funzionava? --Ric
+        getCliente(idCliente).aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Admin));
+
     }
 
     public List<Messaggio> getNotifiche(Long idCliente){

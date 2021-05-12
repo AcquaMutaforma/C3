@@ -43,7 +43,7 @@ public class ServiceMessaggio {
         Admin a = serviceAdmin.getRandomAdmin();
         if(a == null)
             return false;
-        sendMessaggio(new Messaggio(idMittente, a.getIdCLiente(), messaggio));
+        sendMessaggio(new Messaggio(idMittente, a.getIdCliente(), messaggio));
         return true;
     }
 
@@ -84,7 +84,7 @@ public class ServiceMessaggio {
      */
 
     public Messaggio getMessaggio(Long idMessaggio){
-        return repoMessaggio.findOneById(idMessaggio);
+        return repoMessaggio.findOneByIdMessaggio(idMessaggio);
     }
 
 }

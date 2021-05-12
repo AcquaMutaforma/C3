@@ -1,25 +1,25 @@
 package it.arrp.c3.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
 /**
  * Questa classe rappresenta il ruolo di un utente, in questo caso, un Tecnico.
  * Costui potrà operare in diversi ambiti della manutenzione, ma non potrà,
  * tra le altre cose, aggiungere altri tecnici o amministratori di sistema.
  */
-@Entity
+@Entity(name = "Tecnico")
+@Table(name = "tecnico")
+@DiscriminatorValue("1")
 public class Tecnico extends Ruolo{
 
-    @Column(name="superiore")
+    @OneToOne(fetch = FetchType.LAZY)
     private Admin admin;
 
     @Column(name="luogoDiLavoro")
     private String cittaDiLavoro; //Todo: da aggiungere, ci eravamo dimenticati.
     //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
     // ne parliamo poi decidiamo -A
+    @OneToOne(fetch = FetchType.LAZY)
     Locker lockerAttivo; //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric
 
     public Tecnico(Long idCliente) {
@@ -54,8 +54,8 @@ public class Tecnico extends Ruolo{
     @Override
     public String toString() {
         return "Tecnico{" +
-                "idCLiente=" + idCLiente +
-                ", admin=" + this.admin.idCLiente +
+                "idCLiente=" + idCliente +
+                ", admin=" + this.admin.idCliente +
                 '}';
     }
 }
