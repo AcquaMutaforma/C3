@@ -52,15 +52,6 @@ public class ServiceLocker {
         return repoLocker.findOneByIdLocker(idLocker);
     }
 
-    /* todo sembrano molto inutili, da controllare -A
-    public void disattivaBox(Long idBox){
-        serviceBox.turnOffBox(idBox);
-    }
-    public void attivaBox(Long idBox){
-        serviceBox.turnOnBox(idBox);
-    }
-     */
-
     public Long assegnaBox(Long idCliente){
         Cliente cliente = serviceCliente.getCliente(idCliente);
         Locker locker = cliente.getCheckpoint();

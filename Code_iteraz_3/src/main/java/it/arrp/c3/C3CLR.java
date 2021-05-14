@@ -20,6 +20,5 @@ public class C3CLR implements CommandLineRunner {
         Cliente sys = new Cliente("system", "email", "admin", "Camerino");
         sys.setId(0L);
         clienteRepository.save(sys);
-
     }
 }

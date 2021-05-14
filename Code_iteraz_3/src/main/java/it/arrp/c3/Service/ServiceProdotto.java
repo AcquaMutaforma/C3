@@ -39,7 +39,7 @@ public class ServiceProdotto {
         return ritorna;
     }
 
-    public void eliminaProdotto(Long idProdotto){ //TODO void? boolean? da valutare --Ric
+    public void eliminaProdotto(Long idProdotto){
         repoProdotto.delete(repoProdotto.getOne(idProdotto));
     }
 }

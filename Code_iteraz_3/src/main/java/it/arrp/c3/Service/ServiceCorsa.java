@@ -100,7 +100,6 @@ public class ServiceCorsa {
     /** Metodo per segnare come completa una corsa che prima era stata rifiutata
      * quindi elimino lo spazio utilizzato.
      * Corsa Rifiutata e' stata Completata
-     * todo: non ho idee per il nome, come la metti e' ambiguo -A   spero ti piaccia il nuovo nome 😂 --Ric
      */
     public void corsaRedivivaCompletata(Long idCliente){
         this.corseRifiutate.remove(idCliente);
