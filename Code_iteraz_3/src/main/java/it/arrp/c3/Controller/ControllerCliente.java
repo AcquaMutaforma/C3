@@ -58,14 +58,7 @@ public class ControllerCliente{
         serviceCliente.aggiungiRuoloCorriere(idCliente, mdt);
     }
 
-    @PostMapping("/cliente/{idCliente}/regNegozio")
-    public void registraComeNegozio(@PathVariable Long idCliente, @RequestParam String nomeNegozio,
-                                    @RequestParam String cittaNegozio,
-                                    @RequestParam GenereNegozio genere){
-        serviceCliente.aggiungiRuoloNegozio(idCliente,nomeNegozio, cittaNegozio, genere);
-    }
-
-    @DeleteMapping("/cliente/{idCliente}/rimuoviRuolo") //TODO controlla questo path, non sono sicuro vada bene dalla tua descrizione, forse sarebbe meglio ruolo/rimuovi --Ric
+    @DeleteMapping("/cliente/{idCliente}/rimuoviRuolo")
     public void rimuoviRuolo(@PathVariable Long idCliente, @RequestParam String ruolo){
         ruolo = ruolo.toUpperCase();
         switch (ruolo){

@@ -30,6 +30,10 @@ public class Corriere extends Ruolo {
         super(idCliente);
     }
 
+    public Corriere() {
+        super(null);
+    }
+
     public Corriere(Long idCliente, String mezzoDiTrasporto) {
         super(idCliente);
         this.stato = StatoCorriere.NonAttivo;

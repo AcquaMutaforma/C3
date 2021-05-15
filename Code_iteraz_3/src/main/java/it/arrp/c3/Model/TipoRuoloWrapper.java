@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ruolo")
@@ -37,5 +38,18 @@ public class TipoRuoloWrapper {
 
     public void setRuolo(TipoRuolo ruolo) {
         this.ruolo = ruolo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TipoRuoloWrapper)) return false;
+        TipoRuoloWrapper that = (TipoRuoloWrapper) o;
+        return getRuolo() == that.getRuolo();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRuolo());
     }
 }

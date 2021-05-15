@@ -7,12 +7,16 @@
     <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/C3CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/C3CLR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerCliente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerUNR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerUNR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Negozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Negozio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Corriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/TipoRuoloWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/TipoRuoloWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/C3CLR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/arrp/c3/C3CLR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/arrp/c3/Controller/ControllerUNR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/arrp/c3/Controller/ControllerUNR.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceNegozio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceNegozio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

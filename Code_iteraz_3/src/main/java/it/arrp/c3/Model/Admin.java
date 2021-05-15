@@ -23,6 +23,10 @@ public class Admin extends Ruolo{
         super(idCliente);
     }
 
+    public Admin() {
+        super(null);
+    }
+
     public Admin(Long idCliente, String cittaDiLavoro) {
         super(idCliente);
         this.cittaDiLavoro = cittaDiLavoro;

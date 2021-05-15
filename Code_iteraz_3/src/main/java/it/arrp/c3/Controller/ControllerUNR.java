@@ -38,7 +38,7 @@ public class ControllerUNR {
      * @param nome del negozio. GET dato che una richiesta POST sarebbe superflua
      */
     @GetMapping("/cerca/{citta}/{nome}")
-    public List<Negozio> getNegoziByName(@PathVariable String citta,@PathVariable String nome){
+    public List<Negozio> getNegoziByName(@PathVariable String citta,@RequestBody String nome){
         return serviceNegozio.getNegozioByName(citta,nome);
     }
 
@@ -48,7 +48,7 @@ public class ControllerUNR {
      * @param genere preso con POST dato che è un enum, ci pensa la parte grafica a mandarcelo
      */
     @PostMapping("/cerca/{citta}/genere")
-    public List<Negozio> getNegoziByGenere(@PathVariable String citta, @RequestParam GenereNegozio genere){
+    public List<Negozio> getNegoziByGenere(@PathVariable String citta, @RequestBody GenereNegozio genere){
         return serviceNegozio.getNegozioByGenere(citta,genere);
     }
 

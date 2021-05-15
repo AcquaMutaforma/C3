@@ -26,6 +26,10 @@ public class Tecnico extends Ruolo{
         super(idCliente);
     }
 
+    public Tecnico() {
+        super(null);
+    }
+
     public Tecnico(Long idCliente, Admin admin) {
         super(idCliente);
         this.admin = admin;

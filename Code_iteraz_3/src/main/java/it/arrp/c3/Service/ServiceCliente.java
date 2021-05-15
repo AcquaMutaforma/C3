@@ -109,12 +109,14 @@ public class ServiceCliente {
         Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
         cliente.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
     }
-
+/*
     public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         Cliente c = repoCliente.findOneByIdCliente(idCliente);
         serviceNegozio.salvaRuoloNegozio(idCliente, nomeNegozio, cittaNegozio, genere);
         c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
     }
+
+ */
 
     public boolean creaTicket(Long idCliente, String testo){
         return servMessaggio.creaTicket(idCliente,testo);

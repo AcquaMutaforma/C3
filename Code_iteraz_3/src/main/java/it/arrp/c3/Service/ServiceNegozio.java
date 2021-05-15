@@ -194,4 +194,14 @@ public class ServiceNegozio {
             return false;
         else return negozio.aggiungiProdotto(prodotto);
     }
+
+    public Negozio creaNegozio(Negozio nuovo) {
+        //String nomeNegozio, String cittaNegozio, GenereNegozio genereNegozio
+        if(nuovo.getNomeNegozio().length() > 3 && nuovo.getCittaNegozio().length() > 3
+                && nuovo.getGenereNegozio() != null) {
+            repoNegozio.save(nuovo);
+            return nuovo;
+        }
+        return null;
+    }
 }

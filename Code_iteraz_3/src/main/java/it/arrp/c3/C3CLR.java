@@ -1,5 +1,6 @@
 package it.arrp.c3;
 
+import it.arrp.c3.Model.Admin;
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Negozio;
@@ -40,10 +41,17 @@ public class C3CLR implements CommandLineRunner {
     public void run(String... args){
 
         //utenti per test
-        //clienteRepository.save(new Cliente("Ric","email@email.com","pass1","Tolentino"));
-        //clienteRepository.save(new Cliente("Aley","email@email.com","pass2","Matelica"));
-        //negozi per test
+        Cliente ric = new Cliente("Ric","email@email.com","pass1","Tolentino");
+        clienteRepository.save(ric);
+        Admin rica = new Admin(ric.getID(),ric.getCitta());
+        adminRepository.save(rica);
 
+        Cliente aley = new Cliente("Aley","email@email.com","pass2","Matelica");
+        clienteRepository.save(aley);
+        Admin aleya = new Admin(aley.getID(), aley.getCitta());
+        adminRepository.save(aleya);
+
+        //negozi per test
         Cliente n1 = clienteRepository.findOneByIdCliente(2L);
         negozioRepository.save(new Negozio(n1.getID(), "K2", "Camerino", GenereNegozio.Cartoleria));
 

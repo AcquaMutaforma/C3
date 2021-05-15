@@ -1,9 +1,7 @@
 package it.arrp.c3.Controller;
 
-import it.arrp.c3.Model.Admin;
-import it.arrp.c3.Model.Box;
-import it.arrp.c3.Model.Locker;
-import it.arrp.c3.Model.Tecnico;
+import it.arrp.c3.Model.*;
+import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Service.ServiceAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,14 +25,9 @@ public class ControllerAdmin {
         return serviceAdmin.creaLocker(idAdmin, longitudine,latitudine,dimensioniLocker);
     }
 
-    @PostMapping("/admin/{idAdmin}/tecnico/new")
-    public boolean creaTecnico(@PathVariable Long idAdmin, @RequestParam Long idCliente){
-        return serviceAdmin.creaTecnico(idCliente, idAdmin);
-    }
-
     @PostMapping("/admin/{idAdmin}/admin/new")
-    public boolean creaAdmin(@PathVariable Long idAdmin, @RequestParam Long idCliente, @RequestParam String citta){
-        return serviceAdmin.creaAdmin(idCliente, idAdmin, citta);
+    public boolean creaAdmin(@PathVariable Long idAdmin, @RequestParam Long idCliente){
+        return serviceAdmin.creaAdmin(idAdmin, idCliente);
     }
 
     @PostMapping("/admin/{idAdmin}/tecnico/add")
@@ -70,5 +63,15 @@ public class ControllerAdmin {
     @PostMapping("/admin/{idAdmin}/box/accendi")
     public Box turnOnBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
         return serviceAdmin.turnOnBox(idTecnico, idBox);
+    }
+
+    @PostMapping("/admin/{idAdmin}/regNegozio")
+    public void registraNegozio(@PathVariable Long idAdmin, @RequestBody Negozio nuovo){
+        serviceAdmin.registraNegozio(idAdmin, nuovo);
+    }
+
+    @PostMapping("/admin/{idAdmin}/tecnico/new")
+    public boolean creaTecnico(@PathVariable Long idAdmin, @RequestParam Long idCliente){
+        return serviceAdmin.creaTecnico(idCliente, idAdmin);
     }
 }

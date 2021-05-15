@@ -1,6 +1,7 @@
 package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.*;
+import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class ServiceAdmin{
     ServiceMessaggio serviceMessaggio;
     @Autowired
     ServiceBox serviceBox;
+    @Autowired
+    ServiceNegozio serviceNegozio;
     @Autowired
     AdminRepository repoAdmin;
 
@@ -57,20 +60,20 @@ public class ServiceAdmin{
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains("TECNICO"))
+        if(c.getListaRuoli().contains(new TipoRuoloWrapper(TipoRuolo.Tecnico)))
             return true;
         return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin));
     }
 
-    public boolean creaAdmin(Long idCliente, Long idAdmin, String citta) {
+    public boolean creaAdmin(Long idAdmin, Long idCliente) {
         Admin a = repoAdmin.findOneByIdCliente(idAdmin);
         Cliente c = serviceCliente.getCliente(idCliente);
         if(a == null || c == null)
             return false;
-        if(c.getListaRuoli().contains("ADMIN"))
+        if(c.getListaRuoli().contains(new TipoRuoloWrapper(TipoRuolo.Admin)))
             return true;
         serviceCliente.aggiungiRuoloAdmin(idCliente);
-        repoAdmin.save(new Admin(idCliente,citta));
+        repoAdmin.save(new Admin(idCliente,c.getCitta()));
         return true;
     }
 
@@ -152,4 +155,11 @@ public class ServiceAdmin{
         return box;
     }
 
+    public Negozio registraNegozio(Long idAdmin, Negozio nuovo) {
+        Admin admin = getAdmin(idAdmin);
+        if(admin == null)
+            return null;
+        else
+            return serviceNegozio.creaNegozio(nuovo);
+    }
 }
