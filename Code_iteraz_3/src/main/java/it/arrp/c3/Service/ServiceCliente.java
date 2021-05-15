@@ -86,10 +86,13 @@ public class ServiceCliente {
         return b;
     }
 
-    public Cliente registrazione(String nome, String email, String pass, String citta) {
-        Cliente c = new Cliente(nome,email,pass,citta);
-        repoCliente.save(c);
-        return c;
+    public Cliente registrazione(Cliente nuovo){
+        if(nuovo.getNome().length() > 3 && nuovo.getPassword().length() > 3 && nuovo.getEmail().length() > 3 &&
+        nuovo.getCitta().length() > 3) {
+            repoCliente.save(nuovo);
+            return nuovo;
+        }else
+            return null;
     }
 
     public void rimuoviRuolo(Long idCliente, TipoRuolo tipoRuolo){

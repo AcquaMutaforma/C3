@@ -2,20 +2,19 @@ package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Cliente;
 import it.arrp.c3.Model.Enum.GenereNegozio;
+import it.arrp.c3.Model.Messaggio;
 import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Service.ServiceCliente;
 import it.arrp.c3.Service.ServiceNegozio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
  * Controller per un Utente Non Registrato.
  */
+@RestController
 public class ControllerUNR {
 
     @Autowired
@@ -53,9 +52,8 @@ public class ControllerUNR {
         return serviceNegozio.getNegozioByGenere(citta,genere);
     }
 
-    @PostMapping("/registrazione")
-    public Cliente registrazione(@RequestParam String nome, @RequestParam String email,
-                                 @RequestParam String pass, @RequestParam String citta){
-        return serviceCliente.registrazione(nome, email, pass, citta);
+    @PostMapping(path = "/registrazione")
+    public Cliente registrazione(@RequestBody Cliente newCliente){
+        return serviceCliente.registrazione(newCliente);
     }
 }

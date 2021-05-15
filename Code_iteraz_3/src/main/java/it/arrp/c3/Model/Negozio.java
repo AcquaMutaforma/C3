@@ -13,7 +13,7 @@ import java.util.List;
  * prodotto che si ha in negozio.
  */
 @Entity(name = "Negozio")
-@Table(name = "negozi")
+@Table(name = "negozio")
 @DiscriminatorValue("1")
 public class Negozio extends Ruolo {
 
@@ -30,9 +30,15 @@ public class Negozio extends Ruolo {
 
     private static final int max_prodotti = 10;
 
+    public Negozio() {
+        super(null);
+    }
+
+    /*
     public Negozio(Long idCliente) {
         super(idCliente);
     }
+     */
 
     public Negozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genereNegozio) {
         super(idCliente);

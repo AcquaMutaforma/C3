@@ -22,7 +22,7 @@ public class ControllerCliente{
         return serviceCliente.setCheckpoint(idCliente, idLocker);
     }
 
-    @PostMapping("/cliente/{idCliente}/checkpoint/remove")
+    @GetMapping("/cliente/{idCliente}/checkpoint/remove")
     public void rimuoviCheckpoint(@PathVariable Long idCliente){
         serviceCliente.rimuoviCheckpoint(idCliente);
     }
