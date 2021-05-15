@@ -30,8 +30,8 @@ public class ServiceLocker {
         /*se dimensioniLocker è minore o uguale a 0 oppure esiste un locker
         con le stesse coordinate, esce. altrimenti continua.*/
         Locker l = new Locker(longitudine,latitudine,dimensioniLocker, citta);
-        popolaLocker(l);
         repoLocker.save(l);
+        popolaLocker(l);
         return true;
     }
 

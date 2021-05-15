@@ -11,7 +11,6 @@ import javax.persistence.*;
 public abstract class Ruolo {
     @Id
     @Column(name="idCliente")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long idCliente;
 
     public Ruolo(Long idCliente) {

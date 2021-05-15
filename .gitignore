@@ -2,3 +2,6 @@
 c3.vpp.bak_001d
 c3.vpp.bak_002d
 .c3.vpp.lck
+.class
+Code_iteraz_3/src/main/resources/application.properties
+Code_iteraz_3/target/classes/application.properties
