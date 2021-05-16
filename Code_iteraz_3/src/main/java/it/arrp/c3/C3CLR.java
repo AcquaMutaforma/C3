@@ -41,7 +41,8 @@ public class C3CLR implements CommandLineRunner {
 
     @Override
     public void run(String... args){
-
+        //semplicemente per poter saltare l'inizializzazione se necessario
+        if(false){
         //clienti per test
         Cliente cliente1 = new Cliente("cliente1","email@email.com","pass1","Camerino");
         Cliente cliente2 = new Cliente("cliente2","email@email.com","pass2","Tolentino");
@@ -78,11 +79,12 @@ public class C3CLR implements CommandLineRunner {
         Admin aleya = new Admin(aley.getID(), aley.getCitta());
         adminRepository.save(aleya);
         aley.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Admin));
-
+        System.out.println("2 admin");
         Admin admin = new Admin(clienteAdmin1.getID(), clienteAdmin1.getCitta());
         adminRepository.save(admin);
         clienteAdmin1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Admin));
 
+        System.out.println("ok admin~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         //negozi per test
         negozioRepository.save(new Negozio(cliente1.getID(), "K2", "Camerino", GenereNegozio.Cartoleria));
@@ -91,18 +93,31 @@ public class C3CLR implements CommandLineRunner {
         cliente1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
         cliente2.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
         cliente4.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
+        System.out.println("ok negozi~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         //corrieri per test
+        System.out.println("inizio corrieri ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         corriereRepository.save(new Corriere(clienteCorriere1.getID(),"Moto"));
+        System.out.println("ok corriere 1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         corriereRepository.save(new Corriere(clienteCorriere2.getID(),"MotoScarpe"));
+        System.out.println("ok corriere 2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         clienteCorriere1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Corriere));
         clienteCorriere2.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Corriere));
+        System.out.println("aggiunti ruoli ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-        //tecnici per test
-        tecnicoRepository.save(new Tecnico(clienteTecnico1.getID(),aleya));
-        tecnicoRepository.save(new Tecnico(clienteTecnico2.getID(),rica));
-        tecnicoRepository.save(new Tecnico(clienteTecnico3.getID(), admin));
-        clienteTecnico1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
+            //tecnici per test
+            System.out.println("tecnici~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            tecnicoRepository.save(new Tecnico(clienteTecnico1.getID(),aleya));
+            System.out.println("ok tecnico 1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            tecnicoRepository.save(new Tecnico(clienteTecnico2.getID(),rica));
+            System.out.println("ok tecnico 2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            tecnicoRepository.save(new Tecnico(clienteTecnico3.getID(), admin));
+            System.out.println("ok tecnico 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            clienteTecnico1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
         clienteTecnico2.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
         clienteTecnico3.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
 
@@ -112,7 +127,7 @@ public class C3CLR implements CommandLineRunner {
         serviceLocker.generaLocker(2,0,5,"Tolentino");
         serviceLocker.generaLocker(0,0,5,"Camerino");
         serviceLocker.generaLocker(1,0,5,"Camerino");
-        serviceLocker.generaLocker(2,0,5,"Camerino");
+        serviceLocker.generaLocker(2,0,5,"Camerino");}
 
         /*
         Cliente n2 = new Cliente("Giorgio","email@email.com","passG","Macerata");

@@ -36,10 +36,12 @@ public class Corriere extends Ruolo {
 
     public Corriere(Long idCliente, String mezzoDiTrasporto) {
         super(idCliente);
+
         this.stato = StatoCorriere.NonAttivo;
         this.listaCorse = new ArrayList<>();
         this.mezzoDiTrasporto = mezzoDiTrasporto;
-        this.listaNegoziCollegati = new ArrayList<>();
+        this.listaNegoziCollegati = new ArrayList<>();        System.out.println("costruisco.......~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
     }
 
     public boolean rimuoviNegozio(Long idCorriere, Negozio negozio) {

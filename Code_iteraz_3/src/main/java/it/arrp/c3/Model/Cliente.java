@@ -140,7 +140,7 @@ public class Cliente {
             this.listaRuoli.add(ruolo);
     }
 
-    public void rimuoviRuolo(TipoRuolo tipoRuolo){
+    public void rimuoviRuolo(TipoRuoloWrapper tipoRuolo){
         this.listaRuoli.remove(tipoRuolo);
     }
 

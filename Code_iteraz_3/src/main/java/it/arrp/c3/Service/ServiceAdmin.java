@@ -93,6 +93,10 @@ public class ServiceAdmin{
         }
     }
 
+    public boolean rimuoviTecnico (Long idAdmin, Long idTecnico){
+      return repoAdmin.getOne(idAdmin).removeTecnico(serviceTecnico.getTecnico(idTecnico));
+    }
+
     private boolean controllaCitta(Long idAdmin, Long idLocker){
         Admin admin = getAdmin(idAdmin);
         Locker locker = serviceLocker.getLockerById(idLocker);

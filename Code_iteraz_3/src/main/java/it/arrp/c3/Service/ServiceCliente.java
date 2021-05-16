@@ -95,7 +95,7 @@ public class ServiceCliente {
             return null;
     }
 
-    public void rimuoviRuolo(Long idCliente, TipoRuolo tipoRuolo){
+    public void rimuoviRuolo(Long idCliente, TipoRuoloWrapper tipoRuolo){
         repoCliente.getOne(idCliente).rimuoviRuolo(tipoRuolo);
     }
 

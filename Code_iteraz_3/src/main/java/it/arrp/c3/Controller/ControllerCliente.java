@@ -63,13 +63,14 @@ public class ControllerCliente{
         ruolo = ruolo.toUpperCase();
         switch (ruolo){
             case "TECNICO":
-                serviceCliente.rimuoviRuolo(idCliente, TipoRuolo.Tecnico);
+                serviceCliente.rimuoviRuolo(idCliente, new TipoRuoloWrapper(TipoRuolo.Tecnico));
+
                 break;
             case "CORRIERE":
-                serviceCliente.rimuoviRuolo(idCliente,TipoRuolo.Corriere);
+                serviceCliente.rimuoviRuolo(idCliente,new TipoRuoloWrapper(TipoRuolo.Corriere));
                 break;
             case "NEGOZIO":
-                serviceCliente.rimuoviRuolo(idCliente,TipoRuolo.Negozio);
+                serviceCliente.rimuoviRuolo(idCliente,new TipoRuoloWrapper(TipoRuolo.Negozio));
                 break;
             default:
                 //TODO stampa di un errore o eliminazione di tutti i ruoli? oppure admin?  --Ric

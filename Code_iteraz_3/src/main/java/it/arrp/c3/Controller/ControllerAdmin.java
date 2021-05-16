@@ -74,4 +74,9 @@ public class ControllerAdmin {
     public boolean creaTecnico(@PathVariable Long idAdmin, @RequestParam Long idCliente){
         return serviceAdmin.creaTecnico(idCliente, idAdmin);
     }
+
+    @PostMapping("/admin/{idAdmin}/tecnico/remove")
+    public boolean rimuoviTecnico(@PathVariable Long idAdmin, @RequestParam Long idTecnico){
+        return serviceAdmin.rimuoviTecnico(idAdmin,idTecnico);
+    }
 }

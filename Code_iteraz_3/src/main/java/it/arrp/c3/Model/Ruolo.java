@@ -14,7 +14,7 @@ public abstract class Ruolo {
     Long idCliente;
 
     public Ruolo(Long idCliente) {
-        this.idCliente = idCliente;
+        setIdCliente(idCliente);
     }
 
     public Long getIdCliente() {
