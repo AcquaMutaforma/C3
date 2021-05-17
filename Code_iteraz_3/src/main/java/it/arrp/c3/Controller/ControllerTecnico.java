@@ -7,6 +7,8 @@ import it.arrp.c3.Service.ServiceTecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ControllerTecnico {
 
@@ -56,6 +58,11 @@ public class ControllerTecnico {
     @PostMapping("/tecnico/{idTecnico}/box/accendi")
     public Box turnOnBox(@PathVariable Long idTecnico, @RequestParam Long idBox){
         return serviceTecnico.turnOnBox(idTecnico, idBox);
+    }
+
+    @GetMapping("/tecnico/{idTecnico}/locker/get")
+    public List<Locker> getLockerDisponibili(@PathVariable Long idTecnico){
+        return serviceTecnico.getLockerDisponibili(idTecnico);
     }
 
 }

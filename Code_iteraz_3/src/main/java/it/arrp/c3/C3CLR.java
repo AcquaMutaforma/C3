@@ -42,7 +42,7 @@ public class C3CLR implements CommandLineRunner {
     @Override
     public void run(String... args){
         //semplicemente per poter saltare l'inizializzazione se necessario
-        if(false){
+        if(true){
         //clienti per test
         Cliente cliente1 = new Cliente("cliente1","email@email.com","pass1","Camerino");
         Cliente cliente2 = new Cliente("cliente2","email@email.com","pass2","Tolentino");
@@ -127,7 +127,8 @@ public class C3CLR implements CommandLineRunner {
         serviceLocker.generaLocker(2,0,5,"Tolentino");
         serviceLocker.generaLocker(0,0,5,"Camerino");
         serviceLocker.generaLocker(1,0,5,"Camerino");
-        serviceLocker.generaLocker(2,0,5,"Camerino");}
+        serviceLocker.generaLocker(2,0,5,"Camerino");
+        }
 
         /*
         Cliente n2 = new Cliente("Giorgio","email@email.com","passG","Macerata");

@@ -2,6 +2,7 @@ package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereProdotto;
+import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Service.ServiceNegozio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ import java.util.List;
 public class ControllerCommerciante {
     @Autowired
     ServiceNegozio serviceNegozio;
+
+    @GetMapping("/commerciante/{idNegozio}")
+    public Negozio getNegozio(@PathVariable Long idNegozio){
+        return serviceNegozio.getNegozio(idNegozio);
+    }
 
     /**
      * creaCorsa 2.0 - Il commerciante inserisce i dati e tramite questo controller li manda al service di

@@ -33,7 +33,7 @@ public class Tecnico extends Ruolo{
     public Tecnico(Long idCliente, Admin admin) {
         super(idCliente);
         System.out.println("costruisco....~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
+        this.cittaDiLavoro = admin.getCittaDiLavoro();
         this.admin = admin;
     }
 

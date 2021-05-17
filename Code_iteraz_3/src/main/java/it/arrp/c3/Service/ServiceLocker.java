@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Locker.
@@ -102,5 +103,11 @@ public class ServiceLocker {
             box = serviceBox.creaBox(locker);
             locker.addBox(box);
         }
+    }
+
+    public List<Locker> getLockerByCitta(String cittaDiLavoro) {
+        List<Locker> toreturn = repoLocker.findAll();
+        toreturn.removeIf( x -> !(x.getCitta().equals(cittaDiLavoro)));
+        return toreturn;
     }
 }

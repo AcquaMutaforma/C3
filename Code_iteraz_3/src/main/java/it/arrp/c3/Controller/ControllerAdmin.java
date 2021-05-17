@@ -79,4 +79,9 @@ public class ControllerAdmin {
     public boolean rimuoviTecnico(@PathVariable Long idAdmin, @RequestParam Long idTecnico){
         return serviceAdmin.rimuoviTecnico(idAdmin,idTecnico);
     }
+
+    @GetMapping("/admin/{idAdmin}/locker/get")
+    public List<Locker> getLockerDisponibili(@PathVariable Long idAdmin){
+        return serviceAdmin.getLockerDisponibili(idAdmin);
+    }
 }

@@ -8,6 +8,8 @@ import it.arrp.c3.Model.Tecnico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Classe che si occupa di effettuare le operazioni riguardanti la classe Tecnico.
  */
@@ -140,4 +142,7 @@ public class ServiceTecnico {
         return box;
     }
 
+    public List<Locker> getLockerDisponibili(Long idTecnico) {
+        return serviceLocker.getLockerByCitta(getTecnico(idTecnico).getCittaDiLavoro());
+    }
 }

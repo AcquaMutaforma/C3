@@ -166,4 +166,8 @@ public class ServiceAdmin{
         else
             return serviceNegozio.creaNegozio(nuovo);
     }
+
+    public List<Locker> getLockerDisponibili(Long idAdmin) {
+        return serviceLocker.getLockerByCitta(getAdmin(idAdmin).getCittaDiLavoro());
+    }
 }
