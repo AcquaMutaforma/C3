@@ -2,10 +2,7 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.TipoRuolo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +12,7 @@ public class TipoRuoloWrapper {
     @Id
     private Long id;
     @Column(name = "nomeRuolo")
+    @Enumerated(EnumType.STRING)
     private TipoRuolo ruolo;
 
     public TipoRuoloWrapper() {

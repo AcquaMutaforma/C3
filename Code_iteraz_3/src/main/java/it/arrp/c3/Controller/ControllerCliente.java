@@ -2,7 +2,6 @@ package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Cliente;
-import it.arrp.c3.Model.Enum.GenereNegozio;
 import it.arrp.c3.Model.Enum.TipoRuolo;
 import it.arrp.c3.Model.Messaggio;
 import it.arrp.c3.Model.TipoRuoloWrapper;

@@ -2,10 +2,7 @@ package it.arrp.c3.Model;
 
 import it.arrp.c3.Model.Enum.GenereProdotto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Prodotto é una classe che gestisce oggetti venduti e promossi dai vari Negozi.
@@ -21,6 +18,7 @@ public class Prodotto {
     @Column(name="descrizioneProdotto")
     private String descrizione;
     @Column(name="genereProdotto")
+    @Enumerated(EnumType.STRING)
     private GenereProdotto genereProdotto;
 
     public Prodotto() {

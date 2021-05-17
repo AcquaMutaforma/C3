@@ -22,6 +22,7 @@ public class Negozio extends Ruolo {
     @Column(name="cittaNegozio")
     private String cittaNegozio;
     @Column(name="genereNegozio")
+    @Enumerated(EnumType.STRING)
     private GenereNegozio genereNegozio;
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Prodotto> listaProdottiInEvidenza;

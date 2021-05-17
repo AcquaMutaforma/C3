@@ -28,10 +28,11 @@ public class Locker {
     @Column(name="citta")
     private String citta;
 
+    @Enumerated(EnumType.STRING)
     private Accensione statoAccensioneLocker;
     /** Lista dei box che sono contenuti nel Locker */
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Box> listaBox =  new ArrayList<Box>();
+    private List<Box> listaBox;
 
     public Locker() {
     }
@@ -41,7 +42,7 @@ public class Locker {
         this.numeroBox = numeroBox;
         this.citta = citta;
         this.statoAccensioneLocker = Accensione.Acceso;
-
+        this.listaBox = new ArrayList<Box>();
     }
 
     public void turnOnLocker(){

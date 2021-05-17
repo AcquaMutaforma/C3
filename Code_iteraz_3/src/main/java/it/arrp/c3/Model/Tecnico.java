@@ -12,15 +12,14 @@ import javax.persistence.*;
 @DiscriminatorValue("1")
 public class Tecnico extends Ruolo{
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Admin admin;
 
     @Column(name="luogoDiLavoro")
-    private String cittaDiLavoro; //Todo: da aggiungere, ci eravamo dimenticati.
-    //TODO forse conviene inserire le richieste nelle notifiche ? cosi non ci sono due liste che fanno la medesima cosa,
-    // ne parliamo poi decidiamo -A
-    @OneToOne(fetch = FetchType.LAZY)
-    Locker lockerAttivo; //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric
+    private String cittaDiLavoro;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Locker lockerAttivo;
+    //TODO da aggiungere metodi di "locking" di un locker ad un tecnico (anche nel vpp) --Ric
 
     public Tecnico(Long idCliente) {
         super(idCliente);
@@ -61,7 +60,7 @@ public class Tecnico extends Ruolo{
     public String toString() {
         return "Tecnico{" +
                 "idCLiente=" + idCliente +
-                ", admin=" + this.admin.idCliente +
+                ", admin=" + this.admin.getIdCliente() +
                 '}';
     }
 }

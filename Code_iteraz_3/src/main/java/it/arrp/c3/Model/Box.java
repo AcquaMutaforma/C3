@@ -22,7 +22,7 @@ public class Box{
     private Long idBox;
     @Column(name = "clienteAssegnato")
     private Long idCliente;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Locker locker;
     @Enumerated(EnumType.STRING)
     private Chiusura chiusura;

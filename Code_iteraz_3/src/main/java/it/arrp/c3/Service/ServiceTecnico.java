@@ -25,8 +25,6 @@ public class ServiceTecnico {
     @Autowired
     ServiceBox serviceBox;
     @Autowired
-    ServiceAdmin serviceAdmin;
-    @Autowired
     TecnicoRepository repoTecnico;
 
 

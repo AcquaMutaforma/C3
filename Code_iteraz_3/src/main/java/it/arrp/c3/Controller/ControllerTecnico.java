@@ -22,7 +22,7 @@ public class ControllerTecnico {
 
     @PostMapping("/tecnico/{idTecnico}/locker/set")
     public Locker setLockerAttivo(@PathVariable Long idTecnico, @RequestParam Long idLocker){
-        return serviceTecnico.impostaLockerAttivo(idTecnico, idLocker);
+        return serviceTecnico.impostaLockerAttivo(idTecnico,idLocker);
     }
 
     @GetMapping("/tecnico/{idTecnico}/locker/remove")

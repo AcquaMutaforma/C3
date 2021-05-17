@@ -1,9 +1,6 @@
 package it.arrp.c3.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Classe che si occupa di gestire un Pacco da consegnare, andando ad ottenere i vari
@@ -16,8 +13,10 @@ public class Pacco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPacco;
-
-    private Long idCommerciante, idCliente;
+    @Column(name = "idNegozio")
+    private Long idCommerciante;
+    @Column(name = "idCliente")
+    private Long idCliente;
 
     public Pacco() {
     }
