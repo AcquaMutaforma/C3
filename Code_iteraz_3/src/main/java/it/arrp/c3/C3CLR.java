@@ -42,7 +42,7 @@ public class C3CLR implements CommandLineRunner {
     @Override
     public void run(String... args){
         //semplicemente per poter saltare l'inizializzazione se necessario
-        if(false){
+        if(true){
         //clienti per test
         Cliente cliente1 = new Cliente("cliente1","email@email.com","pass1","Camerino");
         Cliente cliente2 = new Cliente("cliente2","email@email.com","pass2","Tolentino");

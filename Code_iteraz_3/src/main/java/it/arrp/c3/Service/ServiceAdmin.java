@@ -127,7 +127,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
+        if(controllaCitta(idAdmin, box.getLocker()))
             serviceBox.turnOnBox(idBox);
         return box;
     }
@@ -136,7 +136,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
+        if(controllaCitta(idAdmin, box.getLocker()))
             serviceBox.turnOffBox(idBox);
         return box;
     }
@@ -145,7 +145,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
+        if(controllaCitta(idAdmin, box.getLocker()))
             serviceBox.unlock(idBox);
         return box;
     }
@@ -154,7 +154,7 @@ public class ServiceAdmin{
         Box box = serviceBox.getBox(idBox);
         if(box == null)
             return null;
-        if(controllaCitta(idAdmin, box.getLocker().getIdLocker()))
+        if(controllaCitta(idAdmin, box.getLocker()))
             serviceBox.lock(idBox);
         return box;
     }

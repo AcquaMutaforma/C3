@@ -22,8 +22,8 @@ public class Box{
     private Long idBox;
     @Column(name = "clienteAssegnato")
     private Long idCliente;
-    @OneToOne(fetch = FetchType.EAGER)
-    private Locker locker;
+    @Column(name = "Locker")
+    private Long locker;
     @Enumerated(EnumType.STRING)
     private Chiusura chiusura;
     @Enumerated(EnumType.STRING)
@@ -34,7 +34,7 @@ public class Box{
     public Box() {
     }
 
-    public Box(Locker l) {
+    public Box(Long l) {
         this.idCliente = null;
         this.chiusura = Chiusura.Chiuso;
         this.stato = StatoBox.Libero;
@@ -100,11 +100,11 @@ public class Box{
         this.idCliente = idCliente;
     }
 
-    public Locker getLocker() {
+    public Long getLocker() {
         return locker;
     }
 
-    public void setLocker(Locker locker) {
+    public void setLocker(Long locker) {
         this.locker = locker;
     }
 

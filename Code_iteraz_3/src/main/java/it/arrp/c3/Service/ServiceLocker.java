@@ -33,6 +33,7 @@ public class ServiceLocker {
         Locker l = new Locker(longitudine,latitudine,dimensioniLocker, citta);
         repoLocker.save(l);
         popolaLocker(l);
+        repoLocker.save(l);
         return true;
     }
 
@@ -99,8 +100,9 @@ public class ServiceLocker {
     private void popolaLocker(Locker locker){
         int dim = locker.getNumeroBox();
         Box box;
+        Long idLocker = locker.getIdLocker();
         for(int i = 0; i < dim; i++){
-            box = serviceBox.creaBox(locker);
+            box = serviceBox.creaBox(idLocker);
             locker.addBox(box);
         }
     }

@@ -68,8 +68,8 @@ public class ServiceBox {
         return repoBox.findOneByIdBox(idBox);
     }
 
-    public Box creaBox(Locker l) {
-        Box box = new Box(l);
+    public Box creaBox(Long idLocker) {
+        Box box = new Box(idLocker);
         repoBox.save(box);
         return box;
     }
