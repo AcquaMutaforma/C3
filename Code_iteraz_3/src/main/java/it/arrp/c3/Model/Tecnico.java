@@ -12,8 +12,8 @@ import javax.persistence.*;
 @DiscriminatorValue("1")
 public class Tecnico extends Ruolo{
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private Admin admin;
+    @Column(name = "Admin" )
+    private Long idAdmin;
 
     @Column(name="luogoDiLavoro")
     private String cittaDiLavoro;
@@ -29,15 +29,15 @@ public class Tecnico extends Ruolo{
         super(null);
     }
 
-    public Tecnico(Long idCliente, Admin admin) {
+    public Tecnico(Long idCliente, Long idAdmin, String cittaDiLavoro ) {
         super(idCliente);
         System.out.println("costruisco....~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        this.cittaDiLavoro = admin.getCittaDiLavoro();
-        this.admin = admin;
+        this.cittaDiLavoro = cittaDiLavoro;
+        this.idAdmin = idAdmin;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setIdAdmin(Long idAdmin) {
+        this.idAdmin = idAdmin;
     }
     public void setCittaDiLavoro(String cittaDiLavoro) {
         this.cittaDiLavoro = cittaDiLavoro;
@@ -45,8 +45,8 @@ public class Tecnico extends Ruolo{
     public void setLockerAttivo(Locker lockerAttivo) {
         this.lockerAttivo = lockerAttivo;
     }
-    public Admin getAdmin() {
-        return admin;
+    public Long getIdAdmin() {
+        return idAdmin;
     }
     public String getCittaDiLavoro() {
         return cittaDiLavoro;
@@ -60,7 +60,7 @@ public class Tecnico extends Ruolo{
     public String toString() {
         return "Tecnico{" +
                 "idCLiente=" + idCliente +
-                ", admin=" + this.admin.getIdCliente() +
+                ", admin=" + this.idAdmin +
                 '}';
     }
 }

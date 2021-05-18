@@ -28,11 +28,11 @@ public class ServiceTecnico {
     TecnicoRepository repoTecnico;
 
 
-    public boolean creaTecnico(Long idCliente, Admin admin) {
-        if(idCliente == null || admin == null)
+    public boolean creaTecnico(Long idCliente, Long idAdmin, String cittaDiLavoro) {
+        if(idCliente == null || idAdmin == null)
             return false;
         serviceCliente.aggiungiRuoloTecnico(idCliente);
-        repoTecnico.save(new Tecnico(idCliente,admin));
+        repoTecnico.save(new Tecnico(idCliente,idAdmin,cittaDiLavoro));
         return true;
     }
 
@@ -42,7 +42,7 @@ public class ServiceTecnico {
 
     public boolean creaRichiesta( Long idTecnico, String testoRichiesta){
         return serviceMessaggio.sendRichiesta(idTecnico,repoTecnico.findOneByIdCliente(idTecnico).
-                getAdmin().getIdCliente(),testoRichiesta);
+                getIdAdmin(),testoRichiesta);
     }
 
     /**
@@ -148,7 +148,7 @@ public class ServiceTecnico {
 
     public void cambiaAdmin(Long idTecnico, Admin admin) {
         Tecnico tecnico = getTecnico(idTecnico);
-        tecnico.setAdmin(admin);
+        tecnico.setIdAdmin(admin.getIdCliente());
         tecnico.setCittaDiLavoro(admin.getCittaDiLavoro());
         repoTecnico.save(tecnico);
     }

@@ -42,7 +42,7 @@ public class C3CLR implements CommandLineRunner {
     @Override
     public void run(String... args){
         //semplicemente per poter saltare l'inizializzazione se necessario
-        if(true){
+        if(false){
         //clienti per test
         Cliente cliente1 = new Cliente("cliente1","email@email.com","pass1","Camerino");
         Cliente cliente2 = new Cliente("cliente2","email@email.com","pass2","Tolentino");
@@ -108,13 +108,13 @@ public class C3CLR implements CommandLineRunner {
             //tecnici per test
             System.out.println("tecnici~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-            tecnicoRepository.save(new Tecnico(clienteTecnico1.getID(),aleya));
+            tecnicoRepository.save(new Tecnico(clienteTecnico1.getID(),aleya.getIdCliente(), aleya.getCittaDiLavoro()));
             System.out.println("ok tecnico 1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-            tecnicoRepository.save(new Tecnico(clienteTecnico2.getID(),rica));
+            tecnicoRepository.save(new Tecnico(clienteTecnico2.getID(),rica.getIdCliente(), rica.getCittaDiLavoro()));
             System.out.println("ok tecnico 2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-            tecnicoRepository.save(new Tecnico(clienteTecnico3.getID(), admin));
+            tecnicoRepository.save(new Tecnico(clienteTecnico3.getID(), admin.getIdCliente(), admin.getCittaDiLavoro()));
             System.out.println("ok tecnico 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
             clienteTecnico1.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));

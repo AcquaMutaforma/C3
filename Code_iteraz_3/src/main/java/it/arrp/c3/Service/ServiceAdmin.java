@@ -62,7 +62,7 @@ public class ServiceAdmin{
             return false;
         if(c.getListaRuoli().contains(new TipoRuoloWrapper(TipoRuolo.Tecnico)))
             return true;
-        return serviceTecnico.creaTecnico(idCliente,getAdmin(idAdmin));
+        return serviceTecnico.creaTecnico(idCliente,idAdmin, a.getCittaDiLavoro());
     }
 
     public boolean creaAdmin(Long idAdmin, Long idCliente) {
