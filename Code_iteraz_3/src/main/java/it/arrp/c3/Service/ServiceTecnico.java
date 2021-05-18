@@ -129,8 +129,8 @@ public class ServiceTecnico {
         if(box == null)
             return null;
         if(controllaLockerCollegato(idTecnico, box.getLocker()))
-            serviceBox.unlock(idBox);
-        return box;
+            return serviceBox.authUnlock(idBox);
+        return null;
     }
 
     public Box lockBox(Long idTecnico, Long idBox){
@@ -138,8 +138,8 @@ public class ServiceTecnico {
         if(box == null)
             return null;
         if(controllaLockerCollegato(idTecnico, box.getLocker()))
-            serviceBox.lock(idBox);
-        return box;
+            return serviceBox.authLock(idBox);
+        return null;
     }
 
     public List<Locker> getLockerDisponibili(Long idTecnico) {

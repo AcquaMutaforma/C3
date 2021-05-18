@@ -54,21 +54,19 @@ public class ServiceBox {
             return b;
         }else return null;
     }
-    public boolean turnOffBox(Long idBox){
+    public void turnOffBox(Long idBox){
         Box box = repoBox.findOneByIdBox(idBox);
         if(box == null)
-            return false;
+            return;
         box.turnOffBox();
         repoBox.save(box);
-        return true;
     }
-    public boolean turnOnBox(Long idBox){
+    public void turnOnBox(Long idBox){
         Box box = repoBox.findOneByIdBox(idBox);
         if(box == null)
-            return false;
+            return;
         box.turnOnBox();
         repoBox.save(box);
-        return true;
     }
 
     public Box getBox(Long idBox) {
@@ -81,4 +79,21 @@ public class ServiceBox {
         return box;
     }
 
+    public Box authUnlock(Long idBox){
+        Box box = repoBox.findOneByIdBox(idBox);
+        if(box == null)
+            return null;
+        box.setChiusura(Chiusura.Aperto);
+        repoBox.save(box);
+        return box;
+    }
+
+    public Box authLock(Long idBox){
+        Box box = repoBox.findOneByIdBox(idBox);
+        if(box == null)
+            return null;
+        box.setChiusura(Chiusura.Chiuso);
+        repoBox.save(box);
+        return box;
+    }
 }

@@ -65,5 +65,8 @@ public class ControllerTecnico {
         return serviceTecnico.getLockerDisponibili(idTecnico);
     }
 
-    //TODO creaRichiesta
+    @PostMapping("/tecnico/{idTecnico}/richiesta/new")
+    public boolean creaRichiesta(@PathVariable Long idTecnico, @RequestParam String testo){
+        return serviceTecnico.creaRichiesta(idTecnico, testo);
+    }
 }
