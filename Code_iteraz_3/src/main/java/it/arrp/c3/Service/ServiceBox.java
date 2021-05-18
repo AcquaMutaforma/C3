@@ -4,7 +4,6 @@ import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Enum.Accensione;
 import it.arrp.c3.Model.Enum.Chiusura;
 import it.arrp.c3.Model.Enum.StatoBox;
-import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +40,6 @@ public class ServiceBox {
     public Box unlock(Long idBox) {
         Box b = repoBox.findOneByIdBox(idBox);
         if (b != null){
-            if(b.getStato().equals(StatoBox.Occupato))
-                b.setIdCliente(null);
             b.unlock();
             repoBox.save(b);
             return b;
@@ -51,11 +48,11 @@ public class ServiceBox {
 
     public Box lock(Long idBox){
         Box b = repoBox.findOneByIdBox(idBox);
-        if(b == null)
-            return null;
-        b.avanzaStato();
-        repoBox.save(b);
-        return b;
+        if (b != null){
+            b.lock();
+            repoBox.save(b);
+            return b;
+        }else return null;
     }
     public boolean turnOffBox(Long idBox){
         Box box = repoBox.findOneByIdBox(idBox);
@@ -84,21 +81,4 @@ public class ServiceBox {
         return box;
     }
 
-    public Box apriBox(Long idBox){
-        Box b = getBox(idBox);
-        if(b == null)
-            return null;
-        b.setChiusura(Chiusura.Aperto);
-        repoBox.save(b);
-        return b;
-    }
-
-    public Box chiudiBox(Long idBox){
-        Box b = getBox(idBox);
-        if(b == null)
-            return null;
-        b.setChiusura(Chiusura.Chiuso);
-        repoBox.save(b);
-        return b;
-    }
 }

@@ -61,10 +61,6 @@ public class Box{
         return this.stato;
     }
 
-    public Chiusura isChiuso() {
-        return this.chiusura;
-    }
-
     /**
      * cambia stato, attesa --> occupato --> libero
      */
@@ -77,11 +73,12 @@ public class Box{
     }
 
     public void unlock() {
-        avanzaStato();
         setChiusura(Chiusura.Aperto);
     }
 
     public void lock(){
+        if(this.stato.equals(StatoBox.Occupato))
+            this.idCliente = null;
         avanzaStato();
         setChiusura(Chiusura.Chiuso);
     }
@@ -112,10 +109,6 @@ public class Box{
 
     public void setChiusura(Chiusura a) {
         this.chiusura = a;
-    }
-
-    public Chiusura getChiusura() {
-        return chiusura;
     }
 
     public Accensione getStatoAccensioneBox() {
