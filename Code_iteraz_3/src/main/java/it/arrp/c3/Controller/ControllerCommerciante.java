@@ -85,8 +85,9 @@ public class ControllerCommerciante {
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/new")
-    public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam Prodotto prodotto){
-        return serviceNegozio.creaProdotto(idCommerciante, prodotto);
+    public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam String nome,
+                                    @RequestParam String descrizione, @RequestParam String genere){
+        return serviceNegozio.creaProdotto(idCommerciante, nome, descrizione, GenereProdotto.valueOf(genere));
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")

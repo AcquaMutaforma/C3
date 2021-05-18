@@ -104,7 +104,7 @@ public class ServiceNegozio {
      * Una seconda opzione potrebbe essere: far inserire l'id del locker al commerciante, che puo' vedere dal suo
      * controller la lista di questi, magari inserendo una variabile nome nel locker tipo "piazza dante".
      */
-    public int assegnaLocker(Long idCliente, Long idNegozio, Long idLocker){
+    public int assegnaLocker(Long idNegozio, Long idCliente,  Long idLocker){
         Cliente cliente = serviceCliente.getCliente(idCliente);
         Negozio negozio = getNegozio(idNegozio);
         Locker locker = serviceLocker.getLockerById(idLocker);
@@ -155,11 +155,11 @@ public class ServiceNegozio {
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneByIdCliente(id); }
 
-    public boolean creaProdotto(Long idNegozio, Prodotto prodotto){
+    public boolean creaProdotto(Long idNegozio, String name,String descrizione, GenereProdotto genere){
         Negozio negozio = getNegozio(idNegozio);
         if(negozio == null)
             return false;
-        Prodotto p = serviceProdotto.creaProdotto(prodotto);
+        Prodotto p = serviceProdotto.creaProdotto(name, descrizione, genere);
         if(p == null)
             return false;
         if(negozio.aggiungiProdotto(p)){

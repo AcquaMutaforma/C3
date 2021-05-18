@@ -25,8 +25,6 @@ public class ServiceCliente {
     @Autowired
     ServiceCorriere serviceCorriere;
     @Autowired
-    ServiceNegozio serviceNegozio;
-    @Autowired
     ServiceMessaggio servMessaggio;
 
     public boolean setCheckpoint(Long idCliente, Long idLocker){
@@ -106,23 +104,27 @@ public class ServiceCliente {
     public void rimuoviRuolo(Long idCliente, TipoRuoloWrapper tipoRuolo){
         Cliente cliente = getCliente(idCliente);
         cliente.rimuoviRuolo(tipoRuolo);
-        repoCliente.save(cliente);
+        repoCliente.saveAndFlush(cliente);
     }
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
-        Cliente c = repoCliente.findOneByIdCliente(idCliente);
+        Cliente c =  getCliente(idCliente);
         serviceCorriere.salvaRuoloCorriere(idCliente,mdt);
         c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Corriere));
+        repoCliente.saveAndFlush(c);
     }
 
     public void aggiungiRuoloTecnico(Long idCliente){
-        Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
-        cliente.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
+        Cliente cliente =  getCliente(idCliente);
+        TipoRuoloWrapper ruolo = new TipoRuoloWrapper(TipoRuolo.Tecnico);
+        cliente.aggiungiRuolo(ruolo);
+        repoCliente.saveAndFlush(cliente);
     }
 
     public void aggiungiRuoloNegozio(Long idCliente) {
-        Cliente c = repoCliente.findOneByIdCliente(idCliente);
+        Cliente c = getCliente(idCliente);
         c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
+        repoCliente.saveAndFlush(c);
     }
 
 
@@ -131,8 +133,9 @@ public class ServiceCliente {
     }
 
     public void aggiungiRuoloAdmin(Long idCliente) {
-        getCliente(idCliente).aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Admin));
-
+        Cliente cliente = getCliente(idCliente);
+        cliente.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Admin));
+        repoCliente.save(cliente);
     }
 
     public List<Messaggio> getNotifiche(Long idCliente){

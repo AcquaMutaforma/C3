@@ -10,6 +10,7 @@ import java.util.Objects;
 public class TipoRuoloWrapper {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "nomeRuolo")
     @Enumerated(EnumType.STRING)

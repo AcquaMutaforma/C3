@@ -12,9 +12,10 @@ public class Pacco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idPacco")
     private Long idPacco;
     @Column(name = "idNegozio")
-    private Long idCommerciante;
+    private Long idNegozio;
     @Column(name = "idCliente")
     private Long idCliente;
 
@@ -23,11 +24,11 @@ public class Pacco {
 
     public Pacco(Long idCommerciante, Long idCliente) {
         setIdCliente(idCliente);
-        setIdCommerciante(idCommerciante);
+        setIdNegozio(idCommerciante);
     }
 
-    public Long getIdCommerciante() {
-        return idCommerciante;
+    public Long getIdNegozio() {
+        return idNegozio;
     }
 
     public Long getIdCliente() {
@@ -38,8 +39,8 @@ public class Pacco {
         return idPacco;
     }
 
-    public void setIdCommerciante(Long idCommerciante) {
-        this.idCommerciante = idCommerciante;
+    public void setIdNegozio(Long idNegozio) {
+        this.idNegozio = idNegozio;
     }
 
     public void setIdCliente(Long idCliente) {
@@ -54,7 +55,7 @@ public class Pacco {
     public String toString() {
         return "Pacco{" +
                 "idPacco=" + getIdPacco() +
-                ", idCommerciante=" + getIdCommerciante() +
+                ", idCommerciante=" + getIdNegozio() +
                 ", idCliente=" + getIdCliente() +
                 '}';
     }

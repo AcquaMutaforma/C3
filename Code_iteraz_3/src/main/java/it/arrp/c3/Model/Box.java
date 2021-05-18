@@ -65,10 +65,10 @@ public class Box{
      * cambia stato, attesa --> occupato --> libero
      */
     public void avanzaStato() {
-        switch (stato){
-            case Libero: this.stato = StatoBox.Attesa;
-            case Attesa: this.stato = StatoBox.Occupato;
-            case Occupato: this.stato = StatoBox.Libero;
+        switch (this.stato){
+            case Libero: this.stato = StatoBox.Attesa; break;
+            case Attesa: this.stato = StatoBox.Occupato; break;
+            case Occupato: this.stato = StatoBox.Libero; break;
         }
     }
 

@@ -50,12 +50,12 @@ public class Cliente {
 
     @OneToOne(fetch = FetchType.EAGER)
     private Locker checkpoint;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Messaggio> notifiche;
     @Enumerated(EnumType.ORDINAL)
     @ManyToMany(fetch = FetchType.LAZY)
     private List<TipoRuoloWrapper> listaRuoli;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Box> boxAssegnati;
 
     public static final int max_box = 10;

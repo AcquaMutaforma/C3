@@ -36,6 +36,7 @@ public class ServiceCorsa {
     ServiceCliente serviceCliente;
 
     /** Mappa per le corse rifiutate, K = idCorsa rifiutata V = lista IDCorrieri che hanno rifiutato la corsa K */
+    @ManyToMany(fetch = FetchType.EAGER)
     private Map<Long, List<Long>> corseRifiutate = new HashMap<>();
 
     /**
@@ -46,8 +47,8 @@ public class ServiceCorsa {
     public void creaCorsa(Long idNegozio, Long idCorriere, Long idCliente, Long idBox){
         Pacco pacco = servicePacco.creaPacco(idCliente,idNegozio);
         Corsa corsa = new Corsa(pacco.getIdPacco(), idBox, idCorriere);
-        assegnaCorsa(corsa,idCorriere);
         repoCorsa.save(corsa);
+        assegnaCorsa(corsa,idCorriere);
     }
 
     /** Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
@@ -76,7 +77,7 @@ public class ServiceCorsa {
      */
     public void riassegnaCorsaRifiutata(Corsa corsa){
         Pacco p = servicePacco.getPacco(corsa.getIdPacco());
-        Negozio negozio = serviceNegozio.getNegozio(p.getIdCommerciante());//todo penso non sia il caso di prenderlo in questo modo... --Ric
+        Negozio negozio = serviceNegozio.getNegozio(p.getIdNegozio());//todo penso non sia il caso di prenderlo in questo modo... --Ric
         List<Corriere> listaDisponibili = serviceNegozio.getListaCorrieriDisponibili(negozio);
         //dalla lista rimuovo il corriere X se e' all'interno della lista dei corrieri che hanno rifiutato la corsa
         listaDisponibili.removeIf(x -> corseRifiutate.get(corsa.getIdCorsa()).contains(x.getIdCliente()));
@@ -86,7 +87,7 @@ public class ServiceCorsa {
             assegnaCorsa(corsa, nuovoCorriere);
         }else{  //annulla corsa
             corseRifiutate.remove(corsa.getIdCorsa());
-            serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdCommerciante());
+            serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdNegozio());
             Long idBox = corsa.getIdBox();
             serviceCliente.rimuoviBox(p.getIdCliente(),idBox);
             serviceBox.liberaBox(idBox);

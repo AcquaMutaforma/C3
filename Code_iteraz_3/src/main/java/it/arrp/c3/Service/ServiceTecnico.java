@@ -32,7 +32,7 @@ public class ServiceTecnico {
         if(idCliente == null || idAdmin == null)
             return false;
         serviceCliente.aggiungiRuoloTecnico(idCliente);
-        repoTecnico.save(new Tecnico(idCliente,idAdmin,cittaDiLavoro));
+        repoTecnico.saveAndFlush(new Tecnico(idCliente,idAdmin,cittaDiLavoro));
         return true;
     }
 

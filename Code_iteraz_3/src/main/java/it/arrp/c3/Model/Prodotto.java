@@ -12,7 +12,8 @@ import java.util.Objects;
 public class Prodotto {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "idProdotto")
     private Long idProdotto;
     @Column(name="nomeProdotto")
     private String nome;
