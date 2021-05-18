@@ -132,10 +132,11 @@ public class Box{
     public String toString() {
         return "Box{" +
                 "idBox=" + idBox +
-                ", cliente=" + idCliente +
+                ", idCliente=" + idCliente +
                 ", locker=" + locker +
-                ", chiuso=" + chiusura +
+                ", chiusura=" + chiusura +
                 ", stato=" + stato +
+                ", statoAccensioneBox=" + statoAccensioneBox +
                 '}';
     }
 }

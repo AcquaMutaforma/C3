@@ -35,6 +35,7 @@ public class ServiceCliente {
             return false;
         Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
         cliente.setCheckpoint(locker);
+        repoCliente.save(cliente);
         return true;
     }
 
@@ -47,14 +48,19 @@ public class ServiceCliente {
         if(!(c == null)){
             c.addBox(boxAssegnato);
         }
+        repoCliente.save(c);
     }
 
     public void rimuoviBox(Long idCliente, Long idBoxAssegnato){
-        getCliente(idCliente).removeBox(idBoxAssegnato);
+        Cliente cliente = getCliente(idCliente);
+        cliente.removeBox(idBoxAssegnato);
+        repoCliente.save(cliente);
     }
 
     public void rimuoviCheckpoint(Long idCliente){
-        getCliente(idCliente).setCheckpoint(null);
+        Cliente cliente = getCliente(idCliente);
+        cliente.setCheckpoint(null);
+        repoCliente.save(cliente);
     }
 
     //metodo per prendere tutti i box che sono assegnati ad un cliente

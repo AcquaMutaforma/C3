@@ -32,8 +32,8 @@ public class ControllerCorriere {
     }
 
     @PostMapping("/corriere/{idCorriere}/stato")
-    public Corriere setStato(@PathVariable Long idCorriere, @RequestParam StatoCorriere stato){
-        return serviceCorriere.cambiaStato(idCorriere, stato);
+    public Corriere setStato(@PathVariable Long idCorriere, @RequestParam String stato){
+        return serviceCorriere.cambiaStato(idCorriere, StatoCorriere.valueOf(stato));
     }
 
     @PostMapping("/corriere/{idCorriere}/corsa/unlock")

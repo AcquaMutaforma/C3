@@ -43,10 +43,6 @@ public class ControllerCliente{
         return serviceCliente.getBoxCliente(idCliente);
     }
 
-    /*
-    Non e' bellissimo che ritorni il box, ma fa comodo per "visualizzare" l'apertura o meno del box.
-     todo: si potrebbe cambiare tipo di ritorno una volta che funziona
-     */
     @PostMapping("/cliente/{idCliente}/box/open")
     public Box apriBoxAssegnato(@PathVariable Long idCliente, @RequestParam Long idBox){
         return serviceCliente.apriBox(idCliente, idBox);

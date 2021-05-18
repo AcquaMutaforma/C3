@@ -155,11 +155,11 @@ public class ServiceNegozio {
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneByIdCliente(id); }
 
-    public boolean creaProdotto(Long idNegozio, String nome, String descrizione, GenereProdotto genere){
+    public boolean creaProdotto(Long idNegozio, Prodotto prodotto){
         Negozio negozio = getNegozio(idNegozio);
         if(negozio == null)
             return false;
-        Prodotto p = serviceProdotto.creaProdotto(nome, descrizione, genere);
+        Prodotto p = serviceProdotto.creaProdotto(prodotto);
         if(p == null)
             return false;
         if(negozio.aggiungiProdotto(p)){

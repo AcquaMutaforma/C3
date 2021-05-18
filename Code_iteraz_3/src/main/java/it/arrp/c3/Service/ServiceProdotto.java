@@ -43,4 +43,13 @@ public class ServiceProdotto {
     public void eliminaProdotto(Long idProdotto){
         repoProdotto.delete(getProdotto(idProdotto));
     }
+
+    public Prodotto creaProdotto(Prodotto prodotto) {
+        if(prodotto.getNome().length() > 3 && prodotto.getDescrizione().length() > 3 &&
+        prodotto.getGenereProdotto() != null) {
+            repoProdotto.save(prodotto);
+            return prodotto;
+        }
+        return null;
+    }
 }

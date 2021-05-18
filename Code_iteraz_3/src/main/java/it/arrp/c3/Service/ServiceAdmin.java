@@ -152,7 +152,7 @@ public class ServiceAdmin{
         if(box == null)
             return null;
         if(controllaCitta(idAdmin, box.getLocker()))
-            serviceBox.unlock(idBox);
+            serviceBox.authUnlock(idBox);
         return box;
     }
 
@@ -161,7 +161,7 @@ public class ServiceAdmin{
         if(box == null)
             return null;
         if(controllaCitta(idAdmin, box.getLocker()))
-            serviceBox.lock(idBox);
+            serviceBox.authLock(idBox);
         return box;
     }
 

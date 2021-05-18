@@ -32,7 +32,7 @@ public class ControllerCommerciante {
      * come "Checkpoint cliente non valido, utilizzare assegna Locker".
      */
     @PostMapping("/commerciante/{idNegozio}/creaCorsa")
-    public int creaCorsa(@RequestParam Long idCliente, @PathVariable Long idNegozio){
+    public int creaCorsa(@PathVariable Long idNegozio, @RequestParam Long idCliente){
         return serviceNegozio.creaCorsa(idCliente, idNegozio);
     }
 
@@ -85,9 +85,8 @@ public class ControllerCommerciante {
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/new")
-    public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam String name,
-                                    @RequestParam String descrizione, @RequestParam GenereProdotto genere){
-        return serviceNegozio.creaProdotto(idCommerciante, name, descrizione, genere);
+    public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam Prodotto prodotto){
+        return serviceNegozio.creaProdotto(idCommerciante, prodotto);
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
@@ -95,12 +94,9 @@ public class ControllerCommerciante {
         return serviceNegozio.rimuoviProdotto(idCommerciante, idProdotto);
     }
 
-    @PostMapping("/commerciante/{idCommerciante}/prodotti/aggiungi")
+    @PostMapping("/commerciante/{idCommerciante}/prodotti/add")
     public boolean aggiungiProdotto(@PathVariable Long idCommerciante, @RequestParam Long idProdotto){
         return serviceNegozio.aggiungiProdotto(idCommerciante, idProdotto);
     }
 
-    //TODO abbiamo solo metodi per creare prodotti, forse andrebbero fatti 2 metodi, uno crea e uno aggiunge, quindi
-    // forse potrebbe esserci una specie di ControllerProdotti per visualizzare tutti quelli che esistono, e aggiungere
-    // quelli gia fatti, senza doverli sempre riscrivere, per ora mi fermo qui, poi lo vediamo insieme come farlo. -A
 }

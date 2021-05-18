@@ -48,9 +48,9 @@ public class Cliente {
     @Column(name = "residenza")
     private String citta;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Locker checkpoint;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Messaggio> notifiche;
     @Enumerated(EnumType.ORDINAL)
     @ManyToMany(fetch = FetchType.LAZY)
