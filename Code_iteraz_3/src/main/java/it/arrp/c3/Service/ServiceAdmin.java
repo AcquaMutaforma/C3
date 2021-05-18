@@ -87,14 +87,20 @@ public class ServiceAdmin{
             return null;
         else {
             admin.addTecnico(tec);
-            tec.setAdmin(admin);
-            tec.setCittaDiLavoro(admin.getCittaDiLavoro());
+            serviceTecnico.cambiaAdmin(idTecnico, admin);
+            repoAdmin.save(admin);
             return admin.getListaTecnici();
         }
     }
 
+    //TODO e il tecnico che fa se viene rimosso ? booh implementazione futura
     public boolean rimuoviTecnico (Long idAdmin, Long idTecnico){
-      return repoAdmin.getOne(idAdmin).removeTecnico(serviceTecnico.getTecnico(idTecnico));
+        Admin admin = getAdmin(idAdmin);
+        Tecnico tecnico = serviceTecnico.getTecnico(idTecnico);
+        if(admin.removeTecnico(tecnico)){
+            repoAdmin.save(admin);
+            return true;
+        }else return false;
     }
 
     private boolean controllaCitta(Long idAdmin, Long idLocker){
@@ -163,8 +169,10 @@ public class ServiceAdmin{
         Admin admin = getAdmin(idAdmin);
         if(admin == null)
             return null;
-        else
+        else {
+            serviceCliente.aggiungiRuoloNegozio(nuovo.getIdCliente());
             return serviceNegozio.creaNegozio(nuovo);
+        }
     }
 
     public List<Locker> getLockerDisponibili(Long idAdmin) {

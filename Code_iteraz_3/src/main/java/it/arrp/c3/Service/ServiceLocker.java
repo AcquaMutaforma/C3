@@ -62,7 +62,7 @@ public class ServiceLocker {
         Box box = getBoxDisponibile(locker.getIdLocker());
         if(box == null) //box non disponibili nel locker
             return null;
-        if(serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox() != null){
+        if(serviceBox.assegnaBox(box.getIdBox(), idCliente).getIdBox() != null){ //in teoria non dovrebbe essere null ma chi lo sa
             serviceCliente.assegnamentoBox(idCliente, box);
             return box.getIdBox();
         }
@@ -74,6 +74,7 @@ public class ServiceLocker {
         if(locker == null)
             return;
         locker.turnOffLocker();
+        repoLocker.save(locker);
     }
 
     public void turnOnLocker(Long idLocker){
@@ -81,6 +82,7 @@ public class ServiceLocker {
         if(locker == null)
             return;
         locker.turnOnLocker();
+        repoLocker.save(locker);
     }
 
     public Box getBoxDisponibile(Long idLocker){

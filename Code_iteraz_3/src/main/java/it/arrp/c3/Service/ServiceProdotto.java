@@ -32,14 +32,15 @@ public class ServiceProdotto {
     }
 
     public Prodotto modificaProdotto(String nome, String descrizione, GenereProdotto genere, Long idProdotto){
-        Prodotto ritorna = repoProdotto.getOne(idProdotto);
+        Prodotto ritorna = getProdotto(idProdotto);
         ritorna.setGenereProdotto(genere);
         ritorna.setDescrizione(descrizione);
         ritorna.setNome(nome);
+        repoProdotto.save(ritorna);
         return ritorna;
     }
 
     public void eliminaProdotto(Long idProdotto){
-        repoProdotto.delete(repoProdotto.getOne(idProdotto));
+        repoProdotto.delete(getProdotto(idProdotto));
     }
 }

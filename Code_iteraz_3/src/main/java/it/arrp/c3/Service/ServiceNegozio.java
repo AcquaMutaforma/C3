@@ -36,14 +36,21 @@ public class ServiceNegozio {
     public boolean addCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
             return false;
-        getNegozio(idNegozio).addCorriere(serviceCorriere.getCorriere(idCorriere));
+        Negozio negozio = getNegozio(idNegozio);
+        negozio.addCorriere(serviceCorriere.getCorriere(idCorriere));
+        repoNegozio.save(negozio);
         return true;
     }
 
     public boolean removeCorriere(Long idNegozio, Long idCorriere){
         if (controllaInput(idNegozio,idCorriere))
             return false;
-        return getNegozio(idNegozio).rimuoviCorriere(serviceCorriere.getCorriere(idCorriere));
+        Negozio negozio = getNegozio(idNegozio);
+        if(negozio.rimuoviCorriere(serviceCorriere.getCorriere(idCorriere))){
+            repoNegozio.save(negozio);
+            return true;
+        }
+        return false;
     }
 
     private boolean controllaInput(Long idNegozio, Long idCorriere) {
@@ -140,9 +147,11 @@ public class ServiceNegozio {
         return n.getListaCorrieriAssunti();
     }
 
+    /*
     public void salvaRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
         repoNegozio.save(new Negozio(idCliente,nomeNegozio,cittaNegozio,genere));
     }
+     */
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneByIdCliente(id); }
 
@@ -153,7 +162,11 @@ public class ServiceNegozio {
         Prodotto p = serviceProdotto.creaProdotto(nome, descrizione, genere);
         if(p == null)
             return false;
-        else return negozio.aggiungiProdotto(p);
+        if(negozio.aggiungiProdotto(p)){
+            repoNegozio.save(negozio);
+            return true;
+        }else return false;
+
     }
 
     public boolean rimuoviProdotto(Long idNegozio, Long idProdotto){
@@ -163,7 +176,10 @@ public class ServiceNegozio {
         Prodotto prodotto = serviceProdotto.getProdotto(idProdotto);
         if(prodotto == null)
             return false;
-        return negozio.rimuoviProdotto(prodotto);
+        if(negozio.rimuoviProdotto(prodotto)){
+            repoNegozio.save(negozio);
+            return true;
+        }else return false;
     }
 
     public Prodotto getProdotto(Long idNegozio, Long idProdotto){
@@ -192,7 +208,10 @@ public class ServiceNegozio {
         Prodotto prodotto = serviceProdotto.getProdotto(idProdotto);
         if(negozio == null || prodotto == null)
             return false;
-        else return negozio.aggiungiProdotto(prodotto);
+        if(negozio.aggiungiProdotto(prodotto)){
+            repoNegozio.save(negozio);
+            return true;
+        }else return false;
     }
 
     public Negozio creaNegozio(Negozio nuovo) {

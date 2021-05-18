@@ -64,6 +64,7 @@ public class ServiceTecnico {
             return null;
         Tecnico tec = getTecnico(idTecnico);
         tec.setLockerAttivo(serviceLocker.getLockerById(idLocker));
+        repoTecnico.save(tec);
         return tec.getLockerAttivo();
     }
 
@@ -71,6 +72,7 @@ public class ServiceTecnico {
         Tecnico tec = getTecnico(idTecnico);
         if(tec != null) {
             tec.setLockerAttivo(null);
+            repoTecnico.save(tec);
             return true;
         }else
             return false;
@@ -142,5 +144,12 @@ public class ServiceTecnico {
 
     public List<Locker> getLockerDisponibili(Long idTecnico) {
         return serviceLocker.getLockerByCitta(getTecnico(idTecnico).getCittaDiLavoro());
+    }
+
+    public void cambiaAdmin(Long idTecnico, Admin admin) {
+        Tecnico tecnico = getTecnico(idTecnico);
+        tecnico.setAdmin(admin);
+        tecnico.setCittaDiLavoro(admin.getCittaDiLavoro());
+        repoTecnico.save(tecnico);
     }
 }

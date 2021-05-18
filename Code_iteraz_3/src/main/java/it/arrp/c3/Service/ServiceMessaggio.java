@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class ServiceMessaggio {
     private static final String CORSACOMPLETATA="É stata completata la Corsa con codice identificativo ";
     private static final String CORSANONESEGUITA = "Non é stato possibile portare a termine la corsa con codice identificativo ";
-    private static final Long SYSTEM = 0L; //todo: check che il primo utente non sia tutti 0 come questo.
+    private static final Long SYSTEM = 0L;
 
     @Autowired
     MessaggioRepository repoMessaggio;
@@ -78,8 +78,7 @@ public class ServiceMessaggio {
     public boolean rimuoviTicket(Messaggio m){
         repoMessaggio.delete(m);
         return true;
-        //TODO probabilmente se si deve cancellare il ticket si cancella direttamente dalla lista delle
-           notifiche, quindi questo al massimo puo' cancellare i ticket dal DB, praticamente e' inutile.
+        //TODO implementazione futura per rimuovere cose dal DB
     }
      */
 

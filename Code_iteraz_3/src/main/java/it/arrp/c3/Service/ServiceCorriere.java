@@ -41,12 +41,15 @@ public class ServiceCorriere {
         }else {
             serviceCorsa.rifiutaCorsa(idCorriere, idCorsa);
             corr.rimuoviCorsa(getCorsa(idCorriere, idCorsa));
+            repoCorriere.save(corr);
         }
         return corr.getAllCorse();
     }
+
     public Corriere cambiaStato(Long idCorriere, StatoCorriere statoCorriere){
         Corriere c = repoCorriere.findOneByIdCliente(idCorriere);
         c.setStato(statoCorriere);
+        repoCorriere.save(c);
         return c;
     }
 
@@ -54,6 +57,7 @@ public class ServiceCorriere {
     public void assegnaCorsa(Corsa corsa, Long idCorriere) {
         Corriere corriere = getCorriere(idCorriere);
         corriere.addNuovaCorsa(corsa);
+        repoCorriere.save(corriere);
     }
 
     public Corriere getCorriere(Long uuidCorriere){
@@ -86,6 +90,7 @@ public class ServiceCorriere {
         serviceCorsa.corsaCompletata(corsa.getIdCorsa());
         Corriere corriere = getCorriere(idCorriere);
         corriere.rimuoviCorsa(corsa);
+        repoCorriere.save(corriere);
     }
 
     public void salvaRuoloCorriere(Long idCliente, String mdt) {

@@ -8,6 +8,8 @@ import it.arrp.c3.Model.Repository.CorsaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +47,7 @@ public class ServiceCorsa {
         Pacco pacco = servicePacco.creaPacco(idCliente,idNegozio);
         Corsa corsa = new Corsa(pacco.getIdPacco(), idBox, idCorriere);
         assegnaCorsa(corsa,idCorriere);
+        repoCorsa.save(corsa);
     }
 
     /** Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
@@ -81,7 +84,7 @@ public class ServiceCorsa {
             Long nuovoCorriere = listaDisponibili.get(0).getIdCliente();
             corsa.setIdCorriere(nuovoCorriere);
             assegnaCorsa(corsa, nuovoCorriere);
-        }else{
+        }else{  //annulla corsa
             corseRifiutate.remove(corsa.getIdCorsa());
             serviceMessaggio.notificaCorsaFallita(corsa.getIdCorsa(), p.getIdCliente(), p.getIdCommerciante());
             Long idBox = corsa.getIdBox();
@@ -106,14 +109,13 @@ public class ServiceCorsa {
     }
 
     //TODO check gli schemi se manca qualcosa -A
-    //nota: per il corriere ci pensa serviceCorriere quando sblocca il box nel locker
+    //Questo metodo si innesca quando il corriere apre il box per consegnare il pacco,
+    // per il corriere ci pensa serviceCorriere quando sblocca il box nel locker
     public void corsaCompletata(Long idCorsa){
         if(corseRifiutate.containsKey(idCorsa))
             corsaRedivivaCompletata(idCorsa);
         Corsa corsa = getCorsa(idCorsa);
         Pacco pacco = servicePacco.getPacco(corsa.getIdPacco());
-        serviceCliente.rimuoviBox(pacco.getIdCliente(), corsa.getIdBox());  //rimuove il box dalla lista del cliente //TODO spostare queste cose per quando il cliente va a prendere il pacco --Ric
-        serviceBox.liberaBox(corsa.getIdBox());                             //rimuove id cliente dal box
         serviceMessaggio.notificaCorsaCompletata(idCorsa, pacco.getIdCliente());//invia la notifica per il completamento
     }
 

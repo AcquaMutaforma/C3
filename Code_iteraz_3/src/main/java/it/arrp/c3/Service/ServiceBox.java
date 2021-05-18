@@ -2,6 +2,7 @@ package it.arrp.c3.Service;
 
 import it.arrp.c3.Model.Box;
 import it.arrp.c3.Model.Enum.Accensione;
+import it.arrp.c3.Model.Enum.Chiusura;
 import it.arrp.c3.Model.Enum.StatoBox;
 import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Repository.BoxRepository;
@@ -25,6 +26,7 @@ public class ServiceBox {
             return null;
         box.setIdCliente(idCliente);
         box.avanzaStato();
+        repoBox.save(box);
         return box;
     }
     public void liberaBox(Long idBox){
@@ -33,20 +35,26 @@ public class ServiceBox {
             return;
         box.setIdCliente(null);
         box.setStato(StatoBox.Libero);
+        repoBox.save(box);
     }
 
     public Box unlock(Long idBox) {
         Box b = repoBox.findOneByIdBox(idBox);
         if (b != null){
+            if(b.getStato().equals(StatoBox.Occupato))
+                b.setIdCliente(null);
             b.unlock();
+            repoBox.save(b);
             return b;
         }else return null;
     }
+
     public Box lock(Long idBox){
         Box b = repoBox.findOneByIdBox(idBox);
         if(b == null)
             return null;
         b.avanzaStato();
+        repoBox.save(b);
         return b;
     }
     public boolean turnOffBox(Long idBox){
@@ -54,6 +62,7 @@ public class ServiceBox {
         if(box == null)
             return false;
         box.turnOffBox();
+        repoBox.save(box);
         return true;
     }
     public boolean turnOnBox(Long idBox){
@@ -61,6 +70,7 @@ public class ServiceBox {
         if(box == null)
             return false;
         box.turnOnBox();
+        repoBox.save(box);
         return true;
     }
 
@@ -72,5 +82,23 @@ public class ServiceBox {
         Box box = new Box(idLocker);
         repoBox.save(box);
         return box;
+    }
+
+    public Box apriBox(Long idBox){
+        Box b = getBox(idBox);
+        if(b == null)
+            return null;
+        b.setChiusura(Chiusura.Aperto);
+        repoBox.save(b);
+        return b;
+    }
+
+    public Box chiudiBox(Long idBox){
+        Box b = getBox(idBox);
+        if(b == null)
+            return null;
+        b.setChiusura(Chiusura.Chiuso);
+        repoBox.save(b);
+        return b;
     }
 }

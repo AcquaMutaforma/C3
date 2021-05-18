@@ -66,8 +66,8 @@ public class ControllerAdmin {
     }
 
     @PostMapping("/admin/{idAdmin}/regNegozio")
-    public void registraNegozio(@PathVariable Long idAdmin, @RequestBody Negozio nuovo){
-        serviceAdmin.registraNegozio(idAdmin, nuovo);
+    public Negozio registraNegozio(@PathVariable Long idAdmin, @RequestBody Negozio nuovo){
+        return serviceAdmin.registraNegozio(idAdmin, nuovo);
     }
 
     @PostMapping("/admin/{idAdmin}/tecnico/new")

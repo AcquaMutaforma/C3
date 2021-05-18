@@ -3,6 +3,7 @@ package it.arrp.c3.Model;
 import it.arrp.c3.Model.Enum.GenereProdotto;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Prodotto é una classe che gestisce oggetti venduti e promossi dai vari Negozi.
@@ -63,5 +64,18 @@ public class Prodotto {
                 ", descrizione='" + descrizione + '\'' +
                 ", genereProdotto=" + genereProdotto +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Prodotto)) return false;
+        Prodotto prodotto = (Prodotto) o;
+        return getIdProdotto().equals(prodotto.getIdProdotto());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdProdotto());
     }
 }

@@ -78,10 +78,12 @@ public class Box{
 
     public void unlock() {
         avanzaStato();
+        setChiusura(Chiusura.Aperto);
     }
 
-    public void lock() {
+    public void lock(){
         avanzaStato();
+        setChiusura(Chiusura.Chiuso);
     }
 
     public void setStato(StatoBox s) {

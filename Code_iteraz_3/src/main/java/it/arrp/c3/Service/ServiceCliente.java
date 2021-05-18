@@ -83,6 +83,8 @@ public class ServiceCliente {
         if(b == null || !c.getBoxAssegnati().contains(b) || !b.getIdCliente().equals(idCliente))
             return null;
         serviceBox.unlock(idBox);
+        c.removeBox(idBox);
+        repoCliente.save(c);
         return b;
     }
 
@@ -96,7 +98,9 @@ public class ServiceCliente {
     }
 
     public void rimuoviRuolo(Long idCliente, TipoRuoloWrapper tipoRuolo){
-        repoCliente.getOne(idCliente).rimuoviRuolo(tipoRuolo);
+        Cliente cliente = getCliente(idCliente);
+        cliente.rimuoviRuolo(tipoRuolo);
+        repoCliente.save(cliente);
     }
 
     public void aggiungiRuoloCorriere(Long idCliente, String mdt) {
@@ -109,14 +113,12 @@ public class ServiceCliente {
         Cliente cliente = repoCliente.findOneByIdCliente(idCliente);
         cliente.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Tecnico));
     }
-/*
-    public void aggiungiRuoloNegozio(Long idCliente, String nomeNegozio, String cittaNegozio, GenereNegozio genere) {
+
+    public void aggiungiRuoloNegozio(Long idCliente) {
         Cliente c = repoCliente.findOneByIdCliente(idCliente);
-        serviceNegozio.salvaRuoloNegozio(idCliente, nomeNegozio, cittaNegozio, genere);
         c.aggiungiRuolo(new TipoRuoloWrapper(TipoRuolo.Negozio));
     }
 
- */
 
     public boolean creaTicket(Long idCliente, String testo){
         return servMessaggio.creaTicket(idCliente,testo);

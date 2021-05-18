@@ -15,7 +15,9 @@ public class ServicePacco {
     PaccoRepository paccoRepo;
 
     public Pacco creaPacco(long idCliente, long idCommerciante){
-        return new Pacco(idCommerciante,idCliente);
+        Pacco p = new Pacco(idCommerciante,idCliente);
+        paccoRepo.save(p);
+        return p;
     }
 
     public Pacco getPacco(Long id){
