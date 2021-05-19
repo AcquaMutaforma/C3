@@ -153,7 +153,7 @@ public class ServiceNegozio {
 
     public Negozio getNegozio(Long id){ return repoNegozio.findOneByIdCliente(id); }
 
-    public boolean creaProdotto(Long idNegozio, String name,String descrizione, GenereProdotto genere){
+    public boolean creaEAggiungiProdotto(Long idNegozio, String name, String descrizione, GenereProdotto genere){
         Negozio negozio = getNegozio(idNegozio);
         if(negozio == null)
             return false;
@@ -220,5 +220,12 @@ public class ServiceNegozio {
             return nuovo;
         }
         return null;
+    }
+
+    public List<Locker> visualizzaLockerDisponibili(Long idCommerciante){
+        Negozio negozio = getNegozio(idCommerciante);
+        if(negozio == null)
+            return null;
+        return serviceLocker.getLockerByCitta(negozio.getCittaNegozio());
     }
 }

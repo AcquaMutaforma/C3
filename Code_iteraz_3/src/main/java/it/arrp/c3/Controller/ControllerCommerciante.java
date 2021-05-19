@@ -2,6 +2,7 @@ package it.arrp.c3.Controller;
 
 import it.arrp.c3.Model.Corriere;
 import it.arrp.c3.Model.Enum.GenereProdotto;
+import it.arrp.c3.Model.Locker;
 import it.arrp.c3.Model.Negozio;
 import it.arrp.c3.Model.Prodotto;
 import it.arrp.c3.Service.ServiceNegozio;
@@ -70,7 +71,6 @@ public class ControllerCommerciante {
      */
     @PostMapping("/commerciante/{idComm}/assegnaLocker")
     public int assegnaLocker(@PathVariable Long idComm, @RequestParam Long idCliente, @RequestParam Long idLocker){
-        //TODO comando "visualizzaLockers" per poi sceglierlo e usare questo metodo
         return serviceNegozio.assegnaLocker(idComm, idCliente, idLocker);
     }
 
@@ -87,7 +87,7 @@ public class ControllerCommerciante {
     @PostMapping("/commerciante/{idCommerciante}/prodotti/new")
     public boolean creaProdotto(@PathVariable Long idCommerciante, @RequestParam String nome,
                                     @RequestParam String descrizione, @RequestParam String genere){
-        return serviceNegozio.creaProdotto(idCommerciante, nome, descrizione, GenereProdotto.valueOf(genere));
+        return serviceNegozio.creaEAggiungiProdotto(idCommerciante, nome, descrizione, GenereProdotto.valueOf(genere));
     }
 
     @PostMapping("/commerciante/{idCommerciante}/prodotti/remove")
@@ -100,4 +100,8 @@ public class ControllerCommerciante {
         return serviceNegozio.aggiungiProdotto(idCommerciante, idProdotto);
     }
 
+    @GetMapping("/commerciante/{idCommerciante}/locker/disponibili")
+    public List<Locker> visualizzaLockerDisponibili(@PathVariable Long idCommerciante){
+        return serviceNegozio.visualizzaLockerDisponibili(idCommerciante);
+    }
 }
