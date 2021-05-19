@@ -21,8 +21,6 @@ public class ServiceNegozio {
     @Autowired
     NegozioRepository repoNegozio;
     @Autowired
-    ServiceNegozio serviceNegozio;
-    @Autowired
     ServiceCorriere serviceCorriere;
     @Autowired
     ServiceCliente serviceCliente;

@@ -54,7 +54,7 @@ public class ServiceCorsa {
     /** Se non c'e' nella lista delle corse rifiutate allora la inserisco, insieme all'id del corriere che la ha
      * rifiutata, cosi' da non assegnarla di nuovo a lui.
      */
-    public void rifiutaCorsa(Long idCorriere, Long idCorsa) {
+    public void rifiutaCorsa(Long idCorsa) {
         Corsa c = getCorsa(idCorsa);
         List<Long> listaCorrieri;
         if(this.corseRifiutate.containsKey(idCorsa)) {

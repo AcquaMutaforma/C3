@@ -33,13 +33,13 @@ public class ServiceCorriere {
 
     //forse il return dovrebbe essere void, ma fa comodo per verificare subito l'effetto dell'operazione
     public List<Corsa> rifiutaCorsa(Long idCorriere, Long idCorsa){
-        Corriere corr = repoCorriere.findOneByIdCliente(idCorriere);
+        Corriere corr = getCorriere(idCorriere);
         if(corr == null)
             return null;
         if(corr.getCorsa(idCorsa) == null) {
             return null;
         }else {
-            serviceCorsa.rifiutaCorsa(idCorriere, idCorsa);
+            serviceCorsa.rifiutaCorsa(idCorsa);
             corr.rimuoviCorsa(getCorsa(idCorriere, idCorsa));
             repoCorriere.save(corr);
         }
