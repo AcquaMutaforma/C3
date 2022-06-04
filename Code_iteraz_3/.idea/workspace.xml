@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/C3CLR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/C3CLR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Controller/ControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Model/Tecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/arrp/c3/Service/ServiceTecnico.java" afterDir="false" />
-    </list>
+    <list default="true" id="8d5625cb-1545-4d81-86c9-97d177b02fbc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
